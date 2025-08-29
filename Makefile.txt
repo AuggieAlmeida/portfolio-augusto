@@ -1,0 +1,31 @@
+Execute: make help
+
+Comandos principais:
+  make start          - Inicia todos os containers
+  make stop           - Para todos os containers
+  make restart        - Reinicia todos os containers
+  make status         - Mostra status dos containers
+  make logs           - Mostra logs de todos os containers
+  make build          - Reconstrói todos os containers
+  make clean          - Remove containers, volumes e imagens
+  make test           - Executa testes (frontend + backend)
+
+Comandos específicos:
+  make frontend-logs  - Logs do frontend
+  make backend-logs   - Logs do backend
+  make db-logs        - Logs do banco de dados
+  make frontend-shell - Shell no container do frontend
+  make backend-shell  - Shell no container do backend
+
+Desenvolvimento:
+  make dev            - Sobe ambiente de dev (compose) e informa URLs
+
+Banco de dados:
+  make db-migrate     - Executa migrações (Flyway)
+  make db-reset       - Reseta o banco e reaplica migrações
+
+API:
+  make init-api       - Inicializa wrapper Maven na API
+  make run-api-local  - Roda API localmente (mvn spring-boot:run)
+  make run-api        - Roda API via Docker Compose
+  make run-api-logs   - Mostra logs da API

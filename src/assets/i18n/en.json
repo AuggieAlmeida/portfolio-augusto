@@ -1,0 +1,12 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Augusto Almeida",
+    "subtitle": "Fullstack Developer | QA | Data Enthusiast"
+  }
+}
