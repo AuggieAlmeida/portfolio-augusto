@@ -1,0 +1,12 @@
+version: v1.25.0
+ignore:
+  'npm:node-forge:*':
+    - '* > @angular-devkit/build-angular':
+        reason: 'No direct usage'
+        expires: 2024-12-31T00:00:00.000Z
+
+exclude:
+  global:
+    - node_modules
+    - dist
+    - coverage

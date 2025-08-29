@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-bg: theme('colors.white');
+  --primary-text: theme('colors.gray.900');
+}
+
+.dark {
+  --primary-bg: theme('colors.gray.800');
+  --primary-text: theme('colors.white');
+}
+
+.transition-theme {
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+@layer base {
+  :root {
+    --primary-color: theme('colors.primary.light');
+    --secondary-color: theme('colors.secondary.light');
+  }
+
+  .dark {
+    --primary-color: theme('colors.primary.dark');
+    --secondary-color: theme('colors.secondary.dark');
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 bg-primary-light dark:bg-primary-dark text-white rounded-lg;
+  }
+}
+
+/* You can add global styles to this file, and also import other style files */
