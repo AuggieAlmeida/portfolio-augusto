@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class HealthService {
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   checkHealth() {
     return this.http.get('/health');

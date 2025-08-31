@@ -5,10 +5,10 @@ import { environment } from '../../../environments/environment';
 export class LoggingService {
   private logLevel: 'debug' | 'info' | 'warn' | 'error' = 'info';
 
-  log(level: 'debug' | 'info' | 'warn' | 'error', message: string, ...args: any[]): void {
+  log(level: 'debug' | 'info' | 'warn' | 'error', message: string, ...args: unknown[]): void {
     if (!environment.production || level !== 'debug') {
       console[level](message, ...args);
-      // Aqui você pode adicionar integração com serviços como Sentry, LogRocket, etc
+      // Adicionar integração com serviços como Sentry, LogRocket, etc
     }
   }
 }

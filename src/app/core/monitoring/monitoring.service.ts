@@ -1,23 +1,24 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, inject } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { onFCP, onLCP, onCLS } from 'web-vitals';
 
 declare global {
   interface Window {
-    gtag: (...args: any[]) => void;
+    gtag: (...args: unknown[]) => void;
   }
 }
 
 @Injectable({ providedIn: 'root' })
 export class MonitoringService {
+  private router = inject(Router);
   private performanceMetrics = signal<{
     fcp: number;
     lcp: number;
     cls: number;
   }>({ fcp: 0, lcp: 0, cls: 0 });
 
-  constructor(private router: Router) {
+  constructor() {
     this.initializeAnalytics();
     this.measureWebVitals();
   }
