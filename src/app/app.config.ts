@@ -4,7 +4,6 @@ import { routes } from './app.routes';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader, TRANSLATE_HTTP_LOADER_CONFIG } from '@ngx-translate/http-loader';
-import { HttpClient } from '@angular/common/http';
 
 export function HttpLoaderFactory() {
   return new TranslateHttpLoader();

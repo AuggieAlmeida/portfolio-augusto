@@ -5,7 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-about',
   template: `
-    <section class="relative py-20 bg-gradient-to-br from-primary-50 via-secondary-50 to-accent-50 dark:from-primary-950 dark:via-secondary-950 dark:to-accent-950 overflow-hidden">
+    <section id="about" class="relative py-20 bg-gradient-to-br from-primary-50 via-secondary-50 to-accent-50 dark:from-primary-950 dark:via-secondary-950 dark:to-accent-950 overflow-hidden">
       <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%236366f1&quot; fill-opacity=&quot;0.05&quot;%3E%3Ccircle cx=&quot;30&quot; cy=&quot;30&quot; r=&quot;2&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
       <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-primary-100/20 via-transparent to-secondary-100/20 dark:from-primary-800/20 dark:to-secondary-800/20 animate-pulse-slow"></div>
 
@@ -78,8 +78,8 @@ import { TranslateModule } from '@ngx-translate/core';
       </div>
     </section>
   `,
-standalone:true,
-    imports: [CommonModule, TranslateModule]
+  standalone: true,
+  imports: [CommonModule, TranslateModule]
 })
 
 export class AboutComponent {}

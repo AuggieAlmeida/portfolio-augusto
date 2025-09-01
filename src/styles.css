@@ -18,6 +18,9 @@
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
+.no-scrollbar::-webkit-scrollbar { display: none; height: 6px; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
 @layer base {
   html {
     font-family: 'Open Sans', system-ui, sans-serif;

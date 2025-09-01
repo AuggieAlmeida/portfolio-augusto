@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-hero',
   template: `
-    <section class="hero-section relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" class="hero-section relative min-h-screen flex items-center justify-center overflow-hidden">
       <!-- Animated Background -->
       <div class="absolute inset-0 bg-gradient-to-br from-primary-50 via-secondary-50 to-accent-50 dark:from-primary-950 dark:via-secondary-950 dark:to-accent-950">
         <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%236366f1&quot; fill-opacity=&quot;0.05&quot;%3E%3Ccircle cx=&quot;30&quot; cy=&quot;30&quot; r=&quot;2&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
@@ -52,14 +52,14 @@ import { TranslateModule } from '@ngx-translate/core';
           <!-- CTA Buttons -->
           <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-up">
             <button class="btn-primary group">
-              <span class="flex items-center gap-2">
+              <span class="flex items-end gap-2">
                 <i class="fas fa-rocket w-5 h-5"></i>
                 {{ 'CTA.viewProjects' | translate }}
                 <i class="fas fa-arrow-right w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
               </span>
             </button>
             <button class="btn-secondary group">
-              <span class="flex items-center gap-2">
+              <span class="flex items-end gap-2">
                 <i class="fas fa-envelope w-5 h-5"></i>
                 {{ 'CTA.contactMe' | translate }}
                 <i class="fas fa-arrow-right w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
@@ -97,14 +97,14 @@ import { TranslateModule } from '@ngx-translate/core';
 
           <!-- Social Links -->
           <div class="flex justify-center space-x-6 mt-12 animate-slide-up">
-            <a href="#" class="text-neutral-600 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-              <i class="fab fa-github text-2xl"></i>
+            <a href="https://github.com/AuggieAlmeida" target="_blank" class="text-neutral-600 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+              <i class="fab fa-square-github text-2xl"></i>
             </a>
-            <a href="#" class="text-neutral-600 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+            <a href="https://www.linkedin.com/in/augustobalmeida/" target="_blank" class="text-neutral-600 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
               <i class="fab fa-linkedin text-2xl"></i>
             </a>
-            <a href="#" class="text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-              <i class="fab fa-twitter text-2xl"></i>
+            <a href="https://api.whatsapp.com/send/?phone=5511916047732&text&type=phone_number&app_absent=0" target="_blank" class="text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+              <i class="fab fa-square-whatsapp text-2xl"></i>
             </a>
           </div>
 
@@ -140,4 +140,4 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [CommonModule, TranslateModule]
 })
-export class HomeComponent {}
+export class HeroComponent {}

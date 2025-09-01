@@ -1,38 +1,37 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
-type Theme = 'light' | 'dark';
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class ThemeService {
-  private currentTheme = signal<Theme>('light');
+  private themeSubject = new BehaviorSubject<'light'|'dark'>(this.initialTheme());
+  theme$ = this.themeSubject.asObservable();
 
   constructor() {
-    // Check system preference
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      this.setTheme('dark');
-    }
-    
-    // Check saved preference
-    const savedTheme = localStorage.getItem('theme') as Theme;
-    if (savedTheme) {
-      this.setTheme(savedTheme);
-    }
+    this.theme$.subscribe(t => {
+      if (t === 'dark') document.documentElement.classList.add('dark');
+      else document.documentElement.classList.remove('dark');
+    });
   }
 
-  setTheme(theme: Theme) {
-    this.currentTheme.set(theme);
-    localStorage.setItem('theme', theme);
-    document.documentElement.classList.toggle('dark', theme === 'dark');
+  private initialTheme(): 'light' | 'dark' {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark' || saved === 'light') return saved;
+    // prefer system
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  setTheme(t: 'light'|'dark') {
+    localStorage.setItem('theme', t);
+    this.themeSubject.next(t);
   }
 
   toggleTheme() {
-    const newTheme = this.currentTheme() === 'light' ? 'dark' : 'light';
-    this.setTheme(newTheme);
+    const current = this.themeSubject.value;
+    const next = current === 'dark' ? 'light' : 'dark';
+    this.setTheme(next);
   }
 
   getCurrentTheme() {
-    return this.currentTheme;
+    return this.themeSubject.value;
   }
 }
