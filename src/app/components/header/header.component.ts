@@ -8,43 +8,51 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 @Component({
   selector: 'app-header',
   template: `
-    <header class="bg-white dark:bg-gray-800 shadow-sm transition-colors duration-200">
-      <nav class="container mx-auto px-4 py-3">
-        <div class="flex justify-between">
-          <div class="flex flex-start gap-10 items-center">
-          <div>
-            <h1 class="text-xl font-bold text-gray-900 dark:text-white">
-              {{ 'nav.home' | translate }}
-            </h1>
+    <header class="bg-white dark:bg-neutral-900 shadow-lg border-b border-primary-100 dark:border-primary-800 transition-all duration-300">
+      <nav class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center space-x-8">
+            <div class="group cursor-pointer">
+              <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 group-hover:text-primary-700 dark:group-hover:text-primary-300 transition-colors font-heading">
+                <i class="fas fa-home mr-2"></i>
+                {{ 'nav.home' | translate }}
+              </h2>
+            </div>
+            <div class="group cursor-pointer">
+              <h2 class="text-lg font-medium text-neutral-700 dark:text-neutral-300 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors font-heading">
+                <i class="fas fa-user mr-2"></i>
+                {{ 'nav.about' | translate }}
+              </h2>
+            </div>
+            <div class="group cursor-pointer">
+              <h2 class="text-lg font-medium text-neutral-700 dark:text-neutral-300 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors font-heading">
+                <i class="fas fa-folder mr-2"></i>
+                {{ 'nav.projects' | translate }}
+              </h2>
+            </div>
+            <div class="group cursor-pointer">
+              <h2 class="text-lg font-medium text-neutral-700 dark:text-neutral-300 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors font-heading">
+                <i class="fas fa-envelope mr-2"></i>
+                {{ 'nav.contact' | translate }}
+              </h2>
+            </div>
           </div>
-          <div>
-            <h1 class="text-xl font-bold text-gray-900 dark:text-white">
-              {{ 'nav.about' | translate }}
-            </h1>
-          </div>
-          <div>
-            <h1 class="text-xl font-bold text-gray-900 dark:text-white">
-              {{ 'nav.projects' | translate }}
-            </h1>
-          </div>
-          <div>
-            <h1 class="text-xl font-bold text-gray-900 dark:text-white">
-              {{ 'nav.contact' | translate }}
-            </h1>
-          </div>
-          </div>
-          <div class="flex items-center gap-10">
-            <select 
-              [value]="currentLang"
-              (change)="switchLanguage($event)"
-              class="px-6 py-1 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white">
-              <option value="pt">PT</option>
-              <option value="en">EN</option>
-            </select>
+          <div class="flex items-center space-x-4">
+            <div class="relative">
+              <select 
+                [value]="currentLang"
+                (change)="switchLanguage($event)"
+                class="pr-8 py-2 rounded-lg bg-primary-50 ring-2 ring-primary-200 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 border border-primary-200 dark:border-primary-700 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 font-sans">
+                <option value="pt">🇧🇷 PT</option>
+                <option value="en">🇺🇸 EN</option>
+                <option value="fr">🇫🇷 FR</option>
+                <option value="es">🇪🇸 ES</option>
+              </select>
+            </div>
             <button 
-              class="px-3 py-1 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+              class="p-2 px-3 rounded-lg bg-primary-100 dark:bg-primary-800/50 text-primary-700 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700/70 border border-primary-200 dark:border-primary-700 transition-all duration-200 transform hover:scale-105"
               (click)="toggleTheme()">
-              {{ theme() === 'light' ? '🌙' : '☀️' }}
+              <i [class]="theme() === 'light' ? 'fas fa-moon' : 'fas fa-circle-half-stroke'" class="text-lg"></i>
             </button>
           </div>
         </div>

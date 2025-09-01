@@ -1,0 +1,37 @@
+{
+    "nav": {
+        "home": "Accueil",
+        "about": "À propos",
+        "projects": "Projets",
+        "contact": "Contact"
+    },
+    "hero": {
+        "title": "Augusto Almeida",
+        "subtitle": "Fullstack Developer | QA & Data Enthusiast"
+    },
+    "CTA": {
+        "viewProjects": "Voir Projets",
+        "contactMe": "Contactez-moi"
+    },
+    "stats": {
+        "yearsOfExperience": "Années d'Expérience",
+        "completedProjects": "Projets Conclués",
+        "languagesDominated": "Langues Maîtrisées"
+    },
+    "about": {
+        "aboutMe": "À propos de Moi",
+        "description": "Je suis un Fullstack Developer et QA avec une expérience dans différents domaines de la technologie, de la construction d'interfaces modernes à l'automatisation de tests pour garantir la qualité et la fiabilité dans les systèmes. Je suis en constante évolution et génère un impact réel dans chaque projet.",
+        "goalsTitle": "Objectifs",
+        "goalsDescription": "Consolider ma carrière en combinant le développement de logiciels, la qualité du code et l'automatisation des processus, en contribuant à des solutions qui génèrent de la valeur pour l'utilisateur et le business.",
+        "professionalTrajectory": "Trajectoire Professionnelle",
+        "academicFormation": "Formation Académique",
+        "engineerOfTests": "Ingénieur de Tests",
+        "frontendDeveloper": "Développeur Frontend",
+        "fullstackDeveloper": "Développeur Fullstack",
+        "internships": "Stages",
+        "internshipSintel": "Support N1 et surveillance",
+        "internshipItau": "Consigné et après-vente",
+        "multiplatformSoftwareDeveloper": "Technologue en Développement de Logiciels Multi-Plateforme",
+        "systemsAnalysisAndDevelopment": "Technologue en Analyse et Développement de Systèmes"
+    }
+}

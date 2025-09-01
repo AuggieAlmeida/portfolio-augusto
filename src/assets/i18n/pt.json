@@ -7,6 +7,31 @@
   },
   "hero": {
     "title": "Augusto Almeida",
-    "subtitle": "Fullstack Developer | QA | Data Enthusiast"
+    "subtitle": "Fullstack Developer | QA & Data Enthusiast"
+  },
+  "CTA": {
+    "viewProjects": "Ver Projetos",
+    "contactMe": "Entrar em Contato"
+  },
+  "stats": {
+    "yearsOfExperience": "Anos de Experiência",
+    "completedProjects": "Projetos Concluídos",
+    "languagesDominated": "Idiomas Dominados"
+  },
+  "about": {
+    "aboutMe": "Sobre Mim",
+    "description": "Sou um desenvolvedor Fullstack e QA com experiência em diferentes frentes da tecnologia, desde a construção de interfaces modernas até a automação de testes para garantir qualidade e confiabilidade em sistemas. Busco aprender continuamente e gerar impacto real em cada projeto.",
+    "goalsTitle": "Objetivos",
+    "goalsDescription": "Consolidar minha carreira unindo o desenvolvimento de software, a qualidade do código e a automação de processos, contribuindo com soluções que gerem valor para o usuário e o negócio.",
+    "professionalTrajectory": "Trajetória Profissional",
+    "academicFormation": "Formação Acadêmica",
+    "engineerOfTests": "Engenheiro de Testes",
+    "frontendDeveloper": "Desenvolvedor Frontend",
+    "fullstackDeveloper": "Desenvolvedor Fullstack",
+    "internships": "Estágios",
+    "internshipSintel": "Suporte N1 e monitoramento",
+    "internshipItau": "Consignado e pós-venda",
+    "multiplatformSoftwareDeveloper": "Tecnólogo em Desenvolvimento de Software Multiplataforma",
+    "systemsAnalysisAndDevelopment": "Tecnólogo em Análise e Desenvolvimento de Sistemas"
   }
 }
