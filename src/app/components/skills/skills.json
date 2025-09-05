@@ -1,0 +1,82 @@
+{
+  "categories": [
+    {
+      "key": "frontend",
+      "label": "Frontend",
+      "items": [
+        { "name": "HTML5", "icon": "fab fa-html5", "descriptionKey": "skills.descriptions.html5" },
+        { "name": "CSS3 / Tailwind", "icon": "fab fa-css3-alt", "descriptionKey": "skills.descriptions.css3" },
+        { "name": "JavaScript (ES6+)", "icon": "fab fa-js", "descriptionKey": "skills.descriptions.javascript" },
+        { "name": "TypeScript", "icon": "fas fa-code", "descriptionKey": "skills.descriptions.typescript" },
+        { "name": "Angular", "icon": "fab fa-angular", "descriptionKey": "skills.descriptions.angular" },
+        { "name": "React", "icon": "fab fa-react", "descriptionKey": "skills.descriptions.react" }
+      ]
+    },
+    {
+      "key": "backend",
+      "label": "Backend",
+      "items": [
+        { "name": "Node.js", "icon": "fab fa-node-js", "descriptionKey": "skills.descriptions.nodejs" },
+        { "name": "Express", "icon": "fas fa-server", "descriptionKey": "skills.descriptions.express" },
+        { "name": "Java / Spring", "icon": "fab fa-java", "descriptionKey": "skills.descriptions.java" },
+        { "name": "Postgres / MySQL", "icon": "fas fa-database", "descriptionKey": "skills.descriptions.database" },
+        { "name": "GraphQL", "icon": "fas fa-project-diagram", "descriptionKey": "skills.descriptions.graphql" },
+        { "name": "REST APIs", "icon": "fas fa-network-wired", "descriptionKey": "skills.descriptions.rest" }
+      ]
+    },
+    {
+      "key": "devops",
+      "label": "DevOps & QA",
+      "items": [
+        { "name": "Docker", "icon": "fab fa-docker", "descriptionKey": "skills.descriptions.docker" },
+        { "name": "Kubernetes", "icon": "fas fa-server", "descriptionKey": "skills.descriptions.kubernetes" },
+        { "name": "CI/CD", "icon": "fas fa-running", "descriptionKey": "skills.descriptions.cicd" },
+        { "name": "AWS / Cloud", "icon": "fab fa-aws", "descriptionKey": "skills.descriptions.aws" },
+        { "name": "Terraform", "icon": "fas fa-cloud", "descriptionKey": "skills.descriptions.terraform" },
+        { "name": "Monitoring", "icon": "fas fa-chart-line", "descriptionKey": "skills.descriptions.monitoring" }
+      ]
+    },
+    {
+      "key": "testing",
+      "label": "Testes",
+      "items": [
+        { "name": "JUnit", "icon": "fas fa-vial", "descriptionKey": "skills.descriptions.junit" },
+        { "name": "Pytest", "icon": "fas fa-vial", "descriptionKey": "skills.descriptions.pytest" },
+        { "name": "Jest", "icon": "fas fa-microscope", "descriptionKey": "skills.descriptions.jest" },
+        { "name": "Cypress", "icon": "fas fa-check-circle", "descriptionKey": "skills.descriptions.cypress" },
+        { "name": "Selenium", "icon": "fas fa-robot", "descriptionKey": "skills.descriptions.selenium" },
+        { "name": "Playwright", "icon": "fas fa-bolt", "descriptionKey": "skills.descriptions.playwright" }
+      ]
+    },
+    {
+      "key": "arch",
+      "label": "Arquiteturas",
+      "items": [
+        { "name": "MVC", "icon": "fas fa-project-diagram", "descriptionKey": "skills.descriptions.mvc" },
+        { "name": "Clean Architecture", "icon": "fas fa-layer-group", "descriptionKey": "skills.descriptions.clean" },
+        { "name": "Ports & Adapters", "icon": "fas fa-cubes", "descriptionKey": "skills.descriptions.ports" },
+        { "name": "Microservices", "icon": "fas fa-network-wired", "descriptionKey": "skills.descriptions.microservices" },
+        { "name": "TDD", "icon": "fas fa-flask", "descriptionKey": "skills.descriptions.tdd" },
+        { "name": "Event-driven", "icon": "fas fa-stream", "descriptionKey": "skills.descriptions.event" }
+      ]
+    },
+    {
+      "key": "automation",
+      "label": "Automação & Dados",
+      "items": [
+        { "name": "VBA", "icon": "fas fa-file-excel", "descriptionKey": "skills.descriptions.vba" },
+        { "name": "Python scripting", "icon": "fab fa-python", "descriptionKey": "skills.descriptions.python" },
+        { "name": "Shellscript (bash / batch)", "icon": "fas fa-terminal", "descriptionKey": "skills.descriptions.shellscript" },
+        { "name": "Web scraping", "icon": "fas fa-spider", "descriptionKey": "skills.descriptions.scraping" },
+        { "name": "Power BI", "icon": "fas fa-chart-line", "descriptionKey": "skills.descriptions.powerbi" },
+        { "name": "Splunk", "icon": "fas fa-search", "descriptionKey": "skills.descriptions.splunk" }
+      ]
+    }
+  ],
+  "languages": [
+    { "nameKey": "languages.portuguese", "level": "native" },
+    { "nameKey": "languages.english", "level": "advanced" },
+    { "nameKey": "languages.french", "level": "intermediate" },
+    { "nameKey": "languages.spanish", "level": "basic" }
+  ]
+}

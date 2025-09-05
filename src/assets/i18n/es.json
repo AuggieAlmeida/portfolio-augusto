@@ -1,38 +1,97 @@
 {
-    "nav": {
-        "home": "Inicio",
-        "about": "Acerca de",
-        "skills": "Habilidades",
-        "projects": "Proyectos",
-        "contact": "Contacto"
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Augusto Almeida",
+    "subtitle": "Desarrollador Fullstack | Apasionado por QA & Datos"
+  },
+  "CTA": {
+    "viewProjects": "Ver proyectos",
+    "contactMe": "Contáctame"
+  },
+  "stats": {
+    "yearsOfExperience": "Años de experiencia",
+    "completedProjects": "Proyectos completados",
+    "languagesDominated": "Idiomas dominados"
+  },
+  "about": {
+    "aboutMe": "Sobre mí",
+    "description": "Soy un desarrollador Fullstack y QA con experiencia en diferentes áreas de la tecnología, desde la creación de interfaces modernas hasta la automatización de pruebas para garantizar calidad y confiabilidad en los sistemas. Busco aprender continuamente y generar un impacto real en cada proyecto.",
+    "goalsTitle": "Objetivos",
+    "goalsDescription": "Consolidar mi carrera uniendo el desarrollo de software, la calidad del código y la automatización de procesos, contribuyendo con soluciones que generen valor para el usuario y el negocio.",
+    "professionalTrajectory": "Trayectoria profesional",
+    "academicFormation": "Formación académica",
+    "engineerOfTests": "Ingeniero de pruebas",
+    "frontendDeveloper": "Desarrollador Frontend",
+    "fullstackDeveloper": "Desarrollador Fullstack",
+    "internships": "Prácticas",
+    "internshipSintel": "Soporte N1 y monitoreo",
+    "internshipItau": "Crédito consignado y posventa",
+    "multiplatformSoftwareDeveloper": "Desarrollador de software multiplataforma",
+    "systemsAnalysisAndDevelopment": "Técnico en análisis y desarrollo de sistemas"
+  },
+  "skills": {
+    "title": "Habilidades",
+    "intro": "Aquí están algunas de mis principales habilidades y tecnologías con las que trabajo:",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "apis": "APIs & Integraciones",
+      "database": "Base de datos",
+      "devops": "DevOps & QA",
+      "testing": "Pruebas & Automatización",
+      "arch": "Arquitecturas",
+      "automation": "Automatización & Datos",
+      "languages": "Idiomas"
     },
-    "hero": {
-        "title": "Augusto Almeida",
-        "subtitle": "Fullstack Developer | QA & Data Enthusiast"
-    },
-    "CTA": {
-        "viewProjects": "Ver Proyectos",
-        "contactMe": "Contactar"
-    },
-    "stats": {
-        "yearsOfExperience": "Años de Experiencia",
-        "completedProjects": "Proyectos Completados",
-        "languagesDominated": "Idiomas Dominados"
-    },
-    "about": {
-        "aboutMe": "Sobre Mí",
-        "description": "Soy un Desarrollador Fullstack y QA con experiencia en diferentes áreas de la tecnología, desde la construcción de interfaces modernas hasta la automatización de pruebas para garantizar calidad y confiabilidad en sistemas. Busco aprender continuamente y generar un impacto real en cada proyecto.",
-        "goalsTitle": "Objetivos",
-        "goalsDescription": "Consolidar mi carrera uniendo el desarrollo de software, la calidad del código y la automatización de procesos, contribuyendo con soluciones que generen valor para el usuario y el negocio.",
-        "professionalTrajectory": "Traectoria Profesional",
-        "academicFormation": "Formación Académica",
-        "engineerOfTests": "Ingeniero de Tests",
-        "frontendDeveloper": "Desarrollador Frontend",
-        "fullstackDeveloper": "Desarrollador Fullstack",
-        "internships": "Practicas",
-        "internshipSintel": "Soporte N1 y monitoreo",
-        "internshipItau": "Consignado y postventa",
-        "multiplatformSoftwareDeveloper": "Tecnólogo en Desarrollo de Software Multiplataforma",
-        "systemsAnalysisAndDevelopment": "Tecnólogo en Análisis y Desarrollo de Sistemas"
+    "descriptions": {
+      "html5": "Estructura HTML semántica y mejores prácticas de accesibilidad.",
+      "css3": "Diseños responsivos usando CSS moderno y utilidades de Tailwind.",
+      "javascript": "JavaScript moderno (ES6+) para interfaces interactivas y lógica.",
+      "typescript": "Desarrollo con tipos seguros usando TypeScript.",
+      "angular": "Componentes de Angular, servicios y patrones reactivos.",
+      "react": "React con hooks, context y patrones de componentes.",
+      "nodejs": "Runtime Node.js, patrones asíncronos y ecosistema de paquetes.",
+      "express": "Express para construir servicios RESTful.",
+      "java": "Desarrollo backend con Java y Spring.",
+      "database": "Diseño de bases de datos relacionales y optimización de consultas (Postgres/MySQL).",
+      "graphql": "Diseño de esquemas y resolvers GraphQL.",
+      "rest": "Diseño de APIs REST, versionamiento y documentación.",
+      "docker": "Contenerización con Docker.",
+      "kubernetes": "Orquestación y despliegue en Kubernetes.",
+      "cicd": "Pipelines de CI/CD y automatización.",
+      "aws": "Servicios AWS y conceptos básicos de arquitectura en la nube.",
+      "terraform": "Infraestructura como código con Terraform.",
+      "monitoring": "Prácticas de monitorización y observabilidad.",
+      "junit": "Pruebas unitarias y estructura de tests con JUnit.",
+      "pytest": "Pruebas en Python con pytest.",
+      "jest": "Pruebas JavaScript con Jest.",
+      "cypress": "Pruebas end-to-end con Cypress.",
+      "selenium": "Automatización de navegadores con Selenium.",
+      "playwright": "Automatización cross-browser con Playwright.",
+      "mvc": "Patrón arquitectónico Model-View-Controller.",
+      "clean": "Principios de Clean Architecture.",
+      "ports": "Arquitectura Ports & Adapters (Hexagonal).",
+      "microservices": "Patrones de diseño para microservicios.",
+      "tdd": "Flujo de desarrollo Test-Driven Development.",
+      "event": "Sistemas event-driven y patrones de mensajería.",
+      "vba": "Automatización y macros en Microsoft Office.",
+      "python": "Scripting en Python para automatización y tareas de datos.",
+      "shellscript": "Shell scripting (bash/batch) para automatización.",
+      "scraping": "Técnicas y librerías de web scraping.",
+      "powerbi": "Visualización de datos e informes con Power BI.",
+      "splunk": "Análisis de logs y búsquedas con Splunk."
     }
+  },
+  "languages": {
+    "portuguese": "Portugués",
+    "english": "Inglés",
+    "french": "Francés",
+    "spanish": "Español"
+  }
 }

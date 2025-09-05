@@ -19,7 +19,7 @@
     "completedProjects": "Completed Projects",
     "languagesDominated": "Languages Dominated"
   },
-  "about": {  
+  "about": {
     "aboutMe": "About Me",
     "description": "I am a Fullstack Developer and QA with experience in different areas of technology, from building modern interfaces to automating tests to ensure quality and reliability in systems. I am constantly learning and generating real impact in each project.",
     "goalsTitle": "Goals",
@@ -34,5 +34,64 @@
     "internshipItau": "Consigned and After-Sales",
     "multiplatformSoftwareDeveloper": "Multiplatform Software Developer",
     "systemsAnalysisAndDevelopment": "Systems Analysis and Development"
-  }
+  },
+  "skills": {
+    "title": "Skills",
+    "intro": "here are some of my main skills and technologies I work with:",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "apis": "APIs & Integrations",
+      "database": "Database",
+      "devops": "DevOps & QA",
+      "testing": "Testing & Automation",
+      "arch": "Architectures",
+      "automation": "Automation & Data",
+      "languages": "Languages"
+      },
+      "descriptions": {
+        "html5": "Semantic HTML structure and accessibility best practices.",
+        "css3": "Responsive layouts using modern CSS and Tailwind utilities.",
+        "javascript": "Modern JavaScript (ES6+) for interactive UIs and logic.",
+        "typescript": "Type-safe development with TypeScript.",
+        "angular": "Angular components, services and reactive patterns.",
+        "react": "React with hooks, context and component patterns.",
+        "nodejs": "Node.js runtime, async patterns and package ecosystem.",
+        "express": "Express for building RESTful services.",
+        "java": "Java and Spring-based backend development.",
+        "database": "Relational DB design and query optimization (Postgres/MySQL).",
+        "graphql": "GraphQL schemas and resolvers design.",
+        "rest": "REST API design, versioning and documentation.",
+        "docker": "Containerization with Docker.",
+        "kubernetes": "Orchestration and deployment on Kubernetes.",
+        "cicd": "CI/CD pipelines and automation.",
+        "aws": "AWS services and cloud architecture basics.",
+        "terraform": "Infrastructure as code with Terraform.",
+        "monitoring": "Monitoring and observability practices.",
+        "junit": "Unit testing and test structure with JUnit.",
+        "pytest": "Python testing with pytest.",
+        "jest": "JavaScript testing with Jest.",
+        "cypress": "End-to-end testing with Cypress.",
+        "selenium": "Browser automation with Selenium.",
+        "playwright": "Cross-browser automation with Playwright.",
+        "mvc": "Model-View-Controller architectural pattern.",
+        "clean": "Clean Architecture principles.",
+        "ports": "Ports & Adapters (Hexagonal) architecture.",
+        "microservices": "Design patterns for microservices.",
+        "tdd": "Test-Driven Development workflow.",
+        "event": "Event-driven systems and messaging patterns.",
+        "vba": "Automation and macros in Microsoft Office.",
+        "python": "Python scripting for automation and data tasks.",
+        "shellscript": "Shell scripting (bash/batch) for automation.",
+        "scraping": "Web scraping techniques and libraries.",
+        "powerbi": "Data visualization and reports with Power BI.",
+        "splunk": "Log analysis and searching with Splunk."
+      }
+    },
+    "languages": {
+      "portuguese": "Portuguese",
+      "english": "English",
+      "french": "French",
+      "spanish": "Spanish"
+    }
 }

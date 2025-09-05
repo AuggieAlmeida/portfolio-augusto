@@ -34,5 +34,72 @@
     "internshipItau": "Consignado e pós-venda",
     "multiplatformSoftwareDeveloper": "Tecnólogo em Desenvolvimento de Software Multiplataforma",
     "systemsAnalysisAndDevelopment": "Tecnólogo em Análise e Desenvolvimento de Sistemas"
+  },
+  "skills": {
+    "title": "Habilidades",
+    "intro": "Aqui estão algumas das minhas principais habilidades e tecnologias com as quais trabalho:",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "apis": "APIs & Integrações",
+      "database": "Banco de Dados",
+      "devops": "DevOps & QA",
+      "testing": "Testes & Automação",
+      "arch": "Arquiteturas",
+      "automation": "Automação & Dados",
+      "languages": {
+        "title": "Idiomas",
+        "level_native": "Nativo",
+        "level_advanced": "Avançado",
+        "level_intermediate": "Intermediário",
+        "level_basic": "Básico"
+      }
+    },
+    "descriptions": {
+      "html5": "Estrutura HTML semântica e boas práticas de acessibilidade.",
+      "css3": "Layouts responsivos usando CSS moderno e utilitários do Tailwind.",
+      "javascript": "JavaScript moderno (ES6+) para UIs interativas.",
+      "typescript": "Desenvolvimento com tipagem via TypeScript.",
+      "angular": "Componentes e patterns reativos em Angular.",
+      "react": "React com hooks e padrões de componente.",
+      "nodejs": "Runtime Node.js, padrões assíncronos e ecossistema.",
+      "express": "Express para construção de serviços REST.",
+      "java": "Desenvolvimento backend com Java e Spring.",
+      "database": "Modelagem relacional e otimização (Postgres/MySQL).",
+      "graphql": "Design de schemas e resolvers GraphQL.",
+      "rest": "Design de APIs REST, versionamento e documentação.",
+      "docker": "Conteinerização com Docker.",
+      "kubernetes": "Orquestração e deploy em Kubernetes.",
+      "cicd": "Pipelines de CI/CD e automação.",
+      "aws": "Serviços AWS e conceitos de cloud.",
+      "terraform": "Infraestrutura como código com Terraform.",
+      "monitoring": "Práticas de monitoramento e observabilidade.",
+      "junit": "Testes unitários com JUnit.",
+      "pytest": "Testes em Python com pytest.",
+      "jest": "Testes JavaScript com Jest.",
+      "cypress": "Testes end-to-end com Cypress.",
+      "selenium": "Automação de navegadores com Selenium.",
+      "playwright": "Automação cross-browser com Playwright.",
+      "mvc": "Padrão arquitetural Model-View-Controller.",
+      "clean": "Princípios de Clean Architecture.",
+      "ports": "Arquitetura Ports & Adapters (Hexagonal).",
+      "microservices": "Padrões para microserviços.",
+      "tdd": "Fluxo de desenvolvimento TDD.",
+      "event": "Sistemas event-driven e messaging.",
+      "vba": "Automação e macros no Microsoft Office.",
+      "python": "Scripting Python para automação e dados.",
+      "shellscript": "Shell scripting (bash/batch) para automação.",
+      "scraping": "Técnicas de web scraping.",
+      "powerbi": "Visualização de dados com Power BI.",
+      "splunk": "Análise de logs com Splunk."
+    }
+  },
+  "languages": {
+    "portuguese": "Português",
+    "english": "Inglês",
+    "french": "Francês",
+    "spanish": "Espanhol"
   }
+
 }
+

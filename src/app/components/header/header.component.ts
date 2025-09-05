@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, DestroyRef } from '@angular/core';
+import { Component, inject, OnInit, DestroyRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -9,12 +9,18 @@ import { ThemeService } from '../../core/services/theme.service';
   selector: 'app-header',
   standalone: true,
   imports: [CommonModule, TranslateModule],
+  changeDetection: ChangeDetectionStrategy.OnPush, // ← Estratégia OnPush
   template: `
     <header class="bg-white dark:bg-neutral-900 shadow-md border-b border-primary-100 dark:border-primary-800 transition-all duration-300 sticky top-0 z-50">
       <nav class="container mx-auto px-4 py-2 flex items-center justify-between">
         <div class="flex items-center gap-4">
           <button aria-label="Logo" class="logo-container" (click)="scrollTo('hero')">
-            <img src="assets/images/Logo.png" alt="logo" class="h-12 w-12 object-contain rounded-md cursor-pointer animate-pulse-slow hover:animate-float transition-all duration-300">
+            <img 
+              src="assets/images/Logo.png" 
+              alt="logo" 
+              class="h-12 w-12 object-contain rounded-md cursor-pointer animate-pulse-slow hover:animate-float transition-all duration-300"
+              loading="lazy"
+            >
           </button>
 
           <div class="nav-scroll-wrapper max-w-[56vw] overflow-x-auto no-scrollbar">
@@ -96,6 +102,7 @@ export class HeaderComponent implements OnInit {
   private nav = inject(NavService);
   private theme = inject(ThemeService);
   private destroyRef = inject(DestroyRef);
+  private cdr = inject(ChangeDetectorRef); // ← Para ChangeDetectionStrategy.OnPush
 
   activeSection = 'hero';
   currentLang = this.translate.currentLang || 'pt';
@@ -107,13 +114,15 @@ export class HeaderComponent implements OnInit {
 
     this.nav.active$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(s => {
       this.activeSection = s;
+      this.cdr.markForCheck(); // ← Notificar Angular para verificar mudanças
     });
 
     this.theme.theme$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(t => {
       this.isDark = t === 'dark';
+      this.cdr.markForCheck(); // ← Notificar Angular para verificar mudanças
     });
 
-    // basic scroll listener to update active
+    // Usando passive events para melhor performance de scroll
     window.addEventListener('scroll', this.onScroll, { passive: true });
   }
 
