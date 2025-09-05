@@ -6,16 +6,28 @@ import { of } from 'rxjs';
 
 // Mock do TranslateService
 class MockTranslateService {
-  use(lang: string) {}
-  setDefaultLang(lang: string) {}
-  get currentLang() { return 'pt'; }
+  readonly currentLang = 'pt'; // Corrigido para usar readonly field
+
+  use() {
+    // Intencionalmente vazio - removido parâmetro não utilizado
+  }
+
+  setDefaultLang() {
+    // Intencionalmente vazio - removido parâmetro não utilizado
+  }
 }
 
 // Mock do NavService
 class MockNavService {
   active$ = of('hero');
-  setActive(section: string) {}
-  scrollTo(section: string, offset: number) {}
+
+  setActive() {
+    // Intencionalmente vazio - removido parâmetro não utilizado
+  }
+
+  scrollTo() {
+    // Intencionalmente vazio - removido parâmetro não utilizado
+  }
 }
 
 describe('AppComponent', () => {
@@ -35,7 +47,6 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  // Remova ou atualize este teste conforme necessário
   it('should have the correct initial active section', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
