@@ -61,11 +61,6 @@ jobs:
         name: production-files
         path: dist
         
-    - name: Setup Vercel
-      run: |
-        # Configura o Vercel para não fazer perguntas interativas
-        npx vercel --token ${{ secrets.VERCEL_TOKEN }} --yes --confirm 2>/dev/null || true
-        
     - name: Deploy to Vercel
       uses: amondnet/vercel-action@v25
       with:
@@ -73,3 +68,5 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         vercel-args: '--prod --confirm'
         working-directory: ./
+        github-comment: false  # Desativa comentários no PR
+        github-deployment: false  # Desativa deployments do GitHub
