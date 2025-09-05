@@ -13,6 +13,11 @@ interface SkillItem {
   descriptionKey?: string;
 }
 
+interface SkillsData {
+  categories: SkillCategory[];
+  languages: LanguageItem[];
+}
+
 interface SkillCategory {
   key: string;
   label?: string;
@@ -52,7 +57,11 @@ interface LanguageItem {
 
           <div class="space-y-8">
             <div
-              *ngFor="let cat of skills; trackBy: trackByCategory; let categoryIndex = index"
+              *ngFor="
+                let cat of skills;
+                trackBy: trackByCategory;
+                let categoryIndex = index
+              "
               class="grid grid-cols-12 gap-6 items-start"
             >
               <div
@@ -79,26 +88,44 @@ interface LanguageItem {
 
               <div class="col-span-12 md:col-span-9">
                 <ng-container *ngIf="getRows(cat.items, 6) as rows">
-                  <div *ngFor="let row of rows; trackBy: trackByRow; let rowIndex = index">
+                  <div
+                    *ngFor="
+                      let row of rows;
+                      trackBy: trackByRow;
+                      let rowIndex = index
+                    "
+                  >
                     <div
                       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
                     >
                       <div
-                        *ngFor="let item of row; trackBy: trackBySkill; let skillIndex = index"
+                        *ngFor="
+                          let item of row;
+                          trackBy: trackBySkill;
+                          let skillIndex = index
+                        "
                         class="skill-item opacity-0 animate-fade-in-up"
-                        [style.animation-delay]="getStaggerDelay(categoryIndex, rowIndex, skillIndex)"
+                        [style.animation-delay]="
+                          getStaggerDelay(categoryIndex, rowIndex, skillIndex)
+                        "
                       >
                         <button
                           class="skill-card h-full w-full group p-3 rounded-lg bg-neutral-100/5 dark:bg-neutral-900/40 border border-neutral-800 flex flex-col items-center justify-center gap-3 text-center transition-transform transform hover:-translate-y-1 hover:scale-105 hover:shadow-2xl hover:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
                           [attr.aria-label]="item.name"
-                          [attr.aria-describedby]="item.descriptionKey ? 'desc-' + slugify(item.name) : null"
+                          [attr.aria-describedby]="
+                            item.descriptionKey
+                              ? 'desc-' + slugify(item.name)
+                              : null
+                          "
                         >
                           <div
                             class="w-10 h-10 rounded-md bg-gradient-to-br from-neutral-800/60 to-neutral-800/40 flex items-center justify-center transition-transform group-hover:scale-110"
                           >
                             <i
                               *ngIf="item.icon"
-                              [ngClass]="item.icon + ' text-lg text-neutral-100'"
+                              [ngClass]="
+                                item.icon + ' text-lg text-neutral-100'
+                              "
                               aria-hidden="true"
                             ></i>
                             <div
@@ -109,7 +136,9 @@ interface LanguageItem {
                             </div>
                           </div>
 
-                          <div class="font-medium text-sm text-neutral-900 dark:text-neutral-100">
+                          <div
+                            class="font-medium text-sm text-neutral-900 dark:text-neutral-100"
+                          >
                             {{ item.name }}
                           </div>
 
@@ -136,8 +165,12 @@ interface LanguageItem {
               </div>
             </div>
 
-            <div class="mt-12 pt-8 border-t border-neutral-200 dark:border-neutral-800">
-              <h3 class="text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-6">
+            <div
+              class="mt-12 pt-8 border-t border-neutral-200 dark:border-neutral-800"
+            >
+              <h3
+                class="text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-6"
+              >
                 {{ 'skills.categories.languages.title' | translate }}
               </h3>
 
@@ -146,11 +179,18 @@ interface LanguageItem {
                   *ngFor="let lang of languages; trackBy: trackByLanguage"
                   class="flex items-center justify-between p-3 rounded-lg bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700"
                 >
-                  <span class="font-medium text-neutral-900 dark:text-neutral-100">
+                  <span
+                    class="font-medium text-neutral-900 dark:text-neutral-100"
+                  >
                     {{ lang.nameKey | translate }}
                   </span>
-                  <span class="text-sm text-primary-600 dark:text-primary-400 font-medium">
-                    {{ 'skills.categories.languages.level_' + lang.level | translate }}
+                  <span
+                    class="text-sm text-primary-600 dark:text-primary-400 font-medium"
+                  >
+                    {{
+                      'skills.categories.languages.level_' + lang.level
+                        | translate
+                    }}
                   </span>
                 </div>
               </div>
@@ -160,37 +200,54 @@ interface LanguageItem {
       </div>
     </section>
   `,
-  styles: [`
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .animate-fade-in-up { animation: fadeInUp 0.5s ease forwards; }
+  styles: [
+    `
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fade-in-up {
+        animation: fadeInUp 0.5s ease forwards;
+      }
 
-    .tooltip-arrow {
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      border-width: 6px;
-      border-style: solid;
-      border-color: rgba(17,24,39,1) transparent transparent transparent; /* neutral-900 */
-    }
+      .tooltip-arrow {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 6px;
+        border-style: solid;
+        border-color: rgba(17, 24, 39, 1) transparent transparent transparent; /* neutral-900 */
+      }
 
-    .skill-card { position: relative; }
-  `]
+      .skill-card {
+        position: relative;
+      }
+    `,
+  ],
 })
 export class SkillsComponent {
   private cdr = inject(ChangeDetectorRef);
   private translate = inject(TranslateService);
 
-  public skills: SkillCategory[] = (skillsData as any).categories || [];
-  public languages: LanguageItem[] = (skillsData as any).languages || [];
-  private rowsCache = new Map<string, any[][]>();
+  public skills: SkillCategory[] = (skillsData as SkillsData).categories || [];
+  public languages: LanguageItem[] = (skillsData as SkillsData).languages || [];
+
+  private rowsCache = new Map<string, unknown>();
 
   // Calcula delay para animações
-  getStaggerDelay(categoryIndex: number, rowIndex: number, skillIndex: number): string {
-    const baseDelay = (categoryIndex * 0.1) + (rowIndex * 0.05) + (skillIndex * 0.03);
+  getStaggerDelay(
+    categoryIndex: number,
+    rowIndex: number,
+    skillIndex: number,
+  ): string {
+    const baseDelay = categoryIndex * 0.1 + rowIndex * 0.05 + skillIndex * 0.03;
     return `${baseDelay}s`;
   }
 
@@ -204,20 +261,30 @@ export class SkillsComponent {
   }
 
   trackByRow(index: number, row: SkillItem[]): string {
-    return row.map(item => item.name).join('-');
+    return row.map((item) => item.name).join('-');
   }
 
   trackByLanguage(index: number, lang: LanguageItem): string {
     return lang.nameKey;
   }
 
-  // rows com memoização
+  // E atualize o método getRows para:
   getRows<T>(items: T[], size = 6): T[][] {
     const cacheKey = JSON.stringify(items) + size;
-    if (this.rowsCache.has(cacheKey)) return this.rowsCache.get(cacheKey) as T[][];
+
+    // Verifique se já temos este cache
+    const cached = this.rowsCache.get(cacheKey);
+    if (cached !== undefined) {
+      return cached as T[][];
+    }
+
     if (!items || items.length === 0) return [];
+
     const out: T[][] = [];
-    for (let i = 0; i < items.length; i += size) out.push(items.slice(i, i + size));
+    for (let i = 0; i < items.length; i += size) {
+      out.push(items.slice(i, i + size));
+    }
+
     this.rowsCache.set(cacheKey, out);
     return out;
   }
@@ -225,6 +292,10 @@ export class SkillsComponent {
   // Método público para gerar slugs seguros para uso em IDs/aria-describedby
   public slugify(name: string): string {
     if (!name) return '';
-    return name.toLowerCase().trim().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');
+    return name
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, '-')
+      .replace(/[^a-z0-9-]/g, ''); // Removed unnecessary escape
   }
 }

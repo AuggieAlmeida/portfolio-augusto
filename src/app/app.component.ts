@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, AfterViewInit  } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { HeroComponent } from './components/hero/hero.component';
@@ -13,15 +13,13 @@ import { SkillsComponent } from "./components/skills/skills.component";
   styleUrl: './app.component.css'
   
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   private nav = inject(NavService);
 
   ngAfterViewInit() {
-    // Exemplo: abrir a seção 'projects' programaticamente (ou escutar)
-    // this.nav.scrollTo('projects'); // se quiser navegar programaticamente
+
 
     this.nav.active$.subscribe(active => {
       console.log('seção ativa:', active);
-      // pode atualizar UI específica ou enviar para analytics
     });
   }}

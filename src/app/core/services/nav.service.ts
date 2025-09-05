@@ -8,8 +8,6 @@ export class NavService {
   private activeSectionSubject = new BehaviorSubject<string>('hero');
   active$ = this.activeSectionSubject.asObservable();
 
-  constructor(){}
-
   setActive(section: string) {
     this.activeSectionSubject.next(section);
   }
