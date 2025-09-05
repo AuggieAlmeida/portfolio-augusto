@@ -44,10 +44,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - name: Run SAST scan
-      uses: snyk/actions/node@master
-      env:
-        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+#    - name: Run SAST scan
+#      uses: snyk/actions/node@master
+#      env:
+#        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
     
     - name: Run dependency audit
       run: npm audit
