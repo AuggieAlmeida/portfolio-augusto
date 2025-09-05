@@ -61,14 +61,15 @@ jobs:
         name: production-files
         path: dist
         
-    - name: Setup Vercel environment
+    - name: Setup Vercel
       run: |
-        npx vercel link --yes --token=${{ secrets.VERCEL_TOKEN }} --project=portfolio-augusto --scope=AuggieAlmeida
+        # Configura o Vercel para não fazer perguntas interativas
+        npx vercel --token ${{ secrets.VERCEL_TOKEN }} --yes --confirm 2>/dev/null || true
         
     - name: Deploy to Vercel
       uses: amondnet/vercel-action@v25
       with:
         vercel-token: ${{ secrets.VERCEL_TOKEN }}
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        vercel-args: '--prod --yes'
+        vercel-args: '--prod --yes --confirm'
         working-directory: ./
