@@ -60,12 +60,6 @@ Thumbs.db
 .gitignore
 .gitattributes
 
-# Arquivos do Docker
-.docker/
-Dockerfile
-docker-compose*.yml
-.dockerignore
-
 # Documentação
 README.md
 CHANGELOG.md
