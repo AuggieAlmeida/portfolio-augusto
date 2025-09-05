@@ -53,7 +53,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     
     steps:
-    - uses: actions/checkout@v4  # Adicionei esta linha
+    - uses: actions/checkout@v4
     
     - name: Download build artifacts
       uses: actions/download-artifact@v4
@@ -61,10 +61,14 @@ jobs:
         name: production-files
         path: dist
         
+    - name: Setup Vercel environment
+      run: |
+        npx vercel link --yes --token=${{ secrets.VERCEL_TOKEN }} --project=portfolio-augusto --scope=AuggieAlmeida
+        
     - name: Deploy to Vercel
       uses: amondnet/vercel-action@v25
       with:
         vercel-token: ${{ secrets.VERCEL_TOKEN }}
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        vercel-args: '--prod'
+        vercel-args: '--prod --yes'
         working-directory: ./
