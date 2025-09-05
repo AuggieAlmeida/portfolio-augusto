@@ -4,7 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-about',
-  changeDetection: ChangeDetectionStrategy.OnPush, // ← Estratégia OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section
       id="about"
