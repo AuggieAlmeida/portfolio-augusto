@@ -53,6 +53,8 @@ jobs:
     if: github.ref == 'refs/heads/main'
     
     steps:
+    - uses: actions/checkout@v4  # Adicionei esta linha
+    
     - name: Download build artifacts
       uses: actions/download-artifact@v4
       with:
