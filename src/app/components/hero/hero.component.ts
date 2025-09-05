@@ -1,10 +1,15 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  AfterViewInit,
+  OnDestroy,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-hero',
-  changeDetection: ChangeDetectionStrategy.OnPush, // ← Estratégia OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section
       id="hero"
@@ -22,7 +27,7 @@ import { TranslateModule } from '@ngx-translate/core';
         ></div>
       </div>
 
-      <!-- Floating Elements -->
+      <!-- Floating Elements (mais elementos adicionados) -->
       <div
         class="absolute top-20 left-20 w-32 h-32 bg-primary-200/30 dark:bg-primary-700/30 rounded-full blur-xl animate-float"
       ></div>
@@ -31,6 +36,15 @@ import { TranslateModule } from '@ngx-translate/core';
       ></div>
       <div
         class="absolute top-1/2 left-1/4 w-24 h-24 bg-accent-200/30 dark:bg-accent-700/30 rounded-full blur-lg animate-float-slow"
+      ></div>
+      <div
+        class="absolute top-1/3 right-1/4 w-20 h-20 bg-primary-200/20 dark:bg-primary-700/20 rounded-full blur-lg animate-float-delayed"
+      ></div>
+      <div
+        class="absolute bottom-1/4 left-1/3 w-28 h-28 bg-secondary-200/20 dark:bg-secondary-700/20 rounded-full blur-lg animate-float-slower"
+      ></div>
+      <div
+        class="absolute top-1/4 right-1/3 w-16 h-16 bg-accent-200/25 dark:bg-accent-700/25 rounded-full blur-md animate-float"
       ></div>
 
       <!-- Main Content -->
@@ -74,19 +88,21 @@ import { TranslateModule } from '@ngx-translate/core';
             >
           </h1>
 
-          <!-- Subtitle -->
-          <p
-            class="text-xl text-neutral-500 dark:text-neutral-400 mb-12 max-w-2xl mx-auto leading-relaxed animate-slide-up font-sans"
-          >
-            <span class="font-medium">{{ 'hero.subtitle' | translate }}</span>
-          </p>
+          <!-- Subtitle com efeito de palavras em fila -->
+          <div class="mb-12 mt-6 min-h-[2.8rem]">
+            <p
+              class="text-xl text-neutral-500 dark:text-neutral-400  max-w-2xl mx-auto leading-relaxed animate-slide-up font-sans min-h-[2rem]"
+            >
+              <span class="font-medium typewriter"></span>
+            </p>
+          </div>
 
-          <!-- CTA Buttons -->
+          <!-- CTA Buttons (botões full width no mobile) -->
           <div
-            class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-up"
+            class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-up w-full sm:w-auto"
           >
-            <button class="btn-primary group">
-              <span class="flex items-end gap-2">
+            <button class="btn-primary group w-full sm:w-auto">
+              <span class="flex items-center justify-center gap-2">
                 <i class="fas fa-rocket w-5 h-5"></i>
                 {{ 'CTA.viewProjects' | translate }}
                 <i
@@ -94,8 +110,8 @@ import { TranslateModule } from '@ngx-translate/core';
                 ></i>
               </span>
             </button>
-            <button class="btn-secondary group">
-              <span class="flex items-end gap-2">
+            <button class="btn-secondary group w-full sm:w-auto">
+              <span class="flex items-center justify-center gap-2">
                 <i class="fas fa-envelope w-5 h-5"></i>
                 {{ 'CTA.contactMe' | translate }}
                 <i
@@ -105,15 +121,16 @@ import { TranslateModule } from '@ngx-translate/core';
             </button>
           </div>
 
-          <!-- Stats -->
+          <!-- Stats com contador progressivo -->
           <div
             class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto animate-slide-up"
           >
             <div class="text-center group">
               <div
-                class="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2 group-hover:scale-110 transition-transform font-heading"
+                class="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2 group-hover:scale-110 transition-transform font-heading stat-number"
+                data-target="5"
               >
-                5+
+                0+
               </div>
               <div
                 class="text-neutral-600 dark:text-neutral-400 font-medium font-sans"
@@ -123,9 +140,10 @@ import { TranslateModule } from '@ngx-translate/core';
             </div>
             <div class="text-center group">
               <div
-                class="text-4xl font-bold text-secondary-600 dark:text-secondary-400 mb-2 group-hover:scale-110 transition-transform font-heading"
+                class="text-4xl font-bold text-secondary-600 dark:text-secondary-400 mb-2 group-hover:scale-110 transition-transform font-heading stat-number"
+                data-target="20"
               >
-                20+
+                0+
               </div>
               <div
                 class="text-neutral-600 dark:text-neutral-400 font-medium font-sans"
@@ -135,9 +153,10 @@ import { TranslateModule } from '@ngx-translate/core';
             </div>
             <div class="text-center group">
               <div
-                class="text-4xl font-bold text-accent-600 dark:text-accent-400 mb-2 group-hover:scale-110 transition-transform font-heading"
+                class="text-4xl font-bold text-accent-600 dark:text-accent-400 mb-2 group-hover:scale-110 transition-transform font-heading stat-number"
+                data-target="4"
               >
-                4
+                0
               </div>
               <div
                 class="text-neutral-600 dark:text-neutral-400 font-medium font-sans"
@@ -148,7 +167,9 @@ import { TranslateModule } from '@ngx-translate/core';
           </div>
 
           <!-- Social Links -->
-          <div class="flex justify-center space-x-6 mt-12 animate-slide-up">
+          <div
+            class="flex justify-center space-x-6 mt-12 mb-6 animate-slide-up"
+          >
             <a
               href="https://github.com/AuggieAlmeida"
               target="_blank"
@@ -189,6 +210,10 @@ import { TranslateModule } from '@ngx-translate/core';
         animation: float 8s ease-in-out infinite 1s;
       }
 
+      .animate-float-slower {
+        animation: float 10s ease-in-out infinite 3s;
+      }
+
       @keyframes float {
         0%,
         100% {
@@ -201,9 +226,166 @@ import { TranslateModule } from '@ngx-translate/core';
           transform: translateY(-60px) rotate(240deg);
         }
       }
+
+      /* Estilos para o efeito de typewriter */
+      .typewriter {
+        display: inline-block;
+        position: relative;
+        text-align: center;
+        height: 1.5em;
+      }
+
+      .typewriter::after {
+        content: '|';
+        position: absolute;
+        right: 0;
+        animation: blink 1s infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0;
+        }
+      }
     `,
   ],
   standalone: true,
   imports: [CommonModule, TranslateModule],
 })
-export class HeroComponent {}
+export class HeroComponent implements AfterViewInit, OnDestroy {
+  private wordEffectInterval: number | undefined;
+
+  ngAfterViewInit() {
+    this.addProgressiveCounter();
+    this.addWordFadeEffect();
+  }
+
+  ngOnDestroy() {
+    if (this.wordEffectInterval) {
+      clearInterval(this.wordEffectInterval);
+    }
+  }
+
+  private addProgressiveCounter() {
+    const stats = document.querySelectorAll('.stat-number');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const stat = entry.target as HTMLElement;
+          const target = parseInt(stat.getAttribute('data-target') || '0');
+          let count = 0;
+          const duration = 2000;
+          const increment = target / (duration / 16);
+
+          const updateCount = () => {
+            if (count <= target) {
+              count += increment;
+              stat.textContent = Math.ceil(count) + (target > 4 ? '+' : '');
+              requestAnimationFrame(updateCount);
+            } else {
+              stat.textContent = target + (target > 4 ? '+' : '');
+            }
+          };
+
+          updateCount();
+          observer.unobserve(stat);
+        }
+      });
+    });
+
+    stats.forEach((stat) => observer.observe(stat));
+  }
+
+  private addWordFadeEffect() {
+    const textElement = document.querySelector('.typewriter');
+    if (!textElement) return;
+
+    const words = [
+      'Fullstack Developer',
+      'Software Engineer',
+      'Tech Enthusiast',
+      'QA Analyst',
+      'System Architect',
+      'Problem Solver',
+    ];
+
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingSpeed = 50;
+    const deleteSpeed = 50;
+    const pauseTime = 1000;
+
+    const type = () => {
+      const currentWord = words[wordIndex];
+
+      if (isDeleting) {
+        // Modo apagamento
+        textElement.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        // Modo digitação
+        textElement.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      // Atualizar a posição do cursor
+      this.updateCursorPosition(textElement);
+
+      let typeSpeed = isDeleting ? deleteSpeed : typingSpeed;
+
+      if (!isDeleting && charIndex === currentWord.length) {
+        // Palavra completa, pausar antes de apagar
+        typeSpeed = pauseTime;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        // Palavra completamente apagada, passar para a próxima
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        typeSpeed = 500;
+      }
+
+      setTimeout(type, typeSpeed);
+    };
+
+    // Iniciar imediatamente
+    type();
+  }
+
+  private updateCursorPosition(textElement: Element) {
+    // Criar um span temporário para medir a largura do texto
+    const tempSpan = document.createElement('span');
+    tempSpan.textContent = textElement.textContent;
+    tempSpan.style.visibility = 'hidden';
+    tempSpan.style.position = 'absolute';
+    tempSpan.style.font = window.getComputedStyle(textElement).font;
+
+    document.body.appendChild(tempSpan);
+    const textWidth = tempSpan.offsetWidth;
+    document.body.removeChild(tempSpan);
+
+    // Atualizar a posição do cursor
+    const style = document.createElement('style');
+    style.textContent = `
+      .typewriter::after {
+        left: ${textWidth}px;
+        right: auto;
+      }
+    `;
+
+    // Remover estilos anteriores
+    const existingStyle = document.getElementById('cursor-style');
+    if (existingStyle) {
+      existingStyle.remove();
+    }
+
+    style.id = 'cursor-style';
+    document.head.appendChild(style);
+  }
+}

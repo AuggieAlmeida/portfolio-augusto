@@ -268,26 +268,26 @@ export class SkillsComponent {
     return lang.nameKey;
   }
 
-  // E atualize o método getRows para:
-  getRows<T>(items: T[], size = 6): T[][] {
-    const cacheKey = JSON.stringify(items) + size;
-
-    // Verifique se já temos este cache
-    const cached = this.rowsCache.get(cacheKey);
-    if (cached !== undefined) {
-      return cached as T[][];
-    }
-
-    if (!items || items.length === 0) return [];
-
-    const out: T[][] = [];
-    for (let i = 0; i < items.length; i += size) {
-      out.push(items.slice(i, i + size));
-    }
-
-    this.rowsCache.set(cacheKey, out);
-    return out;
+// E atualize o método getRows para:
+getRows<T>(items: T[], size = 6): T[][] {
+  const cacheKey = JSON.stringify(items) + size;
+  
+  // Verifique se já temos este cache
+  const cached = this.rowsCache.get(cacheKey);
+  if (cached !== undefined) {
+    return cached as T[][];
   }
+  
+  if (!items || items.length === 0) return [];
+  
+  const out: T[][] = [];
+  for (let i = 0; i < items.length; i += size) {
+    out.push(items.slice(i, i + size));
+  }
+  
+  this.rowsCache.set(cacheKey, out);
+  return out;
+}
 
   // Método público para gerar slugs seguros para uso em IDs/aria-describedby
   public slugify(name: string): string {
