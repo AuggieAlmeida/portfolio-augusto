@@ -1,0 +1,16 @@
+# docker-compose.dev.yml
+services:
+  portfolio:
+    container_name: portfolio-augusto-dev
+    build:
+      context: .
+      target: development
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./src:/app/src
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    stdin_open: true
+    tty: true
