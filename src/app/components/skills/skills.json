@@ -3,10 +3,12 @@
     {
       "key": "frontend",
       "label": "Frontend",
+      "icon": "fas fa-laptop-code",
       "items": [
         { "name": "HTML5", "icon": "fab fa-html5", "descriptionKey": "skills.descriptions.html5" },
-        { "name": "CSS3 / Tailwind", "icon": "fab fa-css3-alt", "descriptionKey": "skills.descriptions.css3" },
-        { "name": "JavaScript (ES6+)", "icon": "fab fa-js", "descriptionKey": "skills.descriptions.javascript" },
+        { "name": "CSS3", "icon": "fab fa-css3-alt", "descriptionKey": "skills.descriptions.css3" },
+        { "name": "Tailwind", "icon": "fas fa-paint-brush", "descriptionKey": "skills.descriptions.tailwind" },
+        { "name": "JavaScript", "icon": "fab fa-js", "descriptionKey": "skills.descriptions.javascript" },
         { "name": "TypeScript", "icon": "fas fa-code", "descriptionKey": "skills.descriptions.typescript" },
         { "name": "Angular", "icon": "fab fa-angular", "descriptionKey": "skills.descriptions.angular" },
         { "name": "React", "icon": "fab fa-react", "descriptionKey": "skills.descriptions.react" }
@@ -15,30 +17,55 @@
     {
       "key": "backend",
       "label": "Backend",
+      "icon": "fas fa-server",
       "items": [
         { "name": "Node.js", "icon": "fab fa-node-js", "descriptionKey": "skills.descriptions.nodejs" },
         { "name": "Express", "icon": "fas fa-server", "descriptionKey": "skills.descriptions.express" },
-        { "name": "Java / Spring", "icon": "fab fa-java", "descriptionKey": "skills.descriptions.java" },
-        { "name": "Postgres / MySQL", "icon": "fas fa-database", "descriptionKey": "skills.descriptions.database" },
+        { "name": "Java", "icon": "fab fa-java", "descriptionKey": "skills.descriptions.java" },
+        { "name": "Spring Boot", "icon": "fas fa-leaf", "descriptionKey": "skills.descriptions.springboot" }
+      ]
+    },
+    {
+      "key": "database",
+      "label": "Banco de Dados",
+      "icon": "fas fa-database",
+      "items": [
+        { "name": "MySQL", "icon": "fas fa-database", "descriptionKey": "skills.descriptions.mysql" },
+        { "name": "PostgreSQL", "icon": "fas fa-database", "descriptionKey": "skills.descriptions.postgresql" },
+        { "name": "SQLite", "icon": "fas fa-database", "descriptionKey": "skills.descriptions.sqlite" },
+        { "name": "MongoDB", "icon": "fas fa-leaf", "descriptionKey": "skills.descriptions.mongodb" }
+      ]
+    },
+    {
+      "key": "apis",
+      "label": "APIs & Integrações",
+      "icon": "fas fa-plug",
+      "items": [
+        { "name": "REST APIs", "icon": "fas fa-network-wired", "descriptionKey": "skills.descriptions.rest" },
         { "name": "GraphQL", "icon": "fas fa-project-diagram", "descriptionKey": "skills.descriptions.graphql" },
-        { "name": "REST APIs", "icon": "fas fa-network-wired", "descriptionKey": "skills.descriptions.rest" }
+        { "name": "SOAP", "icon": "fas fa-exchange-alt", "descriptionKey": "skills.descriptions.soap" },
+        { "name": "WebSockets", "icon": "fas fa-wifi", "descriptionKey": "skills.descriptions.websockets" },
+        { "name": "gRPC", "icon": "fas fa-bolt", "descriptionKey": "skills.descriptions.grpc" },
+        { "name": "Postman", "icon": "fas fa-paper-plane", "descriptionKey": "skills.descriptions.postman" },
+        { "name": "Swagger", "icon": "fas fa-file-alt", "descriptionKey": "skills.descriptions.swagger" }
       ]
     },
     {
       "key": "devops",
-      "label": "DevOps & QA",
+      "label": "DevOps & CI/CD",
+      "icon": "fas fa-cogs",
       "items": [
         { "name": "Docker", "icon": "fab fa-docker", "descriptionKey": "skills.descriptions.docker" },
-        { "name": "Kubernetes", "icon": "fas fa-server", "descriptionKey": "skills.descriptions.kubernetes" },
-        { "name": "CI/CD", "icon": "fas fa-running", "descriptionKey": "skills.descriptions.cicd" },
+        { "name": "Git", "icon": "fab fa-git-alt", "descriptionKey": "skills.descriptions.git" },
+        { "name": "GitHub Actions", "icon": "fab fa-github", "descriptionKey": "skills.descriptions.github_actions" },
         { "name": "AWS / Cloud", "icon": "fab fa-aws", "descriptionKey": "skills.descriptions.aws" },
-        { "name": "Terraform", "icon": "fas fa-cloud", "descriptionKey": "skills.descriptions.terraform" },
         { "name": "Monitoring", "icon": "fas fa-chart-line", "descriptionKey": "skills.descriptions.monitoring" }
       ]
     },
     {
       "key": "testing",
       "label": "Testes",
+      "icon": "fas fa-vial",
       "items": [
         { "name": "JUnit", "icon": "fas fa-vial", "descriptionKey": "skills.descriptions.junit" },
         { "name": "Pytest", "icon": "fas fa-vial", "descriptionKey": "skills.descriptions.pytest" },
@@ -51,6 +78,7 @@
     {
       "key": "arch",
       "label": "Arquiteturas",
+      "icon": "fas fa-sitemap",
       "items": [
         { "name": "MVC", "icon": "fas fa-project-diagram", "descriptionKey": "skills.descriptions.mvc" },
         { "name": "Clean Architecture", "icon": "fas fa-layer-group", "descriptionKey": "skills.descriptions.clean" },
@@ -63,6 +91,7 @@
     {
       "key": "automation",
       "label": "Automação & Dados",
+      "icon": "fas fa-robot",
       "items": [
         { "name": "VBA", "icon": "fas fa-file-excel", "descriptionKey": "skills.descriptions.vba" },
         { "name": "Python scripting", "icon": "fab fa-python", "descriptionKey": "skills.descriptions.python" },
@@ -70,6 +99,16 @@
         { "name": "Web scraping", "icon": "fas fa-spider", "descriptionKey": "skills.descriptions.scraping" },
         { "name": "Power BI", "icon": "fas fa-chart-line", "descriptionKey": "skills.descriptions.powerbi" },
         { "name": "Splunk", "icon": "fas fa-search", "descriptionKey": "skills.descriptions.splunk" }
+      ]
+    },
+    {
+      "key": "os",
+      "label": "Sistemas Operacionais",
+      "icon": "fas fa-desktop",
+      "items": [
+        { "name": "Windows", "icon": "fab fa-windows", "descriptionKey": "skills.descriptions.windows" },
+        { "name": "Linux", "icon": "fab fa-linux", "descriptionKey": "skills.descriptions.linux" },
+        { "name": "MacOS", "icon": "fab fa-apple", "descriptionKey": "skills.descriptions.macos" }
       ]
     }
   ],

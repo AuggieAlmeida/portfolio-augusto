@@ -21,7 +21,7 @@ import { ThemeService } from '../../core/services/theme.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <header
-      class="bg-white dark:bg-neutral-900 shadow-md border-b border-primary-100 dark:border-primary-800 transition-all duration-300 sticky top-0 z-50"
+      class="bg-white dark:bg-primary-950 shadow-md border-b border-primary-100 dark:border-primary-800 transition-all duration-300 sticky top-0 z-50"
     >
       <nav
         class="container mx-auto px-4 py-2 flex items-center justify-between"
@@ -31,7 +31,7 @@ import { ThemeService } from '../../core/services/theme.service';
           <!-- Logo -->
           <button
             aria-label="Logo"
-            class="logo-container"
+            class="logo-container dark:invert"
             (click)="scrollTo('hero')"
             (keyup.enter)="scrollTo('hero')"
             (keyup.space)="scrollTo('hero')"
@@ -39,7 +39,7 @@ import { ThemeService } from '../../core/services/theme.service';
             <img
               src="assets/images/Logo.png"
               alt="logo"
-              class="h-12 w-12 object-contain rounded-md cursor-pointer animate-pulse-slow hover:animate-float transition-all duration-300"
+              class="w-12 object-contain rounded-md cursor-pointer animate-pulse-slow hover:animate-float transition-all duration-300"
               loading="lazy"
             />
           </button>
@@ -99,17 +99,17 @@ import { ThemeService } from '../../core/services/theme.service';
             </button>
             <button
               class="nav-item"
-              data-section="skills"
-              (click)="scrollTo('skills')"
-              (keyup.enter)="scrollTo('skills')"
-              (keyup.space)="scrollTo('skills')"
-              [class.active]="activeSection === 'skills'"
+              data-section="career"
+              (click)="scrollTo('career')"
+              (keyup.enter)="scrollTo('career')"
+              (keyup.space)="scrollTo('career')"
+              [class.active]="activeSection === 'career'"
             >
               <h2
                 class="text-sm md:text-base font-medium flex items-center gap-2 text-neutral-700 dark:text-neutral-300 hover:text-primary-600 transition-colors"
               >
-                <i class="fas fa-bolt"></i>
-                {{ 'nav.skills' | translate }}
+                <i class="fas fa-briefcase"></i>
+                {{ 'nav.carrer' | translate }}
               </h2>
             </button>
             <button
@@ -129,17 +129,17 @@ import { ThemeService } from '../../core/services/theme.service';
             </button>
             <button
               class="nav-item"
-              data-section="contact"
-              (click)="scrollTo('contact')"
-              (keyup.enter)="scrollTo('contact')"
-              (keyup.space)="scrollTo('contact')"
-              [class.active]="activeSection === 'contact'"
+              data-section="skills"
+              (click)="scrollTo('skills')"
+              (keyup.enter)="scrollTo('skills')"
+              (keyup.space)="scrollTo('skills')"
+              [class.active]="activeSection === 'skills'"
             >
               <h2
                 class="text-sm md:text-base font-medium flex items-center gap-2 text-neutral-700 dark:text-neutral-300 hover:text-primary-600 transition-colors"
               >
-                <i class="fas fa-envelope"></i>
-                {{ 'nav.contact' | translate }}
+                <i class="fas fa-bolt"></i>
+                {{ 'nav.skills' | translate }}
               </h2>
             </button>
           </div>
@@ -232,12 +232,12 @@ import { ThemeService } from '../../core/services/theme.service';
                 <li>
                   <button
                     class="w-full text-left p-3 rounded-lg flex items-center gap-3 text-neutral-700 dark:text-neutral-300 hover:bg-primary-100 dark:hover:bg-primary-800/40 transition-colors"
-                    (click)="navigateTo('skills')"
-                    (keyup.enter)="navigateTo('skills')"
-                    (keyup.space)="navigateTo('skills')"
+                    (click)="navigateTo('career')"
+                    (keyup.enter)="navigateTo('career')"
+                    (keyup.space)="navigateTo('career')"
                   >
-                    <i class="fas fa-bolt w-5"></i>
-                    {{ 'nav.skills' | translate }}
+                    <i class="fas fa-briefcase w-5"></i>
+                    {{ 'nav.carrer' | translate }}
                   </button>
                 </li>
                 <li>
@@ -254,12 +254,12 @@ import { ThemeService } from '../../core/services/theme.service';
                 <li>
                   <button
                     class="w-full text-left p-3 rounded-lg flex items-center gap-3 text-neutral-700 dark:text-neutral-300 hover:bg-primary-100 dark:hover:bg-primary-800/40 transition-colors"
-                    (click)="navigateTo('contact')"
-                    (keyup.enter)="navigateTo('contact')"
-                    (keyup.space)="navigateTo('contact')"
+                    (click)="navigateTo('skills')"
+                    (keyup.enter)="navigateTo('skills')"
+                    (keyup.space)="navigateTo('skills')"
                   >
-                    <i class="fas fa-envelope w-5"></i>
-                    {{ 'nav.contact' | translate }}
+                    <i class="fas fa-bolt w-5"></i>
+                    {{ 'nav.skills' | translate }}
                   </button>
                 </li>
               </ul>
@@ -325,7 +325,7 @@ import { ThemeService } from '../../core/services/theme.service';
         transform: translateY(-2px);
       }
       .nav-item.active h2 {
-        color: #6366f1;
+        color: #22c55e; /* primary-500 verde */
         animation: text-glow 2.5s ease-in-out infinite;
         position: relative;
       }
@@ -337,19 +337,19 @@ import { ThemeService } from '../../core/services/theme.service';
         width: 100%;
         height: 2px;
         border-radius: 2px;
-        background: linear-gradient(90deg, #6366f1, #a855f7);
-        box-shadow: 0 0 12px rgba(168, 85, 247, 0.18);
+        background: linear-gradient(90deg, #22c55e, #16a34a); /* primary-500 to primary-600 */
+        box-shadow: 0 0 12px rgba(34, 197, 94, 0.18); /* primary-500 com opacidade */
       }
 
       @keyframes text-glow {
         0%,
         100% {
-          color: #6366f1;
-          text-shadow: 0 0 6px rgba(99, 102, 241, 0.22);
+          color: #22c55e; /* primary-500 */
+          text-shadow: 0 0 6px rgba(34, 197, 94, 0.22);
         }
         50% {
-          color: #a855f7;
-          text-shadow: 0 0 10px rgba(168, 85, 247, 0.32);
+          color: #16a34a; /* primary-600 */
+          text-shadow: 0 0 10px rgba(22, 163, 74, 0.32);
         }
       }
 
@@ -452,7 +452,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   private onScroll = () => {
-    const sections = ['hero', 'about', 'skills', 'projects', 'contact'];
+    const sections = ['hero', 'about', 'career', 'projects', 'skills'];
     const offset = (document.querySelector('header')?.clientHeight || 64) + 120;
     const scroll = window.pageYOffset + offset;
     for (const s of sections) {

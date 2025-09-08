@@ -1,12 +1,17 @@
 import { ErrorHandler, Injectable, inject } from '@angular/core';
-import { LoggingService } from '../logging/logging.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
-  private loggingService = inject(LoggingService);
+  private router = inject(Router);
 
-  handleError(error: Error): void {
-    this.loggingService.log('error', 'An error occurred:', error);
-    // Implementar lógica de fallback UI
+  handleError(error: Error | unknown): void {
+    console.error('Global error caught:', error);
+
+    // Handle different types of errors
+    if (error instanceof Error) {
+      console.error('Error message:', error.message);
+      console.error('Stack trace:', error.stack);
+    }
   }
 }

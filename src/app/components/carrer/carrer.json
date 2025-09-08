@@ -1,0 +1,49 @@
+{
+  "roadmap": {
+    "title": "Career Roadmap",
+    "subtitle": "A journey through the milestones and skills developed throughout my career",
+    "current_year": "Current",
+    "positions": {
+      "intern_itau": "Intern - Consigned and After-Sales",
+      "intern_sintel": "Intern - N1 Support and Monitoring",
+      "fullstack_freelancer": "Fullstack Developer",
+      "frontend_developer": "Frontend Developer",
+      "test_engineer": "Test Engineer",
+      "it_professor": "Information Technology Professor"
+    },
+    "companies": {
+      "freelancer": "Freelancer",
+      "cebrac": "Cebrac Cursos"
+    },
+    "workskills": {
+      "bi": "Business Intelligence",
+      "data_analysis": "Data Analysis",
+      "excel": "Advanced Excel",
+      "sql_basics": "Basic SQL",
+      "n1_support": "N1 Support",
+      "monitoring": "Monitoring",
+      "networks": "Networks",
+      "troubleshooting": "Troubleshooting",
+      "html_css": "HTML & CSS",
+      "javascript": "JavaScript",
+      "php": "PHP",
+      "wordpress": "WordPress",
+      "mysql": "MySQL",
+      "angular": "Angular",
+      "typescript": "TypeScript",
+      "tailwind": "Tailwind CSS",
+      "responsive_design": "Responsive Design",
+      "qa_automation": "QA Automation",
+      "selenium": "Selenium",
+      "testing_frameworks": "Testing Frameworks",
+      "ci_cd": "CI/CD",
+      "teaching": "Teaching",
+      "curriculum_planning": "Curriculum Planning",
+      "generative_ai": "Generative AI",
+      "llm": "Large Language Models",
+      "data_storytelling": "Data Storytelling",
+      "workshop_facilitation": "Workshop Facilitation",
+      "task_automation": "Task Automation"
+    }
+  }
+}

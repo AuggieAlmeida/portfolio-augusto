@@ -2,9 +2,9 @@
   "nav": {
     "home": "Home",
     "about": "About",
+    "carrer": "Carrer",
     "skills": "Skills",
-    "projects": "Projects",
-    "contact": "Contact"
+    "projects": "Projects"
   },
   "hero": {
     "title": "Augusto Almeida",
@@ -21,77 +21,243 @@
   },
   "about": {
     "aboutMe": "About Me",
-    "description": "I am a Fullstack Developer and QA with experience in different areas of technology, from building modern interfaces to automating tests to ensure quality and reliability in systems. I am constantly learning and generating real impact in each project.",
-    "goalsTitle": "Goals",
-    "goalsDescription": "Consolidate my career by combining software development, code quality and automation of processes, contributing to solutions that generate value to the user and the business.",
-    "professionalTrajectory": "Professional Trajectory",
-    "academicFormation": "Academic Formation",
-    "engineerOfTests": "Test Engineer",
-    "frontendDeveloper": "Frontend Developer",
-    "fullstackDeveloper": "Fullstack Developer",
-    "internships": "Internships",
-    "internshipSintel": "N1 Support and monitoring",
-    "internshipItau": "Consigned and After-Sales",
-    "multiplatformSoftwareDeveloper": "Multiplatform Software Developer",
-    "systemsAnalysisAndDevelopment": "Systems Analysis and Development"
+    "greeting": "Hello, I'm Augusto Almeida — a technology enthusiast who transforms lines of code into solutions that truly make a difference. My mission? Building systems that unite innovation, performance, and real impact.",
+    "professionalOverview": "Professional Overview",
+    "professionalDescription": "I work as a Developer and Test Engineer, with experiences ranging from startups to large corporations. I've built responsive interfaces that delight users, developed robust APIs that connect entire ecosystems, and automated tests that ensure end-to-end quality. My journey combines analytical vision, attention to detail, and creativity to solve complex problems.",
+    "coreExpertise": "Core Expertise",
+    "expertiseDescription": "I specialize in fullstack development (Java, Spring Boot, Node.js, Angular, Next.js), API integration (REST, GraphQL, WebSockets, gRPC), and modern architectures (Clean, Hexagonal, and Microservices). Additionally, I master DevOps and QA practices, using Docker, CI/CD, and test automation with Pytest, Jest, and Cypress to deliver reliable and scalable software.",
+    "contactInfo": "Let's connect?",
+    "email": "Email"
   },
   "skills": {
     "title": "Skills",
-    "intro": "here are some of my main skills and technologies I work with:",
+    "intro": "Here are some of my main skills and technologies I work with:",
+    "filter": {
+      "all": "All"
+    },
+    "no_results": "No technologies found for this filter.",
     "categories": {
       "frontend": "Frontend",
       "backend": "Backend",
-      "apis": "APIs & Integrations",
-      "database": "Database",
       "devops": "DevOps & QA",
-      "testing": "Testing & Automation",
+      "testing": "Testing",
       "arch": "Architectures",
       "automation": "Automation & Data",
-      "languages": "Languages"
-      },
-      "descriptions": {
-        "html5": "Semantic HTML structure and accessibility best practices.",
-        "css3": "Responsive layouts using modern CSS and Tailwind utilities.",
-        "javascript": "Modern JavaScript (ES6+) for interactive UIs and logic.",
-        "typescript": "Type-safe development with TypeScript.",
-        "angular": "Angular components, services and reactive patterns.",
-        "react": "React with hooks, context and component patterns.",
-        "nodejs": "Node.js runtime, async patterns and package ecosystem.",
-        "express": "Express for building RESTful services.",
-        "java": "Java and Spring-based backend development.",
-        "database": "Relational DB design and query optimization (Postgres/MySQL).",
-        "graphql": "GraphQL schemas and resolvers design.",
-        "rest": "REST API design, versioning and documentation.",
-        "docker": "Containerization with Docker.",
-        "kubernetes": "Orchestration and deployment on Kubernetes.",
-        "cicd": "CI/CD pipelines and automation.",
-        "aws": "AWS services and cloud architecture basics.",
-        "terraform": "Infrastructure as code with Terraform.",
-        "monitoring": "Monitoring and observability practices.",
-        "junit": "Unit testing and test structure with JUnit.",
-        "pytest": "Python testing with pytest.",
-        "jest": "JavaScript testing with Jest.",
-        "cypress": "End-to-end testing with Cypress.",
-        "selenium": "Browser automation with Selenium.",
-        "playwright": "Cross-browser automation with Playwright.",
-        "mvc": "Model-View-Controller architectural pattern.",
-        "clean": "Clean Architecture principles.",
-        "ports": "Ports & Adapters (Hexagonal) architecture.",
-        "microservices": "Design patterns for microservices.",
-        "tdd": "Test-Driven Development workflow.",
-        "event": "Event-driven systems and messaging patterns.",
-        "vba": "Automation and macros in Microsoft Office.",
-        "python": "Python scripting for automation and data tasks.",
-        "shellscript": "Shell scripting (bash/batch) for automation.",
-        "scraping": "Web scraping techniques and libraries.",
-        "powerbi": "Data visualization and reports with Power BI.",
-        "splunk": "Log analysis and searching with Splunk."
-      }
+      "database": "Database",
+      "apis": "APIs",
+      "os": "Operating Systems"
     },
     "languages": {
-      "portuguese": "Portuguese",
-      "english": "English",
-      "french": "French",
-      "spanish": "Spanish"
+      "title": "Languages",
+      "level_native": "Native",
+      "level_advanced": "Advanced",
+      "level_intermediate": "Intermediate",
+      "level_basic": "Basic"
+    },
+    "soft_skills": {
+      "title": "Soft Skills",
+      "teamwork": "Teamwork",
+      "communication": "Communication",
+      "problem_solving": "Problem Solving",
+      "adaptability": "Adaptability"
+    },
+    "descriptions": {
+      "html5": "Semantic HTML structure and accessibility best practices.",
+      "css3": "Responsive layouts using modern CSS and Tailwind utilities.",
+      "javascript": "Modern JavaScript (ES6+) for interactive UIs and logic.",
+      "typescript": "Type-safe development with TypeScript.",
+      "angular": "Angular components, services and reactive patterns.",
+      "react": "React with hooks, context and component patterns.",
+      "nodejs": "Node.js runtime, async patterns and package ecosystem.",
+      "express": "Express for building RESTful services.",
+      "java": "Java and Spring-based backend development.",
+      "database": "Relational DB design and query optimization (Postgres/MySQL).",
+      "graphql": "GraphQL schemas and resolvers design.",
+      "rest": "REST API design, versioning and documentation.",
+      "docker": "Containerization with Docker.",
+      "kubernetes": "Orchestration and deployment on Kubernetes.",
+      "cicd": "CI/CD pipelines and automation.",
+      "aws": "AWS services and cloud architecture basics.",
+      "terraform": "Infrastructure as code with Terraform.",
+      "monitoring": "Monitoring and observability practices.",
+      "junit": "Unit testing and test structure with JUnit.",
+      "pytest": "Python testing with pytest.",
+      "jest": "JavaScript testing with Jest.",
+      "cypress": "End-to-end testing with Cypress.",
+      "selenium": "Browser automation with Selenium.",
+      "playwright": "Cross-browser automation with Playwright.",
+      "mvc": "Model-View-Controller architectural pattern.",
+      "clean": "Clean Architecture principles.",
+      "ports": "Ports & Adapters (Hexagonal) architecture.",
+      "microservices": "Design patterns for microservices.",
+      "tdd": "Test-Driven Development workflow.",
+      "event": "Event-driven systems and messaging patterns.",
+      "vba": "Automation and macros in Microsoft Office.",
+      "python": "Python scripting for automation and data tasks.",
+      "shellscript": "Shell scripting (bash/batch) for automation.",
+      "scraping": "Web scraping techniques and libraries.",
+      "powerbi": "Data visualization and reports with Power BI.",
+      "splunk": "Log analysis and searching with Splunk."
     }
+  },
+  "languages": {
+    "portuguese": "Portuguese",
+    "english": "English",
+    "french": "French",
+    "spanish": "Spanish"
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "See some of the projects I've worked on recently:",
+    "subtitle": "A selection of my most recent works",
+    "clickInfo": "Click on a project to see more details or access the demo.",
+    "commercial": {
+      "title": "Commercial Projects",
+      "badge": "Commercial"
+    },
+    "study": {
+      "title": "Study Projects",
+      "badge": "Study"
+    },
+    "projectsCount": "projects",
+    "items": {
+      "optec_solutions": {
+        "title": "Optec Integrated IT Solutions",
+        "description": "Institutional and services website for an IT solutions company, focused on cybersecurity, cloud management and IT infrastructure support."
+      },
+      "apollo_digital": {
+        "title": "Apollo Digital",
+        "description": "Landing page for a digital agency specialized in digital positioning for B2B and B2C companies, highlighting success cases and achieved results."
+      },
+      "braseng_consultoria": {
+        "title": "Braseng Business Consulting",
+        "description": "Capture page for business consulting specialized in complete diagnosis and customized action plans for business transformation."
+      },
+      "bumbum_de_anjo": {
+        "title": "Bumbum de Anjo",
+        "description": "Landing page for a baby care product, highlighting the benefits of the anti-diaper rash spray and with a call-to-action for sales conversion."
+      },
+      "decided_mind": {
+        "title": "Decided Mind",
+        "description": "Conversion page for an in-person personal development immersion, focused on helping people get out of their comfort zone and find purpose."
+      },
+      "fehe_chocolate": {
+        "title": "FEHE Chocolate",
+        "description": "Landing page for premium sugar-free chocolate, highlighting the quality and benefits of the product for sales conversion."
+      },
+      "clinica_viotto": {
+        "title": "Viotto Clinic",
+        "description": "Capture page for a dental clinic specialized in dental contact lenses, positioning itself as an international reference in the segment."
+      },
+      "souza_lima_vestibular": {
+        "title": "Souza Lima Music College",
+        "description": "Capture page for the entrance exam (vestibular) of Souza Lima Music College, with information about dates, selection process and registration."
+      },
+      "souza_lima_cursos": {
+        "title": "Souza Lima - Free Courses",
+        "description": "Landing page for in-person and online free music courses, with a call to schedule an experimental class."
+      },
+      "mitra_crm": {
+        "title": "MITRA CRM",
+        "description": "White label desktop CRM system for small businesses with customer management, sales funnels, marketing automation and customizable reports."
+      },
+      "dnd_guide": {
+        "title": "Augury Guide for D&D 5e",
+        "description": "An interactive guide for the Augury spell in Dungeons & Dragons 5th Edition, explaining its use, interpretation and strategic applications in the game."
+      }
+    },
+    "tags": {
+      "platform": "Platform",
+      "management": "Management",
+      "dashboard": "Dashboard",
+      "rpg": "RPG",
+      "guide": "Guide",
+      "interactive": "Interactive",
+      "marketing": "Marketing",
+      "automation": "Automation",
+      "leads": "Leads",
+      "consulting": "Consulting",
+      "corporate": "Corporate",
+      "crm": "CRM",
+      "desktop": "Desktop",
+      "digital_agency": "Digital Agency",
+      "business": "Business",
+      "health": "Health",
+      "personal_development": "Personal Development",
+      "education": "Education",
+      "music": "Music",
+      "food": "Food",
+      "dental": "Dental"
+    }
+  },
+  "project": {
+    "viewDemo": "View Demo",
+    "viewCode": "View Code"
+  },
+  "roadmap": {
+    "title": "Career Roadmap",
+    "subtitle": "A journey through the milestones and skills developed throughout my career",
+    "current_year": "Current",
+    "positions": {
+      "intern_itau": "Intern - Consigned and After-Sales",
+      "intern_sintel": "Intern - N1 Support and Monitoring",
+      "fullstack_freelancer": "Fullstack Developer",
+      "frontend_developer": "Frontend Developer",
+      "test_engineer": "Test Engineer",
+      "it_professor": "Information Technology Professor"
+    },
+    "companies": {
+      "freelancer": "Freelancer",
+      "cebrac": "Cebrac Cursos"
+    },
+    "workskills": {
+      "bi": "Business Intelligence",
+      "data_analysis": "Data Analysis",
+      "excel": "Advanced Excel",
+      "sql_basics": "Basic SQL",
+      "n1_support": "N1 Support",
+      "monitoring": "Monitoring",
+      "networks": "Networks",
+      "troubleshooting": "Troubleshooting",
+      "html_css": "HTML & CSS",
+      "javascript": "JavaScript",
+      "php": "PHP",
+      "wordpress": "WordPress",
+      "mysql": "MySQL",
+      "angular": "Angular",
+      "typescript": "TypeScript",
+      "tailwind": "Tailwind CSS",
+      "responsive_design": "Responsive Design",
+      "qa_automation": "QA Automation",
+      "selenium": "Selenium",
+      "testing_frameworks": "Testing Frameworks",
+      "ci_cd": "CI/CD",
+      "teaching": "Teaching",
+      "curriculum_planning": "Curriculum Planning",
+      "generative_ai": "Generative AI",
+      "llm": "Large Language Models",
+      "data_storytelling": "Data Storytelling",
+      "workshop_facilitation": "Workshop Facilitation",
+      "task_automation": "Task Automation"
+    }
+  },
+  "footer": {
+    "brand": {
+      "title": "Augusto Almeida",
+      "description": "Fullstack Developer & Software Engineer specialized in infrastructure, database management, and scalable system architecture. Passionate about creating innovative technological solutions."
+    },
+    "links": {
+      "title": "Quick Links"
+    },
+    "contact": {
+      "title": "Contact Info",
+      "location": "São Paulo, Brazil",
+      "timezone": "Timezone: America/Sao_Paulo (UTC-3)"
+    },
+    "social": {
+      "github_user": "AuggieAlmeida",
+      "linkedin_user": "AugustobAlmeida"
+    },
+    "copyright": "© 2025 Augusto Almeida. All rights reserved."
+  }
 }

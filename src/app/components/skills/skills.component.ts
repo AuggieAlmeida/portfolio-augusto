@@ -11,6 +11,7 @@ interface SkillItem {
   icon?: string;
   level?: number;
   descriptionKey?: string;
+  category: string;
 }
 
 interface SkillsData {
@@ -21,6 +22,7 @@ interface SkillsData {
 interface SkillCategory {
   key: string;
   label?: string;
+  icon?: string;
   items: SkillItem[];
 }
 
@@ -37,161 +39,186 @@ interface LanguageItem {
   template: `
     <section
       id="skills"
-      class="skills py-12 px-4 md:px-8 lg:px-16"
+      class="skills py-8 md:py-12 px-3 md:px-8 lg:px-16 dark:bg-primary-950 bg-primary-200"
       aria-labelledby="skills-title"
     >
+      <div
+        class='absolute inset-0 bg-[url(&apos;data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%236366f1" fill-opacity="0.05"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&apos;)] opacity-30'
+      ></div>
+
       <div>
         <div
-          class="rounded-2xl p-8 md:p-10 bg-white dark:bg-neutral-900 shadow-xl border border-primary-100 dark:border-primary-800"
+          class="container mx-auto rounded-xl md:rounded-2xl p-4 md:p-8 lg:p-10 bg-white dark:bg-primary-800 shadow-xl border border-primary-100 dark:border-primary-600"
         >
           <h2
             id="skills-title"
-            class="section-title text-3xl font-heading mb-6 text-neutral-900 dark:text-neutral-100"
+            class="section-title text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-800 dark:text-neutral-100 mb-4 md:mb-6 text-center md:text-left"
           >
+            <span class="font-display text-secondary-600 dark:text-secondary-400">✦</span>
             {{ 'skills.title' | translate }}
           </h2>
 
-          <p class="text-neutral-600 dark:text-neutral-300 mb-6">
+          <p class="text-sm md:text-base text-neutral-600 dark:text-neutral-300 mb-6 md:mb-8 text-center md:text-left">
             {{ 'skills.intro' | translate }}
           </p>
 
-          <div class="space-y-8">
-            <div
-              *ngFor="
-                let cat of skills;
-                trackBy: trackByCategory;
-                let categoryIndex = index
-              "
-              class="grid grid-cols-12 gap-6 items-start"
-            >
-              <div
-                class="col-span-12 md:col-span-3 flex items-center md:flex-col md:items-start"
-              >
-                <div class="flex items-center gap-4">
-                  <div
-                    class="w-10 h-10 rounded-xl bg-neutral-900/50 flex items-center justify-center shadow-glow"
-                  >
-                    <i
-                      class="fas fa-folder-open text-primary-400 text-lg"
-                      aria-hidden="true"
-                    ></i>
+          <div class="flex flex-col lg:grid lg:grid-cols-4 gap-4 md:gap-6">
+            <!-- Skills Section -->
+            <div class="order-2 lg:order-1 lg:col-span-3 bg-primary-200 dark:bg-primary-200/30 p-4 md:p-6 rounded-xl">
+              <!-- Filter Buttons -->
+              <div class="mb-4 md:mb-6">
+                <!-- Mobile: Horizontal scroll -->
+                <div class="md:hidden overflow-x-auto pb-2">
+                  <div class="flex gap-2 min-w-max">
+                    <button
+                      (click)="setActiveFilter('all')"
+                      [class]="getFilterButtonClass('all')"
+                      class="px-4 py-3 rounded-lg font-medium transition-all duration-200 text-sm whitespace-nowrap flex-shrink-0"
+                    >
+                      <i class="fas fa-globe mr-2" aria-hidden="true"></i>
+                      {{ 'skills.filter.all' | translate }}
+                    </button>
+                    
+                    <button
+                      *ngFor="let category of skillCategories; trackBy: trackByCategory"
+                      (click)="setActiveFilter(category.key)"
+                      [class]="getFilterButtonClass(category.key)"
+                      class="px-4 py-3 rounded-lg font-medium transition-all duration-200 text-sm whitespace-nowrap flex-shrink-0"
+                    >
+                      <i *ngIf="category.icon" [ngClass]="category.icon + ' mr-2'" aria-hidden="true"></i>
+                      {{ ('skills.categories.' + category.key | translate) || category.label }}
+                    </button>
                   </div>
-                  <div
-                    class="text-lg font-semibold text-neutral-900 dark:text-neutral-100"
+                </div>
+
+                <!-- Desktop: Flex wrap -->
+                <div class="hidden md:flex flex-wrap gap-2 justify-center lg:justify-start">
+                  <button
+                    (click)="setActiveFilter('all')"
+                    [class]="getFilterButtonClass('all')"
+                    class="px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm"
                   >
-                    {{
-                      ('skills.categories.' + cat.key | translate) || cat.label
-                    }}
+                    <i class="fas fa-globe mr-2" aria-hidden="true"></i>
+                    {{ 'skills.filter.all' | translate }}
+                  </button>
+                  
+                  <button
+                    *ngFor="let category of skillCategories; trackBy: trackByCategory"
+                    (click)="setActiveFilter(category.key)"
+                    [class]="getFilterButtonClass(category.key)"
+                    class="px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm"
+                  >
+                    <i *ngIf="category.icon" [ngClass]="category.icon + ' mr-2'" aria-hidden="true"></i>
+                    {{ ('skills.categories.' + category.key | translate) || category.label }}
+                  </button>
+                </div>
+              </div>
+
+              <!-- Skills Grid -->
+              <div class="">
+                <div class="grid gap-2 md:gap-3 grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 2xl:grid-cols-12">
+                  <div
+                    *ngFor="let skill of filteredSkills; trackBy: trackBySkill; let i = index"
+                    class="skill-item opacity-0 animate-fade-in-up"
+                    [style.animation-delay]="getStaggerDelay(i)"
+                  >
+                    <button
+                      class="skill-card h-full w-full group p-3 md:p-4 rounded-lg bg-white dark:bg-primary-800/60 border border-neutral-200 dark:border-neutral-700 flex flex-col items-center justify-center gap-2 md:gap-3 text-center transition-all duration-200 hover:-translate-y-1 hover:scale-105 hover:shadow-lg hover:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 min-h-[90px] md:min-h-[100px]"
+                      [attr.aria-label]="skill.name"
+                      [attr.aria-describedby]="
+                        skill.descriptionKey
+                          ? 'desc-' + slugify(skill.name)
+                          : null
+                      "
+                    >
+                      <div
+                        class="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-gradient-to-br from-neutral-700/80 to-neutral-800/80 flex items-center justify-center transition-transform group-hover:scale-110"
+                      >
+                        <i
+                          *ngIf="skill.icon"
+                          [ngClass]="skill.icon + ' text-lg md:text-xl text-white'"
+                          aria-hidden="true"
+                        ></i>
+                        <div
+                          *ngIf="!skill.icon"
+                          class="w-6 h-6 md:w-8 md:h-8 bg-neutral-600 rounded flex items-center justify-center"
+                        >
+                          <i class="fas fa-question text-xs md:text-sm text-white"></i>
+                        </div>
+                      </div>
+
+                      <div
+                        class="font-medium text-xs md:text-sm text-neutral-900 dark:text-neutral-100 leading-tight px-1"
+                      >
+                        {{ skill.name }}
+                      </div>
+
+                      <!-- Tooltip (apenas desktop) -->
+                      <div
+                        *ngIf="skill.descriptionKey"
+                        role="tooltip"
+                        [id]="'desc-' + slugify(skill.name)"
+                        class="hidden md:group-hover:block md:group-focus:block absolute bottom-full mb-2 bg-neutral-800 dark:bg-neutral-700 text-white text-xs rounded py-2 px-3 z-10 whitespace-normal max-w-xs shadow-lg"
+                      >
+                        {{ skill.descriptionKey | translate }}
+                        <div class="tooltip-arrow"></div>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Empty State -->
+                <div
+                  *ngIf="filteredSkills.length === 0"
+                  class="text-center py-8 text-neutral-500 dark:text-neutral-400"
+                >
+                  <i class="fas fa-search text-2xl md:text-3xl mb-4"></i>
+                  <p class="text-sm md:text-base">{{ 'skills.no_results' | translate }}</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Languages and Soft Skills Section -->
+            <div class="order-1 lg:order-2 flex flex-col bg-primary-200 dark:bg-primary-200/30 p-4 md:p-6 rounded-xl">
+              <!-- Languages Section -->
+              <div class="flex flex-col">
+                <h3 class="text-lg md:text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-3 md:mb-4 text-center">
+                  {{ 'skills.languages.title' | translate }}
+                </h3>
+
+                <div class="grid grid-cols-1 gap-2 md:gap-3">
+                  <div
+                    *ngFor="let lang of languages; trackBy: trackByLanguage"
+                    class="flex items-center p-3 rounded-lg bg-white dark:bg-primary-800/60 border border-neutral-200 dark:border-neutral-700 transition-colors hover:border-primary-400"
+                  >
+                    <span class="font-medium text-sm md:text-base text-neutral-900 dark:text-neutral-100 flex-1">
+                      {{ lang.nameKey | translate }}
+                    </span>
+                    <span
+                      class="text-xs md:text-sm px-2 md:px-3 py-1 rounded-md font-medium min-w-[85px] md:min-w-[115px] text-center"
+                      [class]="getLevelBadgeClass(lang.level)"
+                    >
+                      {{ 'skills.languages.level_' + lang.level | translate }}
+                    </span>
                   </div>
                 </div>
               </div>
 
-              <div class="col-span-12 md:col-span-9">
-                <ng-container *ngIf="getRows(cat.items, 6) as rows">
+              <!-- Additional Content: Soft Skills -->
+              <div class="mt-6 md:mt-8 pt-4 md:pt-6 border-t border-neutral-300 dark:border-neutral-600">
+                <h3 class="text-lg md:text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-3 md:mb-4 text-center">
+                  {{ 'skills.soft_skills.title' | translate }}
+                </h3>
+
+                <div class="grid grid-cols-1 gap-2">
                   <div
-                    *ngFor="
-                      let row of rows;
-                      trackBy: trackByRow;
-                      let rowIndex = index
-                    "
+                    *ngFor="let skill of ['teamwork', 'communication', 'problem_solving', 'adaptability']"
+                    class="text-center p-2 md:p-3 rounded-lg bg-white dark:bg-primary-800/60 border border-neutral-200 dark:border-neutral-700"
                   >
-                    <div
-                      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
-                    >
-                      <div
-                        *ngFor="
-                          let item of row;
-                          trackBy: trackBySkill;
-                          let skillIndex = index
-                        "
-                        class="skill-item opacity-0 animate-fade-in-up"
-                        [style.animation-delay]="
-                          getStaggerDelay(categoryIndex, rowIndex, skillIndex)
-                        "
-                      >
-                        <button
-                          class="skill-card h-full w-full group p-3 rounded-lg bg-neutral-100/5 dark:bg-neutral-900/40 border border-neutral-800 flex flex-col items-center justify-center gap-3 text-center transition-transform transform hover:-translate-y-1 hover:scale-105 hover:shadow-2xl hover:border-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
-                          [attr.aria-label]="item.name"
-                          [attr.aria-describedby]="
-                            item.descriptionKey
-                              ? 'desc-' + slugify(item.name)
-                              : null
-                          "
-                        >
-                          <div
-                            class="w-10 h-10 rounded-md bg-gradient-to-br from-neutral-800/60 to-neutral-800/40 flex items-center justify-center transition-transform group-hover:scale-110"
-                          >
-                            <i
-                              *ngIf="item.icon"
-                              [ngClass]="
-                                item.icon + ' text-lg text-neutral-100'
-                              "
-                              aria-hidden="true"
-                            ></i>
-                            <div
-                              *ngIf="!item.icon"
-                              class="w-6 h-6 bg-neutral-800 rounded flex items-center justify-center"
-                            >
-                              <i class="fas fa-question text-neutral-100"></i>
-                            </div>
-                          </div>
-
-                          <div
-                            class="font-medium text-sm text-neutral-900 dark:text-neutral-100"
-                          >
-                            {{ item.name }}
-                          </div>
-
-                          <!-- Tooltip (aparece ao hover / focus) -->
-                          <div
-                            *ngIf="item.descriptionKey"
-                            role="tooltip"
-                            [id]="'desc-' + slugify(item.name)"
-                            class="absolute bottom-full mb-2 hidden group-hover:block group-focus:block bg-neutral-900 text-white text-xs rounded py-1 px-2 z-10 whitespace-normal max-w-xs"
-                          >
-                            {{ item.descriptionKey | translate }}
-                            <div class="tooltip-arrow"></div>
-                          </div>
-                        </button>
-                      </div>
-                    </div>
-
-                    <hr
-                      *ngIf="rowIndex < rows.length - 1"
-                      class="my-4 border-neutral-200 dark:border-neutral-800"
-                    />
+                    <span class="text-xs md:text-sm text-neutral-900 dark:text-neutral-100">
+                      {{ 'skills.soft_skills.' + skill | translate }}
+                    </span>
                   </div>
-                </ng-container>
-              </div>
-            </div>
-
-            <div
-              class="mt-12 pt-8 border-t border-neutral-200 dark:border-neutral-800"
-            >
-              <h3
-                class="text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-6"
-              >
-                {{ 'skills.categories.languages.title' | translate }}
-              </h3>
-
-              <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div
-                  *ngFor="let lang of languages; trackBy: trackByLanguage"
-                  class="flex items-center justify-between p-3 rounded-lg bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700"
-                >
-                  <span
-                    class="font-medium text-neutral-900 dark:text-neutral-100"
-                  >
-                    {{ lang.nameKey | translate }}
-                  </span>
-                  <span
-                    class="text-sm text-primary-600 dark:text-primary-400 font-medium"
-                  >
-                    {{
-                      'skills.categories.languages.level_' + lang.level
-                        | translate
-                    }}
-                  </span>
                 </div>
               </div>
             </div>
@@ -212,8 +239,9 @@ interface LanguageItem {
           transform: translateY(0);
         }
       }
+      
       .animate-fade-in-up {
-        animation: fadeInUp 0.5s ease forwards;
+        animation: fadeInUp 0.4s ease forwards;
       }
 
       .tooltip-arrow {
@@ -223,11 +251,45 @@ interface LanguageItem {
         transform: translateX(-50%);
         border-width: 6px;
         border-style: solid;
-        border-color: rgba(17, 24, 39, 1) transparent transparent transparent; /* neutral-900 */
+        border-color: rgba(38, 38, 38, 1) transparent transparent transparent;
       }
 
       .skill-card {
         position: relative;
+      }
+
+      .skill-item {
+        transition: all 0.2s ease;
+      }
+
+      /* Custom scrollbar for mobile filter buttons */
+      .overflow-x-auto::-webkit-scrollbar {
+        height: 4px;
+      }
+
+      .overflow-x-auto::-webkit-scrollbar-track {
+        background: rgba(156, 163, 175, 0.2);
+        border-radius: 2px;
+      }
+
+      .overflow-x-auto::-webkit-scrollbar-thumb {
+        background: rgba(156, 163, 175, 0.5);
+        border-radius: 2px;
+      }
+
+      .overflow-x-auto::-webkit-scrollbar-thumb:hover {
+        background: rgba(156, 163, 175, 0.7);
+      }
+
+      /* Touch optimization for mobile */
+      @media (max-width: 768px) {
+        .skill-card {
+          touch-action: manipulation;
+        }
+        
+        button {
+          touch-action: manipulation;
+        }
       }
     `,
   ],
@@ -236,66 +298,93 @@ export class SkillsComponent {
   private cdr = inject(ChangeDetectorRef);
   private translate = inject(TranslateService);
 
-  public skills: SkillCategory[] = (skillsData as SkillsData).categories || [];
+  public skillCategories: SkillCategory[] = (skillsData as SkillsData).categories || [];
   public languages: LanguageItem[] = (skillsData as SkillsData).languages || [];
 
-  private rowsCache = new Map<string, unknown>();
+  // Lista completa de skills com categoria
+  public allSkills: SkillItem[] = [];
+  public filteredSkills: SkillItem[] = [];
+  public activeFilter = 'all';
 
-  // Calcula delay para animações
-  getStaggerDelay(
-    categoryIndex: number,
-    rowIndex: number,
-    skillIndex: number,
-  ): string {
-    const baseDelay = categoryIndex * 0.1 + rowIndex * 0.05 + skillIndex * 0.03;
-    return `${baseDelay}s`;
+  constructor() {
+    this.initializeSkills();
   }
 
-  // trackBy helpers
+  private initializeSkills(): void {
+    // Flatten all skills and add category info
+    this.allSkills = this.skillCategories.reduce((acc: SkillItem[], category) => {
+      const skillsWithCategory = category.items.map(item => ({
+        ...item,
+        category: category.key
+      }));
+      return [...acc, ...skillsWithCategory];
+    }, []);
+
+    this.filteredSkills = [...this.allSkills];
+  }
+
+  setActiveFilter(filter: string): void {
+    this.activeFilter = filter;
+
+    if (filter === 'all') {
+      this.filteredSkills = [...this.allSkills];
+    } else {
+      this.filteredSkills = this.allSkills.filter(skill => skill.category === filter);
+    }
+
+    this.cdr.markForCheck();
+  }
+
+  getFilterButtonClass(filter: string): string {
+    const baseClasses = 'px-4 py-2 md:py-2 rounded-lg font-medium transition-all duration-200 text-sm';
+
+    if (this.activeFilter === filter) {
+      return `${baseClasses} bg-primary-600 text-white shadow-md transform scale-105`;
+    }
+
+    return `${baseClasses} bg-neutral-100 dark:bg-primary-800/50 text-neutral-700 dark:text-neutral-300 hover:bg-primary-100 dark:hover:bg-primary-700/50 hover:scale-102 active:scale-95`;
+  }
+
+  getLevelBadgeClass(level: string): string {
+    const baseClasses = 'text-xs md:text-sm px-2 md:px-2 py-1 rounded-md font-medium';
+
+    switch (level) {
+      case 'native':
+        return `${baseClasses} bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400`;
+      case 'advanced':
+        return `${baseClasses} bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400`;
+      case 'intermediate':
+        return `${baseClasses} bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400`;
+      case 'basic':
+        return `${baseClasses} bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-400`;
+      default:
+        return `${baseClasses} bg-neutral-100 text-neutral-800 dark:bg-neutral-900/30 dark:text-neutral-400`;
+    }
+  }
+
+  getStaggerDelay(index: number): string {
+    return `${index * 0.05}s`;
+  }
+
+  // TrackBy functions
   trackByCategory(index: number, cat: SkillCategory): string {
     return cat.key;
   }
 
   trackBySkill(index: number, item: SkillItem): string {
-    return item.name;
-  }
-
-  trackByRow(index: number, row: SkillItem[]): string {
-    return row.map((item) => item.name).join('-');
+    return `${item.name}-${item.category}`;
   }
 
   trackByLanguage(index: number, lang: LanguageItem): string {
     return lang.nameKey;
   }
 
-// E atualize o método getRows para:
-getRows<T>(items: T[], size = 6): T[][] {
-  const cacheKey = JSON.stringify(items) + size;
-  
-  // Verifique se já temos este cache
-  const cached = this.rowsCache.get(cacheKey);
-  if (cached !== undefined) {
-    return cached as T[][];
-  }
-  
-  if (!items || items.length === 0) return [];
-  
-  const out: T[][] = [];
-  for (let i = 0; i < items.length; i += size) {
-    out.push(items.slice(i, i + size));
-  }
-  
-  this.rowsCache.set(cacheKey, out);
-  return out;
-}
-
-  // Método público para gerar slugs seguros para uso em IDs/aria-describedby
   public slugify(name: string): string {
     if (!name) return '';
     return name
       .toLowerCase()
       .trim()
       .replace(/\s+/g, '-')
-      .replace(/[^a-z0-9-]/g, ''); // Removed unnecessary escape
+      .replace(/[^a-z0-9-]/g, '');
   }
 }

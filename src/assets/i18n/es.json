@@ -2,9 +2,9 @@
   "nav": {
     "home": "Inicio",
     "about": "Sobre mí",
+    "carrer": "Carrera",
     "skills": "Habilidades",
-    "projects": "Proyectos",
-    "contact": "Contacto"
+    "projects": "Proyectos"
   },
   "hero": {
     "title": "Augusto Almeida",
@@ -21,33 +21,45 @@
   },
   "about": {
     "aboutMe": "Sobre mí",
-    "description": "Soy un desarrollador Fullstack y QA con experiencia en diferentes áreas de la tecnología, desde la creación de interfaces modernas hasta la automatización de pruebas para garantizar calidad y confiabilidad en los sistemas. Busco aprender continuamente y generar un impacto real en cada proyecto.",
-    "goalsTitle": "Objetivos",
-    "goalsDescription": "Consolidar mi carrera uniendo el desarrollo de software, la calidad del código y la automatización de procesos, contribuyendo con soluciones que generen valor para el usuario y el negocio.",
-    "professionalTrajectory": "Trayectoria profesional",
-    "academicFormation": "Formación académica",
-    "engineerOfTests": "Ingeniero de pruebas",
-    "frontendDeveloper": "Desarrollador Frontend",
-    "fullstackDeveloper": "Desarrollador Fullstack",
-    "internships": "Prácticas",
-    "internshipSintel": "Soporte N1 y monitoreo",
-    "internshipItau": "Crédito consignado y posventa",
-    "multiplatformSoftwareDeveloper": "Desarrollador de software multiplataforma",
-    "systemsAnalysisAndDevelopment": "Técnico en análisis y desarrollo de sistemas"
+    "greeting": "Hola, soy Augusto Almeida — un apasionado por la tecnología que transforma líneas de código en soluciones que realmente marcan la diferencia. ¿Mi misión? Construir sistemas que unen innovación, rendimiento e impacto real.",
+    "professionalOverview": "Visión Profesional",
+    "professionalDescription": "Trabajo como Desarrollador e Ingeniero de Pruebas, con experiencias que van desde startups hasta grandes corporaciones. He construido interfaces responsivas que encantan a los usuarios, desarrollé APIs robustas que conectan ecosistemas enteros y automaticé pruebas que garantizan calidad de extremo a extremo. Mi trayectoria combina visión analítica, atención al detalle y creatividad para resolver problemas complejos.",
+    "coreExpertise": "Especialidades Principales",
+    "expertiseDescription": "Soy especialista en desarrollo fullstack (Java, Spring Boot, Node.js, Angular, Next.js), integración de APIs (REST, GraphQL, WebSockets, gRPC) y arquitecturas modernas (Clean, Hexagonal y Microservicios). Además, domino prácticas de DevOps y QA, utilizando Docker, CI/CD y automatización de pruebas con Pytest, Jest y Cypress para entregar software confiable y escalable.",
+    "contactInfo": "¿Conectamos?",
+    "email": "Correo electrónico"
   },
   "skills": {
     "title": "Habilidades",
     "intro": "Aquí están algunas de mis principales habilidades y tecnologías con las que trabajo:",
+    "filter": {
+      "all": "Todas"
+    },
+    "no_results": "No se encontraron tecnologías para este filtro.",
     "categories": {
       "frontend": "Frontend",
       "backend": "Backend",
-      "apis": "APIs & Integraciones",
-      "database": "Base de datos",
       "devops": "DevOps & QA",
-      "testing": "Pruebas & Automatización",
+      "testing": "Pruebas",
       "arch": "Arquitecturas",
       "automation": "Automatización & Datos",
-      "languages": "Idiomas"
+      "database": "Base de Datos",
+      "apis": "APIs",
+      "os": "Sistemas Operativos"
+    },
+    "languages": {
+      "title": "Idiomas",
+      "level_native": "Nativo",
+      "level_advanced": "Avanzado",
+      "level_intermediate": "Intermedio",
+      "level_basic": "Básico"
+    },
+    "soft_skills": {
+      "title": "Soft Skills",
+      "teamwork": "Trabajo en equipo",
+      "communication": "Comunicación",
+      "problem_solving": "Resolución de problemas",
+      "adaptability": "Adaptabilidad"
     },
     "descriptions": {
       "html5": "Estructura HTML semántica y mejores prácticas de accesibilidad.",
@@ -93,5 +105,159 @@
     "english": "Inglés",
     "french": "Francés",
     "spanish": "Español"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "description": "Vea algunos de los proyectos en los que he trabajado recientemente:",
+    "subtitle": "Una selección de mis trabajos más recientes",
+    "clickInfo": "Haga clic en un proyecto para ver más detalles o acceder a la demo.",
+    "commercial": {
+      "title": "Proyectos Comerciales",
+      "badge": "Comercial"
+    },
+    "study": {
+      "title": "Proyectos de Estudio",
+      "badge": "Estudio"
+    },
+    "projectsCount": "proyectos",
+    "items": {
+      "optec_solutions": {
+        "title": "Optec Soluciones Integradas en T.I",
+        "description": "Sitio web institucional y de servicios para una empresa de soluciones en tecnología de la información, enfocada en ciberseguridad, gestión de nube y soporte de infraestructura de TI."
+      },
+      "apollo_digital": {
+        "title": "Apollo Digital",
+        "description": "Página de destino para agencia digital especializada en posicionamiento digital para empresas B2B y B2C, destacando casos de éxito y resultados alcanzados."
+      },
+      "braseng_consultoria": {
+        "title": "Braseng Consultoría Empresarial",
+        "description": "Página de captura para consultoría empresarial especializada en diagnóstico completo y planes de acción personalizados para transformación de negocios."
+      },
+      "bumbum_de_anjo": {
+        "title": "Bumbum de Angel",
+        "description": "Página de destino para producto de cuidado infantil, destacando beneficios del spray anti-irritaciones y con llamado a la acción para conversión de ventas."
+      },
+      "decided_mind": {
+        "title": "Decided Mind",
+        "description": "Página de conversión para inmersión presencial de desarrollo personal, enfocada en ayudar a las personas a salir de la zona de confort y encontrar propósito."
+      },
+      "fehe_chocolate": {
+        "title": "FEHE Chocolate",
+        "description": "Página de destino para chocolate premium sin azúcar, destacando la calidad y beneficios del producto para conversión de ventas."
+      },
+      "clinica_viotto": {
+        "title": "Clínica Viotto",
+        "description": "Página de captura para clínica odontológica especializada en lentes de contacto dental, posicionándose como referencia internacional en el segmento."
+      },
+      "souza_lima_vestibular": {
+        "title": "Facultad de Música Souza Lima",
+        "description": "Página de captura para el vestibular (examen de ingreso) de la Facultad de Música Souza Lima, con información sobre fechas, proceso selectivo e inscripciones."
+      },
+      "souza_lima_cursos": {
+        "title": "Souza Lima - Cursos Libres",
+        "description": "Página de destino para cursos libres de música presenciales y online, con llamado para agendamiento de clase experimental."
+      },
+      "mitra_crm": {
+        "title": "MITRA CRM",
+        "description": "Sistema CRM desktop white label para pequeños negocios con gestión de clientes, embudos de ventas, automatización de marketing y reportes personalizables."
+      },
+      "dnd_guide": {
+        "title": "Guía de Augury para D&D 5e",
+        "description": "Una guía interactiva para el hechizo de Augury en Dungeons & Dragons 5ª Edición, explicando su uso, interpretación y aplicaciones estratégicas en el juego."
+      }
+    },
+    "tags": {
+      "platform": "Plataforma",
+      "management": "Gestión",
+      "dashboard": "Dashboard",
+      "rpg": "RPG",
+      "guide": "Guía",
+      "interactive": "Interactivo",
+      "marketing": "Marketing",
+      "automation": "Automatización",
+      "leads": "Leads",
+      "consulting": "Consultoría",
+      "corporate": "Corporativo",
+      "crm": "CRM",
+      "desktop": "Escritorio",
+      "digital_agency": "Agencia Digital",
+      "business": "Negocios",
+      "health": "Salud",
+      "personal_development": "Desarrollo Personal",
+      "education": "Educación",
+      "music": "Música",
+      "food": "Alimentación",
+      "dental": "Odontología"
+    }
+  },
+  "project": {
+    "viewDemo": "Ver Demo",
+    "viewCode": "Ver Código"
+  },
+  "roadmap": {
+    "title": "Trayectoria Profesional",
+    "subtitle": "Un viaje a través de los hitos y habilidades desarrolladas a lo largo de mi carrera",
+    "current_year": "Actual",
+    "positions": {
+      "intern_itau": "Becario - Crédito Consignado y Posventa",
+      "intern_sintel": "Becario - Soporte N1 y Monitoreo",
+      "fullstack_freelancer": "Desarrollador Fullstack",
+      "frontend_developer": "Desarrollador Frontend",
+      "test_engineer": "Ingeniero de Pruebas",
+      "it_professor": "Profesor de Tecnología de la Información"
+    },
+    "companies": {
+      "freelancer": "Autónomo",
+      "cebrac": "Cebrac Cursos"
+    },
+    "workskills": {
+      "bi": "Business Intelligence",
+      "data_analysis": "Análisis de Datos",
+      "excel": "Excel Avanzado",
+      "sql_basics": "SQL Básico",
+      "n1_support": "Soporte N1",
+      "monitoring": "Monitoreo",
+      "networks": "Redes",
+      "troubleshooting": "Solución de Problemas",
+      "html_css": "HTML & CSS",
+      "javascript": "JavaScript",
+      "php": "PHP",
+      "wordpress": "WordPress",
+      "mysql": "MySQL",
+      "angular": "Angular",
+      "typescript": "TypeScript",
+      "tailwind": "Tailwind CSS",
+      "responsive_design": "Diseño Responsivo",
+      "qa_automation": "Automatización QA",
+      "selenium": "Selenium",
+      "testing_frameworks": "Frameworks de Prueba",
+      "ci_cd": "CI/CD",
+      "teaching": "Enseñanza",
+      "curriculum_planning": "Planificación Curricular",
+      "generative_ai": "IA Generativa",
+      "llm": "Modelos de Lenguaje",
+      "data_storytelling": "Storytelling de Datos",
+      "workshop_facilitation": "Facilitación de Talleres",
+      "task_automation": "Automatización de Tareas"
+    }
+  },
+  "footer": {
+    "brand": {
+      "title": "Augusto Almeida",
+      "description": "Desarrollador fullstack e ingeniero de software especializado en infraestructura, gestión de bases de datos y arquitectura de sistemas escalables. Apasionado por crear soluciones tecnológicas innovadoras."
+    },
+    "links": {
+      "title": "Enlaces rápidos"
+    },
+    "contact": {
+      "title": "Información de contacto",
+      "location": "São Paulo, Brasil",
+      "timezone": "Zona horaria: America/Sao_Paulo (UTC-3)"
+    },
+    "social": {
+      "github_user": "AuggieAlmeida",
+      "linkedin_user": "AugustobAlmeida"
+    },
+    "copyright": "© 2025 Augusto Almeida. Todos los derechos reservados."
   }
 }
