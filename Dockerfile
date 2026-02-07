@@ -16,7 +16,7 @@ EXPOSE 4200
 CMD ["npm", "start"]
 
 # Production stage
-FROM nginx:alpine AS production
+FROM nginx:1.29.5-alpine3.23 AS production
 COPY --from=build /app/dist/portfolio-augusto/browser /usr/share/nginx/html
 COPY .docker/nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
