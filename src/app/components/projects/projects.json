@@ -1,6 +1,15 @@
 {
   "commercial": [
     {
+      "id": "stechclub",
+      "titleKey": "projects.items.stechclub.title",
+      "descriptionKey": "projects.items.stechclub.description",
+      "category": "commercial",
+      "tagsKeys": ["projects.tags.platform", "projects.tags.education"],
+      "technologies": ["React", "Vite", "NestJS", "Prisma", "MySQL", "AWS S3"],
+      "demoUrl": "https://club.stechsolucoes.com/"
+    },
+    {
       "id": "optec-solutions",
       "titleKey": "projects.items.optec_solutions.title",
       "descriptionKey": "projects.items.optec_solutions.description",
@@ -98,6 +107,31 @@
       "technologies": ["Python", "tkinter", "SQLite", "MVC", "CRM"],
       "demoUrl": "https://github.com/AuggieAlmeida/MITRA",
       "githubUrl": "https://github.com/AuggieAlmeida/MITRA"
+    },
+    {
+      "id": "asurapadel",
+      "titleKey": "projects.items.asurapadel.title",
+      "descriptionKey": "projects.items.asurapadel.description",
+      "category": "commercial",
+      "tagsKeys": ["projects.tags.management", "projects.tags.platform", "projects.tags.sports"],
+      "technologies": ["Angular", "C#", "Azure", "SQL Server", "Jest"],
+      "demoUrl": "https://green-hill-00d55160f.2.azurestaticapps.net/"
+    },
+    {
+      "id": "portalaz",
+      "titleKey": "projects.items.portalaz.title",
+      "descriptionKey": "projects.items.portalaz.description",
+      "category": "commercial",
+      "tagsKeys": ["projects.tags.ai", "projects.tags.platform", "projects.tags.automation"],
+      "technologies": ["React", "TypeScript", "Supabase", "n8n", "AWS EC2", "Zod"]
+    },
+    {
+      "id": "bubble-box-lavanderia",
+      "titleKey": "projects.items.bubble_box_lavanderia.title",
+      "descriptionKey": "projects.items.bubble_box_lavanderia.description",
+      "category": "commercial",
+      "tagsKeys": ["projects.tags.landing_page", "projects.tags.leads", "projects.tags.business"],
+      "technologies": ["HTML5", "CSS3", "JavaScript", "jQuery", "Bootstrap"]
     }
   ],
   "study": [
@@ -119,14 +153,6 @@
       "category": "study",
       "tagsKeys": ["projects.tags.ai", "projects.tags.automation", "projects.tags.platform"],
       "technologies": ["TypeScript", "Zod", "Git worktrees", "Node.js", "CLI"]
-    },
-    {
-      "id": "stechclub",
-      "titleKey": "projects.items.stechclub.title",
-      "descriptionKey": "projects.items.stechclub.description",
-      "category": "study",
-      "tagsKeys": ["projects.tags.platform", "projects.tags.education"],
-      "technologies": ["React", "Vite", "NestJS", "Prisma", "MySQL", "AWS S3"]
     },
     {
       "id": "omegahub",
@@ -219,6 +245,94 @@
       "category": "study",
       "tagsKeys": ["projects.tags.platform", "projects.tags.monorepo"],
       "technologies": ["Next.js", "Prisma", "PostgreSQL", "Turborepo", "Zod"]
+    },
+    {
+      "id": "jarbas",
+      "titleKey": "projects.items.jarbas.title",
+      "descriptionKey": "projects.items.jarbas.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.ai", "projects.tags.desktop", "projects.tags.automation"],
+      "technologies": ["TypeScript", "Tauri", "Node.js", "CLI", "LLM"]
+    },
+    {
+      "id": "quinto-selo",
+      "titleKey": "projects.items.quinto_selo.title",
+      "descriptionKey": "projects.items.quinto_selo.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.game", "projects.tags.platform"],
+      "technologies": ["Godot 4", "GDScript", "Blender", "Netcode"]
+    },
+    {
+      "id": "financeos",
+      "titleKey": "projects.items.financeos.title",
+      "descriptionKey": "projects.items.financeos.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.fintech", "projects.tags.monorepo", "projects.tags.dashboard"],
+      "technologies": ["TypeScript", "Turborepo", "Prisma", "Redis"]
+    },
+    {
+      "id": "zoologic",
+      "titleKey": "projects.items.zoologic.title",
+      "descriptionKey": "projects.items.zoologic.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.platform", "projects.tags.management", "projects.tags.academic"],
+      "technologies": ["PHP 8", "Next.js", "MySQL", "PHPUnit"]
+    },
+    {
+      "id": "repo-explorer-angular",
+      "titleKey": "projects.items.repo_explorer_angular.title",
+      "descriptionKey": "projects.items.repo_explorer_angular.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.devtools", "projects.tags.platform"],
+      "technologies": ["Angular", "TypeScript", "Signals", "GitHub API"]
+    },
+    {
+      "id": "instagram-analyzer",
+      "titleKey": "projects.items.instagram_analyzer.title",
+      "descriptionKey": "projects.items.instagram_analyzer.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.desktop", "projects.tags.automation", "projects.tags.dashboard"],
+      "technologies": ["Python", "CustomTkinter", "MVC"]
+    },
+    {
+      "id": "pokedex",
+      "titleKey": "projects.items.pokedex.title",
+      "descriptionKey": "projects.items.pokedex.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.mobile", "projects.tags.game"],
+      "technologies": ["Expo", "React Native", "SQLite", "Reanimated"]
+    },
+    {
+      "id": "javafx-pokemon",
+      "titleKey": "projects.items.javafx_pokemon.title",
+      "descriptionKey": "projects.items.javafx_pokemon.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.desktop", "projects.tags.academic", "projects.tags.game"],
+      "technologies": ["Java", "JavaFX", "Maven", "MVC"]
+    },
+    {
+      "id": "jornada5d",
+      "titleKey": "projects.items.jornada5d.title",
+      "descriptionKey": "projects.items.jornada5d.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.mobile", "projects.tags.template", "projects.tags.devtools"],
+      "technologies": ["React Native", "Firebase", "Clean Architecture"]
+    },
+    {
+      "id": "calc-financeira",
+      "titleKey": "projects.items.calc_financeira.title",
+      "descriptionKey": "projects.items.calc_financeira.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.fintech", "projects.tags.automation", "projects.tags.academic"],
+      "technologies": ["Python"]
+    },
+    {
+      "id": "aquila-e-evelyn",
+      "titleKey": "projects.items.aquila_e_evelyn.title",
+      "descriptionKey": "projects.items.aquila_e_evelyn.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.landing_page", "projects.tags.interactive"],
+      "technologies": ["HTML5", "CSS3", "JavaScript", "GitHub Pages"]
     }
   ]
 }

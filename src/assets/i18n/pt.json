@@ -256,7 +256,7 @@
       },
       "stechclub": {
         "title": "StechClub",
-        "description": "Plataforma educacional de mentoria, ponta a ponta: área pública, autenticação, trilhas, cursos em vídeo, quiz de aplicação e painel administrativo. API em NestJS com Prisma e Swagger, vídeos em S3 e automação de resposta a candidatos."
+        "description": "Portal educacional da Stech, em SPA React com SSO da empresa e API NestJS sobre Prisma. Vídeo e thumbnail ficam em S3 e são servidos por link assinado gerado na API, sem expor a key do bucket. O funil de candidatura usa quiz de aderência com nota mínima e resposta diferente para quem passa e para quem não passa."
       },
       "omegahub": {
         "title": "OmegaHub",
@@ -301,6 +301,62 @@
       "portfolio_suite": {
         "title": "Portfolio Suite",
         "description": "O sucessor deste site: monorepo com API própria servindo de CMS, painel administrativo e duas experiências de frontend consumindo o mesmo schema de conteúdo."
+      },
+      "asurapadel": {
+        "title": "AsuraPadel",
+        "description": "Gestão de quadra de padel em duas aplicações: frontend Angular e API em C# publicada no Azure. O caso técnico é de performance — quando a API saiu para o servidor de teste, a resposta degradou, e a correção combinou cache, redesenho de endpoints, paginação em lotes, redução de payload e ajustes no cliente. Tempo médio relatado caiu de 800 ms para 220 ms."
+      },
+      "portalaz": {
+        "title": "PortalAZ",
+        "description": "Portal para operar e auditar um atendimento com IA no WhatsApp. O produto não é o agente: é a interface que deixa pessoa não técnica testar, acompanhar e corrigir. Trouxe versionamento de prompt com rollback e um webhook separado para isolar o tráfego do sandbox do tráfego real — controle de qualidade aplicado a sistema não determinístico."
+      },
+      "bubble_box_lavanderia": {
+        "title": "Bubble Box",
+        "description": "Landing de rede de lavanderias self-service em modelo de franquia, com modelos de loja, busca de unidades e captação de lead como objetivo declarado. Core Web Vitals entrou como critério de aceite, não como refino posterior."
+      },
+      "jarbas": {
+        "title": "Jarbas",
+        "description": "Assistente de segundo cérebro sobre um vault em Markdown, com CLI e interface desktop. O núcleo é um action gate: toda escrita do agente passa por um portão que valida o plano antes de tocar arquivo, para automação não corromper a base que ela deveria cuidar."
+      },
+      "quinto_selo": {
+        "title": "Quinto Selo",
+        "description": "Roguelite cooperativo online em 2D, feito em Godot 4 com tema dos quatro cavaleiros. O trabalho difícil não é o combate: é o netcode e a regra de morte com dois corpos, ambos fechados com verificação headless antes de virar jogável."
+      },
+      "financeos": {
+        "title": "FinanceOS",
+        "description": "Gestão financeira pessoal em monorepo Turborepo, com Prisma na persistência, Redis no que precisa ser rápido e stores separadas por workspace."
+      },
+      "zoologic": {
+        "title": "Zoologic",
+        "description": "Gestão de zoológico em dois sub-projetos: API em PHP 8 escrita com SOLID e suíte PHPUnit de verdade, e frontend em Next.js. O ponto do projeto era provar que PHP moderno aceita arquitetura e teste sério."
+      },
+      "repo_explorer_angular": {
+        "title": "Repo Explorer",
+        "description": "Explorador de repositórios do GitHub em Angular com signals, entregue como teste prático para vaga sênior. CI verde na entrega."
+      },
+      "instagram_analyzer": {
+        "title": "Instagram Analyzer",
+        "description": "App desktop que lê o export JSON do Instagram e mostra quem não segue de volta, com indicadores e busca em tempo real. Tudo local: o arquivo nunca sai da máquina."
+      },
+      "pokedex": {
+        "title": "Pokédex",
+        "description": "App mobile de exploração com persistência local em SQLite e animações em Reanimated, para funcionar sem rede depois da primeira carga."
+      },
+      "javafx_pokemon": {
+        "title": "JavaFX Pokémon",
+        "description": "Aplicação desktop em JavaFX com Maven e separação MVC — exercício de arquitetura em Java, feito para praticar camada e não só tela."
+      },
+      "jornada5d": {
+        "title": "Jornada 5D",
+        "description": "Template React Native com Firebase multi-ambiente: emuladores locais, product flavors e Clean Architecture prontos, para um projeto novo não repetir a mesma semana de setup."
+      },
+      "calc_financeira": {
+        "title": "Calculadora Financeira",
+        "description": "Calculadora de matemática financeira em Python puro, sem dependência externa — juros, amortização e séries com a lógica concentrada em um arquivo."
+      },
+      "aquila_e_evelyn": {
+        "title": "Áquila e Evelyn",
+        "description": "Convite digital de casamento em página estática responsiva, com animações em CSS e conteúdo carregado de JSON para o casal editar sem tocar em código."
       }
     },
     "tags": {
@@ -334,7 +390,11 @@
       "mobile": "Mobile",
       "pwa": "PWA",
       "academic": "Acadêmico",
-      "computer_vision": "Visão computacional"
+      "computer_vision": "Visão computacional",
+      "fintech": "Fintech",
+      "devtools": "Ferramentas de dev",
+      "template": "Template",
+      "sports": "Esporte"
     },
     "viewDemo": "Ver demo",
     "viewCode": "Ver código"
