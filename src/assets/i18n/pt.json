@@ -24,11 +24,11 @@
   },
   "about": {
     "aboutMe": "Sobre Mim",
-    "greeting": "Olá, eu sou Augusto Almeida — um apaixonado por tecnologia que transforma linhas de código em soluções que realmente fazem diferença. Minha missão? Construir sistemas que unem inovação, performance e impacto real.",
+    "greeting": "Sou desenvolvedor fullstack com viés forte de qualidade e dados. Comecei lendo dado em um time de inteligência de mercado, aprendi como produção quebra trabalhando em suporte, e desde 2022 construo software do banco à interface. O fio que liga as três fases é o mesmo: entender o problema antes de escolher a ferramenta.",
     "professionalOverview": "Visão Profissional",
-    "professionalDescription": "Atuo como Desenvolvedor e Engenheiro de Testes, com experiências que vão de startups a grandes corporações. Já construí interfaces responsivas que encantam usuários, desenvolvi APIs robustas que conectam ecossistemas inteiros e automatizei testes que garantem qualidade de ponta a ponta. Minha trajetória combina visão analítica, atenção aos detalhes e criatividade para resolver problemas complexos.",
+    "professionalDescription": "Hoje sou fullstack na Stech, em produtos internos e de clientes, com TypeScript, React, NestJS e Prisma sobre MySQL, tudo containerizado. Antes: Java e Spring Boot na Persys, o vínculo mais longo da minha carreira; frontend de conversão na Make; e engenharia de testes na Outlier, avaliando modelos de linguagem em voz, visão e texto. Por pouco mais de um ano também dei aula de Excel, Power BI e IA generativa no Cebrac — ensinar é o que obriga a entender de verdade.",
     "coreExpertise": "Especialidades Principais",
-    "expertiseDescription": "Sou especialista em desenvolvimento fullstack (Java, Spring Boot, Node.js, Angular, Next.js), integração de APIs (REST, GraphQL, WebSockets, gRPC) e arquiteturas modernas (Clean, Hexagonal e Microservices). Além disso, domino práticas de DevOps e QA, utilizando Docker, CI/CD e automação de testes com Pytest, Jest e Cypress para entregar software confiável e escalável.",
+    "expertiseDescription": "O que eu levo para um time é critério, não lista de stack. Auditar e corrigir vulnerabilidade em suíte financeira antes de virar incidente. Transformar regra de negócio em parâmetro rastreável, em vez de deixá-la chumbada no código. Tratar Core Web Vitals como requisito e não como enfeite — foi com essa régua que saíram mais de cem landing pages. E automatizar onde reduz risco: o TaskForge, que orquestra agentes em paralelo, cortou entre 70% e 90% do custo de LLM da engenharia. Quando o assunto é complexo, explicar faz parte da entrega.",
     "contactInfo": "Vamos nos conectar?",
     "email": "E-mail"
   },
@@ -132,13 +132,12 @@
     "positions": {
       "intern_itau": "Estagiário - Consignado e Pós-venda",
       "intern_sintel": "Estagiário - Suporte N1 e Monitoramento",
-      "fullstack_freelancer": "Desenvolvedor Fullstack",
       "frontend_developer": "Desenvolvedor Frontend",
       "test_engineer": "Engenheiro de Testes",
-      "it_professor": "Professor de Tecnologia da Informação"
+      "it_professor": "Professor de Tecnologia da Informação",
+      "fullstack_developer": "Desenvolvedor Fullstack"
     },
     "companies": {
-      "freelancer": "Autônomo",
       "cebrac": "Cebrac Cursos"
     },
     "workskills": {
@@ -170,7 +169,14 @@
       "llm": "Modelos de Linguagem",
       "data_storytelling": "Storytelling de Dados",
       "workshop_facilitation": "Facilitação de Workshops",
-      "task_automation": "Automação de Tarefas"
+      "task_automation": "Automação de Tarefas",
+      "java": "Java",
+      "springboot": "Spring Boot",
+      "sql": "SQL",
+      "docker": "Docker",
+      "react": "React",
+      "nestjs": "NestJS",
+      "prisma": "Prisma"
     }
   },
   "projects": {
@@ -203,10 +209,6 @@
       "bumbum_de_anjo": {
         "title": "Bumbum de Anjo",
         "description": "Landing page para produto de cuidado infantil, destacando benefícios do spray anti-assaduras e com call-to-action para conversão de vendas."
-      },
-      "decided_mind": {
-        "title": "Decided Mind",
-        "description": "Página de conversão para imersão presencial de desenvolvimento pessoal, focada em ajudar pessoas a saírem da zona de conforto e encontrar propósito."
       },
       "fehe_chocolate": {
         "title": "FEHE Chocolate",

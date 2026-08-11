@@ -37,25 +37,11 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
           {{ 'about.aboutMe' | translate }}
         </h2>
 
-        <div class="about-content grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-10 items-stretch">
-          <!-- Container da imagem -->
+        <div class="about-content">
+          <!-- O rosto vive no hero, com foto real. Repetir retrato aqui só
+               competia com o texto, que é o que esta seção precisa vender. -->
           <div
-            class="relative rounded-2xl overflow-hidden shadow-2xl bg-white/70 dark:bg-neutral-900/60 border border-primary-100 dark:border-primary-600 lg:col-span-1"
-          >
-            <div
-              class="absolute inset-0 rounded-2xl bg-primary-400/10 dark:bg-primary-600/10 blur-2xl"
-            ></div>
-            <img
-              src="assets/images/about/about.jpg"
-              alt="Foto - Augusto Almeida"
-              loading="lazy"
-              class="relative w-full h-full object-cover min-h-[280px] lg:min-h-[320px]"
-            />
-          </div>
-
-          <!-- Container do conteúdo -->
-          <div
-            class="about-text rounded-2xl p-6 md:p-8 lg:p-10 bg-white dark:bg-primary-800 shadow-xl border border-primary-100 dark:border-primary-600 lg:col-span-3"
+            class="about-text mx-auto max-w-4xl rounded-2xl p-6 md:p-8 lg:p-10 bg-white dark:bg-primary-800 shadow-xl border border-primary-100 dark:border-primary-600"
           >
             <!-- Greeting -->
             <p class="greeting text-lg md:text-xl text-neutral-700 dark:text-neutral-300 mb-6">
@@ -234,10 +220,6 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
       /* Responsive adjustments */
       @media (max-width: 768px) {
-        .about-content {
-          gap: 1.5rem;
-        }
-
         .contact-section .grid {
           grid-template-columns: 1fr;
         }

@@ -49,20 +49,6 @@
       "demoUrl": "https://minhamaquinadeleads.com.br/af8211e7"
     },
     {
-      "id": "decided-mind",
-      "titleKey": "projects.items.decided_mind.title",
-      "descriptionKey": "projects.items.decided_mind.description",
-      "image": "./assets/images/projects/decided-mind.png",
-      "category": "commercial",
-      "tagsKeys": [
-        "projects.tags.consulting",
-        "projects.tags.personal_development",
-        "projects.tags.landing_page"
-      ],
-      "technologies": ["HTML", "PHP", "JavaScript", "CSS3", "Bootstrap"],
-      "demoUrl": "https://brasengconsultoria.com.br/decidedmind/"
-    },
-    {
       "id": "fehe-chocolate",
       "titleKey": "projects.items.fehe_chocolate.title",
       "descriptionKey": "projects.items.fehe_chocolate.description",

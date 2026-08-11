@@ -24,11 +24,11 @@
   },
   "about": {
     "aboutMe": "About Me",
-    "greeting": "Hello, I'm Augusto Almeida — a technology enthusiast who transforms lines of code into solutions that truly make a difference. My mission? Building systems that unite innovation, performance, and real impact.",
+    "greeting": "I am a fullstack developer with a strong bias toward quality and data. I started out reading data on a market intelligence team, learned how production breaks while working in support, and since 2022 I have been building software from the database to the interface. The same thread runs through all three phases: understand the problem before picking the tool.",
     "professionalOverview": "Professional Overview",
-    "professionalDescription": "I work as a Developer and Test Engineer, with experiences ranging from startups to large corporations. I've built responsive interfaces that delight users, developed robust APIs that connect entire ecosystems, and automated tests that ensure end-to-end quality. My journey combines analytical vision, attention to detail, and creativity to solve complex problems.",
+    "professionalDescription": "Today I work fullstack at Stech, on internal and client products, with TypeScript, React, NestJS and Prisma over MySQL, all containerised. Before that: Java and Spring Boot at Persys, the longest tenure of my career; conversion-focused frontend at Make; and test engineering at Outlier, evaluating language models across voice, vision and text. For just over a year I also taught Excel, Power BI and generative AI at Cebrac — teaching is what forces you to actually understand something.",
     "coreExpertise": "Core Expertise",
-    "expertiseDescription": "I specialize in fullstack development (Java, Spring Boot, Node.js, Angular, Next.js), API integration (REST, GraphQL, WebSockets, gRPC), and modern architectures (Clean, Hexagonal, and Microservices). Additionally, I master DevOps and QA practices, using Docker, CI/CD, and test automation with Pytest, Jest, and Cypress to deliver reliable and scalable software.",
+    "expertiseDescription": "What I bring to a team is judgement, not a stack list. Auditing and fixing vulnerabilities in a financial suite before they become an incident. Turning business rules into traceable parameters instead of leaving them hardcoded. Treating Core Web Vitals as a requirement rather than decoration — that is the bar behind more than a hundred landing pages. And automating where it reduces risk: TaskForge, which orchestrates agents in parallel, cut 70% to 90% of the engineering LLM bill. When a subject is complex, explaining it is part of the delivery.",
     "contactInfo": "Let's connect?",
     "email": "Email"
   },
@@ -156,10 +156,6 @@
         "title": "Bumbum de Anjo",
         "description": "Landing page for a baby care product, highlighting the benefits of the anti-diaper rash spray and with a call-to-action for sales conversion."
       },
-      "decided_mind": {
-        "title": "Decided Mind",
-        "description": "Conversion page for an in-person personal development immersion, focused on helping people get out of their comfort zone and find purpose."
-      },
       "fehe_chocolate": {
         "title": "FEHE Chocolate",
         "description": "Landing page for premium sugar-free chocolate, highlighting the quality and benefits of the product for sales conversion."
@@ -224,13 +220,12 @@
     "positions": {
       "intern_itau": "Intern - Consigned and After-Sales",
       "intern_sintel": "Intern - N1 Support and Monitoring",
-      "fullstack_freelancer": "Fullstack Developer",
       "frontend_developer": "Frontend Developer",
       "test_engineer": "Test Engineer",
-      "it_professor": "Information Technology Professor"
+      "it_professor": "Information Technology Professor",
+      "fullstack_developer": "Fullstack Developer"
     },
     "companies": {
-      "freelancer": "Freelancer",
       "cebrac": "Cebrac Cursos"
     },
     "workskills": {
@@ -262,7 +257,14 @@
       "data_storytelling": "Data Storytelling",
       "workshop_facilitation": "Workshop Facilitation",
       "task_automation": "Task Automation",
-      "powerbi": "Power BI"
+      "powerbi": "Power BI",
+      "java": "Java",
+      "springboot": "Spring Boot",
+      "sql": "SQL",
+      "docker": "Docker",
+      "react": "React",
+      "nestjs": "NestJS",
+      "prisma": "Prisma"
     }
   },
   "footer": {

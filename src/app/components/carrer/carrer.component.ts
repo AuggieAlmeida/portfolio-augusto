@@ -103,7 +103,8 @@ interface RoadmapYear {
                             : 'bg-secondary-100 dark:bg-secondary-800 text-secondary-700 dark:text-secondary-300'
                         "
                       >
-                        {{ item.titleKey ? (item.titleKey | translate) : item.year }}
+                        {{ item.year
+                        }}{{ item.titleKey ? ' · ' + (item.titleKey | translate) : '' }}
                       </div>
 
                       <div *ngIf="item.isCurrentYear" class="flex items-center">
@@ -220,7 +221,8 @@ interface RoadmapYear {
                             : 'bg-secondary-100 dark:bg-secondary-800 text-secondary-700 dark:text-secondary-300'
                         "
                       >
-                        {{ item.titleKey ? (item.titleKey | translate) : item.year }}
+                        {{ item.year
+                        }}{{ item.titleKey ? ' · ' + (item.titleKey | translate) : '' }}
                       </div>
 
                       <div *ngIf="item.isCurrentYear" class="flex items-center">
@@ -371,9 +373,9 @@ export class CareerRoadmapComponent {
 
   public roadmapData: RoadmapYear[] = [
     {
-      year: '2020-2021',
+      year: '12/2020 – 07/2021',
       position: 'roadmap.positions.intern_itau',
-      company: 'Itaú Unibanco SA',
+      company: 'Itaú Unibanco',
       skillsKeys: [
         'roadmap.workskills.bi',
         'roadmap.workskills.data_analysis',
@@ -383,9 +385,9 @@ export class CareerRoadmapComponent {
       ]
     },
     {
-      year: '2021-2022',
+      year: '12/2021 – 06/2022',
       position: 'roadmap.positions.intern_sintel',
-      company: 'Sintel BPO/BPM',
+      company: 'Sintel S.A.',
       skillsKeys: [
         'roadmap.workskills.n1_support',
         'roadmap.workskills.monitoring',
@@ -394,18 +396,19 @@ export class CareerRoadmapComponent {
       ]
     },
     {
-      year: '2022-2024',
-      position: 'roadmap.positions.fullstack_freelancer',
-      company: 'roadmap.companies.freelancer',
+      year: '06/2022 – 01/2024',
+      position: 'roadmap.positions.fullstack_developer',
+      company: 'Persys Projetos de Inovação Tecnológica',
       skillsKeys: [
+        'roadmap.workskills.java',
+        'roadmap.workskills.springboot',
         'roadmap.workskills.angular',
-        'roadmap.workskills.typescript',
-        'roadmap.workskills.tailwind',
-        'roadmap.workskills.mysql'
+        'roadmap.workskills.sql',
+        'roadmap.workskills.docker'
       ]
     },
     {
-      year: '2024',
+      year: '04/2024 – 10/2024',
       position: 'roadmap.positions.frontend_developer',
       company: 'Make Acelerador de Vendas',
       skillsKeys: [
@@ -418,10 +421,8 @@ export class CareerRoadmapComponent {
     },
     {
       year: '2025',
-      titleKey: 'roadmap.current_year',
       position: 'roadmap.positions.test_engineer',
       company: 'Outlier',
-      isCurrentYear: true,
       skillsKeys: [
         'roadmap.workskills.qa_automation',
         'roadmap.workskills.selenium',
@@ -430,17 +431,29 @@ export class CareerRoadmapComponent {
       ]
     },
     {
-      year: '2025',
-      titleKey: 'roadmap.current_year',
+      year: '04/2025 – 06/2026',
       position: 'roadmap.positions.it_professor',
       company: 'roadmap.companies.cebrac',
-      isCurrentYear: true,
       skillsKeys: [
         'roadmap.workskills.teaching',
         'roadmap.workskills.excel',
         'roadmap.workskills.powerbi',
         'roadmap.workskills.generative_ai',
         'roadmap.workskills.workshop_facilitation'
+      ]
+    },
+    {
+      year: '01/2026',
+      titleKey: 'roadmap.current_year',
+      position: 'roadmap.positions.fullstack_developer',
+      company: 'Stech Soluções Tecnológicas',
+      isCurrentYear: true,
+      skillsKeys: [
+        'roadmap.workskills.typescript',
+        'roadmap.workskills.react',
+        'roadmap.workskills.nestjs',
+        'roadmap.workskills.prisma',
+        'roadmap.workskills.docker'
       ]
     }
   ];
