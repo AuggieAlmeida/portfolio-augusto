@@ -1,4 +1,10 @@
-name: CI/CD Pipeline
+# Quality gate only. A publicação é feita pela integração Git da Vercel, que
+# constrói a partir de `main` por conta própria. Havia aqui um job que chamava
+# amondnet/vercel-action sem `vercel-org-id` nem `vercel-project-id` e sem um
+# `.vercel/project.json` no repo — ele não conseguia alcançar o projeto
+# existente. Para que este gate realmente proteja o deploy, exigir o check
+# `Lint, test and build` em branch protection para `main`.
+name: CI
 
 on:
   push:
@@ -72,24 +78,3 @@ jobs:
       - name: Audit everything (advisory)
         continue-on-error: true
         run: npm run security:audit:full
-
-  deploy:
-    name: Deploy to Vercel
-    needs: [quality, security]
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-
-    steps:
-      - uses: actions/checkout@v4
-
-      # Vercel builds from source; uploading the local dist would be discarded.
-      - name: Deploy
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: '--prod --yes'
-          working-directory: ./
-          github-comment: false
-          github-deployment: false

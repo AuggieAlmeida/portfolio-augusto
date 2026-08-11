@@ -126,9 +126,11 @@ vercel.json                   headers de segurança, cache e rewrite SPA
 
 ## deploy
 
-Vercel, a partir de `main`. `vercel.json` define o diretório de saída (`dist/portfolio-augusto/browser`), o rewrite de SPA e os headers de segurança — CSP, HSTS, `X-Content-Type-Options`, `Referrer-Policy` e `Permissions-Policy`.
+Publica a **integração Git da Vercel**, que constrói a partir de `main` sozinha. `vercel.json` define o diretório de saída (`dist/portfolio-augusto/browser`), o rewrite de SPA e os headers de segurança — CSP, HSTS, `X-Content-Type-Options`, `Referrer-Policy` e `Permissions-Policy`.
 
-O workflow `.github/workflows/main.yml` roda lint, formatação, i18n, testes e build antes de publicar. O `security-scan.yml` escaneia a imagem Docker com Trivy semanalmente.
+`.github/workflows/main.yml` é **gate de qualidade, não deploy**: lint, formatação, i18n, testes, build e auditoria. Para que ele realmente proteja a publicação, o check `Lint, test and build` precisa ser exigido em branch protection na `main` — sem isso a Vercel publica mesmo com o CI vermelho.
+
+`security-scan.yml` escaneia a imagem Docker com Trivy semanalmente, em modo relatório. A imagem não é o artefato de produção; ela cobre o caminho alternativo de self-host com nginx.
 
 ## dívida conhecida
 
