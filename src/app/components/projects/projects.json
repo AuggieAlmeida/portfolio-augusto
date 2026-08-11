@@ -6,11 +6,7 @@
       "descriptionKey": "projects.items.optec_solutions.description",
       "image": "./assets/images/projects/optec-solutions.png",
       "category": "commercial",
-      "tagsKeys": [
-        "projects.tags.platform",
-        "projects.tags.management",
-        "projects.tags.dashboard"
-      ],
+      "tagsKeys": ["projects.tags.platform", "projects.tags.management", "projects.tags.dashboard"],
       "technologies": ["WordPress", "PHP", "Apache", "MySQL", "HTML5", "CSS3", "JavaScript"],
       "demoUrl": "https://optecit.com.br"
     },
@@ -25,7 +21,7 @@
         "projects.tags.digital_agency",
         "projects.tags.landing_page"
       ],
-      "technologies": ["HTML5", "CSS3", "JavaScript",  "CSS3", "Bootstrap"],
+      "technologies": ["HTML5", "CSS3", "JavaScript", "CSS3", "Bootstrap"],
       "demoUrl": "https://minhamaquinadeleads.com.br/f4eee40f"
     },
     {
@@ -48,12 +44,8 @@
       "descriptionKey": "projects.items.bumbum_de_anjo.description",
       "image": "./assets/images/projects/bumbum-de-anjo.png",
       "category": "commercial",
-      "tagsKeys": [
-        "projects.tags.ecommerce",
-        "projects.tags.health",
-        "projects.tags.landing_page"
-      ],
-      "technologies":  ["HTML", "PHP", "JavaScript", "CSS3", "Bootstrap"],
+      "tagsKeys": ["projects.tags.ecommerce", "projects.tags.health", "projects.tags.landing_page"],
+      "technologies": ["HTML", "PHP", "JavaScript", "CSS3", "Bootstrap"],
       "demoUrl": "https://minhamaquinadeleads.com.br/af8211e7"
     },
     {
@@ -67,7 +59,7 @@
         "projects.tags.personal_development",
         "projects.tags.landing_page"
       ],
-      "technologies":  ["HTML", "PHP", "JavaScript", "CSS3", "Bootstrap"],
+      "technologies": ["HTML", "PHP", "JavaScript", "CSS3", "Bootstrap"],
       "demoUrl": "https://brasengconsultoria.com.br/decidedmind/"
     },
     {
@@ -76,11 +68,7 @@
       "descriptionKey": "projects.items.fehe_chocolate.description",
       "image": "./assets/images/projects/fehe-chocolate.png",
       "category": "commercial",
-      "tagsKeys": [
-        "projects.tags.ecommerce",
-        "projects.tags.food",
-        "projects.tags.landing_page"
-      ],
+      "tagsKeys": ["projects.tags.ecommerce", "projects.tags.food", "projects.tags.landing_page"],
       "technologies": ["Shopify", "Liquid", "JavaScript", "CSS3", "Google Analytics"],
       "demoUrl": "https://minhamaquinadeleads.com.br/20c67a70"
     },
@@ -90,11 +78,7 @@
       "descriptionKey": "projects.items.clinica_viotto.description",
       "image": "./assets/images/projects/clinica-viotto.png",
       "category": "commercial",
-      "tagsKeys": [
-        "projects.tags.health",
-        "projects.tags.dental",
-        "projects.tags.landing_page"
-      ],
+      "tagsKeys": ["projects.tags.health", "projects.tags.dental", "projects.tags.landing_page"],
       "technologies": ["WordPress", "PHP", "JavaScript", "CSS3", "Contact Form 7"],
       "demoUrl": "https://minhamaquinadeleads.com.br/0c2bda46"
     },
@@ -104,11 +88,7 @@
       "descriptionKey": "projects.items.souza_lima_vestibular.description",
       "image": "./assets/images/projects/souzalima-vestibular.png",
       "category": "commercial",
-      "tagsKeys": [
-        "projects.tags.education",
-        "projects.tags.music",
-        "projects.tags.landing_page"
-      ],
+      "tagsKeys": ["projects.tags.education", "projects.tags.music", "projects.tags.landing_page"],
       "technologies": ["WordPress", "PHP", "JavaScript", "CSS3", "Contact Form 7"],
       "demoUrl": "https://faculdadesouzalima.com.br/"
     },
@@ -118,11 +98,7 @@
       "descriptionKey": "projects.items.souza_lima_cursos.description",
       "image": "./assets/images/projects/souzalima-cursos.png",
       "category": "commercial",
-      "tagsKeys": [
-        "projects.tags.education",
-        "projects.tags.music",
-        "projects.tags.landing_page"
-      ],
+      "tagsKeys": ["projects.tags.education", "projects.tags.music", "projects.tags.landing_page"],
       "technologies": ["WordPress", "PHP", "JavaScript", "CSS3", "Contact Form 7"],
       "demoUrl": "https://www.souzalima.com.br/"
     },
@@ -132,11 +108,7 @@
       "descriptionKey": "projects.items.mitra_crm.description",
       "image": "./assets/images/projects/mitra-crm.png",
       "category": "commercial",
-      "tagsKeys": [
-        "projects.tags.crm",
-        "projects.tags.management",
-        "projects.tags.desktop"
-      ],
+      "tagsKeys": ["projects.tags.crm", "projects.tags.management", "projects.tags.desktop"],
       "technologies": ["Python", "tkinter", "SQLite", "MVC", "CRM"],
       "demoUrl": "https://github.com/AuggieAlmeida/MITRA",
       "githubUrl": "https://github.com/AuggieAlmeida/MITRA"
@@ -149,11 +121,7 @@
       "descriptionKey": "projects.items.dnd_guide.description",
       "image": "./assets/images/projects/dnd-guide.png",
       "category": "study",
-      "tagsKeys": [
-        "projects.tags.rpg",
-        "projects.tags.guide",
-        "projects.tags.interactive"
-      ],
+      "tagsKeys": ["projects.tags.rpg", "projects.tags.guide", "projects.tags.interactive"],
       "technologies": ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
       "demoUrl": "https://auggiealmeida.github.io/DnD-Guide/",
       "githubUrl": "https://github.com/auggiealmeida/DnD-Guide"

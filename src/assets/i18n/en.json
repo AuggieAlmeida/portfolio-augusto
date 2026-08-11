@@ -2,9 +2,12 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "carrer": "Carrer",
+    "carrer": "Career",
     "skills": "Skills",
-    "projects": "Projects"
+    "projects": "Projects",
+    "contact": "Contact",
+    "language": "Language",
+    "theme": "Theme"
   },
   "hero": {
     "title": "Augusto Almeida",
@@ -97,7 +100,23 @@
       "shellscript": "Shell scripting (bash/batch) for automation.",
       "scraping": "Web scraping techniques and libraries.",
       "powerbi": "Data visualization and reports with Power BI.",
-      "splunk": "Log analysis and searching with Splunk."
+      "splunk": "Log analysis and searching with Splunk.",
+      "git": "Distributed version control with Git.",
+      "github_actions": "CI/CD automation with GitHub Actions.",
+      "grpc": "gRPC framework for high-performance APIs.",
+      "linux": "Linux systems for development and infrastructure.",
+      "macos": "macOS for cross-platform development.",
+      "mongodb": "MongoDB document-oriented NoSQL database.",
+      "mysql": "MySQL database management system.",
+      "postgresql": "Advanced PostgreSQL relational database.",
+      "postman": "Postman for API testing and documentation.",
+      "soap": "SOAP protocol for web service integration.",
+      "springboot": "Spring Boot for robust, scalable Java applications.",
+      "sqlite": "Lightweight SQLite database for embedded applications.",
+      "swagger": "API documentation and specification with Swagger/OpenAPI.",
+      "tailwind": "Utility-first CSS framework for fast, responsive development.",
+      "websockets": "Real-time bidirectional communication with WebSockets.",
+      "windows": "Windows for desktop and server development."
     }
   },
   "languages": {
@@ -187,8 +206,12 @@
       "education": "Education",
       "music": "Music",
       "food": "Food",
-      "dental": "Dental"
-    }
+      "dental": "Dental",
+      "ecommerce": "E-commerce",
+      "landing_page": "Landing page"
+    },
+    "viewDemo": "View demo",
+    "viewCode": "View code"
   },
   "project": {
     "viewDemo": "View Demo",
@@ -238,7 +261,8 @@
       "llm": "Large Language Models",
       "data_storytelling": "Data Storytelling",
       "workshop_facilitation": "Workshop Facilitation",
-      "task_automation": "Task Automation"
+      "task_automation": "Task Automation",
+      "powerbi": "Power BI"
     }
   },
   "footer": {
@@ -259,5 +283,8 @@
       "linkedin_user": "AugustobAlmeida"
     },
     "copyright": "© 2025 Augusto Almeida. All rights reserved."
+  },
+  "navigation": {
+    "scrollDown": "Scroll down"
   }
 }

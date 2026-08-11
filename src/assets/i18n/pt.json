@@ -4,7 +4,10 @@
     "about": "Sobre",
     "carrer": "Carreira",
     "skills": "Habilidades",
-    "projects": "Projetos"
+    "projects": "Projetos",
+    "contact": "Contato",
+    "language": "Idioma",
+    "theme": "Tema"
   },
   "hero": {
     "title": "Augusto Almeida",
@@ -61,7 +64,7 @@
       "problem_solving": "Resolução de problemas",
       "adaptability": "Adaptabilidade"
     },
-   "descriptions": {
+    "descriptions": {
       "html5": "Estrutura HTML semântica e boas práticas de acessibilidade.",
       "css3": "Layouts responsivos usando CSS moderno e utilitários do Tailwind.",
       "tailwind": "Framework CSS utility-first para desenvolvimento rápido e responsivo.",
@@ -112,7 +115,8 @@
       "splunk": "Análise de logs com Splunk.",
       "windows": "Sistema operacional Windows para desenvolvimento desktop e servidor.",
       "linux": "Sistemas Linux para desenvolvimento e infraestrutura.",
-      "macos": "Sistema operacional macOS para desenvolvimento multiplataforma."
+      "macos": "Sistema operacional macOS para desenvolvimento multiplataforma.",
+      "database": "Modelagem relacional e otimização de consultas (Postgres/MySQL)."
     }
   },
   "languages": {
@@ -139,7 +143,7 @@
     },
     "workskills": {
       "bi": "Business Intelligence",
-      "powerbi":"PowerBI",
+      "powerbi": "PowerBI",
       "data_analysis": "Análise de Dados",
       "excel": "Excel Avançado",
       "sql_basics": "SQL Básico",
@@ -205,8 +209,8 @@
         "description": "Página de conversão para imersão presencial de desenvolvimento pessoal, focada em ajudar pessoas a saírem da zona de conforto e encontrar propósito."
       },
       "fehe_chocolate": {
-      "title": "FEHE Chocolate",
-      "description": "Landing page para chocolate premium zero açúcar, destacando a qualidade e benefícios do produto para conversão de vendas."
+        "title": "FEHE Chocolate",
+        "description": "Landing page para chocolate premium zero açúcar, destacando a qualidade e benefícios do produto para conversão de vendas."
       },
       "clinica_viotto": {
         "title": "Clínica Viotto",
@@ -242,8 +246,20 @@
       "consulting": "Consultoria",
       "corporate": "Corporativo",
       "crm": "CRM",
-      "desktop": "Desktop"
-    }
+      "desktop": "Desktop",
+      "business": "Negócios",
+      "dental": "Odontologia",
+      "digital_agency": "Agência digital",
+      "ecommerce": "E-commerce",
+      "education": "Educação",
+      "food": "Alimentação",
+      "health": "Saúde",
+      "landing_page": "Landing page",
+      "music": "Música",
+      "personal_development": "Desenvolvimento pessoal"
+    },
+    "viewDemo": "Ver demo",
+    "viewCode": "Ver código"
   },
   "project": {
     "viewDemo": "Ver Demo",
@@ -267,5 +283,8 @@
       "linkedin_user": "AugustobAlmeida"
     },
     "copyright": "© 2025 Augusto Almeida. Todos os direitos reservados."
+  },
+  "navigation": {
+    "scrollDown": "Rolar para baixo"
   }
 }

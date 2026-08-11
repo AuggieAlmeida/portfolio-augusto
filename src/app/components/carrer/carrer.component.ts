@@ -1,9 +1,16 @@
-import { Component, ChangeDetectionStrategy, inject, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  inject,
+  ViewChild
+} from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+
 import { NavService } from '../../core/services/nav.service';
 import { ThemeService } from '../../core/services/theme.service';
-import { ChangeDetectorRef } from '@angular/core';
 
 interface RoadmapYear {
   year: string;
@@ -30,7 +37,7 @@ interface RoadmapYear {
       <div
         class='absolute inset-0 bg-[url(&apos;data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%236366f1" fill-opacity="0.05"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&apos;)] opacity-30'
       ></div>
-      
+
       <!-- Animated background gradient -->
       <div
         class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-secondary-100/20 via-transparent to-primary-100/20 dark:from-secondary-800/20 dark:to-primary-800/20 animate-pulse-slow"
@@ -55,8 +62,10 @@ interface RoadmapYear {
         <div class="hidden lg:block">
           <div class="relative">
             <!-- Timeline Line -->
-            <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-secondary-400 via-primary-400 to-accent-400 rounded-full"></div>
-            
+            <div
+              class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-secondary-400 via-primary-400 to-accent-400 rounded-full"
+            ></div>
+
             <div class="space-y-12">
               <div
                 *ngFor="let item of roadmapData; trackBy: trackByYear; let i = index"
@@ -67,30 +76,46 @@ interface RoadmapYear {
                 class="flex items-center"
               >
                 <!-- Content Card -->
-                <div class="w-5/12" [class.text-right]="i % 2 === 0" [class.text-left]="i % 2 !== 0">
+                <div
+                  class="w-5/12"
+                  [class.text-right]="i % 2 === 0"
+                  [class.text-left]="i % 2 !== 0"
+                >
                   <div
                     class="roadmap-card bg-white dark:bg-primary-800 rounded-xl p-6 shadow-lg border transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-                    [class]="item.isCurrentYear 
-                      ? 'border-accent-400 dark:border-accent-500 ring-2 ring-accent-200 dark:ring-accent-800' 
-                      : 'border-neutral-200 dark:border-neutral-700 hover:border-secondary-300 dark:hover:border-secondary-600'"
+                    [class]="
+                      item.isCurrentYear
+                        ? 'border-accent-400 dark:border-accent-500 ring-2 ring-accent-200 dark:ring-accent-800'
+                        : 'border-neutral-200 dark:border-neutral-700 hover:border-secondary-300 dark:hover:border-secondary-600'
+                    "
                   >
                     <!-- Year Badge -->
-                    <div class="flex items-center gap-3 mb-4"
-                         [class.justify-end]="i % 2 === 0"
-                         [class.justify-start]="i % 2 !== 0">
+                    <div
+                      class="flex items-center gap-3 mb-4"
+                      [class.justify-end]="i % 2 === 0"
+                      [class.justify-start]="i % 2 !== 0"
+                    >
                       <div
                         class="year-badge px-4 py-2 rounded-full font-bold text-sm"
-                        [class]="item.isCurrentYear 
-                          ? 'bg-accent-500 text-white shadow-lg' 
-                          : 'bg-secondary-100 dark:bg-secondary-800 text-secondary-700 dark:text-secondary-300'"
+                        [class]="
+                          item.isCurrentYear
+                            ? 'bg-accent-500 text-white shadow-lg'
+                            : 'bg-secondary-100 dark:bg-secondary-800 text-secondary-700 dark:text-secondary-300'
+                        "
                       >
                         {{ item.titleKey ? (item.titleKey | translate) : item.year }}
                       </div>
-                      
+
                       <div *ngIf="item.isCurrentYear" class="flex items-center">
                         <div class="w-2 h-2 bg-accent-500 rounded-full animate-pulse"></div>
-                        <div class="w-2 h-2 bg-accent-400 rounded-full animate-pulse ml-1" style="animation-delay: 0.2s"></div>
-                        <div class="w-2 h-2 bg-accent-300 rounded-full animate-pulse ml-1" style="animation-delay: 0.4s"></div>
+                        <div
+                          class="w-2 h-2 bg-accent-400 rounded-full animate-pulse ml-1"
+                          style="animation-delay: 0.2s"
+                        ></div>
+                        <div
+                          class="w-2 h-2 bg-accent-300 rounded-full animate-pulse ml-1"
+                          style="animation-delay: 0.4s"
+                        ></div>
                       </div>
                     </div>
 
@@ -99,21 +124,32 @@ interface RoadmapYear {
                       <h4 class="font-semibold text-neutral-900 dark:text-neutral-100 text-lg mb-1">
                         {{ item.position | translate }}
                       </h4>
-                      <p *ngIf="item.company" class="text-sm text-neutral-600 dark:text-neutral-400">
-                        {{ item.company.startsWith('roadmap.') ? (item.company | translate) : item.company }}
+                      <p
+                        *ngIf="item.company"
+                        class="text-sm text-neutral-600 dark:text-neutral-400"
+                      >
+                        {{
+                          item.company.startsWith('roadmap.')
+                            ? (item.company | translate)
+                            : item.company
+                        }}
                       </p>
                     </div>
 
                     <!-- Skills -->
-                    <div class="flex flex-wrap gap-2"
-                         [class.justify-end]="i % 2 === 0"
-                         [class.justify-start]="i % 2 !== 0">
+                    <div
+                      class="flex flex-wrap gap-2"
+                      [class.justify-end]="i % 2 === 0"
+                      [class.justify-start]="i % 2 !== 0"
+                    >
                       <span
                         *ngFor="let skillKey of item.skillsKeys"
                         class="skill-tag px-3 py-1 text-xs font-medium rounded-full transition-colors duration-200"
-                        [class]="item.isCurrentYear 
-                          ? 'bg-accent-100 text-accent-800 dark:bg-accent-900/30 dark:text-accent-300 hover:bg-accent-200 dark:hover:bg-accent-800/50' 
-                          : 'bg-primary-100 text-primary-700 dark:bg-primary-800/50 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700/50'"
+                        [class]="
+                          item.isCurrentYear
+                            ? 'bg-accent-100 text-accent-800 dark:bg-accent-900/30 dark:text-accent-300 hover:bg-accent-200 dark:hover:bg-accent-800/50'
+                            : 'bg-primary-100 text-primary-700 dark:bg-primary-800/50 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-700/50'
+                        "
                       >
                         {{ skillKey | translate }}
                       </span>
@@ -125,9 +161,11 @@ interface RoadmapYear {
                 <div class="w-2/12 flex justify-center">
                   <div
                     class="timeline-dot w-6 h-6 rounded-full border-4 transition-all duration-300"
-                    [class]="item.isCurrentYear 
-                      ? 'bg-accent-500 border-white dark:border-primary-900 shadow-lg shadow-accent-500/50 animate-pulse' 
-                      : 'bg-secondary-400 border-white dark:border-primary-900 hover:scale-110'"
+                    [class]="
+                      item.isCurrentYear
+                        ? 'bg-accent-500 border-white dark:border-primary-900 shadow-lg shadow-accent-500/50 animate-pulse'
+                        : 'bg-secondary-400 border-white dark:border-primary-900 hover:scale-110'
+                    "
                   ></div>
                 </div>
 
@@ -142,8 +180,10 @@ interface RoadmapYear {
         <div class="block lg:hidden">
           <div class="relative">
             <!-- Mobile Timeline Line -->
-            <div class="absolute left-6 top-0 w-0.5 h-full bg-gradient-to-b from-secondary-400 via-primary-400 to-accent-400 rounded-full"></div>
-            
+            <div
+              class="absolute left-6 top-0 w-0.5 h-full bg-gradient-to-b from-secondary-400 via-primary-400 to-accent-400 rounded-full"
+            ></div>
+
             <div class="space-y-8">
               <div
                 *ngFor="let item of roadmapData; trackBy: trackByYear; let i = index"
@@ -153,44 +193,65 @@ interface RoadmapYear {
                 <!-- Timeline Dot -->
                 <div
                   class="timeline-dot w-4 h-4 rounded-full border-3 absolute left-4 transition-all duration-300"
-                  [class]="item.isCurrentYear 
-                    ? 'bg-accent-500 border-white dark:border-primary-900 shadow-lg shadow-accent-500/50 animate-pulse' 
-                    : 'bg-secondary-400 border-white dark:border-primary-900'"
+                  [class]="
+                    item.isCurrentYear
+                      ? 'bg-accent-500 border-white dark:border-primary-900 shadow-lg shadow-accent-500/50 animate-pulse'
+                      : 'bg-secondary-400 border-white dark:border-primary-900'
+                  "
                 ></div>
 
                 <!-- Content Card -->
                 <div class="flex-1">
                   <div
                     class="roadmap-card bg-white dark:bg-primary-800 rounded-xl p-4 md:p-6 shadow-lg border transition-all duration-300"
-                    [class]="item.isCurrentYear 
-                      ? 'border-accent-400 dark:border-accent-500 ring-2 ring-accent-200 dark:ring-accent-800' 
-                      : 'border-neutral-200 dark:border-neutral-700'"
+                    [class]="
+                      item.isCurrentYear
+                        ? 'border-accent-400 dark:border-accent-500 ring-2 ring-accent-200 dark:ring-accent-800'
+                        : 'border-neutral-200 dark:border-neutral-700'
+                    "
                   >
                     <!-- Year Badge -->
                     <div class="flex items-center gap-3 mb-3">
                       <div
                         class="year-badge px-3 py-1 rounded-full font-bold text-xs md:text-sm"
-                        [class]="item.isCurrentYear 
-                          ? 'bg-accent-500 text-white shadow-lg' 
-                          : 'bg-secondary-100 dark:bg-secondary-800 text-secondary-700 dark:text-secondary-300'"
+                        [class]="
+                          item.isCurrentYear
+                            ? 'bg-accent-500 text-white shadow-lg'
+                            : 'bg-secondary-100 dark:bg-secondary-800 text-secondary-700 dark:text-secondary-300'
+                        "
                       >
                         {{ item.titleKey ? (item.titleKey | translate) : item.year }}
                       </div>
-                      
+
                       <div *ngIf="item.isCurrentYear" class="flex items-center">
                         <div class="w-1.5 h-1.5 bg-accent-500 rounded-full animate-pulse"></div>
-                        <div class="w-1.5 h-1.5 bg-accent-400 rounded-full animate-pulse ml-1" style="animation-delay: 0.2s"></div>
-                        <div class="w-1.5 h-1.5 bg-accent-300 rounded-full animate-pulse ml-1" style="animation-delay: 0.4s"></div>
+                        <div
+                          class="w-1.5 h-1.5 bg-accent-400 rounded-full animate-pulse ml-1"
+                          style="animation-delay: 0.2s"
+                        ></div>
+                        <div
+                          class="w-1.5 h-1.5 bg-accent-300 rounded-full animate-pulse ml-1"
+                          style="animation-delay: 0.4s"
+                        ></div>
                       </div>
                     </div>
 
                     <!-- Position Info -->
                     <div *ngIf="item.position" class="mb-3">
-                      <h4 class="font-semibold text-neutral-900 dark:text-neutral-100 text-base md:text-lg mb-1">
+                      <h4
+                        class="font-semibold text-neutral-900 dark:text-neutral-100 text-base md:text-lg mb-1"
+                      >
                         {{ item.position | translate }}
                       </h4>
-                      <p *ngIf="item.company" class="text-xs md:text-sm text-neutral-600 dark:text-neutral-400">
-                        {{ item.company.startsWith('roadmap.') ? (item.company | translate) : item.company }}
+                      <p
+                        *ngIf="item.company"
+                        class="text-xs md:text-sm text-neutral-600 dark:text-neutral-400"
+                      >
+                        {{
+                          item.company.startsWith('roadmap.')
+                            ? (item.company | translate)
+                            : item.company
+                        }}
                       </p>
                     </div>
 
@@ -199,9 +260,11 @@ interface RoadmapYear {
                       <span
                         *ngFor="let skillKey of item.skillsKeys"
                         class="skill-tag px-2 py-1 text-xs font-medium rounded-full transition-colors duration-200"
-                        [class]="item.isCurrentYear 
-                          ? 'bg-accent-100 text-accent-800 dark:bg-accent-900/30 dark:text-accent-300' 
-                          : 'bg-primary-100 text-primary-700 dark:bg-primary-800/50 dark:text-primary-300'"
+                        [class]="
+                          item.isCurrentYear
+                            ? 'bg-accent-100 text-accent-800 dark:bg-accent-900/30 dark:text-accent-300'
+                            : 'bg-primary-100 text-primary-700 dark:bg-primary-800/50 dark:text-primary-300'
+                        "
                       >
                         {{ skillKey | translate }}
                       </span>
@@ -215,84 +278,89 @@ interface RoadmapYear {
       </div>
     </section>
   `,
-  styles: [`
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
+  styles: [
+    `
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+
+      .animate-fade-in-up {
+        animation: fadeInUp 0.6s ease forwards;
       }
-    }
-    
-    .animate-fade-in-up {
-      animation: fadeInUp 0.6s ease forwards;
-    }
 
-    .roadmap-card {
-      transition: all 0.3s ease;
-    }
-
-    .roadmap-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
-
-    .timeline-dot {
-      transition: all 0.3s ease;
-    }
-
-    .skill-tag {
-      transition: all 0.2s ease;
-    }
-
-    .skill-tag:hover {
-      transform: scale(1.05);
-    }
-
-    /* Pulse animation for current year indicator */
-    @keyframes pulse-slow {
-      0%, 100% {
-        opacity: 0.3;
-      }
-      50% {
-        opacity: 0.1;
-      }
-    }
-
-    .animate-pulse-slow {
-      animation: pulse-slow 3s ease-in-out infinite;
-    }
-
-    /* Scroll target optimization */
-    #career {
-      scroll-margin-top: 80px;
-    }
-
-    /* Mobile optimizations */
-    @media (max-width: 1023px) {
-      .timeline-dot {
-        margin-top: 0.25rem;
-      }
-      
-      #career {
-        scroll-margin-top: 70px;
-      }
-    }
-
-    /* Touch optimization */
-    @media (max-width: 768px) {
       .roadmap-card {
-        touch-action: manipulation;
+        transition: all 0.3s ease;
       }
-      
+
+      .roadmap-card:hover {
+        transform: translateY(-4px);
+        box-shadow:
+          0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      .timeline-dot {
+        transition: all 0.3s ease;
+      }
+
+      .skill-tag {
+        transition: all 0.2s ease;
+      }
+
+      .skill-tag:hover {
+        transform: scale(1.05);
+      }
+
+      /* Pulse animation for current year indicator */
+      @keyframes pulse-slow {
+        0%,
+        100% {
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 0.1;
+        }
+      }
+
+      .animate-pulse-slow {
+        animation: pulse-slow 3s ease-in-out infinite;
+      }
+
+      /* Scroll target optimization */
       #career {
-        scroll-margin-top: 60px;
+        scroll-margin-top: 80px;
       }
-    }
-  `]
+
+      /* Mobile optimizations */
+      @media (max-width: 1023px) {
+        .timeline-dot {
+          margin-top: 0.25rem;
+        }
+
+        #career {
+          scroll-margin-top: 70px;
+        }
+      }
+
+      /* Touch optimization */
+      @media (max-width: 768px) {
+        .roadmap-card {
+          touch-action: manipulation;
+        }
+
+        #career {
+          scroll-margin-top: 60px;
+        }
+      }
+    `
+  ]
 })
 export class CareerRoadmapComponent {
   @ViewChild('careerSection', { static: true }) careerSection!: ElementRef;
@@ -311,7 +379,7 @@ export class CareerRoadmapComponent {
         'roadmap.workskills.data_analysis',
         'roadmap.workskills.excel',
         'roadmap.workskills.sql_basics',
-        'roadmap.workskills.powerbi',
+        'roadmap.workskills.powerbi'
       ]
     },
     {
@@ -383,7 +451,6 @@ export class CareerRoadmapComponent {
     this.cdr.detectChanges();
   }
 
-
   // Direct scroll to this component - can be called from header
   scrollToCareer(): void {
     if (this.careerSection?.nativeElement) {
@@ -409,7 +476,8 @@ export class CareerRoadmapComponent {
 
   // Private helper methods
   private pulseItem(sectionId: string): void {
-    const el = document.querySelector(`[data-section="${sectionId}"]`) ||
+    const el =
+      document.querySelector(`[data-section="${sectionId}"]`) ||
       document.querySelector(`#${sectionId}`);
     if (!el) return;
 

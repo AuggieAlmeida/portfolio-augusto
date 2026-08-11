@@ -1,13 +1,13 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-    selector: 'app-footer',
-    standalone: true,
-    imports: [CommonModule, TranslateModule],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: `
+  selector: 'app-footer',
+  standalone: true,
+  imports: [CommonModule, TranslateModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
     <footer
       class="relative bg-neutral-100 dark:bg-primary-950 text-neutral-700 dark:text-neutral-200 border-t border-neutral-200 dark:border-neutral-800"
       role="contentinfo"
@@ -24,7 +24,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
           <div class="flex space-x-4 mt-4">
             <a
-              [href]="'https://github.com/' + ( 'footer.social.github_user' | translate )"
+              [href]="'https://github.com/' + ('footer.social.github_user' | translate)"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub Profile"
@@ -34,7 +34,7 @@ import { TranslateModule } from '@ngx-translate/core';
             </a>
 
             <a
-              [href]="'https://www.linkedin.com/in/' + ( 'footer.social.linkedin_user' | translate )"
+              [href]="'https://www.linkedin.com/in/' + ('footer.social.linkedin_user' | translate)"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn Profile"
@@ -87,7 +87,10 @@ import { TranslateModule } from '@ngx-translate/core';
           <ul class="mt-4 space-y-3 text-sm">
             <li class="flex items-center gap-2">
               <i class="fas fa-envelope text-primary-500" aria-hidden="true"></i>
-              <a href="mailto:augusto.almeida2@icloud.com" class="hover:text-primary-500 transition-colors">
+              <a
+                href="mailto:augusto.almeida2@icloud.com"
+                class="hover:text-primary-500 transition-colors"
+              >
                 augusto.almeida2&#64;icloud.com
               </a>
             </li>
@@ -105,10 +108,12 @@ import { TranslateModule } from '@ngx-translate/core';
         </div>
       </div>
 
-      <div class="border-t border-neutral-200 dark:border-neutral-800 text-center py-4 text-sm text-neutral-500 dark:text-neutral-400">
+      <div
+        class="border-t border-neutral-200 dark:border-neutral-800 text-center py-4 text-sm text-neutral-500 dark:text-neutral-400"
+      >
         {{ 'footer.copyright' | translate }}
       </div>
     </footer>
-  `,
+  `
 })
-export class FooterComponent { }
+export class FooterComponent {}

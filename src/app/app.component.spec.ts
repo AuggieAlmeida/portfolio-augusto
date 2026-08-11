@@ -1,55 +1,36 @@
 import { TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
+
 import { AppComponent } from './app.component';
-import { TranslateService, TranslateModule } from '@ngx-translate/core';
-import { NavService } from './core/services/nav.service';
-import { of } from 'rxjs';
-
-// Mock do TranslateService
-class MockTranslateService {
-  readonly currentLang = 'pt'; // Corrigido para usar readonly field
-
-  use() {
-    // Intencionalmente vazio - removido parâmetro não utilizado
-  }
-
-  setDefaultLang() {
-    // Intencionalmente vazio - removido parâmetro não utilizado
-  }
-}
-
-// Mock do NavService
-class MockNavService {
-  active$ = of('hero');
-
-  setActive() {
-    // Intencionalmente vazio - removido parâmetro não utilizado
-  }
-
-  scrollTo() {
-    // Intencionalmente vazio - removido parâmetro não utilizado
-  }
-}
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent, TranslateModule.forRoot()],
-      providers: [
-        { provide: NavService, useClass: MockNavService },
-        { provide: TranslateService, useClass: MockTranslateService }
-      ]
+      imports: [AppComponent, TranslateModule.forRoot()]
     }).compileComponents();
   });
 
-  it('should create the app', () => {
+  it('creates the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('should have the correct initial active section', () => {
+  it('renders every landing section in order', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    fixture.detectChanges();
+
+    const host: HTMLElement = fixture.nativeElement;
+    const sections = Array.from(host.querySelectorAll('main > *')).map((el) =>
+      el.tagName.toLowerCase()
+    );
+
+    expect(sections).toEqual([
+      'app-hero',
+      'app-about',
+      'app-career',
+      'app-projects',
+      'app-skills',
+      'app-footer'
+    ]);
   });
 });

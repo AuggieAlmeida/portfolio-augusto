@@ -1,17 +1,18 @@
-import { ErrorHandler, Injectable, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { ErrorHandler, inject, Injectable } from '@angular/core';
+import * as Sentry from '@sentry/angular';
+
+import { environment } from '../../../environments/environment';
+import { LoggingService } from '../logging/logging.service';
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
-  private router = inject(Router);
+  private readonly logger = inject(LoggingService);
 
-  handleError(error: Error | unknown): void {
-    console.error('Global error caught:', error);
+  handleError(error: unknown): void {
+    this.logger.error('Unhandled error', error);
 
-    // Handle different types of errors
-    if (error instanceof Error) {
-      console.error('Error message:', error.message);
-      console.error('Stack trace:', error.stack);
+    if (environment.sentryDsn) {
+      Sentry.captureException(error);
     }
   }
 }

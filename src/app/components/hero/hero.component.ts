@@ -1,12 +1,13 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  AfterViewInit,
-  OnDestroy,
-  inject,
-} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnDestroy
+} from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+
 import { NavService } from '../../core/services/nav.service';
 
 @Component({
@@ -87,12 +88,8 @@ import { NavService } from '../../core/services/nav.service';
 
           <!-- Main Title -->
           <h1 class="text-6xl md:text-8xl font-bold mb-6 animate-fade-in">
-            <span class="text-neutral-800 dark:text-neutral-100 font-heading"
-              >Augusto</span
-            >
-            <span
-              class="text-primary-600 dark:text-primary-400 font-display text-7xl md:text-9xl"
-            >
+            <span class="text-neutral-800 dark:text-neutral-100 font-heading">Augusto</span>
+            <span class="text-primary-600 dark:text-primary-400 font-display text-7xl md:text-9xl">
               Almeida</span
             >
           </h1>
@@ -110,28 +107,30 @@ import { NavService } from '../../core/services/nav.service';
           <div
             class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-up w-full sm:w-auto"
           >
-            <button 
+            <button
               class="btn-primary group w-full sm:w-auto"
               (click)="navigateToProjects()"
               [attr.aria-label]="'CTA.viewProjects' | translate"
             >
               <span class="flex items-end justify-center gap-2">
-                <i class="fas fa-rocket w-5 h-5"></i>
+                <i aria-hidden="true" class="fas fa-rocket w-5 h-5"></i>
                 {{ 'CTA.viewProjects' | translate }}
                 <i
+                  aria-hidden="true"
                   class="fas fa-arrow-right w-5 h-5 group-hover:translate-x-1 transition-transform"
                 ></i>
               </span>
             </button>
-            <button 
+            <button
               class="btn-secondary group w-full sm:w-auto"
               (click)="navigateToContact()"
               [attr.aria-label]="'CTA.contactMe' | translate"
             >
               <span class="flex items-end justify-center gap-2">
-                <i class="fas fa-envelope w-5 h-5"></i>
+                <i aria-hidden="true" class="fas fa-envelope w-5 h-5"></i>
                 {{ 'CTA.contactMe' | translate }}
                 <i
+                  aria-hidden="true"
                   class="fas fa-arrow-right w-5 h-5 group-hover:translate-x-1 transition-transform"
                 ></i>
               </span>
@@ -139,9 +138,7 @@ import { NavService } from '../../core/services/nav.service';
           </div>
 
           <!-- Stats com contador progressivo -->
-          <div
-            class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto animate-slide-up"
-          >
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto animate-slide-up">
             <div class="text-center group">
               <div
                 class="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2 group-hover:scale-110 transition-transform font-heading stat-number"
@@ -149,9 +146,7 @@ import { NavService } from '../../core/services/nav.service';
               >
                 0+
               </div>
-              <div
-                class="text-neutral-600 dark:text-neutral-400 font-medium font-sans"
-              >
+              <div class="text-neutral-600 dark:text-neutral-400 font-medium font-sans">
                 {{ 'stats.yearsOfExperience' | translate }}
               </div>
             </div>
@@ -162,9 +157,7 @@ import { NavService } from '../../core/services/nav.service';
               >
                 0+
               </div>
-              <div
-                class="text-neutral-600 dark:text-neutral-400 font-medium font-sans"
-              >
+              <div class="text-neutral-600 dark:text-neutral-400 font-medium font-sans">
                 {{ 'stats.completedProjects' | translate }}
               </div>
             </div>
@@ -175,15 +168,12 @@ import { NavService } from '../../core/services/nav.service';
               >
                 0
               </div>
-              <div
-                class="text-neutral-600 dark:text-neutral-400 font-medium font-sans"
-              >
+              <div class="text-neutral-600 dark:text-neutral-400 font-medium font-sans">
                 {{ 'stats.languagesDominated' | translate }}
               </div>
             </div>
           </div>
-
-          </div>
+        </div>
       </div>
 
       <!-- Floating Arrow at Bottom -->
@@ -194,7 +184,7 @@ import { NavService } from '../../core/services/nav.service';
             class="text-neutral-600 dark:text-neutral-400 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50 rounded-full p-2"
             [attr.aria-label]="'navigation.scrollDown' | translate"
           >
-            <i class="fas fa-chevron-down text-3xl animate-float-arrow"></i>
+            <i aria-hidden="true" class="fas fa-chevron-down text-3xl animate-float-arrow"></i>
           </button>
         </div>
       </div>
@@ -336,7 +326,8 @@ import { NavService } from '../../core/services/nav.service';
       }
 
       @keyframes bounce-slow {
-        0%, 100% {
+        0%,
+        100% {
           transform: translateY(0);
         }
         50% {
@@ -345,7 +336,8 @@ import { NavService } from '../../core/services/nav.service';
       }
 
       @keyframes float-arrow {
-        0%, 100% {
+        0%,
+        100% {
           transform: translateY(0);
         }
         50% {
@@ -358,7 +350,7 @@ import { NavService } from '../../core/services/nav.service';
         .animate-bounce-slow {
           animation-duration: 2.5s;
         }
-        
+
         .animate-float-arrow {
           animation-duration: 1.8s;
         }
@@ -419,10 +411,10 @@ import { NavService } from '../../core/services/nav.service';
           font-size: 1rem;
         }
       }
-    `,
+    `
   ],
   standalone: true,
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule]
 })
 export class HeroComponent implements AfterViewInit, OnDestroy {
   private nav = inject(NavService);
@@ -506,7 +498,7 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
       'Tech Enthusiast',
       'QA Analyst',
       'System Architect',
-      'Problem Solver',
+      'Problem Solver'
     ];
 
     let wordIndex = 0;

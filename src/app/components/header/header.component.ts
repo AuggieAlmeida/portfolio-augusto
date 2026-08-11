@@ -1,16 +1,19 @@
+import { CommonModule } from '@angular/common';
 import {
-  Component,
-  inject,
-  OnInit,
-  DestroyRef,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  OnDestroy,
+  Component,
+  DestroyRef,
   HostListener,
+  inject,
+  OnDestroy,
+  OnInit
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslateModule } from '@ngx-translate/core';
+
+import { LocaleService } from '../../core/i18n/locale.service';
+import { isLocale } from '../../core/i18n/locales';
 import { NavService } from '../../core/services/nav.service';
 import { ThemeService } from '../../core/services/theme.service';
 
@@ -23,9 +26,7 @@ import { ThemeService } from '../../core/services/theme.service';
     <header
       class="bg-white dark:bg-primary-950 shadow-md border-b border-primary-100 dark:border-primary-800 transition-all duration-300 sticky top-0 z-50"
     >
-      <nav
-        class="container mx-auto px-4 py-2 flex items-center justify-between"
-      >
+      <nav class="container mx-auto px-4 py-2 flex items-center justify-between">
         <!-- Logo e Menu Hamburguer (Mobile) -->
         <div class="flex items-center justify-between w-full lg:w-auto">
           <!-- Logo -->
@@ -40,7 +41,9 @@ import { ThemeService } from '../../core/services/theme.service';
               src="assets/images/Logo.png"
               alt="logo"
               class="w-12 object-contain rounded-md cursor-pointer animate-pulse-slow hover:animate-float transition-all duration-300"
-              loading="lazy"
+              width="48"
+              height="48"
+              fetchpriority="high"
             />
           </button>
 
@@ -54,18 +57,14 @@ import { ThemeService } from '../../core/services/theme.service';
             [attr.aria-expanded]="isMobileMenuOpen ? 'true' : 'false'"
           >
             <i
-              [class]="
-                isMobileMenuOpen ? 'fas fa-times text-xl' : 'fas fa-bars text-xl'
-              "
+              aria-hidden="true"
+              [class]="isMobileMenuOpen ? 'fas fa-times text-xl' : 'fas fa-bars text-xl'"
             ></i>
           </button>
-
         </div>
 
         <!-- Navegação Desktop -->
-        <div
-          class="nav-scroll-wrapper max-w-[56vw] overflow-x-auto no-scrollbar hidden lg:block"
-        >
+        <div class="nav-scroll-wrapper max-w-[56vw] overflow-x-auto no-scrollbar hidden lg:block">
           <div class="flex items-center gap-3 whitespace-nowrap">
             <button
               class="nav-item"
@@ -75,12 +74,12 @@ import { ThemeService } from '../../core/services/theme.service';
               (keyup.space)="scrollTo('hero')"
               [class.active]="activeSection === 'hero'"
             >
-              <h2
+              <span
                 class="text-sm md:text-base font-medium flex items-center gap-2 text-neutral-700 dark:text-neutral-300 hover:text-primary-600 transition-colors"
               >
-                <i class="fas fa-home text-base animate-pulse-slow"></i>
+                <i aria-hidden="true" class="fas fa-home text-base animate-pulse-slow"></i>
                 {{ 'nav.home' | translate }}
-              </h2>
+              </span>
             </button>
             <button
               class="nav-item"
@@ -90,12 +89,12 @@ import { ThemeService } from '../../core/services/theme.service';
               (keyup.space)="scrollTo('about')"
               [class.active]="activeSection === 'about'"
             >
-              <h2
+              <span
                 class="text-sm md:text-base font-medium flex items-center gap-2 text-neutral-700 dark:text-neutral-300 hover:text-primary-600 transition-colors"
               >
-                <i class="fas fa-user"></i>
+                <i aria-hidden="true" class="fas fa-user"></i>
                 {{ 'nav.about' | translate }}
-              </h2>
+              </span>
             </button>
             <button
               class="nav-item"
@@ -105,12 +104,12 @@ import { ThemeService } from '../../core/services/theme.service';
               (keyup.space)="scrollTo('career')"
               [class.active]="activeSection === 'career'"
             >
-              <h2
+              <span
                 class="text-sm md:text-base font-medium flex items-center gap-2 text-neutral-700 dark:text-neutral-300 hover:text-primary-600 transition-colors"
               >
-                <i class="fas fa-briefcase"></i>
+                <i aria-hidden="true" class="fas fa-briefcase"></i>
                 {{ 'nav.carrer' | translate }}
-              </h2>
+              </span>
             </button>
             <button
               class="nav-item"
@@ -120,12 +119,12 @@ import { ThemeService } from '../../core/services/theme.service';
               (keyup.space)="scrollTo('projects')"
               [class.active]="activeSection === 'projects'"
             >
-              <h2
+              <span
                 class="text-sm md:text-base font-medium flex items-center gap-2 text-neutral-700 dark:text-neutral-300 hover:text-primary-600 transition-colors"
               >
-                <i class="fas fa-folder"></i>
+                <i aria-hidden="true" class="fas fa-folder"></i>
                 {{ 'nav.projects' | translate }}
-              </h2>
+              </span>
             </button>
             <button
               class="nav-item"
@@ -135,12 +134,12 @@ import { ThemeService } from '../../core/services/theme.service';
               (keyup.space)="scrollTo('skills')"
               [class.active]="activeSection === 'skills'"
             >
-              <h2
+              <span
                 class="text-sm md:text-base font-medium flex items-center gap-2 text-neutral-700 dark:text-neutral-300 hover:text-primary-600 transition-colors"
               >
-                <i class="fas fa-bolt"></i>
+                <i aria-hidden="true" class="fas fa-bolt"></i>
                 {{ 'nav.skills' | translate }}
-              </h2>
+              </span>
             </button>
           </div>
         </div>
@@ -150,12 +149,11 @@ import { ThemeService } from '../../core/services/theme.service';
           <select
             [value]="currentLang"
             (change)="switchLang($event)"
+            [attr.aria-label]="'nav.language' | translate"
             class="text-sm px-2 py-2 rounded-lg bg-primary-50 dark:text-neutral-100 dark:bg-primary-900/30 border border-primary-200 dark:border-primary-700 focus:ring-2 focus:ring-primary-500 transition-all"
           >
             <option value="pt">🇧🇷 PT</option>
             <option value="en">🇺🇸 EN</option>
-            <option value="es">🇪🇸 ES</option>
-            <option value="fr">🇫🇷 FR</option>
           </select>
 
           <button
@@ -166,6 +164,7 @@ import { ThemeService } from '../../core/services/theme.service';
             aria-label="Toggle theme"
           >
             <i
+              aria-hidden="true"
               [class]="isDark ? 'fas fa-circle-half-stroke' : 'fas fa-moon'"
             ></i>
           </button>
@@ -177,7 +176,9 @@ import { ThemeService } from '../../core/services/theme.service';
           (keydown)="closeMobileMenu()"
           (keypress)="closeMobileMenu()"
           class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 transition-opacity duration-300 lg:hidden"
-          [class]="isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'"
+          [class]="
+            isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          "
           (click)="closeMobileMenu()"
           aria-label="Fechar menu de overlay"
         ></button>
@@ -190,9 +191,7 @@ import { ThemeService } from '../../core/services/theme.service';
           <div class="p-6 h-full flex flex-col">
             <!-- Cabeçalho do Menu Mobile -->
             <div class="flex items-center justify-between mb-8">
-              <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">
-                Menu
-              </h2>
+              <h2 class="text-xl font-bold text-neutral-900 dark:text-neutral-100">Menu</h2>
               <button
                 class="p-2 rounded-lg text-neutral-700 dark:text-neutral-300 hover:bg-primary-100 dark:hover:bg-primary-800/40 transition-colors"
                 (click)="closeMobileMenu()"
@@ -200,7 +199,7 @@ import { ThemeService } from '../../core/services/theme.service';
                 (keyup.space)="closeMobileMenu()"
                 aria-label="Fechar menu"
               >
-                <i class="fas fa-times text-xl"></i>
+                <i aria-hidden="true" class="fas fa-times text-xl"></i>
               </button>
             </div>
 
@@ -214,7 +213,7 @@ import { ThemeService } from '../../core/services/theme.service';
                     (keyup.enter)="navigateTo('hero')"
                     (keyup.space)="navigateTo('hero')"
                   >
-                    <i class="fas fa-home w-5"></i>
+                    <i aria-hidden="true" class="fas fa-home w-5"></i>
                     {{ 'nav.home' | translate }}
                   </button>
                 </li>
@@ -225,7 +224,7 @@ import { ThemeService } from '../../core/services/theme.service';
                     (keyup.enter)="navigateTo('about')"
                     (keyup.space)="navigateTo('about')"
                   >
-                    <i class="fas fa-user w-5"></i>
+                    <i aria-hidden="true" class="fas fa-user w-5"></i>
                     {{ 'nav.about' | translate }}
                   </button>
                 </li>
@@ -236,7 +235,7 @@ import { ThemeService } from '../../core/services/theme.service';
                     (keyup.enter)="navigateTo('career')"
                     (keyup.space)="navigateTo('career')"
                   >
-                    <i class="fas fa-briefcase w-5"></i>
+                    <i aria-hidden="true" class="fas fa-briefcase w-5"></i>
                     {{ 'nav.carrer' | translate }}
                   </button>
                 </li>
@@ -247,7 +246,7 @@ import { ThemeService } from '../../core/services/theme.service';
                     (keyup.enter)="navigateTo('projects')"
                     (keyup.space)="navigateTo('projects')"
                   >
-                    <i class="fas fa-folder w-5"></i>
+                    <i aria-hidden="true" class="fas fa-folder w-5"></i>
                     {{ 'nav.projects' | translate }}
                   </button>
                 </li>
@@ -258,7 +257,7 @@ import { ThemeService } from '../../core/services/theme.service';
                     (keyup.enter)="navigateTo('skills')"
                     (keyup.space)="navigateTo('skills')"
                   >
-                    <i class="fas fa-bolt w-5"></i>
+                    <i aria-hidden="true" class="fas fa-bolt w-5"></i>
                     {{ 'nav.skills' | translate }}
                   </button>
                 </li>
@@ -268,10 +267,11 @@ import { ThemeService } from '../../core/services/theme.service';
             <!-- Controles Mobile (Idioma e Tema) -->
             <div class="pt-8 border-t border-neutral-200 dark:border-neutral-800 space-y-4">
               <div>
-                <label 
+                <label
                   for="language-select"
-                  class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
-                  {{ 'language' | translate }}
+                  class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2"
+                >
+                  {{ 'nav.language' | translate }}
                 </label>
                 <select
                   id="language-select"
@@ -281,8 +281,6 @@ import { ThemeService } from '../../core/services/theme.service';
                 >
                   <option value="pt">🇧🇷 Português</option>
                   <option value="en">🇺🇸 English</option>
-                  <option value="es">🇪🇸 Español</option>
-                  <option value="fr">🇫🇷 Français</option>
                 </select>
               </div>
 
@@ -292,8 +290,8 @@ import { ThemeService } from '../../core/services/theme.service';
                 (keyup.enter)="toggleTheme()"
                 (keyup.space)="toggleTheme()"
               >
-                <span>{{ 'theme' | translate }}</span>
-                <i [class]="isDark ? 'fas fa-sun' : 'fas fa-moon'"></i>
+                <span>{{ 'nav.theme' | translate }}</span>
+                <i aria-hidden="true" [class]="isDark ? 'fas fa-sun' : 'fas fa-moon'"></i>
               </button>
             </div>
           </div>
@@ -358,38 +356,36 @@ import { ThemeService } from '../../core/services/theme.service';
           max-width: 42vw;
         }
       }
-    `,
-  ],
+    `
+  ]
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  private translate = inject(TranslateService);
+  private locale = inject(LocaleService);
   private nav = inject(NavService);
   private theme = inject(ThemeService);
   private destroyRef = inject(DestroyRef);
   private cdr = inject(ChangeDetectorRef);
 
   activeSection = 'hero';
-  currentLang = this.translate.currentLang || 'pt';
+  currentLang = this.locale.current;
   isDark = this.theme.getCurrentTheme() === 'dark';
   isMobileMenuOpen = false;
 
   ngOnInit() {
-    this.translate.setDefaultLang(this.currentLang);
-    this.translate.use(this.currentLang);
+    this.locale.locale$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((l) => {
+      this.currentLang = l;
+      this.cdr.markForCheck();
+    });
 
-    this.nav.active$
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((s) => {
-        this.activeSection = s;
-        this.cdr.markForCheck();
-      });
+    this.nav.active$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((s) => {
+      this.activeSection = s;
+      this.cdr.markForCheck();
+    });
 
-    this.theme.theme$
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((t) => {
-        this.isDark = t === 'dark';
-        this.cdr.markForCheck();
-      });
+    this.theme.theme$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((t) => {
+      this.isDark = t === 'dark';
+      this.cdr.markForCheck();
+    });
 
     window.addEventListener('scroll', this.onScroll, { passive: true });
   }
@@ -409,12 +405,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   toggleMobileMenu() {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
     // Previne scroll do body quando menu está aberto
-    document.body.style.overflow = this.isMobileMenuOpen ? 'hidden' : 'auto';
+    document.body.style.overflow = this.isMobileMenuOpen ? 'hidden' : '';
   }
 
   closeMobileMenu() {
     this.isMobileMenuOpen = false;
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = '';
   }
 
   navigateTo(section: string) {
@@ -423,13 +419,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   switchLang(e: Event) {
-    const target = e.target as HTMLSelectElement;
-    if (target) {
-      const v = target.value;
-      this.currentLang = v;
-      this.translate.use(v);
-      document.documentElement.lang = v;
-      this.cdr.markForCheck();
+    const value = (e.target as HTMLSelectElement | null)?.value;
+    if (isLocale(value)) {
+      this.locale.set(value);
     }
   }
 
