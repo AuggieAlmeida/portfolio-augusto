@@ -234,7 +234,7 @@
       },
       "kitbuilder": {
         "title": "KitBuilder / S.A.G.A.",
-        "description": "Electronic parts inventory control in a layered architecture, with repositories, versioned migrations, spreadsheet import and a test suite."
+        "description": "Electronic parts inventory control in a layered architecture, with repositories, versioned migrations, spreadsheet import and a test suite. Final project for the Multiplatform Software Development degree at Fatec Mauá, published in the Centro Paula Souza institutional repository."
       },
       "youtcatcher": {
         "title": "YoutCatcher",
@@ -343,7 +343,8 @@
       "sports": "Sports"
     },
     "viewDemo": "View demo",
-    "viewCode": "View code"
+    "viewCode": "View code",
+    "viewPaper": "View publication"
   },
   "project": {
     "viewDemo": "View Demo",

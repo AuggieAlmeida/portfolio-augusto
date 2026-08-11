@@ -21,6 +21,9 @@ interface ProjectItem {
   technologies: string[];
   demoUrl?: string;
   githubUrl?: string;
+  /** Publicação acadêmica do projeto — não é demo nem repositório, e rotular
+   *  como um dos dois enganaria quem clica. */
+  paperUrl?: string;
 }
 
 interface ProjectsData {
@@ -204,6 +207,20 @@ interface ProjectsData {
                             >
                               <i aria-hidden="true" class="fab fa-github text-xs"></i>
                             </button>
+                            <button
+                              *ngIf="project.paperUrl"
+                              class="w-8 h-8 bg-white/90 hover:bg-white text-neutral-800 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                              (click)="$event.stopPropagation(); openUrl(project.paperUrl!)"
+                              (keyup.enter)="$event.stopPropagation(); openUrl(project.paperUrl!)"
+                              (keyup.space)="$event.stopPropagation(); openUrl(project.paperUrl!)"
+                              [title]="'projects.viewPaper' | translate"
+                              [attr.aria-label]="
+                                'View publication for ' + (project.titleKey | translate)
+                              "
+                              tabindex="0"
+                            >
+                              <i aria-hidden="true" class="fas fa-graduation-cap text-xs"></i>
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -369,6 +386,20 @@ interface ProjectsData {
                               tabindex="0"
                             >
                               <i aria-hidden="true" class="fab fa-github text-xs"></i>
+                            </button>
+                            <button
+                              *ngIf="project.paperUrl"
+                              class="w-8 h-8 bg-white/90 hover:bg-white text-neutral-800 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                              (click)="$event.stopPropagation(); openUrl(project.paperUrl!)"
+                              (keyup.enter)="$event.stopPropagation(); openUrl(project.paperUrl!)"
+                              (keyup.space)="$event.stopPropagation(); openUrl(project.paperUrl!)"
+                              [title]="'projects.viewPaper' | translate"
+                              [attr.aria-label]="
+                                'View publication for ' + (project.titleKey | translate)
+                              "
+                              tabindex="0"
+                            >
+                              <i aria-hidden="true" class="fas fa-graduation-cap text-xs"></i>
                             </button>
                           </div>
                         </div>
@@ -654,6 +685,8 @@ export class ProjectsComponent {
       this.openUrl(project.demoUrl);
     } else if (project.githubUrl) {
       this.openUrl(project.githubUrl);
+    } else if (project.paperUrl) {
+      this.openUrl(project.paperUrl);
     }
   }
 

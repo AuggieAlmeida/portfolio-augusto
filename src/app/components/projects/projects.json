@@ -115,7 +115,8 @@
       "category": "commercial",
       "tagsKeys": ["projects.tags.management", "projects.tags.platform", "projects.tags.sports"],
       "technologies": ["Angular", "C#", "Azure", "SQL Server", "Jest"],
-      "demoUrl": "https://green-hill-00d55160f.2.azurestaticapps.net/"
+      "demoUrl": "https://green-hill-00d55160f.2.azurestaticapps.net/",
+      "image": "./assets/images/projects/asurapadel.jpg"
     },
     {
       "id": "portalaz",
@@ -200,7 +201,9 @@
       "descriptionKey": "projects.items.pasta_la_vista.description",
       "category": "study",
       "tagsKeys": ["projects.tags.mobile", "projects.tags.food", "projects.tags.ecommerce"],
-      "technologies": ["React Native", "Expo", "Express", "TypeScript", "Stripe"]
+      "technologies": ["React Native", "Expo", "Express", "TypeScript", "Stripe"],
+      "image": "./assets/images/projects/pasta-la-vista.jpg",
+      "demoUrl": "https://pasta-la-vista-mobile--8b9d3o7ps5.expo.app/"
     },
     {
       "id": "buscajogos",
@@ -215,8 +218,9 @@
       "titleKey": "projects.items.kitbuilder.title",
       "descriptionKey": "projects.items.kitbuilder.description",
       "category": "study",
-      "tagsKeys": ["projects.tags.desktop", "projects.tags.management", "projects.tags.automation"],
-      "technologies": ["Python", "pytest", "Alembic", "Docker"]
+      "tagsKeys": ["projects.tags.desktop", "projects.tags.management", "projects.tags.academic"],
+      "technologies": ["Python", "pytest", "Alembic", "Docker"],
+      "paperUrl": "https://ric.cps.sp.gov.br/handle/123456789/46429"
     },
     {
       "id": "youtcatcher",
@@ -276,7 +280,8 @@
       "descriptionKey": "projects.items.zoologic.description",
       "category": "study",
       "tagsKeys": ["projects.tags.platform", "projects.tags.management", "projects.tags.academic"],
-      "technologies": ["PHP 8", "Next.js", "MySQL", "PHPUnit"]
+      "technologies": ["PHP 8", "Next.js", "MySQL", "PHPUnit"],
+      "image": "./assets/images/projects/zoologic.jpg"
     },
     {
       "id": "repo-explorer-angular",

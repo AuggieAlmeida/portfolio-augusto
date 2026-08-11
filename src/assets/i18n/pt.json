@@ -288,7 +288,7 @@
       },
       "kitbuilder": {
         "title": "KitBuilder / S.A.G.A.",
-        "description": "Controle de estoque de peças eletrônicas em arquitetura por camadas, com repositórios, migrations versionadas, importação de planilha e suíte de testes."
+        "description": "Controle de estoque de peças eletrônicas em arquitetura por camadas, com repositórios, migrations versionadas, importação de planilha e suíte de testes. Entrega de conclusão do curso de Desenvolvimento de Software Multiplataforma na Fatec Mauá, publicada no repositório institucional do Centro Paula Souza."
       },
       "youtcatcher": {
         "title": "YoutCatcher",
@@ -397,7 +397,8 @@
       "sports": "Esporte"
     },
     "viewDemo": "Ver demo",
-    "viewCode": "Ver código"
+    "viewCode": "Ver código",
+    "viewPaper": "Ver publicação"
   },
   "project": {
     "viewDemo": "Ver Demo",
