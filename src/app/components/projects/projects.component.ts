@@ -77,7 +77,7 @@ interface ProjectsData {
                 class="text-xl md:text-2xl font-semibold text-neutral-800 dark:text-neutral-100 flex items-center gap-3"
               >
                 <div
-                  class="w-8 h-8 md:w-10 md:h-10 bg-green-500 rounded-lg flex items-center justify-center"
+                  class="w-8 h-8 md:w-10 md:h-10 bg-primary-500 rounded-lg flex items-center justify-center"
                 >
                   <i
                     aria-hidden="true"
@@ -144,7 +144,7 @@ interface ProjectsData {
                     role="button"
                   >
                     <div
-                      class="project-card-inner bg-white dark:bg-primary-800 rounded-xl shadow-lg overflow-hidden border border-neutral-200 dark:border-neutral-700 transition-all duration-300 hover:shadow-2xl hover:scale-105 cursor-pointer h-full group focus:outline-none focus:ring-2 focus:ring-green-500"
+                      class="project-card-inner bg-white dark:bg-primary-800 rounded-xl shadow-lg overflow-hidden border border-neutral-200 dark:border-neutral-700 transition-all duration-300 hover:shadow-2xl hover:scale-105 cursor-pointer h-full group focus:outline-none focus:ring-2 focus:ring-primary-500"
                     >
                       <div class="relative overflow-hidden">
                         <img
@@ -158,7 +158,7 @@ interface ProjectsData {
                         ></div>
                         <div class="absolute top-3 left-3">
                           <div
-                            class="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1 shadow-lg"
+                            class="bg-primary-500 text-white px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1 shadow-lg"
                           >
                             <i aria-hidden="true" class="fas fa-dollar-sign text-xs"></i>
                             {{ 'projects.commercial.badge' | translate }}
@@ -170,7 +170,7 @@ interface ProjectsData {
                           <div class="flex gap-2">
                             <button
                               *ngIf="project.demoUrl"
-                              class="w-8 h-8 bg-white/90 hover:bg-white text-neutral-800 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-green-500"
+                              class="w-8 h-8 bg-white/90 hover:bg-white text-neutral-800 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary-500"
                               (click)="$event.stopPropagation(); openUrl(project.demoUrl!)"
                               (keyup.enter)="$event.stopPropagation(); openUrl(project.demoUrl!)"
                               (keyup.space)="$event.stopPropagation(); openUrl(project.demoUrl!)"
@@ -182,7 +182,7 @@ interface ProjectsData {
                             </button>
                             <button
                               *ngIf="project.githubUrl"
-                              class="w-8 h-8 bg-white/90 hover:bg-white text-neutral-800 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-green-500"
+                              class="w-8 h-8 bg-white/90 hover:bg-white text-neutral-800 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary-500"
                               (click)="$event.stopPropagation(); openUrl(project.githubUrl!)"
                               (keyup.enter)="$event.stopPropagation(); openUrl(project.githubUrl!)"
                               (keyup.space)="$event.stopPropagation(); openUrl(project.githubUrl!)"
@@ -209,7 +209,7 @@ interface ProjectsData {
                         <div class="flex flex-wrap gap-2">
                           <span
                             *ngFor="let tech of project.technologies.slice(0, 4)"
-                            class="px-2 py-1 bg-neutral-100 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 text-xs rounded-md font-medium transition-colors duration-200 hover:bg-green-100 hover:text-green-800 dark:hover:bg-green-900/30 dark:hover:text-green-400"
+                            class="px-2 py-1 bg-neutral-100 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 text-xs rounded-md font-medium transition-colors duration-200 hover:bg-primary-100 hover:text-primary-800 dark:hover:bg-primary-900/30 dark:hover:text-primary-400"
                           >
                             {{ tech }}
                           </span>
@@ -235,7 +235,7 @@ interface ProjectsData {
                 class="text-xl md:text-2xl font-semibold text-neutral-800 dark:text-neutral-100 flex items-center gap-3"
               >
                 <div
-                  class="w-8 h-8 md:w-10 md:h-10 bg-green-500 rounded-lg flex items-center justify-center"
+                  class="w-8 h-8 md:w-10 md:h-10 bg-primary-500 rounded-lg flex items-center justify-center"
                 >
                   <i
                     aria-hidden="true"
@@ -312,7 +312,7 @@ interface ProjectsData {
                         ></div>
                         <div class="absolute top-3 left-3">
                           <div
-                            class="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1 shadow-lg"
+                            class="bg-primary-500 text-white px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1 shadow-lg"
                           >
                             <i aria-hidden="true" class="fas fa-book text-xs"></i>
                             {{ 'projects.study.badge' | translate }}

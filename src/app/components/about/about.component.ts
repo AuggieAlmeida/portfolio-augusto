@@ -161,9 +161,11 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
                 </div>
 
                 <div
-                  class="contact-item flex items-center gap-3 p-3 rounded-lg bg-green-50 dark:bg-secondary-900/30 border border-green-200 dark:border-green-700"
+                  class="contact-item flex items-center gap-3 p-3 rounded-lg bg-primary-50 dark:bg-secondary-900/30 border border-primary-200 dark:border-primary-700"
                 >
-                  <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+                  <div
+                    class="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center"
+                  >
                     <i aria-hidden="true" class="fab fa-whatsapp text-white text-sm"></i>
                   </div>
                   <div>
@@ -172,7 +174,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
                       href="https://wa.me/5511916047732"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="text-green-600 dark:text-green-400 hover:underline font-medium"
+                      class="text-primary-600 dark:text-primary-400 hover:underline font-medium"
                     >
                       +55 (11) 91604-7732
                     </a>

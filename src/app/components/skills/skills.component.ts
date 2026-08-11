@@ -377,7 +377,7 @@ export class SkillsComponent {
 
     switch (level) {
       case 'native':
-        return `${baseClasses} bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400`;
+        return `${baseClasses} bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-400`;
       case 'advanced':
         return `${baseClasses} bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400`;
       case 'intermediate':
