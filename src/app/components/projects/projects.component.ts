@@ -148,11 +148,23 @@ interface ProjectsData {
                     >
                       <div class="relative overflow-hidden">
                         <img
+                          *ngIf="project.image"
                           [src]="project.image"
                           [alt]="project.titleKey | translate"
                           class="project-image w-full h-48 md:h-56 object-cover transition-transform duration-500"
                           loading="lazy"
                         />
+                        <div
+                          *ngIf="!project.image"
+                          class="project-image w-full h-48 md:h-56 flex items-center justify-center bg-gradient-primary transition-transform duration-500"
+                          aria-hidden="true"
+                        >
+                          <span
+                            class="font-heading text-5xl font-bold text-white/90 tracking-widest"
+                          >
+                            {{ initials(project) }}
+                          </span>
+                        </div>
                         <div
                           class="project-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300"
                         ></div>
@@ -298,15 +310,27 @@ interface ProjectsData {
                     role="button"
                   >
                     <div
-                      class="project-card-inner bg-white dark:bg-primary-800 rounded-xl shadow-lg overflow-hidden border border-neutral-200 dark:border-neutral-700 transition-all duration-300 hover:shadow-2xl hover:scale-105 cursor-pointer h-full group focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      class="project-card-inner bg-white dark:bg-primary-800 rounded-xl shadow-lg overflow-hidden border border-neutral-200 dark:border-neutral-700 transition-all duration-300 hover:shadow-2xl hover:scale-105 cursor-pointer h-full group focus:outline-none focus:ring-2 focus:ring-primary-500"
                     >
                       <div class="relative overflow-hidden">
                         <img
+                          *ngIf="project.image"
                           [src]="project.image"
                           [alt]="project.titleKey | translate"
                           class="project-image w-full h-48 md:h-56 object-cover transition-transform duration-500"
                           loading="lazy"
                         />
+                        <div
+                          *ngIf="!project.image"
+                          class="project-image w-full h-48 md:h-56 flex items-center justify-center bg-gradient-primary transition-transform duration-500"
+                          aria-hidden="true"
+                        >
+                          <span
+                            class="font-heading text-5xl font-bold text-white/90 tracking-widest"
+                          >
+                            {{ initials(project) }}
+                          </span>
+                        </div>
                         <div
                           class="project-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300"
                         ></div>
@@ -324,7 +348,7 @@ interface ProjectsData {
                           <div class="flex gap-2">
                             <button
                               *ngIf="project.demoUrl"
-                              class="w-8 h-8 bg-white/90 hover:bg-white text-neutral-800 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                              class="w-8 h-8 bg-white/90 hover:bg-white text-neutral-800 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary-500"
                               (click)="$event.stopPropagation(); openUrl(project.demoUrl!)"
                               (keyup.enter)="$event.stopPropagation(); openUrl(project.demoUrl!)"
                               (keyup.space)="$event.stopPropagation(); openUrl(project.demoUrl!)"
@@ -336,7 +360,7 @@ interface ProjectsData {
                             </button>
                             <button
                               *ngIf="project.githubUrl"
-                              class="w-8 h-8 bg-white/90 hover:bg-white text-neutral-800 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                              class="w-8 h-8 bg-white/90 hover:bg-white text-neutral-800 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary-500"
                               (click)="$event.stopPropagation(); openUrl(project.githubUrl!)"
                               (keyup.enter)="$event.stopPropagation(); openUrl(project.githubUrl!)"
                               (keyup.space)="$event.stopPropagation(); openUrl(project.githubUrl!)"
@@ -601,6 +625,22 @@ export class ProjectsComponent {
     const cardWidth = 400; // Base card width
     const gap = 16; // Gap between cards
     return cardWidth * itemCount + gap * (itemCount - 1);
+  }
+
+  // Iniciais do titulo traduzido, para o card sem screenshot.
+  initials(project: ProjectItem): string {
+    const words = this.translate
+      .instant(project.titleKey)
+      .split(/[\s+/]+/)
+      .filter((word: string) => /[a-zA-Z0-9]/.test(word));
+
+    // Titulo de uma palavra so renderiza duas letras; duas ou mais, uma de cada.
+    return words.length === 1
+      ? words[0].slice(0, 2).toUpperCase()
+      : words
+          .slice(0, 2)
+          .map((word: string) => word[0].toUpperCase())
+          .join('');
   }
 
   // Get stagger delay for animations

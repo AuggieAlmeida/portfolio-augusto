@@ -116,7 +116,23 @@
       "swagger": "API documentation and specification with Swagger/OpenAPI.",
       "tailwind": "Utility-first CSS framework for fast, responsive development.",
       "websockets": "Real-time bidirectional communication with WebSockets.",
-      "windows": "Windows for desktop and server development."
+      "windows": "Windows for desktop and server development.",
+      "nextjs": "Production React framework with server rendering and file-based routing.",
+      "vue": "Progressive framework for reactive interfaces.",
+      "reactnative": "Native mobile apps from a shared codebase.",
+      "nestjs": "Modular Node.js framework with dependency injection and an opinionated structure.",
+      "prisma": "Typed ORM with a declarative schema and versioned migrations.",
+      "go": "Compiled language for concurrent, high-throughput services.",
+      "django": "Full-stack Python framework with a built-in ORM and admin.",
+      "redis": "In-memory store for caching, sessions and queues.",
+      "supabase": "Managed backend over Postgres, with auth, storage and edge functions.",
+      "kafka": "Event streaming platform for asynchronous integration.",
+      "zod": "TypeScript schema validation, applied at the system boundary.",
+      "vercel": "Hosting and continuous deployment for web applications.",
+      "turborepo": "Monorepo build system with task caching.",
+      "vitest": "Fast test runner for TypeScript projects.",
+      "monorepo": "Several packages in one repository, with explicit dependencies between them.",
+      "n8n": "Workflow automation and service integration over webhooks."
     }
   },
   "languages": {
@@ -135,8 +151,8 @@
       "badge": "Commercial"
     },
     "study": {
-      "title": "Study Projects",
-      "badge": "Study"
+      "title": "Own Projects",
+      "badge": "Own"
     },
     "projectsCount": "projects",
     "items": {
@@ -179,6 +195,58 @@
       "dnd_guide": {
         "title": "Augury Guide for D&D 5e",
         "description": "An interactive guide for the Augury spell in Dungeons & Dragons 5th Edition, explaining its use, interpretation and strategic applications in the game."
+      },
+      "taskforge": {
+        "title": "TaskForge",
+        "description": "Parallel agent orchestrator. Turns a request into a task graph, isolates each task in its own worktree and runs them in waves, with human review and merge at the end. Cut 70% to 90% of the engineering LLM bill."
+      },
+      "stechclub": {
+        "title": "StechClub",
+        "description": "End-to-end mentoring platform: public area, auth, learning tracks, video courses, application quiz and admin panel. NestJS API with Prisma and Swagger, video storage on S3 and automated candidate replies."
+      },
+      "omegahub": {
+        "title": "OmegaHub",
+        "description": "Gaming platform in a TypeScript monorepo. Next.js frontend and NestJS backend, with social login, payments, BullMQ queues and storage split across PostgreSQL, MongoDB and Redis."
+      },
+      "pronto": {
+        "title": "Pronto",
+        "description": "Urgent-services marketplace with geo-matching. PWA and mobile app over a NestJS API, using PostGIS for proximity search and pg-boss queues for anything that must not block a request."
+      },
+      "tecnurg": {
+        "title": "Tecnurg",
+        "description": "Two-sided marketplace architecture for urgent services: race-to-accept, Clean Architecture in Go, Kafka events, offline-first technician app and distributed tracing. Data protection handled from the modelling stage."
+      },
+      "brechoapp": {
+        "title": "Brechó App",
+        "description": "Peer-to-peer thrift marketplace for mobile, with card and instant-transfer payments, queue-based stock sync and PII masking applied from the first data model."
+      },
+      "barbearia_app": {
+        "title": "Barbershop App",
+        "description": "Discovery and booking PWA for barbershops, with map, live schedule and separate owner and customer roles. Double-booking is prevented by a database constraint rather than an application check."
+      },
+      "pasta_la_vista": {
+        "title": "Pasta la Vista",
+        "description": "Delivery app with menu, cart, orders and payment. Clean Architecture on the backend, with storage split across PostgreSQL, MongoDB and Redis according to data shape."
+      },
+      "buscajogos": {
+        "title": "BuscaJogos+",
+        "description": "Final-year project: a price comparison tool for digital games, with wishlist and sale alerts. Database, Go API and frontend split into containers, built from real user problem research."
+      },
+      "kitbuilder": {
+        "title": "KitBuilder / S.A.G.A.",
+        "description": "Electronic parts inventory control in a layered architecture, with repositories, versioned migrations, spreadsheet import and a test suite."
+      },
+      "youtcatcher": {
+        "title": "YoutCatcher",
+        "description": "Desktop video downloader with a GUI, persistent history and strict MVC. Over 80% test coverage and structured logging, in a project that could have been a throwaway script."
+      },
+      "sudoku_solver": {
+        "title": "Sudoku Solver",
+        "description": "Solves a Sudoku from a photo: image pre-processing, grid detection, digit OCR, a backtracking solver in C and the answer overlaid back onto the original picture."
+      },
+      "portfolio_suite": {
+        "title": "Portfolio Suite",
+        "description": "The successor to this site: a monorepo with its own API acting as CMS, an admin panel and two frontend experiences consuming a single content schema."
       }
     },
     "tags": {
@@ -204,7 +272,15 @@
       "food": "Food",
       "dental": "Dental",
       "ecommerce": "E-commerce",
-      "landing_page": "Landing page"
+      "landing_page": "Landing page",
+      "ai": "AI",
+      "game": "Gaming",
+      "monorepo": "Monorepo",
+      "marketplace": "Marketplace",
+      "mobile": "Mobile",
+      "pwa": "PWA",
+      "academic": "Academic",
+      "computer_vision": "Computer vision"
     },
     "viewDemo": "View demo",
     "viewCode": "View code"

@@ -5,8 +5,16 @@
       "label": "Frontend",
       "icon": "fas fa-laptop-code",
       "items": [
-        { "name": "HTML5", "icon": "fab fa-html5", "descriptionKey": "skills.descriptions.html5" },
-        { "name": "CSS3", "icon": "fab fa-css3-alt", "descriptionKey": "skills.descriptions.css3" },
+        {
+          "name": "HTML5",
+          "icon": "fab fa-html5",
+          "descriptionKey": "skills.descriptions.html5"
+        },
+        {
+          "name": "CSS3",
+          "icon": "fab fa-css3-alt",
+          "descriptionKey": "skills.descriptions.css3"
+        },
         {
           "name": "Tailwind",
           "icon": "fas fa-paint-brush",
@@ -27,7 +35,26 @@
           "icon": "fab fa-angular",
           "descriptionKey": "skills.descriptions.angular"
         },
-        { "name": "React", "icon": "fab fa-react", "descriptionKey": "skills.descriptions.react" }
+        {
+          "name": "React",
+          "icon": "fab fa-react",
+          "descriptionKey": "skills.descriptions.react"
+        },
+        {
+          "name": "Next.js",
+          "icon": "fas fa-layer-group",
+          "descriptionKey": "skills.descriptions.nextjs"
+        },
+        {
+          "name": "Vue",
+          "icon": "fab fa-vuejs",
+          "descriptionKey": "skills.descriptions.vue"
+        },
+        {
+          "name": "React Native",
+          "icon": "fab fa-react",
+          "descriptionKey": "skills.descriptions.reactnative"
+        }
       ]
     },
     {
@@ -45,11 +72,35 @@
           "icon": "fas fa-server",
           "descriptionKey": "skills.descriptions.express"
         },
-        { "name": "Java", "icon": "fab fa-java", "descriptionKey": "skills.descriptions.java" },
+        {
+          "name": "Java",
+          "icon": "fab fa-java",
+          "descriptionKey": "skills.descriptions.java"
+        },
         {
           "name": "Spring Boot",
           "icon": "fas fa-leaf",
           "descriptionKey": "skills.descriptions.springboot"
+        },
+        {
+          "name": "NestJS",
+          "icon": "fas fa-server",
+          "descriptionKey": "skills.descriptions.nestjs"
+        },
+        {
+          "name": "Prisma",
+          "icon": "fas fa-database",
+          "descriptionKey": "skills.descriptions.prisma"
+        },
+        {
+          "name": "Go",
+          "icon": "fab fa-golang",
+          "descriptionKey": "skills.descriptions.go"
+        },
+        {
+          "name": "Django",
+          "icon": "fab fa-python",
+          "descriptionKey": "skills.descriptions.django"
         }
       ]
     },
@@ -77,6 +128,16 @@
           "name": "MongoDB",
           "icon": "fas fa-leaf",
           "descriptionKey": "skills.descriptions.mongodb"
+        },
+        {
+          "name": "Redis",
+          "icon": "fas fa-bolt",
+          "descriptionKey": "skills.descriptions.redis"
+        },
+        {
+          "name": "Supabase",
+          "icon": "fas fa-database",
+          "descriptionKey": "skills.descriptions.supabase"
         }
       ]
     },
@@ -105,7 +166,11 @@
           "icon": "fas fa-wifi",
           "descriptionKey": "skills.descriptions.websockets"
         },
-        { "name": "gRPC", "icon": "fas fa-bolt", "descriptionKey": "skills.descriptions.grpc" },
+        {
+          "name": "gRPC",
+          "icon": "fas fa-bolt",
+          "descriptionKey": "skills.descriptions.grpc"
+        },
         {
           "name": "Postman",
           "icon": "fas fa-paper-plane",
@@ -115,6 +180,16 @@
           "name": "Swagger",
           "icon": "fas fa-file-alt",
           "descriptionKey": "skills.descriptions.swagger"
+        },
+        {
+          "name": "Kafka",
+          "icon": "fas fa-right-left",
+          "descriptionKey": "skills.descriptions.kafka"
+        },
+        {
+          "name": "Zod",
+          "icon": "fas fa-shield-halved",
+          "descriptionKey": "skills.descriptions.zod"
         }
       ]
     },
@@ -128,7 +203,11 @@
           "icon": "fab fa-docker",
           "descriptionKey": "skills.descriptions.docker"
         },
-        { "name": "Git", "icon": "fab fa-git-alt", "descriptionKey": "skills.descriptions.git" },
+        {
+          "name": "Git",
+          "icon": "fab fa-git-alt",
+          "descriptionKey": "skills.descriptions.git"
+        },
         {
           "name": "GitHub Actions",
           "icon": "fab fa-github",
@@ -143,6 +222,16 @@
           "name": "Monitoring",
           "icon": "fas fa-chart-line",
           "descriptionKey": "skills.descriptions.monitoring"
+        },
+        {
+          "name": "Vercel",
+          "icon": "fas fa-cloud-arrow-up",
+          "descriptionKey": "skills.descriptions.vercel"
+        },
+        {
+          "name": "Turborepo",
+          "icon": "fas fa-cubes",
+          "descriptionKey": "skills.descriptions.turborepo"
         }
       ]
     },
@@ -151,8 +240,16 @@
       "label": "Testes",
       "icon": "fas fa-vial",
       "items": [
-        { "name": "JUnit", "icon": "fas fa-vial", "descriptionKey": "skills.descriptions.junit" },
-        { "name": "Pytest", "icon": "fas fa-vial", "descriptionKey": "skills.descriptions.pytest" },
+        {
+          "name": "JUnit",
+          "icon": "fas fa-vial",
+          "descriptionKey": "skills.descriptions.junit"
+        },
+        {
+          "name": "Pytest",
+          "icon": "fas fa-vial",
+          "descriptionKey": "skills.descriptions.pytest"
+        },
         {
           "name": "Jest",
           "icon": "fas fa-microscope",
@@ -172,6 +269,11 @@
           "name": "Playwright",
           "icon": "fas fa-bolt",
           "descriptionKey": "skills.descriptions.playwright"
+        },
+        {
+          "name": "Vitest",
+          "icon": "fas fa-vial",
+          "descriptionKey": "skills.descriptions.vitest"
         }
       ]
     },
@@ -200,11 +302,20 @@
           "icon": "fas fa-network-wired",
           "descriptionKey": "skills.descriptions.microservices"
         },
-        { "name": "TDD", "icon": "fas fa-flask", "descriptionKey": "skills.descriptions.tdd" },
+        {
+          "name": "TDD",
+          "icon": "fas fa-flask",
+          "descriptionKey": "skills.descriptions.tdd"
+        },
         {
           "name": "Event-driven",
           "icon": "fas fa-stream",
           "descriptionKey": "skills.descriptions.event"
+        },
+        {
+          "name": "Monorepo",
+          "icon": "fas fa-code-branch",
+          "descriptionKey": "skills.descriptions.monorepo"
         }
       ]
     },
@@ -213,7 +324,11 @@
       "label": "Automação & Dados",
       "icon": "fas fa-robot",
       "items": [
-        { "name": "VBA", "icon": "fas fa-file-excel", "descriptionKey": "skills.descriptions.vba" },
+        {
+          "name": "VBA",
+          "icon": "fas fa-file-excel",
+          "descriptionKey": "skills.descriptions.vba"
+        },
         {
           "name": "Python scripting",
           "icon": "fab fa-python",
@@ -238,6 +353,11 @@
           "name": "Splunk",
           "icon": "fas fa-search",
           "descriptionKey": "skills.descriptions.splunk"
+        },
+        {
+          "name": "n8n",
+          "icon": "fas fa-diagram-project",
+          "descriptionKey": "skills.descriptions.n8n"
         }
       ]
     },
@@ -251,15 +371,38 @@
           "icon": "fab fa-windows",
           "descriptionKey": "skills.descriptions.windows"
         },
-        { "name": "Linux", "icon": "fab fa-linux", "descriptionKey": "skills.descriptions.linux" },
-        { "name": "MacOS", "icon": "fab fa-apple", "descriptionKey": "skills.descriptions.macos" }
+        {
+          "name": "Linux",
+          "icon": "fab fa-linux",
+          "descriptionKey": "skills.descriptions.linux"
+        },
+        {
+          "name": "MacOS",
+          "icon": "fab fa-apple",
+          "descriptionKey": "skills.descriptions.macos"
+        }
       ]
     }
   ],
   "languages": [
-    { "nameKey": "languages.portuguese", "level": "native" },
-    { "nameKey": "languages.english", "level": "advanced" },
-    { "nameKey": "languages.french", "level": "intermediate" },
-    { "nameKey": "languages.spanish", "level": "basic" }
+    {
+      "nameKey": "languages.portuguese",
+      "level": "native"
+    },
+    {
+      "nameKey": "languages.english",
+      "level": "advanced",
+      "cefr": "C1"
+    },
+    {
+      "nameKey": "languages.french",
+      "level": "intermediate",
+      "cefr": "B1"
+    },
+    {
+      "nameKey": "languages.spanish",
+      "level": "basic",
+      "cefr": "A1"
+    }
   ]
 }

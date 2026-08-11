@@ -111,6 +111,114 @@
       "technologies": ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
       "demoUrl": "https://auggiealmeida.github.io/DnD-Guide/",
       "githubUrl": "https://github.com/auggiealmeida/DnD-Guide"
+    },
+    {
+      "id": "taskforge",
+      "titleKey": "projects.items.taskforge.title",
+      "descriptionKey": "projects.items.taskforge.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.ai", "projects.tags.automation", "projects.tags.platform"],
+      "technologies": ["TypeScript", "Zod", "Git worktrees", "Node.js", "CLI"]
+    },
+    {
+      "id": "stechclub",
+      "titleKey": "projects.items.stechclub.title",
+      "descriptionKey": "projects.items.stechclub.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.platform", "projects.tags.education"],
+      "technologies": ["React", "Vite", "NestJS", "Prisma", "MySQL", "AWS S3"]
+    },
+    {
+      "id": "omegahub",
+      "titleKey": "projects.items.omegahub.title",
+      "descriptionKey": "projects.items.omegahub.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.platform", "projects.tags.game", "projects.tags.monorepo"],
+      "technologies": ["Next.js", "NestJS", "Turborepo", "PostgreSQL", "Redis", "Stripe"]
+    },
+    {
+      "id": "pronto",
+      "titleKey": "projects.items.pronto.title",
+      "descriptionKey": "projects.items.pronto.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.marketplace", "projects.tags.mobile", "projects.tags.pwa"],
+      "technologies": ["NestJS", "Next.js", "Expo", "PostGIS", "pg-boss"]
+    },
+    {
+      "id": "tecnurg",
+      "titleKey": "projects.items.tecnurg.title",
+      "descriptionKey": "projects.items.tecnurg.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.marketplace", "projects.tags.mobile"],
+      "technologies": ["Go", "Kafka", "PostGIS", "React Native", "OpenTelemetry"]
+    },
+    {
+      "id": "brechoapp",
+      "titleKey": "projects.items.brechoapp.title",
+      "descriptionKey": "projects.items.brechoapp.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.marketplace", "projects.tags.mobile", "projects.tags.ecommerce"],
+      "technologies": ["React Native", "Go", "PostgreSQL", "Redis", "Mercado Pago"]
+    },
+    {
+      "id": "barbearia-app",
+      "titleKey": "projects.items.barbearia_app.title",
+      "descriptionKey": "projects.items.barbearia_app.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.platform", "projects.tags.pwa", "projects.tags.management"],
+      "technologies": ["Next.js", "Supabase", "PostGIS", "Leaflet"]
+    },
+    {
+      "id": "pasta-la-vista",
+      "titleKey": "projects.items.pasta_la_vista.title",
+      "descriptionKey": "projects.items.pasta_la_vista.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.mobile", "projects.tags.food", "projects.tags.ecommerce"],
+      "technologies": ["React Native", "Expo", "Express", "TypeScript", "Stripe"]
+    },
+    {
+      "id": "buscajogos",
+      "titleKey": "projects.items.buscajogos.title",
+      "descriptionKey": "projects.items.buscajogos.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.academic", "projects.tags.platform", "projects.tags.automation"],
+      "technologies": ["Go", "C#", "Vue", "MySQL", "Docker"]
+    },
+    {
+      "id": "kitbuilder",
+      "titleKey": "projects.items.kitbuilder.title",
+      "descriptionKey": "projects.items.kitbuilder.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.desktop", "projects.tags.management", "projects.tags.automation"],
+      "technologies": ["Python", "pytest", "Alembic", "Docker"]
+    },
+    {
+      "id": "youtcatcher",
+      "titleKey": "projects.items.youtcatcher.title",
+      "descriptionKey": "projects.items.youtcatcher.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.desktop", "projects.tags.automation"],
+      "technologies": ["Python", "CustomTkinter", "yt-dlp", "pytest"]
+    },
+    {
+      "id": "sudoku-solver",
+      "titleKey": "projects.items.sudoku_solver.title",
+      "descriptionKey": "projects.items.sudoku_solver.description",
+      "category": "study",
+      "tagsKeys": [
+        "projects.tags.academic",
+        "projects.tags.computer_vision",
+        "projects.tags.automation"
+      ],
+      "technologies": ["C", "C++", "OpenCV"]
+    },
+    {
+      "id": "portfolio-suite",
+      "titleKey": "projects.items.portfolio_suite.title",
+      "descriptionKey": "projects.items.portfolio_suite.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.platform", "projects.tags.monorepo"],
+      "technologies": ["Next.js", "Prisma", "PostgreSQL", "Turborepo", "Zod"]
     }
   ]
 }

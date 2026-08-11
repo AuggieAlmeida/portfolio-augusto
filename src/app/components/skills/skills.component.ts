@@ -28,6 +28,7 @@ interface SkillCategory {
 interface LanguageItem {
   nameKey: string;
   level: 'native' | 'advanced' | 'intermediate' | 'basic';
+  cefr?: string;
 }
 
 @Component({
@@ -218,7 +219,8 @@ interface LanguageItem {
                       class="text-xs md:text-sm px-2 md:px-3 py-1 rounded-md font-medium min-w-[85px] md:min-w-[115px] text-center"
                       [class]="getLevelBadgeClass(lang.level)"
                     >
-                      {{ 'skills.languages.level_' + lang.level | translate }}
+                      {{ 'skills.languages.level_' + lang.level | translate
+                      }}<span *ngIf="lang.cefr" class="opacity-70"> · {{ lang.cefr }}</span>
                     </span>
                   </div>
                 </div>

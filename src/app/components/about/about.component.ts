@@ -1,13 +1,6 @@
 import { CommonModule } from '@angular/common';
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  inject,
-  ViewChild
-} from '@angular/core';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-about',
@@ -44,34 +37,40 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
             class="about-text mx-auto max-w-4xl rounded-2xl p-6 md:p-8 lg:p-10 bg-white dark:bg-primary-800 shadow-xl border border-primary-100 dark:border-primary-600"
           >
             <!-- Greeting -->
-            <p class="greeting text-lg md:text-xl text-neutral-700 dark:text-neutral-300 mb-6">
+            <p
+              class="greeting text-lg md:text-2xl leading-relaxed text-neutral-700 dark:text-neutral-200 border-l-4 border-primary-500 pl-5 md:pl-7 mb-10"
+            >
               {{ 'about.greeting' | translate }}
             </p>
 
-            <!-- Professional Overview -->
-            <div class="professional-highlight mb-8">
-              <h3
-                class="text-xl md:text-2xl font-semibold text-primary-600 dark:text-primary-400 mb-4 flex items-center gap-2"
-              >
-                <i aria-hidden="true" class="fas fa-briefcase"></i>
-                {{ 'about.professionalOverview' | translate }}
-              </h3>
-              <p class="text-neutral-600 dark:text-neutral-300 mb-4">
-                {{ 'about.professionalDescription' | translate }}
-              </p>
-            </div>
+            <!-- Duas colunas no desktop: sem a imagem, um bloco de texto único
+                 deixava metade da largura sobrando em telas grandes. -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 mb-10">
+              <!-- Professional Overview -->
+              <div class="professional-highlight">
+                <h3
+                  class="text-xl md:text-2xl font-semibold text-primary-600 dark:text-primary-400 mb-4 flex items-center gap-2"
+                >
+                  <i aria-hidden="true" class="fas fa-briefcase"></i>
+                  {{ 'about.professionalOverview' | translate }}
+                </h3>
+                <p class="text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                  {{ 'about.professionalDescription' | translate }}
+                </p>
+              </div>
 
-            <!-- Core Expertise -->
-            <div class="expertise-section mb-8">
-              <h3
-                class="text-xl md:text-2xl font-semibold text-secondary-600 dark:text-secondary-400 mb-4 flex items-center gap-2"
-              >
-                <i aria-hidden="true" class="fas fa-code"></i>
-                {{ 'about.coreExpertise' | translate }}
-              </h3>
-              <p class="text-neutral-600 dark:text-neutral-300">
-                {{ 'about.expertiseDescription' | translate }}
-              </p>
+              <!-- Core Expertise -->
+              <div class="expertise-section">
+                <h3
+                  class="text-xl md:text-2xl font-semibold text-secondary-600 dark:text-secondary-400 mb-4 flex items-center gap-2"
+                >
+                  <i aria-hidden="true" class="fas fa-code"></i>
+                  {{ 'about.coreExpertise' | translate }}
+                </h3>
+                <p class="text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                  {{ 'about.expertiseDescription' | translate }}
+                </p>
+              </div>
             </div>
 
             <!-- Contact Information -->
@@ -190,18 +189,6 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
         animation: pulse-slow 3s ease-in-out infinite;
       }
 
-      /* Word animation styles */
-      .word-animate {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.5s ease;
-      }
-
-      .word-animate.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
       /* Contact item hover effects */
       .contact-item {
         transition: all 0.3s ease;
@@ -246,60 +233,4 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   standalone: true,
   imports: [CommonModule, TranslateModule]
 })
-export class AboutComponent implements AfterViewInit {
-  @ViewChild('greetingText') greetingText!: ElementRef;
-  @ViewChild('professionalText') professionalText!: ElementRef;
-  @ViewChild('expertiseText') expertiseText!: ElementRef;
-
-  private translate = inject(TranslateService);
-
-  ngAfterViewInit() {
-    // Wait for translations to load before initializing animations
-    setTimeout(() => {
-      this.initializeWordAnimation();
-    }, 100);
-  }
-
-  private initializeWordAnimation() {
-    const textElements = [
-      this.greetingText?.nativeElement,
-      this.professionalText?.nativeElement,
-      this.expertiseText?.nativeElement
-    ].filter((el) => el);
-
-    textElements.forEach((element, elementIndex) => {
-      if (element) {
-        // Wait a bit more to ensure translation is complete
-        setTimeout(() => {
-          const text = element.textContent || '';
-          if (text.trim()) {
-            const words = text.split(' ');
-
-            element.innerHTML = words
-              .map(
-                (word: string, index: number) =>
-                  `<span class="word-animate" style="transition-delay: ${elementIndex * 0.5 + index * 0.05}s">${word}</span>`
-              )
-              .join(' ');
-
-            // Trigger animation when element comes into view
-            const observer = new IntersectionObserver(
-              (entries) => {
-                entries.forEach((entry) => {
-                  if (entry.isIntersecting) {
-                    const spans = entry.target.querySelectorAll('.word-animate');
-                    spans.forEach((span) => span.classList.add('visible'));
-                    observer.unobserve(entry.target);
-                  }
-                });
-              },
-              { threshold: 0.1 }
-            );
-
-            observer.observe(element);
-          }
-        }, elementIndex * 50);
-      }
-    });
-  }
-}
+export class AboutComponent {}

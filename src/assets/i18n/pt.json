@@ -116,7 +116,23 @@
       "windows": "Sistema operacional Windows para desenvolvimento desktop e servidor.",
       "linux": "Sistemas Linux para desenvolvimento e infraestrutura.",
       "macos": "Sistema operacional macOS para desenvolvimento multiplataforma.",
-      "database": "Modelagem relacional e otimização de consultas (Postgres/MySQL)."
+      "database": "Modelagem relacional e otimização de consultas (Postgres/MySQL).",
+      "nextjs": "Framework React para produção, com renderização no servidor e roteamento por arquivos.",
+      "vue": "Framework progressivo para interfaces reativas.",
+      "reactnative": "Aplicações móveis nativas com base de código compartilhada.",
+      "nestjs": "Framework Node.js modular, com injeção de dependência e estrutura opinativa.",
+      "prisma": "ORM tipado com schema declarativo e migrations versionadas.",
+      "go": "Linguagem compilada para serviços concorrentes e de alta vazão.",
+      "django": "Framework Python full-stack com ORM e admin integrados.",
+      "redis": "Armazenamento em memória para cache, sessão e fila.",
+      "supabase": "Backend gerenciado sobre Postgres, com auth, storage e edge functions.",
+      "kafka": "Plataforma de streaming de eventos para integração assíncrona.",
+      "zod": "Validação de schema em TypeScript, aplicada na borda do sistema.",
+      "vercel": "Hospedagem e deploy contínuo de aplicações web.",
+      "turborepo": "Build system para monorepo, com cache de tarefas.",
+      "vitest": "Runner de testes rápido para projetos em TypeScript.",
+      "monorepo": "Vários pacotes num repositório só, com dependências explícitas entre eles.",
+      "n8n": "Automação de fluxos e integração entre serviços por webhook."
     }
   },
   "languages": {
@@ -189,8 +205,8 @@
       "badge": "Comercial"
     },
     "study": {
-      "title": "Projetos de Estudo",
-      "badge": "Estudo"
+      "title": "Projetos Próprios",
+      "badge": "Próprio"
     },
     "projectsCount": "projetos",
     "items": {
@@ -233,6 +249,58 @@
       "dnd_guide": {
         "title": "Guia de Augury para D&D 5e",
         "description": "Um guia interativo para o feitiço de Augury em Dungeons & Dragons 5ª Edição, explicando seu uso, interpretação e aplicações estratégicas no jogo."
+      },
+      "taskforge": {
+        "title": "TaskForge",
+        "description": "Orquestrador de agentes em paralelo. Traduz uma demanda em grafo de tarefas, isola cada uma em sua worktree e executa em ondas, com revisão e merge humanos no fim. Reduziu entre 70% e 90% do custo de LLM da engenharia."
+      },
+      "stechclub": {
+        "title": "StechClub",
+        "description": "Plataforma educacional de mentoria, ponta a ponta: área pública, autenticação, trilhas, cursos em vídeo, quiz de aplicação e painel administrativo. API em NestJS com Prisma e Swagger, vídeos em S3 e automação de resposta a candidatos."
+      },
+      "omegahub": {
+        "title": "OmegaHub",
+        "description": "Plataforma para gamers em monorepo TypeScript. Frontend Next.js e backend NestJS, com login social, pagamentos, filas BullMQ e persistência dividida entre PostgreSQL, MongoDB e Redis."
+      },
+      "pronto": {
+        "title": "Pronto",
+        "description": "Marketplace de serviços urgentes com pareamento por geolocalização. PWA e app mobile sobre uma API NestJS, com PostGIS para busca por proximidade e filas pg-boss para o que não pode bloquear a requisição."
+      },
+      "tecnurg": {
+        "title": "Tecnurg",
+        "description": "Arquitetura de marketplace de dois lados para serviços urgentes: corrida por aceite, Clean Architecture em Go, eventos em Kafka, app do técnico offline-first e observabilidade distribuída. LGPD tratada desde a modelagem."
+      },
+      "brechoapp": {
+        "title": "Brechó App",
+        "description": "Marketplace P2P mobile de brechó, com pagamento por PIX e cartão, sincronização de estoque por fila e mascaramento de dado pessoal aplicado desde o primeiro modelo."
+      },
+      "barbearia_app": {
+        "title": "Barbearia App",
+        "description": "PWA de descoberta e agendamento para barbearias, com mapa, agenda em tempo real e papéis distintos para dono e cliente. A trava contra reserva concorrente é constraint no banco, não checagem na aplicação."
+      },
+      "pasta_la_vista": {
+        "title": "Pasta la Vista",
+        "description": "App de delivery com cardápio, carrinho, pedidos e pagamento. Clean Architecture no backend, com persistência dividida entre PostgreSQL, MongoDB e Redis conforme o tipo de dado."
+      },
+      "buscajogos": {
+        "title": "BuscaJogos+",
+        "description": "TCC: comparador de preços de jogos digitais, com wishlist e alerta de promoção. Banco, API em Go e frontend separados em containers, partindo de pesquisa de problema com usuários reais."
+      },
+      "kitbuilder": {
+        "title": "KitBuilder / S.A.G.A.",
+        "description": "Controle de estoque de peças eletrônicas em arquitetura por camadas, com repositórios, migrations versionadas, importação de planilha e suíte de testes."
+      },
+      "youtcatcher": {
+        "title": "YoutCatcher",
+        "description": "Downloader desktop de vídeo com interface gráfica, histórico persistente e MVC estrito. Cobertura de testes acima de 80% e logs estruturados, num projeto que poderia ter sido um script."
+      },
+      "sudoku_solver": {
+        "title": "Sudoku Solver",
+        "description": "Resolve um Sudoku a partir de foto: pré-processamento de imagem, detecção do grid, OCR dos dígitos, solver por backtracking em C e devolução da solução sobreposta à foto original."
+      },
+      "portfolio_suite": {
+        "title": "Portfolio Suite",
+        "description": "O sucessor deste site: monorepo com API própria servindo de CMS, painel administrativo e duas experiências de frontend consumindo o mesmo schema de conteúdo."
       }
     },
     "tags": {
@@ -258,7 +326,15 @@
       "health": "Saúde",
       "landing_page": "Landing page",
       "music": "Música",
-      "personal_development": "Desenvolvimento pessoal"
+      "personal_development": "Desenvolvimento pessoal",
+      "ai": "IA",
+      "game": "Games",
+      "monorepo": "Monorepo",
+      "marketplace": "Marketplace",
+      "mobile": "Mobile",
+      "pwa": "PWA",
+      "academic": "Acadêmico",
+      "computer_vision": "Visão computacional"
     },
     "viewDemo": "Ver demo",
     "viewCode": "Ver código"
