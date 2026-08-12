@@ -116,7 +116,12 @@
       "tagsKeys": ["projects.tags.management", "projects.tags.platform", "projects.tags.sports"],
       "technologies": ["Angular", "C#", "Azure", "SQL Server", "Jest"],
       "demoUrl": "https://green-hill-00d55160f.2.azurestaticapps.net/",
-      "image": "./assets/images/projects/asurapadel.jpg"
+      "image": "./assets/images/projects/asurapadel.jpg",
+      "images": [
+        "./assets/images/projects/asurapadel.jpg",
+        "./assets/images/projects/asurapadel-web-login.jpg",
+        "./assets/images/projects/asurapadel-mobile-login.png"
+      ]
     },
     {
       "id": "portal-agente-ia",
@@ -165,6 +170,10 @@
       "tagsKeys": ["projects.tags.landing_page", "projects.tags.leads", "projects.tags.business"],
       "technologies": ["HTML5", "CSS3", "JavaScript", "jQuery", "Bootstrap"],
       "image": "./assets/images/projects/bubble-box.jpg",
+      "images": [
+        "./assets/images/projects/bubble-box.jpg",
+        "./assets/images/projects/bubble-box-franchise.jpg"
+      ],
       "demoUrl": "https://bubblebox.com.br/"
     }
   ],
@@ -186,7 +195,8 @@
       "descriptionKey": "projects.items.taskforge.description",
       "category": "study",
       "tagsKeys": ["projects.tags.ai", "projects.tags.automation", "projects.tags.platform"],
-      "technologies": ["TypeScript", "Zod", "Git worktrees", "Node.js", "CLI"]
+      "technologies": ["TypeScript", "Zod", "Git worktrees", "Node.js", "CLI"],
+      "image": "./assets/images/projects/taskforge.png"
     },
     {
       "id": "omegahub",
@@ -201,16 +211,8 @@
       "titleKey": "projects.items.pronto.title",
       "descriptionKey": "projects.items.pronto.description",
       "category": "study",
-      "tagsKeys": ["projects.tags.marketplace", "projects.tags.mobile", "projects.tags.pwa"],
-      "technologies": ["NestJS", "Next.js", "Expo", "PostGIS", "pg-boss"]
-    },
-    {
-      "id": "tecnurg",
-      "titleKey": "projects.items.tecnurg.title",
-      "descriptionKey": "projects.items.tecnurg.description",
-      "category": "study",
       "tagsKeys": ["projects.tags.marketplace", "projects.tags.mobile"],
-      "technologies": ["Go", "Kafka", "PostGIS", "React Native", "OpenTelemetry"]
+      "technologies": ["NestJS", "Next.js", "Expo", "PostGIS", "Go", "Kafka", "OpenTelemetry"]
     },
     {
       "id": "barbearia-app",
@@ -262,7 +264,8 @@
       "category": "study",
       "tagsKeys": ["projects.tags.desktop", "projects.tags.automation"],
       "technologies": ["Python", "CustomTkinter", "yt-dlp", "pytest"],
-      "githubUrl": "https://github.com/AuggieAlmeida/YoutCatcher"
+      "githubUrl": "https://github.com/AuggieAlmeida/YoutCatcher",
+      "image": "./assets/images/projects/youtcatcher.png"
     },
     {
       "id": "sudoku-solver",
@@ -282,7 +285,8 @@
       "descriptionKey": "projects.items.jarbas.description",
       "category": "study",
       "tagsKeys": ["projects.tags.ai", "projects.tags.desktop", "projects.tags.automation"],
-      "technologies": ["TypeScript", "Tauri", "Node.js", "CLI", "LLM"]
+      "technologies": ["TypeScript", "Tauri", "Node.js", "CLI", "LLM"],
+      "image": "./assets/images/projects/jarbas.jpg"
     },
     {
       "id": "quinto-selo",
@@ -290,7 +294,8 @@
       "descriptionKey": "projects.items.quinto_selo.description",
       "category": "study",
       "tagsKeys": ["projects.tags.game", "projects.tags.platform"],
-      "technologies": ["Godot 4", "GDScript", "Blender", "Netcode"]
+      "technologies": ["Godot 4", "GDScript", "Blender", "Netcode"],
+      "image": "./assets/images/projects/quinto-selo.png"
     },
     {
       "id": "financeos",
@@ -298,7 +303,8 @@
       "descriptionKey": "projects.items.financeos.description",
       "category": "study",
       "tagsKeys": ["projects.tags.fintech", "projects.tags.monorepo", "projects.tags.dashboard"],
-      "technologies": ["TypeScript", "Turborepo", "Prisma", "Redis"]
+      "technologies": ["TypeScript", "Turborepo", "Prisma", "Redis"],
+      "image": "./assets/images/projects/financeos.jpg"
     },
     {
       "id": "zoologic",
@@ -308,6 +314,12 @@
       "tagsKeys": ["projects.tags.platform", "projects.tags.management", "projects.tags.academic"],
       "technologies": ["PHP 8", "Next.js", "MySQL", "PHPUnit"],
       "image": "./assets/images/projects/zoologic.jpg",
+      "images": [
+        "./assets/images/projects/zoologic.jpg",
+        "./assets/images/projects/zoologic-animals.jpg",
+        "./assets/images/projects/zoologic-register.jpg",
+        "./assets/images/projects/zoologic-monitoring.jpg"
+      ],
       "githubUrl": "https://github.com/AuggieAlmeida/zoologic-api"
     },
     {
@@ -317,6 +329,7 @@
       "category": "study",
       "tagsKeys": ["projects.tags.devtools", "projects.tags.platform"],
       "technologies": ["Angular", "TypeScript", "Signals", "GitHub API"],
+      "image": "./assets/images/projects/repo-explorer-angular.png",
       "githubUrl": "https://github.com/AuggieAlmeida/repo-explorer"
     },
     {
@@ -325,7 +338,8 @@
       "descriptionKey": "projects.items.instagram_analyzer.description",
       "category": "study",
       "tagsKeys": ["projects.tags.desktop", "projects.tags.automation", "projects.tags.dashboard"],
-      "technologies": ["Python", "CustomTkinter", "MVC"]
+      "technologies": ["Python", "CustomTkinter", "MVC"],
+      "image": "./assets/images/projects/instagram-analyzer.png"
     },
     {
       "id": "pokedex",
@@ -333,7 +347,8 @@
       "descriptionKey": "projects.items.pokedex.description",
       "category": "study",
       "tagsKeys": ["projects.tags.mobile", "projects.tags.game"],
-      "technologies": ["Expo", "React Native", "SQLite", "Reanimated"]
+      "technologies": ["Expo", "React Native", "SQLite", "Reanimated"],
+      "githubUrl": "https://github.com/AuggieAlmeida/Pokedex"
     },
     {
       "id": "javafx-pokemon",
@@ -350,7 +365,8 @@
       "descriptionKey": "projects.items.calc_financeira.description",
       "category": "study",
       "tagsKeys": ["projects.tags.fintech", "projects.tags.automation", "projects.tags.academic"],
-      "technologies": ["Python"]
+      "technologies": ["Python"],
+      "image": "./assets/images/projects/calc-financeira.png"
     },
     {
       "id": "aquila-e-evelyn",
@@ -359,6 +375,14 @@
       "category": "study",
       "tagsKeys": ["projects.tags.landing_page", "projects.tags.interactive"],
       "technologies": ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
+      "image": "./assets/images/projects/aquila-e-evelyn-hero.png",
+      "images": [
+        "./assets/images/projects/aquila-e-evelyn-hero.png",
+        "./assets/images/projects/aquila-e-evelyn-experience.png",
+        "./assets/images/projects/aquila-e-evelyn-system.png",
+        "./assets/images/projects/aquila-e-evelyn-mobile.png"
+      ],
+      "demoUrl": "https://auggiealmeida.github.io/aquila-e-evelyn/",
       "githubUrl": "https://github.com/AuggieAlmeida/aquila-e-evelyn"
     }
   ]

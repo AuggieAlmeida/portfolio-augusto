@@ -209,12 +209,8 @@
         "description": "Gaming platform in a TypeScript monorepo. Next.js frontend and NestJS backend, with social login, payments, BullMQ queues and storage split across PostgreSQL, MongoDB and Redis."
       },
       "pronto": {
-        "title": "Pronto",
-        "description": "Urgent-services marketplace with geo-matching. PWA and mobile app over a NestJS API, using PostGIS for proximity search and pg-boss queues for anything that must not block a request."
-      },
-      "tecnurg": {
-        "title": "Tecnurg",
-        "description": "Two-sided marketplace architecture for urgent services: race-to-accept, Clean Architecture in Go, Kafka events, offline-first technician app and distributed tracing. Data protection handled from the modelling stage."
+        "title": "Pronto / Tecnurg",
+        "description": "One urgent-services marketplace across two phases: a Pronto MVP using NestJS, Next.js, Expo, PostGIS and PostgreSQL-backed queues; then a Tecnurg architecture evolution with Go, Kafka, an offline-first technician app, distributed tracing and privacy built into the model."
       },
       "barbearia_app": {
         "title": "Barbershop App",
@@ -289,8 +285,8 @@
         "description": "Financial mathematics calculator in plain Python, with no external dependencies — interest, amortisation and series, with the logic kept in a single file."
       },
       "aquila_e_evelyn": {
-        "title": "Áquila & Evelyn",
-        "description": "Digital wedding invitation as a responsive static page, with CSS animations and content loaded from JSON so the couple could edit it without touching code."
+        "title": "Aquila & Evelyn",
+        "description": "A digital wedding invitation reworked as a sanitized public showcase: responsive static page, custom visual identity, CSS animation and vanilla JavaScript interactions, with event details and personal content removed."
       },
       "suite_financeira_b2b": {
         "title": "B2B financial suite",
