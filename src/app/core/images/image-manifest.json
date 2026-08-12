@@ -1,0 +1,317 @@
+{
+  "apollo-digital": {
+    "src": "./assets/images/projects/apollo-digital-960.jpg",
+    "avif": "./assets/images/projects/apollo-digital-480.avif 480w, ./assets/images/projects/apollo-digital-960.avif 960w, ./assets/images/projects/apollo-digital-1440.avif 1440w",
+    "webp": "./assets/images/projects/apollo-digital-480.webp 480w, ./assets/images/projects/apollo-digital-960.webp 960w, ./assets/images/projects/apollo-digital-1440.webp 1440w",
+    "width": 960,
+    "height": 540
+  },
+  "aquila-e-evelyn-experience": {
+    "src": "./assets/images/projects/aquila-e-evelyn-experience-960.jpg",
+    "avif": "./assets/images/projects/aquila-e-evelyn-experience-480.avif 480w, ./assets/images/projects/aquila-e-evelyn-experience-960.avif 960w",
+    "webp": "./assets/images/projects/aquila-e-evelyn-experience-480.webp 480w, ./assets/images/projects/aquila-e-evelyn-experience-960.webp 960w",
+    "width": 960,
+    "height": 600
+  },
+  "aquila-e-evelyn-hero": {
+    "src": "./assets/images/projects/aquila-e-evelyn-hero-960.jpg",
+    "avif": "./assets/images/projects/aquila-e-evelyn-hero-480.avif 480w, ./assets/images/projects/aquila-e-evelyn-hero-960.avif 960w",
+    "webp": "./assets/images/projects/aquila-e-evelyn-hero-480.webp 480w, ./assets/images/projects/aquila-e-evelyn-hero-960.webp 960w",
+    "width": 960,
+    "height": 600
+  },
+  "aquila-e-evelyn-mobile": {
+    "src": "./assets/images/projects/aquila-e-evelyn-mobile-390.jpg",
+    "avif": "./assets/images/projects/aquila-e-evelyn-mobile-390.avif 390w",
+    "webp": "./assets/images/projects/aquila-e-evelyn-mobile-390.webp 390w",
+    "width": 390,
+    "height": 844
+  },
+  "aquila-e-evelyn-system": {
+    "src": "./assets/images/projects/aquila-e-evelyn-system-960.jpg",
+    "avif": "./assets/images/projects/aquila-e-evelyn-system-480.avif 480w, ./assets/images/projects/aquila-e-evelyn-system-960.avif 960w",
+    "webp": "./assets/images/projects/aquila-e-evelyn-system-480.webp 480w, ./assets/images/projects/aquila-e-evelyn-system-960.webp 960w",
+    "width": 960,
+    "height": 600
+  },
+  "asurapadel": {
+    "src": "./assets/images/projects/asurapadel-960.jpg",
+    "avif": "./assets/images/projects/asurapadel-480.avif 480w, ./assets/images/projects/asurapadel-960.avif 960w",
+    "webp": "./assets/images/projects/asurapadel-480.webp 480w, ./assets/images/projects/asurapadel-960.webp 960w",
+    "width": 960,
+    "height": 544
+  },
+  "barbearia-app": {
+    "src": "./assets/images/projects/barbearia-app-960.jpg",
+    "avif": "./assets/images/projects/barbearia-app-480.avif 480w, ./assets/images/projects/barbearia-app-960.avif 960w",
+    "webp": "./assets/images/projects/barbearia-app-480.webp 480w, ./assets/images/projects/barbearia-app-960.webp 960w",
+    "width": 960,
+    "height": 540
+  },
+  "braseng-consultoria": {
+    "src": "./assets/images/projects/braseng-consultoria-960.jpg",
+    "avif": "./assets/images/projects/braseng-consultoria-480.avif 480w, ./assets/images/projects/braseng-consultoria-960.avif 960w, ./assets/images/projects/braseng-consultoria-1440.avif 1440w",
+    "webp": "./assets/images/projects/braseng-consultoria-480.webp 480w, ./assets/images/projects/braseng-consultoria-960.webp 960w, ./assets/images/projects/braseng-consultoria-1440.webp 1440w",
+    "width": 960,
+    "height": 541
+  },
+  "bubble-box-franchise": {
+    "src": "./assets/images/projects/bubble-box-franchise-960.jpg",
+    "avif": "./assets/images/projects/bubble-box-franchise-480.avif 480w, ./assets/images/projects/bubble-box-franchise-960.avif 960w, ./assets/images/projects/bubble-box-franchise-1440.avif 1440w",
+    "webp": "./assets/images/projects/bubble-box-franchise-480.webp 480w, ./assets/images/projects/bubble-box-franchise-960.webp 960w, ./assets/images/projects/bubble-box-franchise-1440.webp 1440w",
+    "width": 960,
+    "height": 544
+  },
+  "bubble-box": {
+    "src": "./assets/images/projects/bubble-box-960.jpg",
+    "avif": "./assets/images/projects/bubble-box-480.avif 480w, ./assets/images/projects/bubble-box-960.avif 960w",
+    "webp": "./assets/images/projects/bubble-box-480.webp 480w, ./assets/images/projects/bubble-box-960.webp 960w",
+    "width": 960,
+    "height": 544
+  },
+  "bumbum-de-anjo": {
+    "src": "./assets/images/projects/bumbum-de-anjo-960.jpg",
+    "avif": "./assets/images/projects/bumbum-de-anjo-480.avif 480w, ./assets/images/projects/bumbum-de-anjo-960.avif 960w, ./assets/images/projects/bumbum-de-anjo-1440.avif 1440w",
+    "webp": "./assets/images/projects/bumbum-de-anjo-480.webp 480w, ./assets/images/projects/bumbum-de-anjo-960.webp 960w, ./assets/images/projects/bumbum-de-anjo-1440.webp 1440w",
+    "width": 960,
+    "height": 542
+  },
+  "calc-financeira": {
+    "src": "./assets/images/projects/calc-financeira-960.jpg",
+    "avif": "./assets/images/projects/calc-financeira-480.avif 480w, ./assets/images/projects/calc-financeira-960.avif 960w",
+    "webp": "./assets/images/projects/calc-financeira-480.webp 480w, ./assets/images/projects/calc-financeira-960.webp 960w",
+    "width": 960,
+    "height": 600
+  },
+  "clinica-viotto": {
+    "src": "./assets/images/projects/clinica-viotto-960.jpg",
+    "avif": "./assets/images/projects/clinica-viotto-480.avif 480w, ./assets/images/projects/clinica-viotto-960.avif 960w, ./assets/images/projects/clinica-viotto-1440.avif 1440w",
+    "webp": "./assets/images/projects/clinica-viotto-480.webp 480w, ./assets/images/projects/clinica-viotto-960.webp 960w, ./assets/images/projects/clinica-viotto-1440.webp 1440w",
+    "width": 960,
+    "height": 540
+  },
+  "dnd-guide": {
+    "src": "./assets/images/projects/dnd-guide-960.jpg",
+    "avif": "./assets/images/projects/dnd-guide-480.avif 480w, ./assets/images/projects/dnd-guide-960.avif 960w, ./assets/images/projects/dnd-guide-1440.avif 1440w",
+    "webp": "./assets/images/projects/dnd-guide-480.webp 480w, ./assets/images/projects/dnd-guide-960.webp 960w, ./assets/images/projects/dnd-guide-1440.webp 1440w",
+    "width": 960,
+    "height": 546
+  },
+  "fehe-chocolate": {
+    "src": "./assets/images/projects/fehe-chocolate-960.jpg",
+    "avif": "./assets/images/projects/fehe-chocolate-480.avif 480w, ./assets/images/projects/fehe-chocolate-960.avif 960w, ./assets/images/projects/fehe-chocolate-1440.avif 1440w",
+    "webp": "./assets/images/projects/fehe-chocolate-480.webp 480w, ./assets/images/projects/fehe-chocolate-960.webp 960w, ./assets/images/projects/fehe-chocolate-1440.webp 1440w",
+    "width": 960,
+    "height": 542
+  },
+  "financeos": {
+    "src": "./assets/images/projects/financeos-960.jpg",
+    "avif": "./assets/images/projects/financeos-480.avif 480w, ./assets/images/projects/financeos-960.avif 960w",
+    "webp": "./assets/images/projects/financeos-480.webp 480w, ./assets/images/projects/financeos-960.webp 960w",
+    "width": 960,
+    "height": 540
+  },
+  "instagram-analyzer": {
+    "src": "./assets/images/projects/instagram-analyzer-960.jpg",
+    "avif": "./assets/images/projects/instagram-analyzer-480.avif 480w, ./assets/images/projects/instagram-analyzer-960.avif 960w",
+    "webp": "./assets/images/projects/instagram-analyzer-480.webp 480w, ./assets/images/projects/instagram-analyzer-960.webp 960w",
+    "width": 960,
+    "height": 692
+  },
+  "jarbas": {
+    "src": "./assets/images/projects/jarbas-960.jpg",
+    "avif": "./assets/images/projects/jarbas-480.avif 480w, ./assets/images/projects/jarbas-960.avif 960w",
+    "webp": "./assets/images/projects/jarbas-480.webp 480w, ./assets/images/projects/jarbas-960.webp 960w",
+    "width": 960,
+    "height": 540
+  },
+  "javafx-pokemon": {
+    "src": "./assets/images/projects/javafx-pokemon-800.jpg",
+    "avif": "./assets/images/projects/javafx-pokemon-480.avif 480w",
+    "webp": "./assets/images/projects/javafx-pokemon-480.webp 480w",
+    "width": 800,
+    "height": 600
+  },
+  "kitbuilder": {
+    "src": "./assets/images/projects/kitbuilder-960.jpg",
+    "avif": "./assets/images/projects/kitbuilder-480.avif 480w, ./assets/images/projects/kitbuilder-960.avif 960w",
+    "webp": "./assets/images/projects/kitbuilder-480.webp 480w, ./assets/images/projects/kitbuilder-960.webp 960w",
+    "width": 960,
+    "height": 600
+  },
+  "mitra-crm": {
+    "src": "./assets/images/projects/mitra-crm-960.jpg",
+    "avif": "./assets/images/projects/mitra-crm-480.avif 480w, ./assets/images/projects/mitra-crm-960.avif 960w, ./assets/images/projects/mitra-crm-1440.avif 1440w",
+    "webp": "./assets/images/projects/mitra-crm-480.webp 480w, ./assets/images/projects/mitra-crm-960.webp 960w, ./assets/images/projects/mitra-crm-1440.webp 1440w",
+    "width": 960,
+    "height": 539
+  },
+  "optec-solutions": {
+    "src": "./assets/images/projects/optec-solutions-960.jpg",
+    "avif": "./assets/images/projects/optec-solutions-480.avif 480w, ./assets/images/projects/optec-solutions-960.avif 960w, ./assets/images/projects/optec-solutions-1440.avif 1440w",
+    "webp": "./assets/images/projects/optec-solutions-480.webp 480w, ./assets/images/projects/optec-solutions-960.webp 960w, ./assets/images/projects/optec-solutions-1440.webp 1440w",
+    "width": 960,
+    "height": 540
+  },
+  "pasta-la-vista-cardapio": {
+    "src": "./assets/images/projects/pasta-la-vista-cardapio-562.jpg",
+    "avif": "./assets/images/projects/pasta-la-vista-cardapio-480.avif 480w",
+    "webp": "./assets/images/projects/pasta-la-vista-cardapio-480.webp 480w",
+    "width": 562,
+    "height": 1000
+  },
+  "pasta-la-vista-pagamento": {
+    "src": "./assets/images/projects/pasta-la-vista-pagamento-562.jpg",
+    "avif": "./assets/images/projects/pasta-la-vista-pagamento-480.avif 480w",
+    "webp": "./assets/images/projects/pasta-la-vista-pagamento-480.webp 480w",
+    "width": 562,
+    "height": 1000
+  },
+  "pasta-la-vista-pedido": {
+    "src": "./assets/images/projects/pasta-la-vista-pedido-562.jpg",
+    "avif": "./assets/images/projects/pasta-la-vista-pedido-480.avif 480w",
+    "webp": "./assets/images/projects/pasta-la-vista-pedido-480.webp 480w",
+    "width": 562,
+    "height": 1000
+  },
+  "pasta-la-vista-web": {
+    "src": "./assets/images/projects/pasta-la-vista-web-960.jpg",
+    "avif": "./assets/images/projects/pasta-la-vista-web-480.avif 480w, ./assets/images/projects/pasta-la-vista-web-960.avif 960w",
+    "webp": "./assets/images/projects/pasta-la-vista-web-480.webp 480w, ./assets/images/projects/pasta-la-vista-web-960.webp 960w",
+    "width": 960,
+    "height": 544
+  },
+  "pokedex": {
+    "src": "./assets/images/projects/pokedex-960.jpg",
+    "avif": "./assets/images/projects/pokedex-480.avif 480w, ./assets/images/projects/pokedex-960.avif 960w",
+    "webp": "./assets/images/projects/pokedex-480.webp 480w, ./assets/images/projects/pokedex-960.webp 960w",
+    "width": 960,
+    "height": 540
+  },
+  "presente-daniela-cartas": {
+    "src": "./assets/images/projects/presente-daniela-cartas-960.jpg",
+    "avif": "./assets/images/projects/presente-daniela-cartas-480.avif 480w, ./assets/images/projects/presente-daniela-cartas-960.avif 960w",
+    "webp": "./assets/images/projects/presente-daniela-cartas-480.webp 480w, ./assets/images/projects/presente-daniela-cartas-960.webp 960w",
+    "width": 960,
+    "height": 600
+  },
+  "presente-daniela-chapters": {
+    "src": "./assets/images/projects/presente-daniela-chapters-960.jpg",
+    "avif": "./assets/images/projects/presente-daniela-chapters-480.avif 480w, ./assets/images/projects/presente-daniela-chapters-960.avif 960w",
+    "webp": "./assets/images/projects/presente-daniela-chapters-480.webp 480w, ./assets/images/projects/presente-daniela-chapters-960.webp 960w",
+    "width": 960,
+    "height": 600
+  },
+  "presente-daniela-galeria": {
+    "src": "./assets/images/projects/presente-daniela-galeria-960.jpg",
+    "avif": "./assets/images/projects/presente-daniela-galeria-480.avif 480w, ./assets/images/projects/presente-daniela-galeria-960.avif 960w",
+    "webp": "./assets/images/projects/presente-daniela-galeria-480.webp 480w, ./assets/images/projects/presente-daniela-galeria-960.webp 960w",
+    "width": 960,
+    "height": 600
+  },
+  "presente-daniela-hero": {
+    "src": "./assets/images/projects/presente-daniela-hero-960.jpg",
+    "avif": "./assets/images/projects/presente-daniela-hero-480.avif 480w, ./assets/images/projects/presente-daniela-hero-960.avif 960w",
+    "webp": "./assets/images/projects/presente-daniela-hero-480.webp 480w, ./assets/images/projects/presente-daniela-hero-960.webp 960w",
+    "width": 960,
+    "height": 600
+  },
+  "presente-daniela-mobile": {
+    "src": "./assets/images/projects/presente-daniela-mobile-390.jpg",
+    "avif": "./assets/images/projects/presente-daniela-mobile-390.avif 390w",
+    "webp": "./assets/images/projects/presente-daniela-mobile-390.webp 390w",
+    "width": 390,
+    "height": 844
+  },
+  "presente-daniela-privacidade": {
+    "src": "./assets/images/projects/presente-daniela-privacidade-960.jpg",
+    "avif": "./assets/images/projects/presente-daniela-privacidade-480.avif 480w, ./assets/images/projects/presente-daniela-privacidade-960.avif 960w",
+    "webp": "./assets/images/projects/presente-daniela-privacidade-480.webp 480w, ./assets/images/projects/presente-daniela-privacidade-960.webp 960w",
+    "width": 960,
+    "height": 600
+  },
+  "quinto-selo": {
+    "src": "./assets/images/projects/quinto-selo-480.jpg",
+    "avif": "./assets/images/projects/quinto-selo-480.avif 480w",
+    "webp": "./assets/images/projects/quinto-selo-480.webp 480w",
+    "width": 480,
+    "height": 302
+  },
+  "repo-explorer-angular": {
+    "src": "./assets/images/projects/repo-explorer-angular-960.jpg",
+    "avif": "./assets/images/projects/repo-explorer-angular-480.avif 480w, ./assets/images/projects/repo-explorer-angular-960.avif 960w",
+    "webp": "./assets/images/projects/repo-explorer-angular-480.webp 480w, ./assets/images/projects/repo-explorer-angular-960.webp 960w",
+    "width": 960,
+    "height": 540
+  },
+  "souzalima-cursos": {
+    "src": "./assets/images/projects/souzalima-cursos-960.jpg",
+    "avif": "./assets/images/projects/souzalima-cursos-480.avif 480w, ./assets/images/projects/souzalima-cursos-960.avif 960w, ./assets/images/projects/souzalima-cursos-1440.avif 1440w",
+    "webp": "./assets/images/projects/souzalima-cursos-480.webp 480w, ./assets/images/projects/souzalima-cursos-960.webp 960w, ./assets/images/projects/souzalima-cursos-1440.webp 1440w",
+    "width": 960,
+    "height": 540
+  },
+  "souzalima-vestibular": {
+    "src": "./assets/images/projects/souzalima-vestibular-960.jpg",
+    "avif": "./assets/images/projects/souzalima-vestibular-480.avif 480w, ./assets/images/projects/souzalima-vestibular-960.avif 960w, ./assets/images/projects/souzalima-vestibular-1440.avif 1440w",
+    "webp": "./assets/images/projects/souzalima-vestibular-480.webp 480w, ./assets/images/projects/souzalima-vestibular-960.webp 960w, ./assets/images/projects/souzalima-vestibular-1440.webp 1440w",
+    "width": 960,
+    "height": 540
+  },
+  "stechclub": {
+    "src": "./assets/images/projects/stechclub-960.jpg",
+    "avif": "./assets/images/projects/stechclub-480.avif 480w, ./assets/images/projects/stechclub-960.avif 960w",
+    "webp": "./assets/images/projects/stechclub-480.webp 480w, ./assets/images/projects/stechclub-960.webp 960w",
+    "width": 960,
+    "height": 544
+  },
+  "taskforge": {
+    "src": "./assets/images/projects/taskforge-960.jpg",
+    "avif": "./assets/images/projects/taskforge-480.avif 480w, ./assets/images/projects/taskforge-960.avif 960w",
+    "webp": "./assets/images/projects/taskforge-480.webp 480w, ./assets/images/projects/taskforge-960.webp 960w",
+    "width": 960,
+    "height": 540
+  },
+  "youtcatcher": {
+    "src": "./assets/images/projects/youtcatcher-871.jpg",
+    "avif": "./assets/images/projects/youtcatcher-480.avif 480w",
+    "webp": "./assets/images/projects/youtcatcher-480.webp 480w",
+    "width": 871,
+    "height": 768
+  },
+  "zoologic-animals": {
+    "src": "./assets/images/projects/zoologic-animals-960.jpg",
+    "avif": "./assets/images/projects/zoologic-animals-480.avif 480w, ./assets/images/projects/zoologic-animals-960.avif 960w, ./assets/images/projects/zoologic-animals-1440.avif 1440w",
+    "webp": "./assets/images/projects/zoologic-animals-480.webp 480w, ./assets/images/projects/zoologic-animals-960.webp 960w, ./assets/images/projects/zoologic-animals-1440.webp 1440w",
+    "width": 960,
+    "height": 490
+  },
+  "zoologic-monitoring": {
+    "src": "./assets/images/projects/zoologic-monitoring-960.jpg",
+    "avif": "./assets/images/projects/zoologic-monitoring-480.avif 480w, ./assets/images/projects/zoologic-monitoring-960.avif 960w, ./assets/images/projects/zoologic-monitoring-1440.avif 1440w",
+    "webp": "./assets/images/projects/zoologic-monitoring-480.webp 480w, ./assets/images/projects/zoologic-monitoring-960.webp 960w, ./assets/images/projects/zoologic-monitoring-1440.webp 1440w",
+    "width": 960,
+    "height": 490
+  },
+  "zoologic-register": {
+    "src": "./assets/images/projects/zoologic-register-960.jpg",
+    "avif": "./assets/images/projects/zoologic-register-480.avif 480w, ./assets/images/projects/zoologic-register-960.avif 960w, ./assets/images/projects/zoologic-register-1440.avif 1440w",
+    "webp": "./assets/images/projects/zoologic-register-480.webp 480w, ./assets/images/projects/zoologic-register-960.webp 960w, ./assets/images/projects/zoologic-register-1440.webp 1440w",
+    "width": 960,
+    "height": 490
+  },
+  "zoologic": {
+    "src": "./assets/images/projects/zoologic-960.jpg",
+    "avif": "./assets/images/projects/zoologic-480.avif 480w, ./assets/images/projects/zoologic-960.avif 960w",
+    "webp": "./assets/images/projects/zoologic-480.webp 480w, ./assets/images/projects/zoologic-960.webp 960w",
+    "width": 960,
+    "height": 490
+  },
+  "hero": {
+    "src": "assets/images/hero/hero-384.jpg",
+    "avif": "assets/images/hero/hero-192.avif 192w, assets/images/hero/hero-384.avif 384w",
+    "webp": "assets/images/hero/hero-192.webp 192w, assets/images/hero/hero-384.webp 384w",
+    "width": 384,
+    "height": 384
+  }
+}

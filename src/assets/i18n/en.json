@@ -11,16 +11,20 @@
   },
   "hero": {
     "title": "Augusto Almeida",
-    "subtitle": "Fullstack Developer | QA & Data Enthusiast"
+    "subtitle": "Fullstack Developer | QA & Data Enthusiast",
+    "positioning": "Fullstack developer with a quality bias: I ship product end to end and treat measurement, testing and accessibility as requirements.",
+    "positioningSupport": "TypeScript, React and NestJS today; Java and Angular in my longest role. Five years across data, support and engineering."
   },
   "CTA": {
     "viewProjects": "View Projects",
-    "contactMe": "Contact Me"
+    "contactMe": "Contact Me",
+    "viewFeatured": "See featured cases"
   },
   "stats": {
     "yearsOfExperience": "Years of Experience",
     "completedProjects": "Completed Projects",
-    "languagesDominated": "Languages Dominated"
+    "languagesDominated": "Languages Dominated",
+    "englishLevel": "English (CEFR)"
   },
   "about": {
     "aboutMe": "About Me",
@@ -36,7 +40,8 @@
     "title": "Skills",
     "intro": "Here are some of my main skills and technologies I work with:",
     "filter": {
-      "all": "All"
+      "all": "Inventory ({{count}})",
+      "core": "Core"
     },
     "no_results": "No technologies found for this filter.",
     "categories": {
@@ -56,13 +61,6 @@
       "level_advanced": "Advanced",
       "level_intermediate": "Intermediate",
       "level_basic": "Basic"
-    },
-    "soft_skills": {
-      "title": "Soft Skills",
-      "teamwork": "Teamwork",
-      "communication": "Communication",
-      "problem_solving": "Problem Solving",
-      "adaptability": "Adaptability"
     },
     "descriptions": {
       "html5": "Semantic HTML structure and accessibility best practices.",
@@ -133,6 +131,12 @@
       "vitest": "Fast test runner for TypeScript projects.",
       "monorepo": "Several packages in one repository, with explicit dependencies between them.",
       "n8n": "Workflow automation and service integration over webhooks."
+    },
+    "practice": {
+      "title": "How I work",
+      "teaching": "I teach what I use: I taught Excel, Power BI and generative AI at Cebrac for over a year.",
+      "measure": "I measure before optimising: the payroll portal case starts from 354 queries counted on the closing screen.",
+      "performance": "I treat Core Web Vitals as an acceptance criterion, not decoration — it was the bar for over a hundred landing pages."
     }
   },
   "languages": {
@@ -375,6 +379,17 @@
         "evidence": "The response was compared byte-for-byte after the change; the remaining N+1 was identified in 316 of the 354 queries.",
         "impact": "Screen time dropped from 4,271 ms to 354 ms."
       }
+    },
+    "featured": {
+      "subtitle": "Six cases that back up the line above — with context, decision and evidence."
+    },
+    "all": {
+      "show": "See all {{count}} projects",
+      "hide": "Hide the full inventory"
+    },
+    "carousel": {
+      "previous": "Previous projects",
+      "next": "Next projects"
     }
   },
   "statusBar": {
@@ -439,6 +454,10 @@
       "react": "React",
       "nestjs": "NestJS",
       "prisma": "Prisma"
+    },
+    "history": {
+      "show": "See earlier history ({{count}} roles)",
+      "hide": "Hide earlier history"
     }
   },
   "footer": {
@@ -456,9 +475,10 @@
     },
     "social": {
       "github_user": "AuggieAlmeida",
-      "linkedin_user": "AugustobAlmeida"
+      "linkedin_user": "AugustobAlmeida",
+      "email": "Send an email to Augusto Almeida"
     },
-    "copyright": "© 2025 Augusto Almeida. All rights reserved."
+    "copyright": "© {{year}} Augusto Almeida. All rights reserved."
   },
   "navigation": {
     "scrollDown": "Scroll down"

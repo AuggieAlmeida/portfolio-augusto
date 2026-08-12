@@ -1,5 +1,7 @@
-/* Fonts are linked from index.html — a CSS @import here would chain a second,
-   render-blocking request for the same families. */
+/* Fontes e ícones entram pelo array `styles` do angular.json, não por @import:
+   um @import aqui encadearia um segundo pedido bloqueante para o mesmo bundle.
+   Ambas as folhas são geradas — ver tools/fetch-fonts.mjs e
+   tools/build-icon-css.mjs. */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -61,4 +63,17 @@
   }
 }
 
-/* You can add global styles to this file, and also import other style files */
+/* Âncora permanente das seções sob @defer. Fica fora do bloco para que a
+   navegação do header, o terminal e o quick open tenham alvo antes de a seção
+   hidratar. */
+.anchor {
+  display: block;
+  height: 0;
+  scroll-margin-top: 80px;
+}
+
+/* Altura reservada enquanto o bloco não renderiza; sem ela o scroll pula no
+   momento em que a seção aparece. */
+.section-placeholder {
+  min-height: 70vh;
+}

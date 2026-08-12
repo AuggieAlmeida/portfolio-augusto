@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Subject } from 'rxjs';
+import { ReplaySubject, Subject } from 'rxjs';
 
 import { LocaleService } from '../i18n/locale.service';
 import { isLocale } from '../i18n/locales';
@@ -47,7 +47,9 @@ export class PortfolioCommandService {
   private readonly theme = inject(ThemeService);
   private readonly translate = inject(TranslateService);
 
-  private readonly openProjectSubject = new Subject<ProjectItem>();
+  // ReplaySubject porque a seção de projetos entra por `@defer`: um `open
+  // <slug>` disparado antes da hidratação chegava a ninguém com Subject puro.
+  private readonly openProjectSubject = new ReplaySubject<ProjectItem>(1);
   readonly openProject$ = this.openProjectSubject.asObservable();
 
   private readonly openSurfaceSubject = new Subject<'terminal' | 'quick-open'>();

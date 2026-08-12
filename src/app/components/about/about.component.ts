@@ -77,100 +77,16 @@ import { TranslateModule } from '@ngx-translate/core';
               </div>
             </div>
 
-            <!-- Contact Information -->
-            <div class="contact-section">
-              <h3
-                class="text-xl md:text-2xl font-semibold text-accent-600 dark:text-accent-400 mb-4 flex items-center gap-2"
-              >
-                <i aria-hidden="true" class="fas fa-envelope"></i>
-                {{ 'about.contactInfo' | translate }}
-              </h3>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div
-                  class="contact-item flex items-center gap-3 p-3 rounded-lg bg-primary-50 dark:bg-secondary-900/30 border border-primary-200 dark:border-primary-700"
-                >
-                  <div
-                    class="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center"
-                  >
-                    <i aria-hidden="true" class="fas fa-envelope text-white text-sm"></i>
-                  </div>
-                  <div>
-                    <p class="text-sm text-neutral-500 dark:text-neutral-400">
-                      {{ 'about.email' | translate }}
-                    </p>
-                    <a
-                      href="mailto:augusto.almeida2@icloud.com"
-                      class="text-primary-600 dark:text-primary-400 hover:underline font-medium"
-                    >
-                      augusto.almeida2&#64;icloud.com
-                    </a>
-                  </div>
-                </div>
-
-                <div
-                  class="contact-item flex items-center gap-3 p-3 rounded-lg bg-accent-50 dark:bg-secondary-900/30 border border-accent-200 dark:border-accent-700"
-                >
-                  <div
-                    class="w-10 h-10 bg-accent-500 rounded-full flex items-center justify-center"
-                  >
-                    <i aria-hidden="true" class="fab fa-linkedin text-white text-sm"></i>
-                  </div>
-                  <div>
-                    <p class="text-sm text-neutral-500 dark:text-neutral-400">LinkedIn</p>
-                    <a
-                      href="https://linkedin.com/in/augustobalmeida"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="text-secondary-600 dark:text-secondary-400 hover:underline font-medium"
-                    >
-                      /augustobalmeida
-                    </a>
-                  </div>
-                </div>
-
-                <div
-                  class="contact-item flex items-center gap-3 p-3 rounded-lg bg-accent-50 dark:bg-secondary-900/30 border border-accent-200 dark:border-accent-700"
-                >
-                  <div
-                    class="w-10 h-10 bg-accent-500 rounded-full flex items-center justify-center"
-                  >
-                    <i aria-hidden="true" class="fab fa-github text-white text-sm"></i>
-                  </div>
-                  <div>
-                    <p class="text-sm text-neutral-500 dark:text-neutral-400">GitHub</p>
-                    <a
-                      href="https://github.com/auggiealmeida"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="text-accent-600 dark:text-accent-400 hover:underline font-medium"
-                    >
-                      /auggiealmeida
-                    </a>
-                  </div>
-                </div>
-
-                <div
-                  class="contact-item flex items-center gap-3 p-3 rounded-lg bg-primary-50 dark:bg-secondary-900/30 border border-primary-200 dark:border-primary-700"
-                >
-                  <div
-                    class="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center"
-                  >
-                    <i aria-hidden="true" class="fab fa-whatsapp text-white text-sm"></i>
-                  </div>
-                  <div>
-                    <p class="text-sm text-neutral-500 dark:text-neutral-400">WhatsApp</p>
-                    <a
-                      href="https://wa.me/5511916047732"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="text-primary-600 dark:text-primary-400 hover:underline font-medium"
-                    >
-                      +55 (11) 91604-7732
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <!-- Contato saiu daqui: os mesmos quatro canais já aparecem no
+                 rodapé, e repetir a grade dobrava a altura da seção sem
+                 acrescentar prova. O que sobra é tese curta e evidência. -->
+            <a
+              href="#projects"
+              class="inline-flex items-center gap-2 rounded-lg bg-primary-600 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-400"
+            >
+              <i aria-hidden="true" class="fas fa-rocket"></i>
+              {{ 'CTA.viewFeatured' | translate }}
+            </a>
           </div>
         </div>
       </div>
@@ -191,29 +107,6 @@ import { TranslateModule } from '@ngx-translate/core';
 
       .animate-pulse-slow {
         animation: pulse-slow 3s ease-in-out infinite;
-      }
-
-      /* Contact item hover effects */
-      .contact-item {
-        transition: all 0.3s ease;
-      }
-
-      .contact-item:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-      }
-
-      /* Language level badges */
-      .language-level {
-        font-size: 0.75rem;
-        font-weight: 600;
-      }
-
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
-        .contact-section .grid {
-          grid-template-columns: 1fr;
-        }
       }
 
       /* Scroll target optimization */

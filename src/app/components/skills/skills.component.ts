@@ -11,6 +11,8 @@ interface SkillItem {
   level?: number;
   descriptionKey?: string;
   category: string;
+  /** Competência sustentada por case publicado; é o recorte que abre a seção. */
+  core?: boolean;
 }
 
 interface SkillsData {
@@ -75,12 +77,21 @@ interface LanguageItem {
                 <div class="md:hidden overflow-x-auto pb-2">
                   <div class="flex gap-2 min-w-max">
                     <button
+                      (click)="setActiveFilter('core')"
+                      [class]="getFilterButtonClass('core')"
+                      class="px-4 py-3 rounded-lg font-medium transition-all duration-200 text-sm whitespace-nowrap flex-shrink-0"
+                    >
+                      <i class="fas fa-bolt mr-2" aria-hidden="true"></i>
+                      {{ 'skills.filter.core' | translate }}
+                    </button>
+
+                    <button
                       (click)="setActiveFilter('all')"
                       [class]="getFilterButtonClass('all')"
                       class="px-4 py-3 rounded-lg font-medium transition-all duration-200 text-sm whitespace-nowrap flex-shrink-0"
                     >
                       <i class="fas fa-globe mr-2" aria-hidden="true"></i>
-                      {{ 'skills.filter.all' | translate }}
+                      {{ 'skills.filter.all' | translate: inventoryParams }}
                     </button>
 
                     <button
@@ -102,12 +113,21 @@ interface LanguageItem {
                 <!-- Desktop: Flex wrap -->
                 <div class="hidden md:flex flex-wrap gap-2 justify-center lg:justify-start">
                   <button
+                    (click)="setActiveFilter('core')"
+                    [class]="getFilterButtonClass('core')"
+                    class="px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm"
+                  >
+                    <i class="fas fa-bolt mr-2" aria-hidden="true"></i>
+                    {{ 'skills.filter.core' | translate }}
+                  </button>
+
+                  <button
                     (click)="setActiveFilter('all')"
                     [class]="getFilterButtonClass('all')"
                     class="px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm"
                   >
                     <i class="fas fa-globe mr-2" aria-hidden="true"></i>
-                    {{ 'skills.filter.all' | translate }}
+                    {{ 'skills.filter.all' | translate: inventoryParams }}
                   </button>
 
                   <button
@@ -226,28 +246,29 @@ interface LanguageItem {
                 </div>
               </div>
 
-              <!-- Additional Content: Soft Skills -->
+              <!-- Antes eram quatro rótulos genéricos — trabalho em equipe,
+                   comunicação, resolução de problemas, adaptabilidade — que
+                   qualquer currículo tem. Agora cada linha aponta para uma
+                   evidência que já está publicada nesta página. -->
               <div
                 class="mt-6 md:mt-8 pt-4 md:pt-6 border-t border-neutral-300 dark:border-neutral-600"
               >
                 <h3
                   class="text-lg md:text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-3 md:mb-4 text-center"
                 >
-                  {{ 'skills.soft_skills.title' | translate }}
+                  {{ 'skills.practice.title' | translate }}
                 </h3>
 
-                <div class="grid grid-cols-1 gap-2">
-                  <div
-                    *ngFor="
-                      let skill of ['teamwork', 'communication', 'problem_solving', 'adaptability']
-                    "
-                    class="text-center p-2 md:p-3 rounded-lg bg-white dark:bg-primary-800/60 border border-neutral-200 dark:border-neutral-700"
+                <ul class="grid grid-cols-1 gap-2">
+                  <li
+                    *ngFor="let evidence of practiceKeys"
+                    class="p-3 rounded-lg bg-white dark:bg-primary-800/60 border border-neutral-200 dark:border-neutral-700"
                   >
                     <span class="text-xs md:text-sm text-neutral-900 dark:text-neutral-100">
-                      {{ 'skills.soft_skills.' + skill | translate }}
+                      {{ evidence | translate }}
                     </span>
-                  </div>
-                </div>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -331,8 +352,18 @@ export class SkillsComponent {
 
   // Lista completa de skills com categoria
   public allSkills: SkillItem[] = [];
+  public coreSkills: SkillItem[] = [];
   public filteredSkills: SkillItem[] = [];
-  public activeFilter = 'all';
+  /** Abre no recorte curto: 64 ícones de uma vez não é competência, é ruído. */
+  public activeFilter = 'core';
+  public inventoryParams = { count: 0 };
+
+  /** Como o Augusto trabalha, cada linha ancorada em algo já publicado aqui. */
+  public readonly practiceKeys = [
+    'skills.practice.teaching',
+    'skills.practice.measure',
+    'skills.practice.performance'
+  ];
 
   constructor() {
     this.initializeSkills();
@@ -348,14 +379,18 @@ export class SkillsComponent {
       return [...acc, ...skillsWithCategory];
     }, []);
 
-    this.filteredSkills = [...this.allSkills];
+    this.coreSkills = this.allSkills.filter((skill) => skill.core);
+    this.inventoryParams = { count: this.allSkills.length };
+    this.filteredSkills = this.coreSkills;
   }
 
   setActiveFilter(filter: string): void {
     this.activeFilter = filter;
 
-    if (filter === 'all') {
-      this.filteredSkills = [...this.allSkills];
+    if (filter === 'core') {
+      this.filteredSkills = this.coreSkills;
+    } else if (filter === 'all') {
+      this.filteredSkills = this.allSkills;
     } else {
       this.filteredSkills = this.allSkills.filter((skill) => skill.category === filter);
     }

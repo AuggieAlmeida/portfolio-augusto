@@ -46,7 +46,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
             <a
               href="mailto:augusto.almeida2@icloud.com"
-              aria-label="Email Pedro"
+              [attr.aria-label]="'footer.social.email' | translate"
               class="hover:text-primary-500"
             >
               <i class="fas fa-envelope text-xl" aria-hidden="true"></i>
@@ -60,9 +60,12 @@ import { TranslateModule } from '@ngx-translate/core';
             {{ 'footer.links.title' | translate }}
           </h3>
 
+          <!-- O link de início apontava para /index.html e recarregava a página
+               inteira para voltar ao topo dela mesma; âncora resolve na
+               navegação que já existe. -->
           <ul class="mt-4 space-y-2 text-sm">
             <li>
-              <a href="/index.html" class="hover:text-primary-500 transition-colors">
+              <a href="#hero" class="hover:text-primary-500 transition-colors">
                 {{ 'nav.home' | translate }}
               </a>
             </li>
@@ -71,11 +74,11 @@ import { TranslateModule } from '@ngx-translate/core';
                 {{ 'nav.projects' | translate }}
               </a>
             </li>
-            <!--<li>
-              <a href="/html/contact.html" class="hover:text-primary-500 transition-colors">
-                {{ 'nav.contact' | translate }}
+            <li>
+              <a href="#career" class="hover:text-primary-500 transition-colors">
+                {{ 'nav.carrer' | translate }}
               </a>
-            </li> -->
+            </li>
           </ul>
         </div>
 
@@ -112,9 +115,12 @@ import { TranslateModule } from '@ngx-translate/core';
       <div
         class="border-t border-neutral-200 dark:border-neutral-800 text-center py-4 text-sm text-neutral-500 dark:text-neutral-400"
       >
-        {{ 'footer.copyright' | translate }}
+        {{ 'footer.copyright' | translate: copyrightParams }}
       </div>
     </footer>
   `
 })
-export class FooterComponent {}
+export class FooterComponent {
+  /** O ano estava chumbado em 2025 no locale e envelheceu sozinho. */
+  readonly copyrightParams = { year: new Date().getFullYear() };
+}

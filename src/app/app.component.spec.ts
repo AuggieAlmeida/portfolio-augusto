@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { DeferBlockState, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { AppComponent } from './app.component';
@@ -15,14 +15,37 @@ describe('AppComponent', () => {
     expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('renders every landing section in order', () => {
+  it('keeps a permanent anchor for every deferred section', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
 
     const host: HTMLElement = fixture.nativeElement;
-    const sections = Array.from(host.querySelectorAll('main > *')).map((el) =>
-      el.tagName.toLowerCase()
-    );
+
+    // Sem as âncoras, a navegação do header, o terminal e o quick open ficariam
+    // sem alvo enquanto a seção não hidrata.
+    for (const id of ['career-anchor', 'projects-anchor', 'skills-anchor']) {
+      expect(host.querySelector(`#${id}`))
+        .withContext(id)
+        .not.toBeNull();
+    }
+
+    expect(host.querySelector('app-career')).toBeNull();
+    expect(host.querySelectorAll('.section-placeholder').length).toBe(3);
+  });
+
+  it('renders every landing section in order once the deferred blocks resolve', async () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+
+    for (const block of await fixture.getDeferBlocks()) {
+      await block.render(DeferBlockState.Complete);
+    }
+    fixture.detectChanges();
+
+    const host: HTMLElement = fixture.nativeElement;
+    const sections = Array.from(host.querySelectorAll('main > *'))
+      .map((element) => element.tagName.toLowerCase())
+      .filter((tag) => tag.startsWith('app-'));
 
     expect(sections).toEqual([
       'app-hero',

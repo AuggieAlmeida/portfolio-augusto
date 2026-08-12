@@ -1,0 +1,4 @@
+# Saídas geradas por tools/: formatá-las só cria diff a cada regeração.
+src/styles/icons.css
+src/styles/fonts/fonts.css
+src/app/core/images/image-manifest.json

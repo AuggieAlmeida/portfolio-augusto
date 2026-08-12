@@ -11,16 +11,20 @@
   },
   "hero": {
     "title": "Augusto Almeida",
-    "subtitle": "Fullstack Developer | QA & Data Enthusiast"
+    "subtitle": "Fullstack Developer | QA & Data Enthusiast",
+    "positioning": "Desenvolvedor fullstack com viés de qualidade: entrego produto de ponta a ponta e trato medição, teste e acessibilidade como requisito.",
+    "positioningSupport": "TypeScript, React e NestJS hoje; Java e Angular no vínculo mais longo. Cinco anos entre dado, suporte e engenharia."
   },
   "CTA": {
     "viewProjects": "Ver Projetos",
-    "contactMe": "Entrar em Contato"
+    "contactMe": "Entrar em Contato",
+    "viewFeatured": "Ver cases em destaque"
   },
   "stats": {
     "yearsOfExperience": "Anos de Experiência",
     "completedProjects": "Projetos Concluídos",
-    "languagesDominated": "Idiomas Dominados"
+    "languagesDominated": "Idiomas Dominados",
+    "englishLevel": "Inglês (CEFR)"
   },
   "about": {
     "aboutMe": "Sobre Mim",
@@ -36,7 +40,8 @@
     "title": "Habilidades",
     "intro": "Aqui estão algumas das minhas principais habilidades e tecnologias com as quais trabalho:",
     "filter": {
-      "all": "Todas"
+      "all": "Inventário ({{count}})",
+      "core": "Principais"
     },
     "no_results": "Nenhuma tecnologia encontrada para este filtro.",
     "categories": {
@@ -56,13 +61,6 @@
       "level_advanced": "Avançado",
       "level_intermediate": "Intermediário",
       "level_basic": "Básico"
-    },
-    "soft_skills": {
-      "title": "Soft Skills",
-      "teamwork": "Trabalho em equipe",
-      "communication": "Comunicação",
-      "problem_solving": "Resolução de problemas",
-      "adaptability": "Adaptabilidade"
     },
     "descriptions": {
       "html5": "Estrutura HTML semântica e boas práticas de acessibilidade.",
@@ -133,6 +131,12 @@
       "vitest": "Runner de testes rápido para projetos em TypeScript.",
       "monorepo": "Vários pacotes num repositório só, com dependências explícitas entre eles.",
       "n8n": "Automação de fluxos e integração entre serviços por webhook."
+    },
+    "practice": {
+      "title": "Como eu trabalho",
+      "teaching": "Ensino o que uso: dei aula de Excel, Power BI e IA generativa no Cebrac por mais de um ano.",
+      "measure": "Meço antes de otimizar: o case do portal de remuneração parte de 354 queries contadas na tela de fechamento.",
+      "performance": "Trato Core Web Vitals como critério de aceite, não como enfeite — foi a régua de mais de cem landing pages."
     }
   },
   "languages": {
@@ -193,6 +197,10 @@
       "react": "React",
       "nestjs": "NestJS",
       "prisma": "Prisma"
+    },
+    "history": {
+      "show": "Ver histórico anterior ({{count}} experiências)",
+      "hide": "Ocultar histórico anterior"
     }
   },
   "projects": {
@@ -429,6 +437,17 @@
         "evidence": "A resposta foi comparada byte a byte após a mudança; o N+1 ficou identificado em 316 das 354 queries.",
         "impact": "O tempo da tela caiu de 4.271 ms para 354 ms."
       }
+    },
+    "featured": {
+      "subtitle": "Seis cases que sustentam o que está escrito acima — com contexto, decisão e evidência."
+    },
+    "all": {
+      "show": "Ver todos os {{count}} projetos",
+      "hide": "Ocultar o inventário completo"
+    },
+    "carousel": {
+      "previous": "Projetos anteriores",
+      "next": "Próximos projetos"
     }
   },
   "statusBar": {
@@ -456,9 +475,10 @@
     },
     "social": {
       "github_user": "AuggieAlmeida",
-      "linkedin_user": "AugustobAlmeida"
+      "linkedin_user": "AugustobAlmeida",
+      "email": "Enviar e-mail para Augusto Almeida"
     },
-    "copyright": "© 2025 Augusto Almeida. Todos os direitos reservados."
+    "copyright": "© {{year}} Augusto Almeida. Todos os direitos reservados."
   },
   "navigation": {
     "scrollDown": "Rolar para baixo"

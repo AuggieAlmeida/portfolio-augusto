@@ -17,25 +17,53 @@ describe('ProjectsComponent', () => {
     fixture.detectChanges();
   });
 
+  it('opens with a short featured cut instead of the whole inventory', () => {
+    const host: HTMLElement = fixture.nativeElement;
+
+    expect(component.featuredProjects.length).toBeGreaterThanOrEqual(4);
+    expect(component.featuredProjects.length).toBeLessThanOrEqual(6);
+    expect(host.querySelectorAll('[data-project-card]').length).toBe(
+      component.featuredProjects.length
+    );
+    expect(host.querySelector('#projects-inventory')).toBeNull();
+  });
+
+  it('reveals the full inventory only behind the see-all control', () => {
+    const host: HTMLElement = fixture.nativeElement;
+    const toggle = host.querySelector<HTMLButtonElement>('[aria-controls="projects-inventory"]');
+
+    expect(toggle?.getAttribute('aria-expanded')).toBe('false');
+
+    toggle?.click();
+    fixture.detectChanges();
+
+    expect(toggle?.getAttribute('aria-expanded')).toBe('true');
+    expect(host.querySelector('#projects-inventory')).not.toBeNull();
+    // Cada projeto aparece no inventário; os do destaque aparecem duas vezes.
+    expect(host.querySelectorAll('[data-project-card]').length).toBe(
+      component.commercialProjects.length +
+        component.studyProjects.length +
+        component.featuredProjects.length
+    );
+  });
+
   it('renders one explicit details button for each project card', () => {
     const host: HTMLElement = fixture.nativeElement;
-    const buttons = host.querySelectorAll<HTMLButtonElement>('[data-card-control]');
+    const buttons = host.querySelectorAll<HTMLButtonElement>('[data-card-details]');
 
-    expect(buttons.length).toBe(
-      component.commercialProjects.length + component.studyProjects.length
-    );
+    expect(buttons.length).toBe(component.featuredProjects.length);
     expect(Array.from(buttons).every((button) => button.querySelector('.fa-eye'))).toBeTrue();
   });
 
   it('opens the modal once when the explicit details button is clicked', () => {
     const openModal = spyOn(component, 'openProjectModal').and.callThrough();
     const host: HTMLElement = fixture.nativeElement;
-    const button = host.querySelector<HTMLButtonElement>('[data-card-control]');
+    const button = host.querySelector<HTMLButtonElement>('[data-card-details]');
 
     button?.click();
 
     expect(openModal).toHaveBeenCalledTimes(1);
-    expect(component.selectedProject).toBe(component.commercialProjects[0]);
+    expect(component.selectedProject).toBe(component.featuredProjects[0]);
   });
 
   it('keeps the whole card clickable without making it a nested button', () => {
@@ -44,8 +72,24 @@ describe('ProjectsComponent', () => {
 
     card?.click();
 
-    expect(component.selectedProject).toBe(component.commercialProjects[0]);
+    expect(component.selectedProject).toBe(component.featuredProjects[0]);
     expect(host.querySelector('[data-project-card][role="button"]')).toBeNull();
+  });
+
+  it('serves cards through responsive derivatives instead of the master file', () => {
+    const host: HTMLElement = fixture.nativeElement;
+    const picture = host.querySelector('picture');
+    const withCover = component.featuredProjects.find((project) => project.cover);
+
+    expect(withCover).toBeDefined();
+    expect(picture?.querySelector('source[type="image/avif"]')?.getAttribute('srcset')).toContain(
+      '.avif '
+    );
+    expect(picture?.querySelector('source[type="image/webp"]')?.getAttribute('srcset')).toContain(
+      '.webp '
+    );
+    expect(picture?.querySelector('img')?.getAttribute('loading')).toBe('lazy');
+    expect(picture?.querySelector('img')?.getAttribute('width')).toBeTruthy();
   });
 
   it('restores focus to the initiating control when the modal closes', fakeAsync(() => {

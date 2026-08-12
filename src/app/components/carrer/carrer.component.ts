@@ -68,7 +68,7 @@ interface RoadmapYear {
 
             <div class="space-y-12">
               <div
-                *ngFor="let item of roadmapData; trackBy: trackByYear; let i = index"
+                *ngFor="let item of visibleRoadmap; trackBy: trackByYear; let i = index"
                 class="roadmap-item opacity-0 animate-fade-in-up"
                 [style.animation-delay]="getStaggerDelay(i)"
                 [class.flex-row-reverse]="i % 2 === 0"
@@ -187,7 +187,7 @@ interface RoadmapYear {
 
             <div class="space-y-8">
               <div
-                *ngFor="let item of roadmapData; trackBy: trackByYear; let i = index"
+                *ngFor="let item of visibleRoadmap; trackBy: trackByYear; let i = index"
                 class="roadmap-item opacity-0 animate-fade-in-up flex items-start pl-14"
                 [style.animation-delay]="getStaggerDelay(i)"
               >
@@ -276,6 +276,28 @@ interface RoadmapYear {
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="mt-8 flex justify-center md:mt-10">
+          <button
+            type="button"
+            data-history-toggle
+            class="inline-flex items-center gap-2 rounded-lg border border-secondary-300 px-5 py-3 text-sm font-medium text-secondary-700 transition-colors hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-secondary-500 dark:border-secondary-600 dark:text-secondary-200 dark:hover:bg-secondary-900/30"
+            (click)="toggleHistory()"
+            [attr.aria-expanded]="showHistory"
+          >
+            <i
+              aria-hidden="true"
+              class="fas"
+              [class.fa-chevron-down]="!showHistory"
+              [class.fa-chevron-up]="showHistory"
+            ></i>
+            {{
+              showHistory
+                ? ('roadmap.history.hide' | translate)
+                : ('roadmap.history.show' | translate: historyParams)
+            }}
+          </button>
         </div>
       </div>
     </section>
@@ -371,63 +393,22 @@ export class CareerRoadmapComponent {
   private nav = inject(NavService);
   private theme = inject(ThemeService);
 
-  public roadmapData: RoadmapYear[] = [
+  /** Ordem cronológica reversa: quem lê começa pelo que vale mais hoje. A
+   *  sequência antiga abria pelo estágio de 2020 e consumia altura demais
+   *  antes de chegar ao emprego atual. */
+  public readonly roadmapData: RoadmapYear[] = [
     {
-      year: '12/2020 – 07/2021',
-      position: 'roadmap.positions.intern_itau',
-      company: 'Itaú Unibanco',
-      skillsKeys: [
-        'roadmap.workskills.bi',
-        'roadmap.workskills.data_analysis',
-        'roadmap.workskills.excel',
-        'roadmap.workskills.sql_basics',
-        'roadmap.workskills.powerbi'
-      ]
-    },
-    {
-      year: '12/2021 – 06/2022',
-      position: 'roadmap.positions.intern_sintel',
-      company: 'Sintel S.A.',
-      skillsKeys: [
-        'roadmap.workskills.n1_support',
-        'roadmap.workskills.monitoring',
-        'roadmap.workskills.networks',
-        'roadmap.workskills.troubleshooting'
-      ]
-    },
-    {
-      year: '06/2022 – 01/2024',
+      year: '01/2026',
+      titleKey: 'roadmap.current_year',
       position: 'roadmap.positions.fullstack_developer',
-      company: 'Persys Projetos de Inovação Tecnológica',
+      company: 'Stech Soluções Tecnológicas',
+      isCurrentYear: true,
       skillsKeys: [
-        'roadmap.workskills.java',
-        'roadmap.workskills.springboot',
-        'roadmap.workskills.angular',
-        'roadmap.workskills.sql',
+        'roadmap.workskills.typescript',
+        'roadmap.workskills.react',
+        'roadmap.workskills.nestjs',
+        'roadmap.workskills.prisma',
         'roadmap.workskills.docker'
-      ]
-    },
-    {
-      year: '04/2024 – 10/2024',
-      position: 'roadmap.positions.frontend_developer',
-      company: 'Make Acelerador de Vendas',
-      skillsKeys: [
-        'roadmap.workskills.html_css',
-        'roadmap.workskills.javascript',
-        'roadmap.workskills.php',
-        'roadmap.workskills.wordpress',
-        'roadmap.workskills.responsive_design'
-      ]
-    },
-    {
-      year: '2025',
-      position: 'roadmap.positions.test_engineer',
-      company: 'Outlier',
-      skillsKeys: [
-        'roadmap.workskills.qa_automation',
-        'roadmap.workskills.selenium',
-        'roadmap.workskills.testing_frameworks',
-        'roadmap.workskills.ci_cd'
       ]
     },
     {
@@ -443,20 +424,82 @@ export class CareerRoadmapComponent {
       ]
     },
     {
-      year: '01/2026',
-      titleKey: 'roadmap.current_year',
-      position: 'roadmap.positions.fullstack_developer',
-      company: 'Stech Soluções Tecnológicas',
-      isCurrentYear: true,
+      year: '2025',
+      position: 'roadmap.positions.test_engineer',
+      company: 'Outlier',
       skillsKeys: [
-        'roadmap.workskills.typescript',
-        'roadmap.workskills.react',
-        'roadmap.workskills.nestjs',
-        'roadmap.workskills.prisma',
+        'roadmap.workskills.qa_automation',
+        'roadmap.workskills.selenium',
+        'roadmap.workskills.testing_frameworks',
+        'roadmap.workskills.ci_cd'
+      ]
+    },
+    {
+      year: '04/2024 – 10/2024',
+      position: 'roadmap.positions.frontend_developer',
+      company: 'Make Acelerador de Vendas',
+      skillsKeys: [
+        'roadmap.workskills.html_css',
+        'roadmap.workskills.javascript',
+        'roadmap.workskills.php',
+        'roadmap.workskills.wordpress',
+        'roadmap.workskills.responsive_design'
+      ]
+    },
+    {
+      year: '06/2022 – 01/2024',
+      position: 'roadmap.positions.fullstack_developer',
+      company: 'Persys Projetos de Inovação Tecnológica',
+      skillsKeys: [
+        'roadmap.workskills.java',
+        'roadmap.workskills.springboot',
+        'roadmap.workskills.angular',
+        'roadmap.workskills.sql',
         'roadmap.workskills.docker'
+      ]
+    },
+    {
+      year: '12/2021 – 06/2022',
+      position: 'roadmap.positions.intern_sintel',
+      company: 'Sintel S.A.',
+      skillsKeys: [
+        'roadmap.workskills.n1_support',
+        'roadmap.workskills.monitoring',
+        'roadmap.workskills.networks',
+        'roadmap.workskills.troubleshooting'
+      ]
+    },
+    {
+      year: '12/2020 – 07/2021',
+      position: 'roadmap.positions.intern_itau',
+      company: 'Itaú Unibanco',
+      skillsKeys: [
+        'roadmap.workskills.bi',
+        'roadmap.workskills.data_analysis',
+        'roadmap.workskills.excel',
+        'roadmap.workskills.sql_basics',
+        'roadmap.workskills.powerbi'
       ]
     }
   ];
+
+  /** As três experiências mais recentes ficam abertas; o histórico anterior
+   *  entra por escolha de quem lê. */
+  private static readonly RECENT = 3;
+
+  public showHistory = false;
+  public visibleRoadmap: RoadmapYear[] = this.roadmapData.slice(0, CareerRoadmapComponent.RECENT);
+  public readonly historyParams = {
+    count: this.roadmapData.length - CareerRoadmapComponent.RECENT
+  };
+
+  toggleHistory(): void {
+    this.showHistory = !this.showHistory;
+    this.visibleRoadmap = this.showHistory
+      ? this.roadmapData
+      : this.roadmapData.slice(0, CareerRoadmapComponent.RECENT);
+    this.cdr.markForCheck();
+  }
 
   // Theme toggle method - can be called from header
   toggleTheme(): void {
