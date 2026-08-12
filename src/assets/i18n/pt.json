@@ -345,6 +345,18 @@
       "aquila_e_evelyn": {
         "title": "Áquila e Evelyn",
         "description": "Convite digital de casamento em página estática responsiva, com animações em CSS e conteúdo carregado de JSON para o casal editar sem tocar em código."
+      },
+      "suite_financeira_b2b": {
+        "title": "Suíte financeira B2B",
+        "description": "Suíte de operação financeira em três repositórios: backend Django com DRF, JWT e tarefas assíncronas; interface Vue 3 com design system interno; e pipelines PySpark nas camadas silver e gold. Kafka integra os domínios com tópico por assunto, consumers com tratamento de erro e DLQ, e deploy de consumer separado por ambiente. AWS aparece como S3 com presigned URL, SQS e Secrets Manager — não só armazenamento. A remediação de vulnerabilidades colocou pip-audit dentro do job de build do CI. Cliente sob confidencialidade: sem nome, repositório ou captura de tela."
+      },
+      "portal_remuneracao_frota": {
+        "title": "Portal de remuneração e frota",
+        "description": "Portal interno de fechamento mensal de remuneração, KM de frota, cadastros e relatórios, em Lumen e React com TypeScript. O caso é de medição: a tela de fechamento disparava 354 queries por carregamento e dez das onze tabelas do domínio não tinham índice nenhum, com 293 mil linhas em varredura completa. Sete índices derivados dos predicados medidos levaram a tela de 4.271 ms para 354 ms, com resposta byte a byte idêntica; o N+1 restante ficou mapeado em 316 das 354 queries. Rendeu também correção de higiene de deploy: configuração apontada para localhost mantida fora do commit e .env de backup que o gitignore não cobria. Cliente sob confidencialidade: sem nome, repositório ou captura de tela."
+      },
+      "servidor_llm_local": {
+        "title": "Servidor de LLM local",
+        "description": "Servidor interno convertido em host de modelos locais e armazenamento de arquivos. Ubuntu 24.04 bare metal, Docker com NVIDIA Container Toolkit e a GPU reconhecida dentro do container; Ollama servindo um modelo 8B pela API local. Acesso remoto por Tailscale em vez de porta aberta na internet, e compartilhamento Samba autenticado, sem guest share. O dimensionamento foi declarado junto com a entrega: o perfil de hardware serve RAG e modelos quantizados de 7B/8B, não inferência pesada multiusuário."
       }
     },
     "tags": {
@@ -382,7 +394,9 @@
       "fintech": "Fintech",
       "devtools": "Ferramentas de dev",
       "template": "Template",
-      "sports": "Esporte"
+      "sports": "Esporte",
+      "data": "Dados",
+      "infra": "Infraestrutura"
     },
     "viewDemo": "Ver demo",
     "viewCode": "Ver código",

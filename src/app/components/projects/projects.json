@@ -127,6 +127,37 @@
       "technologies": ["React", "TypeScript", "Supabase", "n8n", "AWS EC2", "Zod"]
     },
     {
+      "id": "suite-financeira-b2b",
+      "titleKey": "projects.items.suite_financeira_b2b.title",
+      "descriptionKey": "projects.items.suite_financeira_b2b.description",
+      "category": "commercial",
+      "tagsKeys": ["projects.tags.fintech", "projects.tags.data", "projects.tags.platform"],
+      "technologies": ["Django", "Vue 3", "PySpark", "Kafka", "PostgreSQL", "AWS", "Kubernetes"]
+    },
+    {
+      "id": "portal-remuneracao-frota",
+      "titleKey": "projects.items.portal_remuneracao_frota.title",
+      "descriptionKey": "projects.items.portal_remuneracao_frota.description",
+      "category": "commercial",
+      "tagsKeys": ["projects.tags.management", "projects.tags.platform", "projects.tags.dashboard"],
+      "technologies": ["Lumen", "PHP", "React", "TypeScript", "MySQL", "BigQuery", "Power BI"]
+    },
+    {
+      "id": "servidor-llm-local",
+      "titleKey": "projects.items.servidor_llm_local.title",
+      "descriptionKey": "projects.items.servidor_llm_local.description",
+      "category": "commercial",
+      "tagsKeys": ["projects.tags.ai", "projects.tags.infra", "projects.tags.automation"],
+      "technologies": [
+        "Ubuntu",
+        "Docker",
+        "NVIDIA Container Toolkit",
+        "Ollama",
+        "Tailscale",
+        "Samba"
+      ]
+    },
+    {
       "id": "bubble-box-lavanderia",
       "titleKey": "projects.items.bubble_box_lavanderia.title",
       "descriptionKey": "projects.items.bubble_box_lavanderia.description",

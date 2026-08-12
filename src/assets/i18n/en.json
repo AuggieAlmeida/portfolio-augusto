@@ -291,6 +291,18 @@
       "aquila_e_evelyn": {
         "title": "Áquila & Evelyn",
         "description": "Digital wedding invitation as a responsive static page, with CSS animations and content loaded from JSON so the couple could edit it without touching code."
+      },
+      "suite_financeira_b2b": {
+        "title": "B2B financial suite",
+        "description": "Financial operations suite across three repositories: a Django backend with DRF, JWT and async tasks; a Vue 3 interface with an in-house design system; and PySpark pipelines feeding silver and gold layers. Kafka wires the domains together with a topic per subject, consumers with error handling and a DLQ, and per-environment consumer deployments. AWS shows up as S3 with presigned URLs, SQS and Secrets Manager — not just storage. Vulnerability remediation put pip-audit inside the CI build job. Client under confidentiality: no name, repository or screenshot."
+      },
+      "portal_remuneracao_frota": {
+        "title": "Payroll and fleet portal",
+        "description": "Internal portal for monthly payroll closing, fleet mileage, base records and reports, built on Lumen and React with TypeScript. The case is measurement: the closing screen fired 354 queries per load and ten of the eleven domain tables had no index at all, with 293 thousand rows in full scan. Seven indexes derived from the measured predicates took the screen from 4,271 ms to 354 ms with a byte-identical response; the remaining N+1 was mapped at 316 of the 354 queries. It also produced deploy-hygiene fixes: a config file pointing at localhost kept out of the commit, and a backup .env the gitignore did not cover. Client under confidentiality: no name, repository or screenshot."
+      },
+      "servidor_llm_local": {
+        "title": "Self-hosted LLM server",
+        "description": "Internal server turned into a local model host and file store. Ubuntu 24.04 on bare metal, Docker with the NVIDIA Container Toolkit and the GPU visible inside the container; Ollama serving an 8B model over the local API. Remote access through Tailscale rather than an internet-facing port, and authenticated Samba shares with no guest access. Sizing was stated alongside the delivery: this hardware profile serves RAG and quantised 7B/8B models, not heavy multi-user inference."
       }
     },
     "tags": {
@@ -328,7 +340,9 @@
       "fintech": "Fintech",
       "devtools": "Dev tooling",
       "template": "Template",
-      "sports": "Sports"
+      "sports": "Sports",
+      "data": "Data",
+      "infra": "Infrastructure"
     },
     "viewDemo": "View demo",
     "viewCode": "View code",
