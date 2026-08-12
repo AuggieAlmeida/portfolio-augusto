@@ -156,14 +156,6 @@ import { ThemeService } from '../../core/services/theme.service';
             <i aria-hidden="true" class="fas fa-magnifying-glass"></i>
             <kbd class="text-xs text-neutral-500 dark:text-neutral-400">⌘K</kbd>
           </button>
-          <button
-            type="button"
-            class="flex h-9 w-9 items-center justify-center rounded-lg border border-primary-200 bg-primary-50 text-neutral-700 transition-all hover:bg-primary-100 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-primary-700 dark:bg-primary-900/30 dark:text-neutral-100 dark:hover:bg-primary-800/40"
-            aria-label="Abrir terminal"
-            (click)="openTerminal()"
-          >
-            <i aria-hidden="true" class="fas fa-terminal"></i>
-          </button>
           <select
             [value]="currentLang"
             (change)="switchLang($event)"
@@ -284,14 +276,6 @@ import { ThemeService } from '../../core/services/theme.service';
 
             <!-- Controles Mobile (Idioma e Tema) -->
             <div class="pt-8 border-t border-neutral-200 dark:border-neutral-800 space-y-4">
-              <button
-                type="button"
-                class="w-full p-3 rounded-lg flex items-center justify-between bg-primary-100 dark:text-neutral-100 dark:bg-primary-800/40 border border-primary-200 dark:border-primary-700 transition-all"
-                (click)="openTerminal()"
-              >
-                <span>Terminal</span>
-                <i aria-hidden="true" class="fas fa-terminal"></i>
-              </button>
               <div>
                 <label
                   for="language-select"
@@ -455,11 +439,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   toggleTheme() {
     this.theme.toggleTheme();
     this.cdr.markForCheck();
-  }
-
-  openTerminal() {
-    this.closeMobileMenu();
-    this.commands.openTerminal();
   }
 
   openQuickOpen() {

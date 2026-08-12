@@ -25,6 +25,15 @@ type Surface = 'terminal' | 'quick-open' | null;
   imports: [CommonModule, TranslateModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
+    <button
+      type="button"
+      class="fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-white shadow-lg shadow-primary-950/25 transition-transform hover:scale-105 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 dark:focus:ring-offset-primary-950"
+      aria-label="Abrir terminal"
+      (click)="openTerminal()"
+    >
+      <i aria-hidden="true" class="fas fa-terminal"></i>
+    </button>
+
     <div
       *ngIf="surface"
       class="fixed inset-0 z-[60] flex items-end bg-black/60 p-3 backdrop-blur-sm md:items-center md:justify-center md:p-6"
@@ -172,6 +181,10 @@ export class CommandCenterComponent {
     this.commands.openSurface$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((surface) => {
       this.open(surface);
     });
+  }
+
+  openTerminal(): void {
+    this.commands.openTerminal();
   }
 
   open(surface: Exclude<Surface, null>): void {
