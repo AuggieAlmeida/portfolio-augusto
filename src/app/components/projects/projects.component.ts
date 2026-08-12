@@ -3,37 +3,17 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  DestroyRef,
   ElementRef,
   HostListener,
   inject,
   ViewChild
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
-import projectsData from './projects.json';
-
-interface ProjectItem {
-  id: string;
-  titleKey: string;
-  descriptionKey: string;
-  image: string;
-  /** Galeria do modal. Ausente, o modal cai para `image`; ausentes as duas, o
-   *  modal mostra o mesmo bloco de iniciais que o card. */
-  images?: string[];
-  category: 'commercial' | 'study';
-  tagsKeys: string[];
-  technologies: string[];
-  demoUrl?: string;
-  githubUrl?: string;
-  /** Publicação acadêmica do projeto — não é demo nem repositório, e rotular
-   *  como um dos dois enganaria quem clica. */
-  paperUrl?: string;
-}
-
-interface ProjectsData {
-  commercial: ProjectItem[];
-  study: ProjectItem[];
-}
+import { PortfolioCommandService } from '../../core/commands/portfolio-command.service';
+import { ProjectCatalogService, ProjectItem } from '../../core/projects/project-catalog.service';
 
 @Component({
   selector: 'app-projects',
@@ -847,10 +827,13 @@ export class ProjectsComponent {
   private lastFocusedElement: HTMLElement | null = null;
 
   private cdr = inject(ChangeDetectorRef);
+  private commands = inject(PortfolioCommandService);
+  private destroyRef = inject(DestroyRef);
+  private catalog = inject(ProjectCatalogService);
   private translate = inject(TranslateService);
 
-  public commercialProjects: ProjectItem[] = (projectsData as ProjectsData).commercial || [];
-  public studyProjects: ProjectItem[] = (projectsData as ProjectsData).study || [];
+  public commercialProjects: ProjectItem[] = this.catalog.commercial;
+  public studyProjects: ProjectItem[] = this.catalog.study;
 
   // Scroll state tracking
   public scrollStates = {
@@ -859,7 +842,9 @@ export class ProjectsComponent {
   };
 
   constructor() {
-    // Component initialization
+    this.commands.openProject$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((project) => {
+      this.openProjectModal(project);
+    });
   }
 
   // TrackBy function for performance

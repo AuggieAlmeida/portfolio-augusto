@@ -9,6 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <footer
+      id="contact"
       class="relative bg-neutral-100 dark:bg-primary-950 text-neutral-700 dark:text-neutral-200 border-t border-neutral-200 dark:border-neutral-800"
       role="contentinfo"
     >

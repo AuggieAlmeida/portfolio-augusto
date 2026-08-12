@@ -12,6 +12,7 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { PortfolioCommandService } from '../../core/commands/portfolio-command.service';
 import { LocaleService } from '../../core/i18n/locale.service';
 import { isLocale } from '../../core/i18n/locales';
 import { NavService } from '../../core/services/nav.service';
@@ -146,6 +147,23 @@ import { ThemeService } from '../../core/services/theme.service';
 
         <!-- Controles Desktop (Idioma e Tema) -->
         <div class="items-center gap-2 hidden lg:flex">
+          <button
+            type="button"
+            class="flex items-center gap-2 rounded-lg border border-primary-200 bg-primary-50 px-2 py-2 text-sm text-neutral-700 transition-all hover:bg-primary-100 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-primary-700 dark:bg-primary-900/30 dark:text-neutral-100 dark:hover:bg-primary-800/40"
+            aria-label="Abrir quick open"
+            (click)="openQuickOpen()"
+          >
+            <i aria-hidden="true" class="fas fa-magnifying-glass"></i>
+            <kbd class="text-xs text-neutral-500 dark:text-neutral-400">⌘K</kbd>
+          </button>
+          <button
+            type="button"
+            class="flex h-9 w-9 items-center justify-center rounded-lg border border-primary-200 bg-primary-50 text-neutral-700 transition-all hover:bg-primary-100 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-primary-700 dark:bg-primary-900/30 dark:text-neutral-100 dark:hover:bg-primary-800/40"
+            aria-label="Abrir terminal"
+            (click)="openTerminal()"
+          >
+            <i aria-hidden="true" class="fas fa-terminal"></i>
+          </button>
           <select
             [value]="currentLang"
             (change)="switchLang($event)"
@@ -266,6 +284,14 @@ import { ThemeService } from '../../core/services/theme.service';
 
             <!-- Controles Mobile (Idioma e Tema) -->
             <div class="pt-8 border-t border-neutral-200 dark:border-neutral-800 space-y-4">
+              <button
+                type="button"
+                class="w-full p-3 rounded-lg flex items-center justify-between bg-primary-100 dark:text-neutral-100 dark:bg-primary-800/40 border border-primary-200 dark:border-primary-700 transition-all"
+                (click)="openTerminal()"
+              >
+                <span>Terminal</span>
+                <i aria-hidden="true" class="fas fa-terminal"></i>
+              </button>
               <div>
                 <label
                   for="language-select"
@@ -361,6 +387,7 @@ import { ThemeService } from '../../core/services/theme.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   private locale = inject(LocaleService);
+  private commands = inject(PortfolioCommandService);
   private nav = inject(NavService);
   private theme = inject(ThemeService);
   private destroyRef = inject(DestroyRef);
@@ -428,6 +455,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
   toggleTheme() {
     this.theme.toggleTheme();
     this.cdr.markForCheck();
+  }
+
+  openTerminal() {
+    this.closeMobileMenu();
+    this.commands.openTerminal();
+  }
+
+  openQuickOpen() {
+    this.commands.openQuickOpen();
   }
 
   scrollTo(id: string) {
