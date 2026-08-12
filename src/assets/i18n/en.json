@@ -441,25 +441,25 @@
       "braseng_consultoria": {
         "proves": "Repeated delivery under commercial deadline with performance as an acceptance criterion — the most consistent no-framework frontend evidence in this portfolio.",
         "context": "A business consultancy landing page inside a nine-delivery client cycle.",
-        "decision": "A landing published on the agency lead capture platform, with no content panel for the client to maintain.",
+        "decision": "A standalone landing in HTML, CSS and JavaScript with jQuery and Bootstrap, published on the agency lead capture platform.",
         "evidence": "Core Web Vitals appears in the brief as a declared requirement, not as later optimisation."
       },
       "bumbum_de_anjo": {
         "proves": "A product page delivered in the same commercial cycle, with fast loading treated as a requirement rather than a refinement.",
         "context": "A childrenswear product landing page inside a nine-delivery client cycle.",
-        "decision": "A landing published on the lead capture platform, with no content panel for the client to maintain.",
+        "decision": "A standalone landing in HTML, CSS and JavaScript with jQuery and Bootstrap, no CMS.",
         "evidence": "Core Web Vitals appears in the brief as a declared requirement, not as later optimisation."
       },
       "clinica_viotto": {
         "proves": "A healthcare delivery in the same commercial cycle, with web performance contracted as a criterion.",
         "context": "A dentistry and dental veneers landing page inside a nine-delivery client cycle.",
-        "decision": "Delivered on a CMS with a managed contact form, so the clinic can update procedures and lead capture without a developer.",
+        "decision": "A standalone landing in HTML, CSS and JavaScript with jQuery and Bootstrap, no CMS — lead capture runs through the lead platform own form.",
         "evidence": "Core Web Vitals appears in the brief as a declared requirement, not as later optimisation."
       },
       "fehe_chocolate": {
         "proves": "A premium product brand page in the same commercial cycle, with fast loading as a declared requirement.",
         "context": "A sugar-free premium chocolate landing page inside a nine-delivery client cycle.",
-        "decision": "Delivered on an e-commerce platform with a Liquid theme, because the product sells directly and the catalogue belongs to the client.",
+        "decision": "A standalone landing in HTML, CSS and JavaScript with jQuery and Bootstrap, no CMS, because the page exists to convert rather than to host a catalogue.",
         "evidence": "Core Web Vitals appears in the brief as a declared requirement, not as later optimisation."
       },
       "bubble_box_lavanderia": {

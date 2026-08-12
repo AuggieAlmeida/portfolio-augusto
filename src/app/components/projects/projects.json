@@ -46,7 +46,7 @@
         "projects.tags.digital_agency",
         "projects.tags.landing_page"
       ],
-      "technologies": ["HTML5", "CSS3", "JavaScript", "CSS3", "Bootstrap"],
+      "technologies": ["HTML5", "CSS3", "JavaScript", "jQuery", "Bootstrap"],
       "demoUrl": "https://minhamaquinadeleads.com.br/f4eee40f",
       "featured": true,
       "decision": {
@@ -67,7 +67,7 @@
         "projects.tags.business",
         "projects.tags.landing_page"
       ],
-      "technologies": ["HTML", "PHP", "JavaScript", "CSS3", "Bootstrap"],
+      "technologies": ["HTML5", "CSS3", "JavaScript", "jQuery", "Bootstrap"],
       "demoUrl": "https://minhamaquinadeleads.com.br/85a9cb35",
       "decision": {
         "provesKey": "projects.decisions.braseng_consultoria.proves",
@@ -83,7 +83,7 @@
       "imageKey": "bumbum-de-anjo",
       "category": "commercial",
       "tagsKeys": ["projects.tags.ecommerce", "projects.tags.health", "projects.tags.landing_page"],
-      "technologies": ["HTML", "PHP", "JavaScript", "CSS3", "Bootstrap"],
+      "technologies": ["HTML5", "CSS3", "JavaScript", "jQuery", "Bootstrap"],
       "demoUrl": "https://minhamaquinadeleads.com.br/af8211e7",
       "decision": {
         "provesKey": "projects.decisions.bumbum_de_anjo.proves",
@@ -99,7 +99,7 @@
       "imageKey": "fehe-chocolate",
       "category": "commercial",
       "tagsKeys": ["projects.tags.ecommerce", "projects.tags.food", "projects.tags.landing_page"],
-      "technologies": ["Shopify", "Liquid", "JavaScript", "CSS3", "Google Analytics"],
+      "technologies": ["HTML5", "CSS3", "JavaScript", "jQuery", "Bootstrap"],
       "demoUrl": "https://minhamaquinadeleads.com.br/20c67a70",
       "decision": {
         "provesKey": "projects.decisions.fehe_chocolate.proves",
@@ -115,7 +115,7 @@
       "imageKey": "clinica-viotto",
       "category": "commercial",
       "tagsKeys": ["projects.tags.health", "projects.tags.dental", "projects.tags.landing_page"],
-      "technologies": ["WordPress", "PHP", "JavaScript", "CSS3", "Contact Form 7"],
+      "technologies": ["HTML5", "CSS3", "JavaScript", "jQuery", "Bootstrap"],
       "demoUrl": "https://minhamaquinadeleads.com.br/0c2bda46",
       "decision": {
         "provesKey": "projects.decisions.clinica_viotto.proves",

@@ -240,6 +240,23 @@ describe('ProjectsComponent', () => {
     expect(host.querySelector('[data-decision-toggle]')).toBeNull();
   });
 
+  it('caps the modal image height so a portrait capture cannot stretch the panel', () => {
+    const withGallery = [...component.commercialProjects, ...component.studyProjects].find(
+      (item) => item.gallery.length
+    );
+    expect(withGallery).toBeDefined();
+
+    component.openProjectModal(withGallery!);
+    fixture.detectChanges();
+    const host: HTMLElement = fixture.nativeElement;
+    const image = host.querySelector<HTMLImageElement>('[data-modal-image]');
+
+    // Captura em retrato tem altura muito maior que largura: sem teto de
+    // altura, `h-auto` estica o painel para fora da tela no mobile.
+    expect(image?.className).toContain('max-h-[55vh]');
+    expect(image?.className).toContain('object-contain');
+  });
+
   it('lists the stack once, and not again inside the open decision case', () => {
     const project = component.commercialProjects.find(
       (item) => item.id === 'portal-remuneracao-frota'

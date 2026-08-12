@@ -419,7 +419,8 @@ import { ScrollLockService } from '../../core/services/scroll-lock.service';
                 [alt]="imageAlt(project) + ' — ' + (slideIndex + 1)"
                 [width]="project.gallery[slideIndex].width"
                 [height]="project.gallery[slideIndex].height"
-                class="block h-auto w-auto max-w-full shrink-0"
+                data-modal-image
+                class="block h-auto w-auto max-h-[55vh] max-w-full shrink-0 object-contain sm:max-h-[65vh]"
                 decoding="async"
               />
             </picture>

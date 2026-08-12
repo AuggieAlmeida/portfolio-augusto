@@ -499,25 +499,25 @@
       "braseng_consultoria": {
         "proves": "Volume de entrega sob prazo comercial com performance como critério de aceite — a evidência de front sem framework mais consistente do portfólio.",
         "context": "Landing de consultoria empresarial dentro de um ciclo de nove entregas para cliente.",
-        "decision": "Landing publicada na plataforma de captura de leads da agência, sem painel de conteúdo para o cliente manter.",
+        "decision": "Landing autônoma em HTML, CSS e JavaScript com jQuery e Bootstrap, publicada na plataforma de captura de leads da agência.",
         "evidence": "Core Web Vitals aparece no brief como requisito declarado, não como otimização posterior."
       },
       "bumbum_de_anjo": {
         "proves": "Página de produto entregue no mesmo ciclo comercial, com carregamento rápido tratado como requisito e não como refino.",
         "context": "Landing de produto infantil dentro de um ciclo de nove entregas para cliente.",
-        "decision": "Landing publicada na plataforma de captura de leads, sem painel de conteúdo para o cliente manter.",
+        "decision": "Landing autônoma em HTML, CSS e JavaScript com jQuery e Bootstrap, sem CMS.",
         "evidence": "Core Web Vitals aparece no brief como requisito declarado, não como otimização posterior."
       },
       "clinica_viotto": {
         "proves": "Entrega para o setor de saúde no mesmo ciclo comercial, com performance web contratada como critério.",
         "context": "Landing de odontologia e lentes dentais dentro de um ciclo de nove entregas para cliente.",
-        "decision": "Entrega sobre CMS com formulário de contato gerenciado, para a clínica atualizar procedimento e captação sem dev.",
+        "decision": "Landing autônoma em HTML, CSS e JavaScript com jQuery e Bootstrap, sem CMS — a captação sai por formulário da própria plataforma de leads.",
         "evidence": "Core Web Vitals aparece no brief como requisito declarado, não como otimização posterior."
       },
       "fehe_chocolate": {
         "proves": "Página de marca de produto premium no mesmo ciclo comercial, com carregamento rápido como requisito declarado.",
         "context": "Landing de chocolate premium zero açúcar dentro de um ciclo de nove entregas para cliente.",
-        "decision": "Entrega sobre plataforma de e-commerce com tema em Liquid, porque o produto vende direto e o catálogo é do cliente.",
+        "decision": "Landing autônoma em HTML, CSS e JavaScript com jQuery e Bootstrap, sem CMS, porque a página existe para converter e não para hospedar catálogo.",
         "evidence": "Core Web Vitals aparece no brief como requisito declarado, não como otimização posterior."
       },
       "bubble_box_lavanderia": {
