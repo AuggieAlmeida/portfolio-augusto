@@ -205,9 +205,11 @@
       "id": "omegahub",
       "titleKey": "projects.items.omegahub.title",
       "descriptionKey": "projects.items.omegahub.description",
+      "imageKey": "omegahub",
       "category": "study",
       "tagsKeys": ["projects.tags.platform", "projects.tags.game", "projects.tags.monorepo"],
-      "technologies": ["Next.js", "NestJS", "Turborepo", "PostgreSQL", "Redis", "Stripe"]
+      "technologies": ["Next.js", "NestJS", "Turborepo", "PostgreSQL", "Redis", "Stripe"],
+      "githubUrl": "https://github.com/AuggieAlmeida/discordia"
     },
     {
       "id": "pronto",

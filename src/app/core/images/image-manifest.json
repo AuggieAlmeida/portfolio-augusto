@@ -146,6 +146,13 @@
     "width": 960,
     "height": 539
   },
+  "omegahub": {
+    "src": "./assets/images/projects/omegahub-960.jpg",
+    "avif": "./assets/images/projects/omegahub-480.avif 480w, ./assets/images/projects/omegahub-960.avif 960w",
+    "webp": "./assets/images/projects/omegahub-480.webp 480w, ./assets/images/projects/omegahub-960.webp 960w",
+    "width": 960,
+    "height": 540
+  },
   "optec-solutions": {
     "src": "./assets/images/projects/optec-solutions-960.jpg",
     "avif": "./assets/images/projects/optec-solutions-480.avif 480w, ./assets/images/projects/optec-solutions-960.avif 960w, ./assets/images/projects/optec-solutions-1440.avif 1440w",
