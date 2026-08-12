@@ -622,15 +622,17 @@ interface ProjectsData {
                 <button
                   *ngIf="project.demoUrl"
                   type="button"
+                  data-modal-action="redirect"
                   class="flex items-center gap-2 rounded-lg bg-primary-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-400"
                   (click)="openUrl(project.demoUrl!)"
                 >
                   <i aria-hidden="true" class="fas fa-external-link-alt text-xs"></i>
-                  {{ 'projects.viewDemo' | translate }}
+                  {{ 'projects.redirect' | translate }}
                 </button>
                 <button
                   *ngIf="project.githubUrl"
                   type="button"
+                  data-modal-action="github"
                   class="flex items-center gap-2 rounded-lg border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-400 dark:border-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-700"
                   (click)="openUrl(project.githubUrl!)"
                 >
@@ -640,6 +642,7 @@ interface ProjectsData {
                 <button
                   *ngIf="project.paperUrl"
                   type="button"
+                  data-modal-action="paper"
                   class="flex items-center gap-2 rounded-lg border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-400 dark:border-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-700"
                   (click)="openUrl(project.paperUrl!)"
                 >

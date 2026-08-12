@@ -61,4 +61,44 @@ describe('ProjectsComponent', () => {
 
     expect(document.activeElement).toBe(button);
   }));
+
+  it('renders Redirect as primary and GitHub as secondary when both links exist', () => {
+    const project = [...component.commercialProjects, ...component.studyProjects].find(
+      (item) => item.demoUrl && item.githubUrl
+    );
+    expect(project).toBeDefined();
+
+    component.openProjectModal(project!);
+    fixture.detectChanges();
+
+    const host: HTMLElement = fixture.nativeElement;
+    const redirect = host.querySelector<HTMLButtonElement>('[data-modal-action="redirect"]');
+    const github = host.querySelector<HTMLButtonElement>('[data-modal-action="github"]');
+
+    expect(redirect?.textContent).toContain('projects.redirect');
+    expect(redirect?.classList).toContain('bg-primary-500');
+    expect(github?.textContent).toContain('projects.viewCode');
+    expect(github?.classList).toContain('border');
+  });
+
+  it('hides every external action when the project has no public link', () => {
+    const confidentialProject = [...component.commercialProjects, ...component.studyProjects].find(
+      (item) => !item.demoUrl && !item.githubUrl && !item.paperUrl
+    );
+    expect(confidentialProject).toBeDefined();
+
+    component.openProjectModal(confidentialProject!);
+    fixture.detectChanges();
+
+    const host: HTMLElement = fixture.nativeElement;
+    expect(host.querySelectorAll('[data-modal-action]').length).toBe(0);
+  });
+
+  it('opens external links in a separate tab without an opener reference', () => {
+    const open = spyOn(window, 'open');
+
+    component.openUrl('https://example.com');
+
+    expect(open).toHaveBeenCalledWith('https://example.com', '_blank', 'noopener,noreferrer');
+  });
 });
