@@ -117,7 +117,10 @@ gh run rerun --failed -R AuggieAlmeida/aquila-e-evelyn
   publicada no RIC, o projeto correspondente ganha `paperUrl`.
 - `asurapadel` — a descrição afirma queda de 800 ms para 220 ms. A folha do vault registra
   o número como auto-relatado, **sem medição anexada**. Ou anexa a medição, ou o número sai.
-- Hero ainda diz "20 Projetos Concluídos" com 37 cards na página.
+- Hero passou de "20" para **33 Projetos Concluídos**, contado card a card contra as folhas
+  do vault. Ficam de fora os quatro que não estão `concluido`: `portal-remuneracao-frota`
+  (ativo), `servidor-llm-local` (pausado), `jarbas` e `quinto-selo` (ativos). O número volta
+  a sair do lugar quando algum desses quatro fechar — recontar, não incrementar às cegas.
 
 ## 7. Repositórios públicos que não estão no portfólio
 
