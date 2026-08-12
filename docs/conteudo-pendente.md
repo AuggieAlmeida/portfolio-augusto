@@ -4,24 +4,72 @@ Levantado em 2026-08-11 cruzando `src/app/components/projects/projects.json` com
 repositórios do GitHub (`gh`, conta `AuggieAlmeida` + orgs `Keanus-In-Reevesverse`,
 `JavaPadoca`, `KitManeger-Fatec`, `TJG-Tech`) e com as folhas de projeto do vault.
 
-Estado atual, **37 cards**: 15 com imagem, 13 com demo, 9 com repositório, 1 com publicação.
+Estado atual, **36 cards**: 24 com imagem, 14 com demo, 9 com repositório, 1 com publicação.
 
-O gargalo agora é imagem. Dos 22 que faltam, 17 só fecham rodando o projeto localmente e
-capturando a tela; os outros cinco ficam sem imagem por decisão, não por falta.
+O gargalo agora é imagem. Dos 12 que faltam, 5 só fecham rodando o projeto e
+capturando a tela; três não têm interface própria e quatro ficam sem imagem por
+confidencialidade.
 
 ---
 
-## 1. Imagens faltando — 22 dos 37 cards
+## 1. Imagens faltando — 12 dos 36 cards
 
 Precisam rodar localmente, um a um:
 
-`taskforge` · `omegahub` · `financeos` · `jarbas` · `quinto-selo` · `repo-explorer-angular` ·
-`instagram-analyzer` · `pokedex` · `youtcatcher` · `javafx-pokemon` · `sudoku-solver` ·
-`kitbuilder` · `calc-financeira` · `aquila-e-evelyn`
+`omegahub` · `pokedex` · `javafx-pokemon` · `sudoku-solver` · `kitbuilder`
+
+Fechado nesta rodada:
+
+- `repo-explorer-angular` — captura 1280×720 em 2026-08-12, com busca pública por `angular`,
+  lista de resultados e painel de detalhe aberto; integrada ao card e validada no modal.
+- `instagram-analyzer` — janela nativa 1066×768 em estado vazio, sem export real do Instagram;
+  mostra seleção dos dois JSONs, ação de análise, abas e tema escuro.
+- `quinto-selo` — viewport nativo 480×302 da fatia jogável em modo host com bot; sem upscale e
+  sem fingir arte que o projeto ainda não tem.
+- `taskforge` — interface Next/Tauri em modo web, 1280×720, com navegação de planos,
+  execuções, falhas, rascunhos, repositório e chat read-only.
+- `financeos` — login público limpo, sem o hint que expunha a credencial de desenvolvimento;
+  captura 1280×720 integrada após a remoção estreita do bloco.
+- `youtcatcher` — app macOS temporário gerado com PyInstaller e perfil vazio; captura 871×768
+  sem reaproveitar o histórico local.
+- `calc-financeira` — dashboard desktop em tela cheia, com os quatro métodos de divisão de
+  renda e os gráficos comparativos visíveis.
+- `jarbas` — onboarding web seguro do Drifter, sem conectar a interface ao vault pessoal.
+- `aquila-e-evelyn` — quatro capturas sanitizadas (hero, experiência, sistema visual e
+  versão mobile), sem depoimentos, fotos pessoais, endereço, data, RSVP ou presentes.
+
+Bloqueios resolvidos nesta rodada:
+
+- `financeos` — credencial de desenvolvimento removida da UI; captura segura publicada.
+- `youtcatcher` — o processo Python cru continuou invisível à acessibilidade, mas um bundle
+  macOS temporário registrou a janela corretamente e permitiu a captura com perfil vazio.
+
+Bloqueio local remanescente:
+
+- `sudoku-solver` — o solver em C passa (`Solver OK`), porém o pipeline visual não compila sem
+  OpenCV e o checkout local não contém `assets/samples/` nem templates OCR. A captura depende
+  de recuperar esses artefatos no repositório remoto.
+
+Fase GitHub iniciada em 2026-08-12:
+
+- `kitbuilder` — `KitManeger-Fatec/KitBuilder-tkinter` recuperado e indexado; app abre a tela
+  de login. A suíte fica em 13 passed/2 failed sem MySQL local e há dívida de segurança no
+  log de falha de autenticação. Captura adiada pela perda de bootstrap do Computer Use.
+- `javafx-pokemon` — `AuggieAlmeida/JAVAFX-MAVEN-MVC-POKEMONAPP` recuperado e indexado;
+  Maven test passa e a tela de login abre, embora tente MySQL local imediatamente. Captura
+  adiada pelo mesmo bloqueio de automação.
+- `aquila-e-evelyn` — repositório público recuperado, sanitizado e indexado; a versão
+  original ficou preservada em branch própria antes da remoção do conteúdo pessoal.
+- `pokedex` — origem correta confirmada pelo Augusto em
+  `Gabriel-AFerreira/testepokedexdozero`. O histórico foi preservado, o wrapper
+  `projetoTeste/` promovido à raiz e o projeto publicado em `AuggieAlmeida/Pokedex`.
+  TypeScript passa; a captura do app Expo ainda falta.
+
+Além do Sudoku, `omegahub` continua dependendo de confirmação do casamento com `discordia`.
 
 Sem interface própria para capturar — o card pode ficar no fallback de iniciais para sempre:
 
-`pronto` · `tecnurg` · `barbearia-app` · `buscajogos`
+`pronto` · `barbearia-app` · `buscajogos`
 
 Sem imagem **por decisão**, e não por falta — case sob confidencialidade, publicado só como
 texto: `portal-agente-ia` · `suite-financeira-b2b` · `portal-remuneracao-frota` ·
@@ -39,7 +87,16 @@ publicadas porque expõem mais do que o card precisa:
 - **StechClub, área logada** — mostra a home do aluno com nome dos instrutores e miniaturas
   de gravação com o rosto de colegas. Publicada hoje só a home pública.
 
-Ambas entram na galeria assim que você confirmar.
+A captura de dashboard do AsuraPadel continua fora: ela exibe nome e e-mail de administrador.
+Em contrapartida, duas telas de login sem dados reais foram integradas ao carrossel.
+
+Carrosséis seguros fechados nesta rodada:
+
+- `aquila-e-evelyn` — quatro telas;
+- `asurapadel` — três telas públicas/de login, sem dashboard identificado;
+- `bubble-box-lavanderia` — duas telas públicas;
+- `zoologic` — quatro telas sem a tela de colaboradores, que continha nomes;
+- `pasta-la-vista` — quatro telas mobile/web já existentes e mantidas.
 
 ## 2. Repositório existe mas é privado — decisão sua
 
@@ -47,21 +104,20 @@ Ambas entram na galeria assim que você confirmar.
 | ------------------ | ---------------------------------------------- | -------------------------------------------------- |
 | `taskforge`        | `AuggieAlmeida/TaskForge`                      | projeto próprio, publicável se quiser              |
 | `jarbas`           | `AuggieAlmeida/Jarbas`                         | idem                                               |
-| `pokedex`          | `AuggieAlmeida/PokeAPI`                        | idem                                               |
 | `stechclub`        | `AuggieAlmeida/Stech`                          | código de empresa — não publicar sem aval da Stech |
 | `portal-agente-ia` | `AuggieAlmeida/portalAZ`                       | código de cliente — não publicar                   |
 | `asurapadel`       | `TJG-Tech/AsuraPadelWeb` + `AsuraPadelManager` | org de cliente — não publicar                      |
 
 ## 3. Sem repositório localizado no GitHub
 
-`pronto` · `tecnurg` · `barbearia-app` · `sudoku-solver` · `financeos` ·
+`pronto` · `barbearia-app` · `sudoku-solver` · `financeos` ·
 `instagram-analyzer` · `calc-financeira` · `bubble-box-lavanderia`
 
 `quinto-selo` existe local em `~/Documents/Projetos/quinto-selo` e não tem remoto.
 
-`pronto`, `tecnurg` e `barbearia-app` são, pelas folhas, escopo arquitetural — pode não
-haver código para linkar, e nesse caso o texto do card precisa deixar isso claro em vez de
-aparentar produto entregue.
+`pronto` e `tecnurg` foram consolidados após correção do Augusto: são duas fases do mesmo
+projeto, não dois cards. O card único descreve o MVP Pronto e sua evolução arquitetural
+Tecnurg. `barbearia-app` permanece como escopo arquitetural sem código localizado.
 
 ## 4. Confirmações pendentes de mapeamento
 
@@ -81,10 +137,6 @@ Resolvido nesta rodada:
 - `bubble-box-lavanderia` ganhou `bubblebox.com.br`.
 - `zoologic` fica sem demo: não há deploy vivo. A homepage `zoo-front-theta.vercel.app`
   está cadastrada no repositório errado (`GFC-Brech--ERP`) e responde 404.
-
-Aberto:
-
-- `aquila-e-evelyn` — ver abaixo.
 
 ### Diagnóstico do aquila-e-evelyn
 
@@ -117,8 +169,8 @@ gh run rerun --failed -R AuggieAlmeida/aquila-e-evelyn
   publicada no RIC, o projeto correspondente ganha `paperUrl`.
 - `asurapadel` — a descrição afirma queda de 800 ms para 220 ms. A folha do vault registra
   o número como auto-relatado, **sem medição anexada**. Ou anexa a medição, ou o número sai.
-- Hero passou de "20" para **33 Projetos Concluídos**, contado card a card contra as folhas
-  do vault. Ficam de fora os quatro que não estão `concluido`: `portal-remuneracao-frota`
+- Hero passou de "20" para **32 Projetos Concluídos**, contado card a card contra as folhas
+  do vault e descontando a duplicação Pronto/Tecnurg. Ficam de fora os quatro que não estão `concluido`: `portal-remuneracao-frota`
   (ativo), `servidor-llm-local` (pausado), `jarbas` e `quinto-selo` (ativos). O número volta
   a sair do lugar quando algum desses quatro fechar — recontar, não incrementar às cegas.
 
