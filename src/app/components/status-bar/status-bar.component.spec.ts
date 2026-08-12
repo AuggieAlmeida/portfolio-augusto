@@ -5,7 +5,7 @@ import { NavService } from '../../core/services/nav.service';
 import { StatusBarComponent } from './status-bar.component';
 
 describe('StatusBarComponent', () => {
-  it('reflects the current section and exposes a real contact action', async () => {
+  it('shows only the current section', async () => {
     await TestBed.configureTestingModule({
       imports: [StatusBarComponent, TranslateModule.forRoot()]
     }).compileComponents();
@@ -17,8 +17,9 @@ describe('StatusBarComponent', () => {
     fixture.detectChanges();
 
     expect(fixture.componentInstance.sectionKey).toBe('nav.projects');
-    expect(host.querySelector<HTMLAnchorElement>('a[href^="mailto:"]')?.href).toContain(
-      'augusto.almeida2@icloud.com'
-    );
+    // Terminal voltou para o botão flutuante e o contato saiu: a barra não tem
+    // mais controle nenhum, só o indicador.
+    expect(host.querySelector('button')).toBeNull();
+    expect(host.querySelector('a')).toBeNull();
   });
 });

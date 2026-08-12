@@ -23,7 +23,10 @@ describe('CommandCenterComponent', () => {
     fixture.detectChanges();
 
     expect(component.surface).toBe('boot');
-    expect(fixture.nativeElement.querySelector('button')?.textContent).toContain('Pular animação');
+    // O primeiro botão do host é o launcher flutuante; o de pular vive no overlay.
+    expect(fixture.nativeElement.querySelector('[role="dialog"] button')?.textContent).toContain(
+      'Pular animação'
+    );
     expect(main.hasAttribute('inert')).toBeTrue();
 
     component.skipBoot();
@@ -33,4 +36,21 @@ describe('CommandCenterComponent', () => {
     expect(main.hasAttribute('inert')).toBeFalse();
     main.remove();
   }));
+
+  it('keeps the terminal launcher floating in the page corner', () => {
+    const fixture = TestBed.createComponent(CommandCenterComponent);
+    fixture.detectChanges();
+
+    const host: HTMLElement = fixture.nativeElement;
+    const launcher = host.querySelector<HTMLButtonElement>('[data-terminal-launcher]');
+
+    expect(launcher).not.toBeNull();
+    expect(launcher?.className).toContain('fixed');
+    expect(launcher?.className).toContain('right-4');
+
+    launcher?.click();
+    fixture.detectChanges();
+
+    expect(fixture.componentInstance.surface).toBe('terminal');
+  });
 });

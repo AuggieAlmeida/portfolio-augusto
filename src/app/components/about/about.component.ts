@@ -77,16 +77,106 @@ import { TranslateModule } from '@ngx-translate/core';
               </div>
             </div>
 
-            <!-- Contato saiu daqui: os mesmos quatro canais já aparecem no
-                 rodapé, e repetir a grade dobrava a altura da seção sem
-                 acrescentar prova. O que sobra é tese curta e evidência. -->
-            <a
-              href="#projects"
-              class="inline-flex items-center gap-2 rounded-lg bg-primary-600 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-400"
-            >
-              <i aria-hidden="true" class="fas fa-rocket"></i>
-              {{ 'CTA.viewFeatured' | translate }}
-            </a>
+            <!-- Os quatro canais ficam aqui. Só o rodapé deixava o contato
+                 escondido demais; o que encolheu foi o texto acima, não a
+                 forma de falar com o Augusto. -->
+            <div class="contact-section">
+              <h3
+                class="text-xl md:text-2xl font-semibold text-accent-600 dark:text-accent-400 mb-4 flex items-center gap-2"
+              >
+                <i aria-hidden="true" class="fas fa-envelope"></i>
+                {{ 'about.contactInfo' | translate }}
+              </h3>
+              <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <li
+                  class="contact-item flex items-center gap-3 p-3 rounded-lg bg-primary-50 dark:bg-secondary-900/30 border border-primary-200 dark:border-primary-700"
+                >
+                  <span
+                    class="w-10 h-10 shrink-0 bg-primary-500 rounded-full flex items-center justify-center"
+                  >
+                    <i aria-hidden="true" class="fas fa-envelope text-white text-sm"></i>
+                  </span>
+                  <span class="min-w-0">
+                    <span class="block text-sm text-neutral-500 dark:text-neutral-400">
+                      {{ 'about.email' | translate }}
+                    </span>
+                    <a
+                      href="mailto:augusto.almeida2@icloud.com"
+                      class="block truncate text-primary-600 dark:text-primary-400 hover:underline font-medium"
+                    >
+                      augusto.almeida2&#64;icloud.com
+                    </a>
+                  </span>
+                </li>
+
+                <li
+                  class="contact-item flex items-center gap-3 p-3 rounded-lg bg-accent-50 dark:bg-secondary-900/30 border border-accent-200 dark:border-accent-700"
+                >
+                  <span
+                    class="w-10 h-10 shrink-0 bg-accent-500 rounded-full flex items-center justify-center"
+                  >
+                    <i aria-hidden="true" class="fab fa-linkedin text-white text-sm"></i>
+                  </span>
+                  <span class="min-w-0">
+                    <span class="block text-sm text-neutral-500 dark:text-neutral-400"
+                      >LinkedIn</span
+                    >
+                    <a
+                      href="https://linkedin.com/in/augustobalmeida"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="block truncate text-secondary-600 dark:text-secondary-400 hover:underline font-medium"
+                    >
+                      /augustobalmeida
+                    </a>
+                  </span>
+                </li>
+
+                <li
+                  class="contact-item flex items-center gap-3 p-3 rounded-lg bg-accent-50 dark:bg-secondary-900/30 border border-accent-200 dark:border-accent-700"
+                >
+                  <span
+                    class="w-10 h-10 shrink-0 bg-accent-500 rounded-full flex items-center justify-center"
+                  >
+                    <i aria-hidden="true" class="fab fa-github text-white text-sm"></i>
+                  </span>
+                  <span class="min-w-0">
+                    <span class="block text-sm text-neutral-500 dark:text-neutral-400">GitHub</span>
+                    <a
+                      href="https://github.com/AuggieAlmeida"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="block truncate text-accent-600 dark:text-accent-400 hover:underline font-medium"
+                    >
+                      /AuggieAlmeida
+                    </a>
+                  </span>
+                </li>
+
+                <li
+                  class="contact-item flex items-center gap-3 p-3 rounded-lg bg-primary-50 dark:bg-secondary-900/30 border border-primary-200 dark:border-primary-700"
+                >
+                  <span
+                    class="w-10 h-10 shrink-0 bg-primary-500 rounded-full flex items-center justify-center"
+                  >
+                    <i aria-hidden="true" class="fab fa-whatsapp text-white text-sm"></i>
+                  </span>
+                  <span class="min-w-0">
+                    <span class="block text-sm text-neutral-500 dark:text-neutral-400"
+                      >WhatsApp</span
+                    >
+                    <a
+                      href="https://wa.me/5511916047732"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="block truncate text-primary-600 dark:text-primary-400 hover:underline font-medium"
+                    >
+                      +55 (11) 91604-7732
+                    </a>
+                  </span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -107,6 +197,21 @@ import { TranslateModule } from '@ngx-translate/core';
 
       .animate-pulse-slow {
         animation: pulse-slow 3s ease-in-out infinite;
+      }
+
+      .contact-item {
+        transition: all 0.3s ease;
+      }
+
+      .contact-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .contact-item:hover {
+          transform: none;
+        }
       }
 
       /* Scroll target optimization */

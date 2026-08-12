@@ -15,11 +15,26 @@ describe('HeroComponent', () => {
     fixture.detectChanges();
   });
 
-  it('states the positioning as static text instead of a typing effect', () => {
+  it('cycles the roles in the subtitle and keeps the positioning line below it', () => {
     const host: HTMLElement = fixture.nativeElement;
+    const component = fixture.componentInstance;
 
-    expect(host.querySelector('.typewriter')).toBeNull();
+    expect(host.querySelector('.typewriter')).not.toBeNull();
+    // A lista inteira é anunciada uma vez ao leitor de tela, em vez de letra a letra.
+    expect(host.querySelector('.sr-only')?.textContent).toContain('Fullstack Developer');
     expect(host.textContent).toContain('hero.positioning');
+    expect(component.roles.length).toBeGreaterThan(1);
+  });
+
+  it('never leaves the subtitle empty when motion is reduced', () => {
+    const component = fixture.componentInstance;
+    spyOn(window, 'matchMedia').and.returnValue({ matches: true } as MediaQueryList);
+
+    component.ngAfterViewInit();
+    fixture.detectChanges();
+
+    expect(component.typed).toBe(component.roles[0]);
+    expect(component.typing).toBeFalse();
   });
 
   it('serves the portrait through responsive derivatives', () => {

@@ -2,9 +2,11 @@ import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
-  inject
+  inject,
+  OnDestroy
 } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -88,18 +90,27 @@ import { NavService } from '../../core/services/nav.service';
             >
           </h1>
 
-          <!-- Posicionamento estático. O efeito de digitação anterior recriava
-               span e style a cada 50 ms, forçava layout e podia deixar palavra
-               partida no primeiro quadro — justo onde o recrutador lê quem é. -->
-          <p
-            class="mx-auto mb-4 max-w-3xl font-sans text-xl font-medium leading-relaxed text-neutral-700 dark:text-neutral-200 md:text-2xl"
-          >
-            {{ 'hero.positioning' | translate }}
-          </p>
+          <!-- Subtítulo com o efeito de digitação das áreas, como antes. A
+               implementação é que mudou: o texto agora é interpolado pelo
+               Angular, o cursor é CSS puro e o timer vive num campo limpo no
+               ngOnDestroy. A versão anterior criava span e style a cada 50 ms,
+               forçava layout e deixava lixo no <head>. -->
+          <div class="mb-4 min-h-[2.6rem] md:min-h-[3rem]">
+            <p
+              class="mx-auto max-w-3xl font-sans text-xl font-medium leading-relaxed text-neutral-700 dark:text-neutral-200 md:text-2xl"
+              aria-live="off"
+            >
+              <span class="typewriter" [class.typewriter-idle]="!typing">{{ typed }}</span>
+              <!-- Leitor de tela recebe a lista inteira uma vez, em vez de cada
+                   letra sendo anunciada de novo. -->
+              <span class="sr-only">{{ rolesLabel }}</span>
+            </p>
+          </div>
+
           <p
             class="mx-auto mb-12 max-w-2xl font-sans text-base text-neutral-500 dark:text-neutral-400"
           >
-            {{ 'hero.positioningSupport' | translate }}
+            {{ 'hero.positioning' | translate }}
           </p>
 
           <!-- CTA: a ação primária leva às provas, não ao inventário. -->
@@ -132,15 +143,15 @@ import { NavService } from '../../core/services/nav.service';
             </button>
           </div>
 
-          <!-- Baixar CV: ação terciária, com escolha explícita de idioma. Dois
-               links nativos em vez de menu — o teclado já sabe operar links, e
-               nenhum estado precisa ser inventado para isso. -->
+          <!-- Baixar CV: botão de verdade na fileira dos CTAs, com escolha
+               explícita de idioma em dois links nativos — o teclado já sabe
+               operar link, e nenhum estado novo precisa ser mantido correto. -->
           <div
-            class="mb-16 flex flex-wrap items-center justify-center gap-3 text-sm"
+            class="mb-16 inline-flex flex-wrap items-center justify-center gap-2 rounded-lg border border-primary-300 px-3 py-2 dark:border-primary-600"
             role="group"
             [attr.aria-label]="'CTA.downloadCv' | translate"
           >
-            <span class="font-medium text-neutral-600 dark:text-neutral-300">
+            <span class="text-sm font-semibold text-primary-700 dark:text-primary-200">
               <i aria-hidden="true" class="fas fa-file-alt mr-2"></i>
               {{ 'CTA.downloadCv' | translate }}
             </span>
@@ -150,7 +161,7 @@ import { NavService } from '../../core/services/nav.service';
               hreflang="pt-BR"
               type="application/pdf"
               download
-              class="rounded-lg border border-primary-300 px-4 py-2 font-medium text-primary-700 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-primary-600 dark:text-primary-200 dark:hover:bg-primary-900/30"
+              class="rounded-md bg-primary-600 px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-400"
               [attr.aria-label]="'CTA.downloadCvPt' | translate"
             >
               PT-BR
@@ -161,7 +172,7 @@ import { NavService } from '../../core/services/nav.service';
               hreflang="en"
               type="application/pdf"
               download
-              class="rounded-lg border border-primary-300 px-4 py-2 font-medium text-primary-700 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-primary-600 dark:text-primary-200 dark:hover:bg-primary-900/30"
+              class="rounded-md bg-primary-600 px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-400"
               [attr.aria-label]="'CTA.downloadCvEn' | translate"
             >
               EN
@@ -225,6 +236,37 @@ import { NavService } from '../../core/services/nav.service';
     `
       .hero-section {
         overflow-x: hidden;
+      }
+
+      /* Cursor por CSS, ancorado no fim do texto. A versão anterior media a
+         largura com um span temporário no body e injetava uma tag <style> nova
+         a cada letra. */
+      .typewriter::after {
+        content: '|';
+        margin-left: 2px;
+        animation: blink 1s steps(1, end) infinite;
+      }
+
+      .typewriter-idle::after {
+        animation: none;
+        opacity: 0;
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .typewriter::after {
+          animation: none;
+        }
       }
 
       .animate-float {
@@ -337,16 +379,42 @@ import { NavService } from '../../core/services/nav.service';
   standalone: true,
   imports: [CommonModule, TranslateModule]
 })
-export class HeroComponent implements AfterViewInit {
+export class HeroComponent implements AfterViewInit, OnDestroy {
   private nav = inject(NavService);
   private host: ElementRef<HTMLElement> = inject(ElementRef);
+  private cdr = inject(ChangeDetectorRef);
 
   // O retrato aparece num círculo de 192 px; o master de 212 kB servia a mesma
   // imagem em qualquer tela.
   public readonly portrait = resolveImage('hero')!;
 
+  /** Áreas que o subtítulo percorre. Nomes de cargo não se traduzem. */
+  public readonly roles = [
+    'Fullstack Developer',
+    'Software Engineer',
+    'Tech Enthusiast',
+    'QA Analyst',
+    'System Architect',
+    'Problem Solver'
+  ];
+  public readonly rolesLabel = this.roles.join(', ');
+
+  public typed = '';
+  public typing = true;
+  private roleIndex = 0;
+  private charIndex = 0;
+  private deleting = false;
+  private typeTimer?: ReturnType<typeof setTimeout>;
+
   ngAfterViewInit() {
     this.animateCounters();
+    this.startTypewriter();
+  }
+
+  ngOnDestroy() {
+    // O campo é o mesmo que o timer usa; a versão anterior guardava um handle
+    // de interval que nunca era o do setTimeout em execução.
+    clearTimeout(this.typeTimer);
   }
 
   navigateToProjects(): void {
@@ -364,6 +432,49 @@ export class HeroComponent implements AfterViewInit {
   private scrollToSection(sectionId: string): void {
     const headerHeight = document.querySelector('header')?.clientHeight || 64;
     this.nav.scrollTo(sectionId, headerHeight - 20);
+  }
+
+  /** Digita e apaga as áreas em ciclo. Só o texto muda: nada de span
+   *  temporário no body, medição de largura ou tag <style> nova por letra. */
+  private startTypewriter(): void {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      // Sem animação, o subtítulo não pode ficar vazio.
+      this.typed = this.roles[0];
+      this.typing = false;
+      this.cdr.markForCheck();
+      return;
+    }
+
+    const TYPE_MS = 70;
+    const DELETE_MS = 40;
+    const HOLD_MS = 1400;
+    const NEXT_MS = 320;
+
+    const tick = () => {
+      const role = this.roles[this.roleIndex];
+
+      if (this.deleting) {
+        this.charIndex -= 1;
+      } else {
+        this.charIndex += 1;
+      }
+      this.typed = role.slice(0, this.charIndex);
+      this.cdr.markForCheck();
+
+      let delay = this.deleting ? DELETE_MS : TYPE_MS;
+      if (!this.deleting && this.charIndex === role.length) {
+        this.deleting = true;
+        delay = HOLD_MS;
+      } else if (this.deleting && this.charIndex === 0) {
+        this.deleting = false;
+        this.roleIndex = (this.roleIndex + 1) % this.roles.length;
+        delay = NEXT_MS;
+      }
+
+      this.typeTimer = setTimeout(tick, delay);
+    };
+
+    tick();
   }
 
   /** Contador progressivo dos dois números medidos. O valor final já está no

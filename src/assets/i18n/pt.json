@@ -12,8 +12,7 @@
   "hero": {
     "title": "Augusto Almeida",
     "subtitle": "Fullstack Developer | QA & Data Enthusiast",
-    "positioning": "Desenvolvedor fullstack com viés de qualidade: entrego produto de ponta a ponta e trato medição, teste e acessibilidade como requisito.",
-    "positioningSupport": "TypeScript, React e NestJS hoje; Java e Angular no vínculo mais longo. Cinco anos entre dado, suporte e engenharia."
+    "positioning": "Desenvolvedor fullstack com viés de qualidade: entrego produto de ponta a ponta e trato medição, teste e acessibilidade como requisito."
   },
   "CTA": {
     "viewProjects": "Ver Projetos",
@@ -31,11 +30,11 @@
   },
   "about": {
     "aboutMe": "Sobre Mim",
-    "greeting": "Sou desenvolvedor fullstack com viés forte de qualidade e dados. Comecei lendo dado em um time de inteligência de mercado, aprendi como produção quebra trabalhando em suporte, e desde 2022 construo software do banco à interface. O fio que liga as três fases é o mesmo: entender o problema antes de escolher a ferramenta.",
+    "greeting": "Sou desenvolvedor fullstack com viés forte de qualidade e dados. Comecei lendo dado, aprendi como produção quebra trabalhando em suporte e desde 2022 construo software do banco à interface — entendendo o problema antes de escolher a ferramenta.",
     "professionalOverview": "Visão Profissional",
-    "professionalDescription": "Hoje sou fullstack na Stech, em produtos internos e de clientes, com TypeScript, React, NestJS e Prisma sobre MySQL, tudo containerizado. Antes: Java e Spring Boot na Persys, o vínculo mais longo da minha carreira; frontend de conversão na Make; e engenharia de testes na Outlier, avaliando modelos de linguagem em voz, visão e texto. Por pouco mais de um ano também dei aula de Excel, Power BI e IA generativa no Cebrac — ensinar é o que obriga a entender de verdade.",
+    "professionalDescription": "Hoje sou fullstack na Stech, com TypeScript, React, NestJS e Prisma sobre MySQL. Antes: Java e Spring Boot na Persys, frontend de conversão na Make e engenharia de testes na Outlier, avaliando modelos em voz, visão e texto. Também dei aula de Excel, Power BI e IA generativa no Cebrac.",
     "coreExpertise": "Especialidades Principais",
-    "expertiseDescription": "O que eu levo para um time é critério, não lista de stack. Auditar e corrigir vulnerabilidade em suíte financeira antes de virar incidente. Transformar regra de negócio em parâmetro rastreável, em vez de deixá-la chumbada no código. Tratar Core Web Vitals como requisito e não como enfeite — foi com essa régua que saíram mais de cem landing pages. E automatizar onde reduz risco: o TaskForge, que orquestra agentes em paralelo, cortou entre 70% e 90% do custo de LLM da engenharia. Quando o assunto é complexo, explicar faz parte da entrega.",
+    "expertiseDescription": "O que eu levo para um time é critério, não lista de stack: corrigir vulnerabilidade antes de virar incidente, transformar regra de negócio em parâmetro rastreável e tratar Core Web Vitals como requisito — a régua de mais de cem landing pages. O TaskForge cortou entre 70% e 90% do custo de LLM da engenharia.",
     "contactInfo": "Vamos nos conectar?",
     "email": "E-mail"
   },
@@ -270,7 +269,7 @@
         "description": "Portal educacional da Stech, em SPA React com SSO da empresa e API NestJS sobre Prisma. Vídeo e thumbnail ficam em S3 e são servidos por link assinado gerado na API, sem expor a key do bucket. O funil de candidatura usa quiz de aderência com nota mínima e resposta diferente para quem passa e para quem não passa."
       },
       "omegahub": {
-        "title": "OmegaHub",
+        "title": "Discordia server",
         "description": "Plataforma para gamers em monorepo TypeScript. Frontend Next.js e backend NestJS, com login social, pagamentos, filas BullMQ e persistência dividida entre PostgreSQL, MongoDB e Redis."
       },
       "pronto": {
@@ -456,8 +455,7 @@
   "statusBar": {
     "label": "Status do portfólio",
     "section": "Seção",
-    "terminal": "Terminal",
-    "contact": "Contato"
+    "terminal": "Terminal"
   },
   "project": {
     "viewDemo": "Ver Demo",

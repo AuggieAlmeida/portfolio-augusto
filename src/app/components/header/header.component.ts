@@ -147,17 +147,10 @@ import { ThemeService } from '../../core/services/theme.service';
           </div>
         </div>
 
-        <!-- Controles Desktop (Idioma e Tema) -->
+        <!-- Controles Desktop (Idioma e Tema). O launcher do quick open saiu da
+             barra a pedido do Augusto; o atalho Ctrl/Cmd+K continua ativo no
+             command center. -->
         <div class="items-center gap-2 hidden lg:flex">
-          <button
-            type="button"
-            class="flex items-center gap-2 rounded-lg border border-primary-200 bg-primary-50 px-2 py-2 text-sm text-neutral-700 transition-all hover:bg-primary-100 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-primary-700 dark:bg-primary-900/30 dark:text-neutral-100 dark:hover:bg-primary-800/40"
-            aria-label="Abrir quick open"
-            (click)="openQuickOpen()"
-          >
-            <i aria-hidden="true" class="fas fa-magnifying-glass"></i>
-            <kbd class="text-xs text-neutral-500 dark:text-neutral-400">⌘K</kbd>
-          </button>
           <select
             [value]="currentLang"
             (change)="switchLang($event)"
@@ -484,10 +477,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   toggleTheme() {
     this.theme.toggleTheme();
     this.cdr.markForCheck();
-  }
-
-  openQuickOpen() {
-    this.commands.openQuickOpen();
   }
 
   openTerminalFromMenu() {

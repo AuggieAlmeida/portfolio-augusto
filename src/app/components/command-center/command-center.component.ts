@@ -30,6 +30,19 @@ const BOOT_DURATION_MS = 1400;
   template: `
     <p class="sr-only" aria-live="polite">{{ bootMessage }}</p>
 
+    <!-- Terminal volta ao canto inferior direito, a pedido do Augusto. Fica
+         fora da área de leitura e respeita a safe area do iOS; o overlay do
+         terminal e o modal de projeto sobem acima dele pelo z-index. -->
+    <button
+      type="button"
+      data-terminal-launcher
+      class="fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom))] right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-primary-600 text-white shadow-lg shadow-primary-950/25 transition-transform hover:scale-105 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 dark:focus:ring-offset-primary-950"
+      [attr.aria-label]="'statusBar.terminal' | translate"
+      (click)="openTerminal()"
+    >
+      <i aria-hidden="true" class="fas fa-terminal"></i>
+    </button>
+
     <div
       *ngIf="surface"
       class="fixed inset-0 z-[60] flex items-end bg-black/60 p-3 backdrop-blur-sm md:items-center md:justify-center md:p-6"
