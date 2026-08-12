@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -25,7 +24,7 @@ const BOOT_DURATION_MS = 1400;
 @Component({
   selector: 'app-command-center',
   standalone: true,
-  imports: [CommonModule, TranslateModule],
+  imports: [TranslateModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <p class="sr-only" aria-live="polite">{{ bootMessage }}</p>
@@ -43,167 +42,186 @@ const BOOT_DURATION_MS = 1400;
       <i aria-hidden="true" class="fas fa-terminal"></i>
     </button>
 
-    <div
-      *ngIf="surface"
-      class="fixed inset-0 z-[60] flex items-end bg-black/60 p-3 backdrop-blur-sm md:items-center md:justify-center md:p-6"
-      role="dialog"
-      aria-modal="true"
-      [attr.aria-label]="
-        surface === 'terminal' ? 'Terminal' : surface === 'boot' ? 'Boot opcional' : 'Quick open'
-      "
-    >
-      <button
-        *ngIf="surface !== 'boot'"
-        type="button"
-        class="absolute inset-0 h-full w-full cursor-default"
-        aria-label="Fechar"
-        (click)="close()"
-      ></button>
-
-      <section
-        *ngIf="surface === 'boot'"
-        class="relative w-full max-w-md overflow-hidden rounded-2xl border border-primary-300 bg-primary-950 p-6 text-center text-primary-50 shadow-2xl dark:border-primary-600"
-        aria-labelledby="boot-title"
-        aria-describedby="boot-description"
+    @if (surface) {
+      <div
+        class="fixed inset-0 z-[60] flex items-end bg-black/60 p-3 backdrop-blur-sm md:items-center md:justify-center md:p-6"
+        role="dialog"
+        aria-modal="true"
+        [attr.aria-label]="
+          surface === 'terminal' ? 'Terminal' : surface === 'boot' ? 'Boot opcional' : 'Quick open'
+        "
       >
-        <p class="text-xs font-semibold uppercase tracking-[0.32em] text-primary-300">
-          AUGGIE / PORTFOLIO
-        </p>
-        <h2 id="boot-title" class="mt-5 text-2xl font-semibold">Reiniciando experiência</h2>
-        <p id="boot-description" class="mt-2 text-sm text-primary-200">Preparando o portfólio.</p>
-        <div
-          class="mt-6 h-1 overflow-hidden rounded-full bg-primary-800"
-          role="progressbar"
-          aria-label="Progresso do boot"
-          aria-valuemin="0"
-          aria-valuemax="100"
-          [attr.aria-valuenow]="bootProgress"
-        >
-          <span class="boot-progress block h-full origin-left bg-primary-300"></span>
-        </div>
-        <button
-          #skipBootButton
-          type="button"
-          class="mt-6 rounded-lg px-3 py-2 text-sm font-medium text-primary-100 underline decoration-primary-400 underline-offset-4 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-primary-950"
-          (click)="skipBoot()"
-        >
-          Pular animação
-        </button>
-      </section>
-
-      <section
-        *ngIf="surface !== 'boot'"
-        #surfacePanel
-        class="relative flex max-h-[calc(100dvh-1.5rem)] w-full flex-col overflow-hidden rounded-2xl border border-primary-200 bg-white shadow-2xl dark:border-primary-800 dark:bg-primary-950 md:max-h-[85vh] md:max-w-2xl"
-        [class.font-mono]="surface === 'terminal'"
-      >
-        <header
-          class="flex items-center justify-between border-b border-neutral-200 px-4 py-3 dark:border-primary-800"
-        >
-          <div>
-            <p
-              class="text-xs font-medium uppercase tracking-[0.18em] text-primary-600 dark:text-primary-400"
-            >
-              {{ surface === 'terminal' ? 'Terminal' : 'Quick open' }}
-            </p>
-            <p class="text-sm text-neutral-600 dark:text-neutral-300">
-              {{
-                surface === 'terminal'
-                  ? 'help para ver os comandos'
-                  : 'Busque projetos, seções ou ações'
-              }}
-            </p>
-          </div>
+        @if (surface !== 'boot') {
           <button
-            #closeButton
             type="button"
-            class="flex h-9 w-9 items-center justify-center rounded-lg text-neutral-600 hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:text-neutral-200 dark:hover:bg-primary-800"
+            class="absolute inset-0 h-full w-full cursor-default"
             aria-label="Fechar"
             (click)="close()"
+          ></button>
+        }
+
+        @if (surface === 'boot') {
+          <section
+            class="relative w-full max-w-md overflow-hidden rounded-2xl border border-primary-300 bg-primary-950 p-6 text-center text-primary-50 shadow-2xl dark:border-primary-600"
+            aria-labelledby="boot-title"
+            aria-describedby="boot-description"
           >
-            <i aria-hidden="true" class="fas fa-times"></i>
-          </button>
-        </header>
-
-        <div *ngIf="surface === 'terminal'" class="min-h-0 flex-1 overflow-y-auto p-4 text-sm">
-          <p class="mb-3 text-primary-700 dark:text-primary-300">portfolio&#64;auggie:~$ help</p>
-          <p *ngFor="let line of helpLines" class="text-neutral-600 dark:text-neutral-300">
-            {{ line }}
-          </p>
-          <div *ngFor="let entry of history" class="mb-3">
-            <p class="text-primary-700 dark:text-primary-300">
-              portfolio&#64;auggie:~$ {{ entry.input }}
+            <p class="text-xs font-semibold uppercase tracking-[0.32em] text-primary-300">
+              AUGGIE / PORTFOLIO
             </p>
-            <p
-              *ngFor="let line of entry.lines"
-              class="whitespace-pre-line text-neutral-600 dark:text-neutral-300"
+            <h2 id="boot-title" class="mt-5 text-2xl font-semibold">Reiniciando experiência</h2>
+            <p id="boot-description" class="mt-2 text-sm text-primary-200">
+              Preparando o portfólio.
+            </p>
+            <div
+              class="mt-6 h-1 overflow-hidden rounded-full bg-primary-800"
+              role="progressbar"
+              aria-label="Progresso do boot"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              [attr.aria-valuenow]="bootProgress"
             >
-              {{ line }}
-            </p>
-          </div>
-        </div>
+              <span class="boot-progress block h-full origin-left bg-primary-300"></span>
+            </div>
+            <button
+              #skipBootButton
+              type="button"
+              class="mt-6 rounded-lg px-3 py-2 text-sm font-medium text-primary-100 underline decoration-primary-400 underline-offset-4 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-primary-950"
+              (click)="skipBoot()"
+            >
+              Pular animação
+            </button>
+          </section>
+        }
 
-        <div *ngIf="surface === 'quick-open'" class="min-h-0 flex-1 overflow-y-auto p-2">
-          <button
-            *ngFor="let suggestion of suggestions; let i = index"
-            type="button"
-            class="flex w-full items-center justify-between rounded-xl px-3 py-3 text-left transition-colors hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:hover:bg-primary-900/30"
-            [class.command-suggestion-active]="i === activeSuggestion"
-            (click)="choose(suggestion)"
+        @if (surface !== 'boot') {
+          <section
+            #surfacePanel
+            class="relative flex max-h-[calc(100dvh-1.5rem)] w-full flex-col overflow-hidden rounded-2xl border border-primary-200 bg-white shadow-2xl dark:border-primary-800 dark:bg-primary-950 md:max-h-[85vh] md:max-w-2xl"
+            [class.font-mono]="surface === 'terminal'"
           >
-            <span>
-              <span class="block font-medium text-neutral-900 dark:text-neutral-100">{{
-                suggestion.label
-              }}</span>
-              <span class="block text-xs text-neutral-500 dark:text-neutral-400">{{
-                suggestion.description
-              }}</span>
-            </span>
-            <i
-              aria-hidden="true"
-              [class]="
-                suggestion.kind === 'project'
-                  ? 'fas fa-folder text-primary-500'
-                  : 'fas fa-terminal text-primary-500'
-              "
-            ></i>
-          </button>
-          <p *ngIf="!suggestions.length" class="p-4 text-sm text-neutral-500 dark:text-neutral-400">
-            Nenhuma ação encontrada.
-          </p>
-        </div>
+            <header
+              class="flex items-center justify-between border-b border-neutral-200 px-4 py-3 dark:border-primary-800"
+            >
+              <div>
+                <p
+                  class="text-xs font-medium uppercase tracking-[0.18em] text-primary-600 dark:text-primary-400"
+                >
+                  {{ surface === 'terminal' ? 'Terminal' : 'Quick open' }}
+                </p>
+                <p class="text-sm text-neutral-600 dark:text-neutral-300">
+                  {{
+                    surface === 'terminal'
+                      ? 'help para ver os comandos'
+                      : 'Busque projetos, seções ou ações'
+                  }}
+                </p>
+              </div>
+              <button
+                #closeButton
+                type="button"
+                class="flex h-9 w-9 items-center justify-center rounded-lg text-neutral-600 hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:text-neutral-200 dark:hover:bg-primary-800"
+                aria-label="Fechar"
+                (click)="close()"
+              >
+                <i aria-hidden="true" class="fas fa-times"></i>
+              </button>
+            </header>
 
-        <form
-          class="border-t border-neutral-200 p-3 dark:border-primary-800"
-          (submit)="submit($event)"
-        >
-          <label class="sr-only" for="command-input">Comando ou busca</label>
-          <div class="flex items-center gap-2">
-            <span *ngIf="surface === 'terminal'" class="text-primary-600 dark:text-primary-400"
-              >›</span
+            @if (surface === 'terminal') {
+              <div class="min-h-0 flex-1 overflow-y-auto p-4 text-sm">
+                <p class="mb-3 text-primary-700 dark:text-primary-300">
+                  portfolio&#64;auggie:~$ help
+                </p>
+                @for (line of helpLines; track line) {
+                  <p class="text-neutral-600 dark:text-neutral-300">
+                    {{ line }}
+                  </p>
+                }
+                @for (entry of history; track entry) {
+                  <div class="mb-3">
+                    <p class="text-primary-700 dark:text-primary-300">
+                      portfolio&#64;auggie:~$ {{ entry.input }}
+                    </p>
+                    @for (line of entry.lines; track line) {
+                      <p class="whitespace-pre-line text-neutral-600 dark:text-neutral-300">
+                        {{ line }}
+                      </p>
+                    }
+                  </div>
+                }
+              </div>
+            }
+
+            @if (surface === 'quick-open') {
+              <div class="min-h-0 flex-1 overflow-y-auto p-2">
+                @for (suggestion of suggestions; track suggestion; let i = $index) {
+                  <button
+                    type="button"
+                    class="flex w-full items-center justify-between rounded-xl px-3 py-3 text-left transition-colors hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:hover:bg-primary-900/30"
+                    [class.command-suggestion-active]="i === activeSuggestion"
+                    (click)="choose(suggestion)"
+                  >
+                    <span>
+                      <span class="block font-medium text-neutral-900 dark:text-neutral-100">{{
+                        suggestion.label
+                      }}</span>
+                      <span class="block text-xs text-neutral-500 dark:text-neutral-400">{{
+                        suggestion.description
+                      }}</span>
+                    </span>
+                    <i
+                      aria-hidden="true"
+                      [class]="
+                        suggestion.kind === 'project'
+                          ? 'fas fa-folder text-primary-500'
+                          : 'fas fa-terminal text-primary-500'
+                      "
+                    ></i>
+                  </button>
+                }
+                @if (!suggestions.length) {
+                  <p class="p-4 text-sm text-neutral-500 dark:text-neutral-400">
+                    Nenhuma ação encontrada.
+                  </p>
+                }
+              </div>
+            }
+
+            <form
+              class="border-t border-neutral-200 p-3 dark:border-primary-800"
+              (submit)="submit($event)"
             >
-            <input
-              #commandInput
-              id="command-input"
-              type="text"
-              autocomplete="off"
-              [value]="input"
-              (input)="setInput($event)"
-              (keydown)="onInputKeydown($event)"
-              [placeholder]="
-                surface === 'terminal' ? 'Digite um comando' : 'Buscar projetos e ações'
-              "
-              class="w-full bg-transparent text-sm text-neutral-900 outline-none placeholder:text-neutral-400 dark:text-neutral-100"
-            />
-            <kbd
-              *ngIf="surface === 'quick-open'"
-              class="rounded border border-neutral-300 px-1.5 py-0.5 text-xs text-neutral-500 dark:border-neutral-600"
-              >↵</kbd
-            >
-          </div>
-        </form>
-      </section>
-    </div>
+              <label class="sr-only" for="command-input">Comando ou busca</label>
+              <div class="flex items-center gap-2">
+                @if (surface === 'terminal') {
+                  <span class="text-primary-600 dark:text-primary-400">›</span>
+                }
+                <input
+                  #commandInput
+                  id="command-input"
+                  type="text"
+                  autocomplete="off"
+                  [value]="input"
+                  (input)="setInput($event)"
+                  (keydown)="onInputKeydown($event)"
+                  [placeholder]="
+                    surface === 'terminal' ? 'Digite um comando' : 'Buscar projetos e ações'
+                  "
+                  class="w-full bg-transparent text-sm text-neutral-900 outline-none placeholder:text-neutral-400 dark:text-neutral-100"
+                />
+                @if (surface === 'quick-open') {
+                  <kbd
+                    class="rounded border border-neutral-300 px-1.5 py-0.5 text-xs text-neutral-500 dark:border-neutral-600"
+                    >↵</kbd
+                  >
+                }
+              </div>
+            </form>
+          </section>
+        }
+      </div>
+    }
   `,
   styles: [
     `

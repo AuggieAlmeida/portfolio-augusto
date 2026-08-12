@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -380,7 +379,7 @@ import { NavService } from '../../core/services/nav.service';
     `
   ],
   standalone: true,
-  imports: [CommonModule, TranslateModule]
+  imports: [TranslateModule]
 })
 export class HeroComponent implements AfterViewInit, OnDestroy {
   private nav = inject(NavService);

@@ -94,19 +94,18 @@ interface LanguageItem {
                       {{ 'skills.filter.all' | translate: inventoryParams }}
                     </button>
 
-                    <button
-                      *ngFor="let category of skillCategories; trackBy: trackByCategory"
-                      (click)="setActiveFilter(category.key)"
-                      [class]="getFilterButtonClass(category.key)"
-                      class="px-4 py-3 rounded-lg font-medium transition-all duration-200 text-sm whitespace-nowrap flex-shrink-0"
-                    >
-                      <i
-                        *ngIf="category.icon"
-                        [ngClass]="category.icon + ' mr-2'"
-                        aria-hidden="true"
-                      ></i>
-                      {{ ('skills.categories.' + category.key | translate) || category.label }}
-                    </button>
+                    @for (category of skillCategories; track trackByCategory($index, category)) {
+                      <button
+                        (click)="setActiveFilter(category.key)"
+                        [class]="getFilterButtonClass(category.key)"
+                        class="px-4 py-3 rounded-lg font-medium transition-all duration-200 text-sm whitespace-nowrap flex-shrink-0"
+                      >
+                        @if (category.icon) {
+                          <i [ngClass]="category.icon + ' mr-2'" aria-hidden="true"></i>
+                        }
+                        {{ ('skills.categories.' + category.key | translate) || category.label }}
+                      </button>
+                    }
                   </div>
                 </div>
 
@@ -130,19 +129,18 @@ interface LanguageItem {
                     {{ 'skills.filter.all' | translate: inventoryParams }}
                   </button>
 
-                  <button
-                    *ngFor="let category of skillCategories; trackBy: trackByCategory"
-                    (click)="setActiveFilter(category.key)"
-                    [class]="getFilterButtonClass(category.key)"
-                    class="px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm"
-                  >
-                    <i
-                      *ngIf="category.icon"
-                      [ngClass]="category.icon + ' mr-2'"
-                      aria-hidden="true"
-                    ></i>
-                    {{ ('skills.categories.' + category.key | translate) || category.label }}
-                  </button>
+                  @for (category of skillCategories; track trackByCategory($index, category)) {
+                    <button
+                      (click)="setActiveFilter(category.key)"
+                      [class]="getFilterButtonClass(category.key)"
+                      class="px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm"
+                    >
+                      @if (category.icon) {
+                        <i [ngClass]="category.icon + ' mr-2'" aria-hidden="true"></i>
+                      }
+                      {{ ('skills.categories.' + category.key | translate) || category.label }}
+                    </button>
+                  }
                 </div>
               </div>
 
@@ -151,65 +149,68 @@ interface LanguageItem {
                 <div
                   class="grid gap-2 md:gap-3 grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 2xl:grid-cols-12"
                 >
-                  <div
-                    *ngFor="let skill of filteredSkills; trackBy: trackBySkill; let i = index"
-                    class="skill-item opacity-0 animate-fade-in-up"
-                    [style.animation-delay]="getStaggerDelay(i)"
-                  >
-                    <button
-                      class="skill-card h-full w-full group p-3 md:p-4 rounded-lg bg-white dark:bg-primary-800/60 border border-neutral-200 dark:border-neutral-700 flex flex-col items-center justify-center gap-2 md:gap-3 text-center transition-all duration-200 hover:-translate-y-1 hover:scale-105 hover:shadow-lg hover:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 min-h-[90px] md:min-h-[100px]"
-                      [attr.aria-label]="skill.name"
-                      [attr.aria-describedby]="
-                        skill.descriptionKey ? 'desc-' + slugify(skill.name) : null
-                      "
+                  @for (skill of filteredSkills; track trackBySkill(i, skill); let i = $index) {
+                    <div
+                      class="skill-item opacity-0 animate-fade-in-up"
+                      [style.animation-delay]="getStaggerDelay(i)"
                     >
-                      <div
-                        class="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-gradient-to-br from-neutral-700/80 to-neutral-800/80 flex items-center justify-center transition-transform group-hover:scale-110"
+                      <button
+                        class="skill-card h-full w-full group p-3 md:p-4 rounded-lg bg-white dark:bg-primary-800/60 border border-neutral-200 dark:border-neutral-700 flex flex-col items-center justify-center gap-2 md:gap-3 text-center transition-all duration-200 hover:-translate-y-1 hover:scale-105 hover:shadow-lg hover:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 min-h-[90px] md:min-h-[100px]"
+                        [attr.aria-label]="skill.name"
+                        [attr.aria-describedby]="
+                          skill.descriptionKey ? 'desc-' + slugify(skill.name) : null
+                        "
                       >
-                        <i
-                          *ngIf="skill.icon"
-                          [ngClass]="skill.icon + ' text-lg md:text-xl text-white'"
-                          aria-hidden="true"
-                        ></i>
                         <div
-                          *ngIf="!skill.icon"
-                          class="w-6 h-6 md:w-8 md:h-8 bg-neutral-600 rounded flex items-center justify-center"
+                          class="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-gradient-to-br from-neutral-700/80 to-neutral-800/80 flex items-center justify-center transition-transform group-hover:scale-110"
                         >
-                          <i
-                            aria-hidden="true"
-                            class="fas fa-question text-xs md:text-sm text-white"
-                          ></i>
+                          @if (skill.icon) {
+                            <i
+                              [ngClass]="skill.icon + ' text-lg md:text-xl text-white'"
+                              aria-hidden="true"
+                            ></i>
+                          }
+                          @if (!skill.icon) {
+                            <div
+                              class="w-6 h-6 md:w-8 md:h-8 bg-neutral-600 rounded flex items-center justify-center"
+                            >
+                              <i
+                                aria-hidden="true"
+                                class="fas fa-question text-xs md:text-sm text-white"
+                              ></i>
+                            </div>
+                          }
                         </div>
-                      </div>
 
-                      <div
-                        class="font-medium text-xs md:text-sm text-neutral-900 dark:text-neutral-100 leading-tight px-1"
-                      >
-                        {{ skill.name }}
-                      </div>
+                        <div
+                          class="font-medium text-xs md:text-sm text-neutral-900 dark:text-neutral-100 leading-tight px-1"
+                        >
+                          {{ skill.name }}
+                        </div>
 
-                      <!-- Tooltip (apenas desktop) -->
-                      <div
-                        *ngIf="skill.descriptionKey"
-                        role="tooltip"
-                        [id]="'desc-' + slugify(skill.name)"
-                        class="hidden md:group-hover:block md:group-focus:block absolute bottom-full mb-2 bg-neutral-800 dark:bg-neutral-700 text-white text-xs rounded py-2 px-3 z-10 whitespace-normal max-w-xs shadow-lg"
-                      >
-                        {{ skill.descriptionKey | translate }}
-                        <div class="tooltip-arrow"></div>
-                      </div>
-                    </button>
-                  </div>
+                        <!-- Tooltip (apenas desktop) -->
+                        @if (skill.descriptionKey) {
+                          <div
+                            role="tooltip"
+                            [id]="'desc-' + slugify(skill.name)"
+                            class="hidden md:group-hover:block md:group-focus:block absolute bottom-full mb-2 bg-neutral-800 dark:bg-neutral-700 text-white text-xs rounded py-2 px-3 z-10 whitespace-normal max-w-xs shadow-lg"
+                          >
+                            {{ skill.descriptionKey | translate }}
+                            <div class="tooltip-arrow"></div>
+                          </div>
+                        }
+                      </button>
+                    </div>
+                  }
                 </div>
 
                 <!-- Empty State -->
-                <div
-                  *ngIf="filteredSkills.length === 0"
-                  class="text-center py-8 text-neutral-500 dark:text-neutral-400"
-                >
-                  <i aria-hidden="true" class="fas fa-search text-2xl md:text-3xl mb-4"></i>
-                  <p class="text-sm md:text-base">{{ 'skills.no_results' | translate }}</p>
-                </div>
+                @if (filteredSkills.length === 0) {
+                  <div class="text-center py-8 text-neutral-500 dark:text-neutral-400">
+                    <i aria-hidden="true" class="fas fa-search text-2xl md:text-3xl mb-4"></i>
+                    <p class="text-sm md:text-base">{{ 'skills.no_results' | translate }}</p>
+                  </div>
+                }
               </div>
             </div>
 
@@ -226,23 +227,26 @@ interface LanguageItem {
                 </h3>
 
                 <div class="grid grid-cols-1 gap-2 md:gap-3">
-                  <div
-                    *ngFor="let lang of languages; trackBy: trackByLanguage"
-                    class="flex items-center p-3 rounded-lg bg-white dark:bg-primary-800/60 border border-neutral-200 dark:border-neutral-700 transition-colors hover:border-primary-400"
-                  >
-                    <span
-                      class="font-medium text-sm md:text-base text-neutral-900 dark:text-neutral-100 flex-1"
+                  @for (lang of languages; track trackByLanguage($index, lang)) {
+                    <div
+                      class="flex items-center p-3 rounded-lg bg-white dark:bg-primary-800/60 border border-neutral-200 dark:border-neutral-700 transition-colors hover:border-primary-400"
                     >
-                      {{ lang.nameKey | translate }}
-                    </span>
-                    <span
-                      class="text-xs md:text-sm px-2 md:px-3 py-1 rounded-md font-medium min-w-[85px] md:min-w-[115px] text-center"
-                      [class]="getLevelBadgeClass(lang.level)"
-                    >
-                      {{ 'skills.languages.level_' + lang.level | translate
-                      }}<span *ngIf="lang.cefr" class="opacity-70"> · {{ lang.cefr }}</span>
-                    </span>
-                  </div>
+                      <span
+                        class="font-medium text-sm md:text-base text-neutral-900 dark:text-neutral-100 flex-1"
+                      >
+                        {{ lang.nameKey | translate }}
+                      </span>
+                      <span
+                        class="text-xs md:text-sm px-2 md:px-3 py-1 rounded-md font-medium min-w-[85px] md:min-w-[115px] text-center"
+                        [class]="getLevelBadgeClass(lang.level)"
+                      >
+                        {{ 'skills.languages.level_' + lang.level | translate }}
+                        @if (lang.cefr) {
+                          <span class="opacity-70"> · {{ lang.cefr }}</span>
+                        }
+                      </span>
+                    </div>
+                  }
                 </div>
               </div>
 
@@ -260,14 +264,15 @@ interface LanguageItem {
                 </h3>
 
                 <ul class="grid grid-cols-1 gap-2">
-                  <li
-                    *ngFor="let evidence of practiceKeys"
-                    class="p-3 rounded-lg bg-white dark:bg-primary-800/60 border border-neutral-200 dark:border-neutral-700"
-                  >
-                    <span class="text-xs md:text-sm text-neutral-900 dark:text-neutral-100">
-                      {{ evidence | translate }}
-                    </span>
-                  </li>
+                  @for (evidence of practiceKeys; track evidence) {
+                    <li
+                      class="p-3 rounded-lg bg-white dark:bg-primary-800/60 border border-neutral-200 dark:border-neutral-700"
+                    >
+                      <span class="text-xs md:text-sm text-neutral-900 dark:text-neutral-100">
+                        {{ evidence | translate }}
+                      </span>
+                    </li>
+                  }
                 </ul>
               </div>
             </div>
