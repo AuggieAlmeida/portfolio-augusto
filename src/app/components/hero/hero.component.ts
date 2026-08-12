@@ -153,7 +153,7 @@ import { NavService } from '../../core/services/nav.service';
             <div class="text-center group">
               <div
                 class="text-4xl font-bold text-secondary-600 dark:text-secondary-400 mb-2 group-hover:scale-110 transition-transform font-heading stat-number"
-                data-target="32"
+                data-target="33"
               >
                 0+
               </div>

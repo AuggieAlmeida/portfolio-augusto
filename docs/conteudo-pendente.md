@@ -4,19 +4,19 @@ Levantado em 2026-08-11 cruzando `src/app/components/projects/projects.json` com
 repositórios do GitHub (`gh`, conta `AuggieAlmeida` + orgs `Keanus-In-Reevesverse`,
 `JavaPadoca`, `KitManeger-Fatec`, `TJG-Tech`) e com as folhas de projeto do vault.
 
-Estado atual, **36 cards**: 24 com imagem, 14 com demo, 9 com repositório, 1 com publicação.
+Estado atual, **37 cards**: 29 com imagem, 15 com demo, 11 com repositório, 1 com publicação.
 
-O gargalo agora é imagem. Dos 12 que faltam, 5 só fecham rodando o projeto e
-capturando a tela; três não têm interface própria e quatro ficam sem imagem por
+O gargalo agora é imagem. Dos 8 que faltam, 2 dependem de recuperar ou executar o projeto;
+dois não têm interface própria e quatro ficam sem imagem por
 confidencialidade.
 
 ---
 
-## 1. Imagens faltando — 12 dos 36 cards
+## 1. Imagens faltando — 8 dos 37 cards
 
 Precisam rodar localmente, um a um:
 
-`omegahub` · `pokedex` · `javafx-pokemon` · `sudoku-solver` · `kitbuilder`
+`omegahub` · `sudoku-solver`
 
 Fechado nesta rodada:
 
@@ -37,6 +37,15 @@ Fechado nesta rodada:
 - `jarbas` — onboarding web seguro do Drifter, sem conectar a interface ao vault pessoal.
 - `aquila-e-evelyn` — quatro capturas sanitizadas (hero, experiência, sistema visual e
   versão mobile), sem depoimentos, fotos pessoais, endereço, data, RSVP ou presentes.
+- `presente-para-daniela` — seis capturas sanitizadas (hero, capítulos, pilares, cartas,
+  nota de privacidade e mobile), sem fotos, desenhos, datas, músicas ou mensagens pessoais.
+- `pokedex` — login público do app Expo em 1280×720, sem conta ou dado real.
+- `kitbuilder` — tela de login S.A.G.A. em 1229×768, capturada por bundle macOS temporário
+  sem preencher credenciais.
+- `javafx-pokemon` — composição visual Pokédex 800×600 pertencente ao app; usada sem dados
+  dinâmicos porque o runtime JavaFX 17 encerra o FXML criado para API 19 no macOS atual.
+- `barbearia-app` — landing pública 1280×720, capturada do build de produção local com a
+  prévia fictícia de agendamento já fornecida pelo próprio projeto.
 
 Bloqueios resolvidos nesta rodada:
 
@@ -54,22 +63,22 @@ Fase GitHub iniciada em 2026-08-12:
 
 - `kitbuilder` — `KitManeger-Fatec/KitBuilder-tkinter` recuperado e indexado; app abre a tela
   de login. A suíte fica em 13 passed/2 failed sem MySQL local e há dívida de segurança no
-  log de falha de autenticação. Captura adiada pela perda de bootstrap do Computer Use.
+  log de falha de autenticação. A tela pública foi capturada por bundle temporário.
 - `javafx-pokemon` — `AuggieAlmeida/JAVAFX-MAVEN-MVC-POKEMONAPP` recuperado e indexado;
-  Maven test passa e a tela de login abre, embora tente MySQL local imediatamente. Captura
-  adiada pelo mesmo bloqueio de automação.
+  Maven test passa e a tela de login abre, embora tente MySQL local imediatamente. A
+  composição visual do próprio app substitui a captura dinâmica bloqueada pelo runtime.
 - `aquila-e-evelyn` — repositório público recuperado, sanitizado e indexado; a versão
   original ficou preservada em branch própria antes da remoção do conteúdo pessoal.
 - `pokedex` — origem correta confirmada pelo Augusto em
   `Gabriel-AFerreira/testepokedexdozero`. O histórico foi preservado, o wrapper
   `projetoTeste/` promovido à raiz e o projeto publicado em `AuggieAlmeida/Pokedex`.
-  TypeScript passa; a captura do app Expo ainda falta.
+  TypeScript passa; o login público do app Expo foi capturado sem dados reais.
 
 Além do Sudoku, `omegahub` continua dependendo de confirmação do casamento com `discordia`.
 
 Sem interface própria para capturar — o card pode ficar no fallback de iniciais para sempre:
 
-`pronto` · `barbearia-app` · `buscajogos`
+`pronto` · `buscajogos`
 
 Sem imagem **por decisão**, e não por falta — case sob confidencialidade, publicado só como
 texto: `portal-agente-ia` · `suite-financeira-b2b` · `portal-remuneracao-frota` ·
@@ -88,12 +97,13 @@ publicadas porque expõem mais do que o card precisa:
   de gravação com o rosto de colegas. Publicada hoje só a home pública.
 
 A captura de dashboard do AsuraPadel continua fora: ela exibe nome e e-mail de administrador.
-Em contrapartida, duas telas de login sem dados reais foram integradas ao carrossel.
+Uma captura atribuída ao projeto foi identificada como tela do Pasta la Vista e removida; o
+card mantém somente a tela de login validada do Asura Play.
 
 Carrosséis seguros fechados nesta rodada:
 
 - `aquila-e-evelyn` — quatro telas;
-- `asurapadel` — três telas públicas/de login, sem dashboard identificado;
+- `presente-para-daniela` — seis telas públicas sanitizadas;
 - `bubble-box-lavanderia` — duas telas públicas;
 - `zoologic` — quatro telas sem a tela de colaboradores, que continha nomes;
 - `pasta-la-vista` — quatro telas mobile/web já existentes e mantidas.
@@ -117,7 +127,8 @@ Carrosséis seguros fechados nesta rodada:
 
 `pronto` e `tecnurg` foram consolidados após correção do Augusto: são duas fases do mesmo
 projeto, não dois cards. O card único descreve o MVP Pronto e sua evolução arquitetural
-Tecnurg. `barbearia-app` permanece como escopo arquitetural sem código localizado.
+Tecnurg. `barbearia-app` foi localizado em `web/barber/barbearia-app`; a landing pública
+produziu a captura, mas nenhum repositório remoto foi confirmado.
 
 ## 4. Confirmações pendentes de mapeamento
 
@@ -169,7 +180,7 @@ gh run rerun --failed -R AuggieAlmeida/aquila-e-evelyn
   publicada no RIC, o projeto correspondente ganha `paperUrl`.
 - `asurapadel` — a descrição afirma queda de 800 ms para 220 ms. A folha do vault registra
   o número como auto-relatado, **sem medição anexada**. Ou anexa a medição, ou o número sai.
-- Hero passou de "20" para **32 Projetos Concluídos**, contado card a card contra as folhas
+- Hero passou de "20" para **33 Projetos Concluídos**, contado card a card contra as folhas
   do vault e descontando a duplicação Pronto/Tecnurg. Ficam de fora os quatro que não estão `concluido`: `portal-remuneracao-frota`
   (ativo), `servidor-llm-local` (pausado), `jarbas` e `quinto-selo` (ativos). O número volta
   a sair do lugar quando algum desses quatro fechar — recontar, não incrementar às cegas.
@@ -207,6 +218,5 @@ Não entram sem decisão explícita sua:
 
 - `srim` — a folha carrega a tag `confidencial`, está `ativo` e a fonte é roadmap, ficha
   técnica e **cotação**: material de proposta em negociação, não case entregue.
-- `valentine-love-landing` — presente pessoal; está no ar em `valentine-love-landing.vercel.app`.
 - `dev-grupo-az.web.app` — ambiente de desenvolvimento do cliente dos dois portais, registrado na
   folha do projeto. Não é demo pública e não deve virar link no site.
