@@ -28,8 +28,11 @@ jobs:
       # Rodou vermelho toda semana entre março e abril de 2026 sem ninguém
       # perceber, que é exatamente o problema que o dashboard de projetos
       # existe para resolver.
+      # O ref `0.28.0` (sem `v`) deixou de existir no repositório da action e o
+      # job passou a falhar no setup, antes de o scanner rodar. Não era achado
+      # de vulnerabilidade. Pinado por commit para o ref não sumir de novo.
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
         with:
           image-ref: 'portfolio-augusto'
           format: 'json'
