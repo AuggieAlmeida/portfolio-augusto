@@ -95,6 +95,30 @@ export class ProjectCatalogService {
     return this.all.find((project) => project.id === slug);
   }
 
+  /**
+   * As tecnologias mais frequentes do inventário, para a barra de filtro.
+   * Ordena por número de projetos e desempata em ordem alfabética, para a barra
+   * não trocar de ordem entre builds. O rótulo exibido é a primeira grafia
+   * encontrada no catálogo — `Node.js` e `node.js` contam como a mesma coisa.
+   */
+  topTechnologies(limit: number): string[] {
+    const counts = new Map<string, { label: string; count: number }>();
+
+    for (const project of this.all) {
+      for (const technology of project.technologies) {
+        const key = technology.toLowerCase();
+        const entry = counts.get(key);
+        if (entry) entry.count += 1;
+        else counts.set(key, { label: technology, count: 1 });
+      }
+    }
+
+    return [...counts.values()]
+      .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label))
+      .slice(0, limit)
+      .map((entry) => entry.label);
+  }
+
   search(query: string, translate: TranslateService): ProjectItem[] {
     const normalized = this.normalize(query);
     if (!normalized) return this.all;

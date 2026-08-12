@@ -1,11 +1,14 @@
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { PortfolioCommandService } from '../../core/commands/portfolio-command.service';
+import { ProjectCatalogService } from '../../core/projects/project-catalog.service';
 import { ProjectsComponent } from './projects.component';
 
 describe('ProjectsComponent', () => {
   let fixture: ComponentFixture<ProjectsComponent>;
   let component: ProjectsComponent;
+  let commands: PortfolioCommandService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -14,6 +17,7 @@ describe('ProjectsComponent', () => {
 
     fixture = TestBed.createComponent(ProjectsComponent);
     component = fixture.componentInstance;
+    commands = TestBed.inject(PortfolioCommandService);
     fixture.detectChanges();
   });
 
@@ -327,5 +331,120 @@ describe('ProjectsComponent', () => {
     component.openUrl('https://example.com');
 
     expect(open).toHaveBeenCalledWith('https://example.com', '_blank', 'noopener,noreferrer');
+  });
+
+  describe('technology filter', () => {
+    const inventoryCards = (): number =>
+      (fixture.nativeElement as HTMLElement).querySelectorAll(
+        '#projects-inventory [data-project-card]'
+      ).length;
+
+    const uses = (project: { technologies: string[] }, technology: string): boolean =>
+      project.technologies.some((tech) => tech.toLowerCase() === technology.toLowerCase());
+
+    it('starts with every project visible and no chip pressed', () => {
+      const catalog = TestBed.inject(ProjectCatalogService);
+
+      expect(component.activeTechnology).toBeNull();
+      expect(component.commercialProjects.length).toBe(catalog.commercial.length);
+      expect(component.studyProjects.length).toBe(catalog.study.length);
+    });
+
+    it('narrows the inventory to the projects that use the technology', () => {
+      const technology = component.technologyFilters[0];
+
+      component.filterByTechnology(technology);
+      fixture.detectChanges();
+
+      const shown = [...component.commercialProjects, ...component.studyProjects];
+      expect(shown.length).toBeGreaterThan(0);
+      expect(shown.every((project) => uses(project, technology))).toBeTrue();
+      expect(inventoryCards()).toBe(shown.length);
+    });
+
+    it('reveals the inventory when the filter comes from a featured card', () => {
+      expect(component.showAllProjects).toBeFalse();
+
+      component.filterByTechnology(component.technologyFilters[0]);
+      fixture.detectChanges();
+
+      expect(component.showAllProjects).toBeTrue();
+      expect(
+        (fixture.nativeElement as HTMLElement).querySelector('#projects-inventory')
+      ).not.toBeNull();
+    });
+
+    it('turns the filter off when the active chip is clicked again', () => {
+      const catalog = TestBed.inject(ProjectCatalogService);
+      const technology = component.technologyFilters[0];
+
+      component.filterByTechnology(technology);
+      component.filterByTechnology(technology);
+
+      expect(component.activeTechnology).toBeNull();
+      expect(component.commercialProjects.length).toBe(catalog.commercial.length);
+      expect(component.studyProjects.length).toBe(catalog.study.length);
+    });
+
+    it('restores the whole inventory from the "all" control', () => {
+      const catalog = TestBed.inject(ProjectCatalogService);
+
+      component.filterByTechnology(component.technologyFilters[0]);
+      component.clearTechnologyFilter();
+
+      expect(component.activeTechnology).toBeNull();
+      expect(component.commercialProjects.length + component.studyProjects.length).toBe(
+        catalog.all.length
+      );
+    });
+
+    it('marks the active chip for assistive technology, not only by colour', () => {
+      const technology = component.technologyFilters[0];
+
+      component.filterByTechnology(technology);
+      fixture.detectChanges();
+
+      const pressed = Array.from(
+        (fixture.nativeElement as HTMLElement).querySelectorAll('[data-tech-filter]')
+      ).filter((chip) => chip.getAttribute('aria-pressed') === 'true');
+
+      expect(pressed.length).toBe(1);
+      expect(pressed[0].textContent?.trim()).toBe(technology);
+    });
+
+    it('says a category is empty instead of showing a carousel with nothing in it', () => {
+      const catalog = TestBed.inject(ProjectCatalogService);
+      const lopsided = component.technologyFilters.find(
+        (technology) =>
+          catalog.commercial.some((project) => uses(project, technology)) !==
+          catalog.study.some((project) => uses(project, technology))
+      );
+
+      expect(lopsided)
+        .withContext('nenhuma tecnologia do filtro cobre só uma das duas categorias')
+        .toBeDefined();
+
+      component.filterByTechnology(lopsided!);
+      fixture.detectChanges();
+
+      const host = fixture.nativeElement as HTMLElement;
+      expect(
+        component.commercialProjects.length === 0 || component.studyProjects.length === 0
+      ).toBeTrue();
+      expect(host.querySelectorAll('[data-filter-empty]').length).toBe(1);
+    });
+
+    it('drops the filter when a command opens a project, so the card exists on the page', () => {
+      const catalog = TestBed.inject(ProjectCatalogService);
+      const target = catalog.all.at(-1)!;
+
+      component.filterByTechnology(component.technologyFilters[0]);
+      commands.execute(`open ${target.id}`);
+      fixture.detectChanges();
+
+      expect(component.activeTechnology).toBeNull();
+      expect([...component.commercialProjects, ...component.studyProjects]).toContain(target);
+      expect(component.selectedProject).toBe(target);
+    });
   });
 });

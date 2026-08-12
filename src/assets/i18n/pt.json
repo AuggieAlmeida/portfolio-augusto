@@ -715,6 +715,13 @@
       "badge": "Ilustração",
       "note": "Ilustração conceitual — não é captura do sistema",
       "alt": "ilustração conceitual, não captura do sistema"
+    },
+    "filter": {
+      "title": "Filtrar por tecnologia",
+      "all": "Todas",
+      "byTech": "Filtrar por tecnologia",
+      "summary": "{{count}} de {{total}} projetos usam {{technology}}.",
+      "empty": "Nenhum projeto desta categoria usa a tecnologia selecionada."
     }
   },
   "project": {
@@ -743,5 +750,10 @@
   },
   "navigation": {
     "scrollDown": "Rolar para baixo"
+  },
+  "contact": {
+    "copyEmail": "Copiar e-mail",
+    "emailCopied": "E-mail copiado.",
+    "copyFailed": "Não foi possível copiar. Selecione o endereço e copie manualmente."
   }
 }

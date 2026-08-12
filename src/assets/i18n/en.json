@@ -657,6 +657,13 @@
       "badge": "Illustration",
       "note": "Conceptual illustration — not a screenshot of the system",
       "alt": "conceptual illustration, not a screenshot of the system"
+    },
+    "filter": {
+      "title": "Filter by technology",
+      "all": "All",
+      "byTech": "Filter by technology",
+      "summary": "{{count}} of {{total}} projects use {{technology}}.",
+      "empty": "No project in this category uses the selected technology."
     }
   },
   "project": {
@@ -743,5 +750,10 @@
   },
   "navigation": {
     "scrollDown": "Scroll down"
+  },
+  "contact": {
+    "copyEmail": "Copy email",
+    "emailCopied": "Email copied.",
+    "copyFailed": "Could not copy. Select the address and copy it manually."
   }
 }

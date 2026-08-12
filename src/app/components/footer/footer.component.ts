@@ -1,11 +1,13 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+
+import { CONTACT_EMAIL } from '../../core/contact/contact-channels';
+import { CopyEmailComponent } from '../copy-email/copy-email.component';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule, TranslateModule],
+  imports: [TranslateModule, CopyEmailComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <footer
@@ -45,7 +47,7 @@ import { TranslateModule } from '@ngx-translate/core';
             </a>
 
             <a
-              href="mailto:augusto.almeida2@icloud.com"
+              [href]="'mailto:' + email"
               [attr.aria-label]="'footer.social.email' | translate"
               class="hover:text-primary-500"
             >
@@ -91,12 +93,10 @@ import { TranslateModule } from '@ngx-translate/core';
           <ul class="mt-4 space-y-3 text-sm">
             <li class="flex items-center gap-2">
               <i class="fas fa-envelope text-primary-500" aria-hidden="true"></i>
-              <a
-                href="mailto:augusto.almeida2@icloud.com"
-                class="hover:text-primary-500 transition-colors"
-              >
-                augusto.almeida2&#64;icloud.com
+              <a [href]="'mailto:' + email" class="hover:text-primary-500 transition-colors">
+                {{ email }}
               </a>
+              <app-copy-email></app-copy-email>
             </li>
 
             <li class="flex items-center gap-2">
@@ -123,4 +123,5 @@ import { TranslateModule } from '@ngx-translate/core';
 export class FooterComponent {
   /** O ano estava chumbado em 2025 no locale e envelheceu sozinho. */
   readonly copyrightParams = { year: new Date().getFullYear() };
+  readonly email = CONTACT_EMAIL;
 }
