@@ -77,3 +77,35 @@
 .section-placeholder {
   min-height: 70vh;
 }
+
+/* Quem pede menos movimento recebe menos movimento — no site inteiro, não só
+   nas três seções que já tratavam o caso.
+ *
+ * Ficavam de fora as animações que vêm do Tailwind e são infinitas: o brilho do
+ * item ativo do menu, o pulsar do logo e do indicador de ano atual, e o
+ * gradiente do Sobre. Movimento contínuo é justamente o que dispara desconforto
+ * vestibular, e nenhum dos três comunica estado — são decoração.
+ *
+ * A regra encurta a animação em vez de removê-la: `animation: none` deixaria os
+ * itens da trajetória parados em `opacity-0`, invisíveis para sempre, porque é
+ * o `fadeInUp` que devolve a opacidade. Com duração desprezível e uma iteração
+ * só, a animação chega ao estado final na hora. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Deslocamento e escala no hover continuam sendo movimento, mesmo instantâneo. */
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .roadmap-card:hover,
+  .skill-tag:hover {
+    transform: none !important;
+  }
+}

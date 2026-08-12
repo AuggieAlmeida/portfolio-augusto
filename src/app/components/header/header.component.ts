@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -24,7 +23,7 @@ import { ThemeService } from '../../core/services/theme.service';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, TranslateModule],
+  imports: [TranslateModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <header
@@ -177,7 +176,7 @@ import { ThemeService } from '../../core/services/theme.service';
 
         <!-- O drawer só entra no DOM quando aberto, evitando controles invisíveis
              na ordem de foco e na árvore de acessibilidade. -->
-        <ng-container *ngIf="isMobileMenuOpen">
+        @if (isMobileMenuOpen) {
           <button
             type="button"
             tabindex="-1"
@@ -315,7 +314,7 @@ import { ThemeService } from '../../core/services/theme.service';
               </div>
             </div>
           </div>
-        </ng-container>
+        }
       </nav>
     </header>
   `,

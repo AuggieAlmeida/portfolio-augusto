@@ -1,6 +1,8 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+
+import { CONTACT_EMAIL } from '../../core/contact/contact-channels';
+import { CopyEmailComponent } from '../copy-email/copy-email.component';
 
 @Component({
   selector: 'app-about',
@@ -96,17 +98,20 @@ import { TranslateModule } from '@ngx-translate/core';
                   >
                     <i aria-hidden="true" class="fas fa-envelope text-white text-sm"></i>
                   </span>
-                  <span class="min-w-0">
+                  <span class="min-w-0 flex-1">
                     <span class="block text-sm text-neutral-500 dark:text-neutral-400">
                       {{ 'about.email' | translate }}
                     </span>
                     <a
-                      href="mailto:augusto.almeida2@icloud.com"
+                      [href]="'mailto:' + email"
                       class="block truncate text-primary-600 dark:text-primary-400 hover:underline font-medium"
                     >
-                      augusto.almeida2&#64;icloud.com
+                      {{ email }}
                     </a>
                   </span>
+                  <!-- O endereço é longo e trunca no cartão; selecionar na mão
+                       para copiar é justamente o que o botão evita. -->
+                  <app-copy-email></app-copy-email>
                 </li>
 
                 <li
@@ -233,6 +238,8 @@ import { TranslateModule } from '@ngx-translate/core';
     `
   ],
   standalone: true,
-  imports: [CommonModule, TranslateModule]
+  imports: [TranslateModule, CopyEmailComponent]
 })
-export class AboutComponent {}
+export class AboutComponent {
+  readonly email = CONTACT_EMAIL;
+}

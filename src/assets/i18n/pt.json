@@ -424,12 +424,13 @@
       "noLinks": "Sem link público — código privado ou projeto sem deploy.",
       "decision": {
         "action": "Examinar a decisão",
-        "title": "Case de decisão",
+        "title": "Como essa decisão foi tomada",
         "context": "Contexto",
         "constraint": "Restrição",
         "decision": "Decisão",
         "evidence": "Evidência",
-        "impact": "Impacto"
+        "impact": "Impacto",
+        "selfReported": "Número relatado pelo Augusto, sem medição anexada. Ou a medição aparece, ou o número sai."
       }
     },
     "decisions": {
@@ -438,7 +439,265 @@
         "constraint": "Dez das onze tabelas do domínio não tinham índice; a resposta precisava permanecer byte a byte idêntica.",
         "decision": "Criar sete índices derivados dos predicados medidos e mapear o N+1 remanescente.",
         "evidence": "A resposta foi comparada byte a byte após a mudança; o N+1 ficou identificado em 316 das 354 queries.",
-        "impact": "O tempo da tela caiu de 4.271 ms para 354 ms."
+        "impact": "O tempo da tela caiu de 4.271 ms para 354 ms.",
+        "proves": "Otimização provada por medição, não por sensação: a resposta foi comparada byte a byte antes e depois, então o ganho de dez vezes não veio de mudar o que a tela devolve."
+      },
+      "stechclub": {
+        "proves": "Segurança tratada como decisão de arquitetura, não como aviso: a key do bucket nunca chega ao navegador porque a mídia sai por API. O modelo de domínio sobreviveu ao escopo triplicar, de curso estático para trilhas e playlists.",
+        "context": "Portal educacional em dois sub-projetos, SPA React e API NestJS, com landing pública e área autenticada de cursos, trilhas e vídeos.",
+        "constraint": "A empresa já tinha SSO próprio, e vídeo de curso não pode ser servido por link direto do bucket.",
+        "decision": "Reusar o SSO corporativo em vez de reimplementar autenticação, endereçar mídia por hash em prefixos separados e extrair o link por API autenticada.",
+        "evidence": "SHA256 de cada objeto gravado no banco para consulta; Swagger e Redoc documentando a API; testes Jest unitários e E2E; health endpoint reportando o estado do banco.",
+        "impact": "Nenhuma credencial de bucket no cliente, e a modelagem absorveu trilha, playlist e material de aula sem reescrever o domínio."
+      },
+      "asurapadel": {
+        "proves": "O case de performance mais completo do portfólio: sintoma, diagnóstico, quatro frentes de correção e número. É também Angular recente sobre backend C# em Azure.",
+        "context": "Gestão de quadra de padel em duas aplicações no mesmo repositório: frontend Angular e API REST em C# publicada em Azure App Service.",
+        "constraint": "O gargalo só apareceu quando a API saiu da máquina local para o servidor de teste, atendendo uma base entre 4 e 10 mil clientes.",
+        "decision": "Atacar em quatro frentes ao mesmo tempo — cache, redesenho de endpoints, redução de payload e otimização no frontend — e paginar por lotes fragmentados em vez de devolver tudo numa resposta.",
+        "evidence": "Paginação virou decisão de contrato de API, não de UI; consumo configurado por ambiente, com dev, teste e produção apontando para APIs distintas; cobertura de teste relatada em 88% com Jest e JUnit.",
+        "impact": "Tempo médio de resposta relatado caindo de 800 ms para 220 ms, cerca de 72%."
+      },
+      "portal_agente_ia": {
+        "proves": "Controle de qualidade aplicado a sistema não determinístico. Versionar prompt com rollback e isolar o canal de teste do canal real são decisões de QA sobre IA, não features de conveniência.",
+        "context": "Portal para pessoa não técnica operar, testar e auditar um agente de atendimento com IA conectado ao WhatsApp. O produto não é o agente: é a interface que o torna operável.",
+        "constraint": "A automação por trás do agente era pouco modificável, e o tráfego de teste não podia se misturar ao atendimento real.",
+        "decision": "Adicionar versionamento do prompt com rollback, criar um webhook separado para o sandbox e concentrar credencial e integração num backend gerenciado, fora do navegador.",
+        "evidence": "Upload e catálogo processados para vector store com estado de fila e rastreabilidade visíveis no portal; log de conversa e fila passando por função autenticada.",
+        "impact": "Quem opera consegue mudar o comportamento do agente e voltar atrás sozinho, e nenhum teste contamina a conversa do cliente."
+      },
+      "suite_financeira_b2b": {
+        "proves": "O ambiente mais próximo de sistema financeiro de porte, e o único com as três camadas juntas: transacional, assíncrona e analítica. Kafka aqui tem tópico por domínio, DLQ e deploy por ambiente.",
+        "context": "Suíte de operação financeira em três repositórios: backend administrativo e de APIs, interface web e pipelines de dados, cobrindo operações, cessões, carteiras, critérios, aprovações e integrações.",
+        "constraint": "Evento de domínio não pode se perder, e arquivo de operação não pode ser servido por URL aberta.",
+        "decision": "Separar o transacional do assíncrono e do analítico, com tópicos Kafka por domínio e dead letter queue, URL pré-assinada para todo arquivo e segredo em cofre gerenciado.",
+        "evidence": "Consumers com tratamento de erro e DLQ, deployments por ambiente entre staging, homologação e produção, presigned URL em notificação de inconsistência e retorno de arquivo, e auditoria de dependência com pip-audit em job de build e teste.",
+        "impact": "Cadeia de dependência auditada no CI e nenhum arquivo de operação exposto por link direto."
+      },
+      "servidor_llm_local": {
+        "proves": "Infraestrutura com fronteira de exposição declarada: serviço interno não vai para a internet, compartilhamento não aceita convidado, e a capacidade da máquina é dita como ela é, não como convém.",
+        "context": "Transformar um desktop em servidor de arquivos, host de LLMs locais e estação visual, sobre Ryzen 3, 24 GB de RAM e uma RTX 3060 de 12 GB.",
+        "constraint": "A mesma máquina precisa operar interface gráfica, e nada pode ficar exposto diretamente à internet.",
+        "decision": "Ubuntu Desktop bare metal em vez de Server, runtime local com Docker e NVIDIA Container Toolkit, acesso remoto só por rede privada e compartilhamento autenticado sem guest share.",
+        "evidence": "GPU reconhecida dentro do container, inferência validada com modelo 8B em API local, e diretórios separados por permissão de grupo.",
+        "impact": "Perfil registrado como adequado a armazenamento, RAG e modelos quantizados de 7B a 8B — e explicitamente não vendido como inferência pesada multiusuário."
+      },
+      "mitra_crm": {
+        "proves": "Software entregue a um negócio real, com dado de uso, nove tabelas e distribuição em executável — o degrau que separa projeto de estudo de produto operado por outra pessoa.",
+        "context": "CRM desktop com geração de orçamento para uma empresa de cortinas e persianas, em Python com tkinter e SQLite.",
+        "constraint": "Quem usa não instala ambiente de desenvolvimento: a entrega precisa ser um executável.",
+        "decision": "Modelar nove tabelas em vez de CRUD de uma entidade, empacotar com PyInstaller e abandonar a reestruturação MVC no meio, preservando o motivo no registro.",
+        "evidence": "Três iterações rastreadas — protótipo do módulo de clientes, tentativa MVC abandonada e o produto final — com testes em pytest e cerca de 30 orçamentos gerados, em boa parte dado de teste.",
+        "impact": "Redução relatada de cerca de 45% no tempo de geração de relatório, por otimização de consulta."
+      },
+      "apollo_digital": {
+        "proves": "Entrega de cliente sob prazo comercial em que a decisão de frontend foi minha além da adaptação mobile: animação e efeito da página também saíram daqui. Performance era critério de aceite contratado.",
+        "context": "Landing de agência digital atendendo B2B e B2C, publicada na plataforma de captura de leads da agência.",
+        "decision": "Landing autônoma em HTML, CSS e JavaScript com jQuery e Bootstrap, sem CMS, porque o conteúdo não seria editado pelo cliente.",
+        "evidence": "Core Web Vitals aparece no brief como requisito declarado, não como otimização posterior."
+      },
+      "braseng_consultoria": {
+        "proves": "Volume de entrega sob prazo comercial com performance como critério de aceite — a evidência de front sem framework mais consistente do portfólio.",
+        "context": "Landing de consultoria empresarial dentro de um ciclo de nove entregas para cliente.",
+        "decision": "Landing autônoma em HTML, CSS e JavaScript com jQuery e Bootstrap, publicada na plataforma de captura de leads da agência.",
+        "evidence": "Core Web Vitals aparece no brief como requisito declarado, não como otimização posterior."
+      },
+      "bumbum_de_anjo": {
+        "proves": "Página de produto entregue no mesmo ciclo comercial, com carregamento rápido tratado como requisito e não como refino.",
+        "context": "Landing de produto infantil dentro de um ciclo de nove entregas para cliente.",
+        "decision": "Landing autônoma em HTML, CSS e JavaScript com jQuery e Bootstrap, sem CMS.",
+        "evidence": "Core Web Vitals aparece no brief como requisito declarado, não como otimização posterior."
+      },
+      "clinica_viotto": {
+        "proves": "Entrega para o setor de saúde no mesmo ciclo comercial, com performance web contratada como critério.",
+        "context": "Landing de odontologia e lentes dentais dentro de um ciclo de nove entregas para cliente.",
+        "decision": "Landing autônoma em HTML, CSS e JavaScript com jQuery e Bootstrap, sem CMS — a captação sai por formulário da própria plataforma de leads.",
+        "evidence": "Core Web Vitals aparece no brief como requisito declarado, não como otimização posterior."
+      },
+      "fehe_chocolate": {
+        "proves": "Página de marca de produto premium no mesmo ciclo comercial, com carregamento rápido como requisito declarado.",
+        "context": "Landing de chocolate premium zero açúcar dentro de um ciclo de nove entregas para cliente.",
+        "decision": "Landing autônoma em HTML, CSS e JavaScript com jQuery e Bootstrap, sem CMS, porque a página existe para converter e não para hospedar catálogo.",
+        "evidence": "Core Web Vitals aparece no brief como requisito declarado, não como otimização posterior."
+      },
+      "bubble_box_lavanderia": {
+        "proves": "Página de rede em franquia, onde o visitante é candidato a franqueado e não consumidor final — o brief muda o que a página precisa provar.",
+        "context": "Landing de rede de lavanderias self-service em modelo de franquia, dentro de um ciclo de nove entregas para cliente.",
+        "decision": "Landing autônoma em HTML, CSS e JavaScript com jQuery e Bootstrap, sem CMS.",
+        "evidence": "Core Web Vitals aparece no brief como requisito declarado, não como otimização posterior."
+      },
+      "souza_lima_vestibular": {
+        "proves": "Stack escolhida por quem mantém o conteúdo depois, não por gosto: o cliente precisava editar sem depender de dev, então entrou CMS.",
+        "context": "Site de vestibular para uma instituição de ensino de música, dentro de um ciclo de nove entregas para cliente.",
+        "decision": "Site sobre CMS em HTML, CSS e JavaScript com PHP e WordPress, em vez de landing autônoma.",
+        "evidence": "Core Web Vitals aparece no brief como requisito declarado, não como otimização posterior."
+      },
+      "souza_lima_cursos_livres": {
+        "proves": "Segundo site da mesma instituição sobre CMS — a decisão de operação se repete porque a premissa é a mesma: conteúdo editado pelo cliente.",
+        "context": "Site de cursos livres de música, dentro de um ciclo de nove entregas para cliente.",
+        "decision": "Site sobre CMS em HTML, CSS e JavaScript com PHP e WordPress.",
+        "evidence": "Core Web Vitals aparece no brief como requisito declarado, não como otimização posterior."
+      },
+      "optec_solutions": {
+        "proves": "Site institucional sobre CMS pela mesma razão de operação, num cliente cujo próprio negócio é segurança cibernética, cloud e suporte de TI.",
+        "context": "Site institucional de uma empresa de segurança cibernética, cloud e suporte de TI.",
+        "decision": "Site sobre CMS em HTML, CSS e JavaScript com PHP e WordPress, para o cliente manter o conteúdo sem dev.",
+        "evidence": "Core Web Vitals aparece no brief como requisito declarado, não como otimização posterior."
+      },
+      "taskforge": {
+        "proves": "Define a fronteira de autonomia do agente antes de otimizar velocidade: planner somente leitura, nenhum agente dá push, merge continua humano. É QA aplicado a IA na forma de desenho, não de aviso.",
+        "context": "Meta-tooling que transforma uma demanda em DAG de tarefas e executa agentes em ondas paralelas, uma worktree Git por tarefa.",
+        "constraint": "Agente escrevendo em repositório compartilhado é risco: precisa ser impossível, não improvável, que um deles publique sozinho.",
+        "decision": "Separar planejamento de execução, manter o planner somente leitura, isolar cada tarefa em branch e worktree próprias e deixar revisão e merge com pessoa.",
+        "evidence": "Proteção para branch sem commit e para histórico sem ancestral comum; skills de processo com gate embutido — aprovação antes de executar, cobertura mínima de 80% e migration reversível; quatro interfaces sobre o mesmo motor, compartilhando os planos em disco.",
+        "impact": "A tese deixou de ser \"executar agentes\" e passou a ser mapear como o time trabalha e acoplar agente só nos pontos certos."
+      },
+      "omegahub": {
+        "proves": "Modularização por domínio no backend e contrato tipado ponta a ponta — e dois provedores de pagamento no mesmo fluxo, que é problema real de abstração, não exercício.",
+        "context": "Plataforma para gamers em monorepo, com Next.js no frontend e NestJS sobre Fastify no backend.",
+        "constraint": "Dois provedores de pagamento precisam coexistir no mesmo fluxo de compra sem vazar a diferença para o resto do sistema.",
+        "decision": "Separar Store, Orders e Payments como domínios independentes, expor contrato tipado ponta a ponta com tRPC e tratar trabalho assíncrono em filas.",
+        "evidence": "Filas BullMQ sobre Redis para o trabalho fora do ciclo de requisição.",
+        "impact": "Trocar ou adicionar provedor de pagamento fica contido no domínio de Payments, sem alcançar Store nem Orders."
+      },
+      "pronto": {
+        "proves": "Arquitetura escolhida por estágio do produto, com os trade-offs nomeados: PostGIS contra Redis GEO, Kafka contra pg-boss, split de pagamento contra PIX manual. Um card, duas fases, nenhuma inflação de portfólio.",
+        "context": "Marketplace de serviços urgentes em duas fases: um MVP operacionalmente barato e uma evolução arquitetural para escala.",
+        "constraint": "O MVP precisa custar pouco para operar; a fase seguinte precisa aguentar volume e trabalhar offline-first.",
+        "decision": "Comparar cada peça em vez de escolher a mais moderna: geolocalização, fila e pagamento foram decididos duas vezes, uma por fase, com o motivo registrado.",
+        "impact": "A comparação mostra como o desenho muda entre MVP e escala, sem virar dois projetos separados no portfólio."
+      },
+      "barbearia_app": {
+        "proves": "Consistência sob concorrência resolvida na camada de dados, por constraint de exclusão, em vez de retry na aplicação. Geolocalização com stack aberta em vez de serviço proprietário.",
+        "context": "PWA de descoberta e agendamento para barbearias, com mapa, slots em tempo real e três papéis de usuário.",
+        "constraint": "Dois clientes não podem reservar o mesmo horário, e a corrida acontece no instante do agendamento.",
+        "decision": "Impedir a sobreposição por constraint de exclusão no banco, e usar Leaflet, OpenStreetMap e PostGIS em vez de serviço proprietário de mapa.",
+        "impact": "A garantia deixa de depender de a aplicação tentar de novo: o banco recusa a segunda reserva."
+      },
+      "pasta_la_vista": {
+        "proves": "Banco escolhido por formato do dado em vez de banco único por conveniência, com a justificativa registrada no próprio repositório. Teste de integração era premissa, não adendo.",
+        "context": "App de delivery com Clean Architecture, mobile em Expo e API em Express.",
+        "constraint": "Pedido, catálogo e sessão têm formatos e vidas diferentes; e confirmação de pagamento chega depois, por webhook.",
+        "decision": "Persistência poliglota — PostgreSQL, MongoDB e Redis, cada um pelo formato do dado — e webhook de pagamento tratado como fluxo assíncrono de verdade.",
+        "evidence": "Compose de teste separado do de desenvolvimento, para teste de integração rodar isolado.",
+        "impact": "A escolha de cada banco fica defensável por escrito, e o pagamento não depende de a resposta HTTP voltar."
+      },
+      "buscajogos": {
+        "proves": "Projeto longo em equipe com troca de stack sob pressão de prazo — decisão de engenharia com justificativa registrada, não preferência. É a resposta honesta para \"conte sobre mudar de rumo no meio do projeto\".",
+        "context": "TCC em equipe: comparador de preços de jogos digitais, aprovado com 9,0.",
+        "constraint": "O prazo era fixo e a stack escolhida no começo não sustentou o escopo.",
+        "decision": "Trocar de stack no meio do projeto, com o motivo registrado, em vez de arrastar a escolha inicial até a entrega.",
+        "evidence": "A sequência de quatro frontends ficou preservada como rastro de iteração real.",
+        "impact": "Entregue e aprovado com 9,0, com a mudança de rumo documentada em vez de escondida."
+      },
+      "kitbuilder": {
+        "proves": "Disciplina de backend aplicada onde não era obrigatório: repositories e migrations num projeto acadêmico de desktop, com modelagem de estoque por composição de kit.",
+        "context": "Gestão de estoque de peças eletrônicas em Python em camadas, entrega de conclusão do curso.",
+        "constraint": "Um kit é composto de peças que também existem soltas no estoque, e o esquema muda ao longo do projeto.",
+        "decision": "Separar acesso a dado em repositories e versionar o esquema com migrations, num contexto onde ninguém exigia isso.",
+        "impact": "O projeto acadêmico ficou com a estrutura de um serviço mantido, não de entrega de matéria."
+      },
+      "youtcatcher": {
+        "proves": "Cobertura acima de 80% num app pessoal, onde ninguém cobrava teste. Junto disso, empacotamento para três sistemas e recriação de ambiente por script — reprodutibilidade, não \"roda na minha máquina\".",
+        "context": "Downloader de YouTube desktop em Python, com MVC rigoroso.",
+        "constraint": "Projeto pessoal não tem revisor: se a qualidade não estiver no processo, não existe.",
+        "decision": "Manter MVC estrito, escrever teste como parte do trabalho e empacotar para três sistemas operacionais.",
+        "evidence": "Cobertura de teste acima de 80% e script de recriação do ambiente virtual.",
+        "impact": "O app roda fora da máquina de origem, o que é a diferença entre projeto e entrega."
+      },
+      "sudoku_solver": {
+        "proves": "O único C/C++ e a única visão computacional do acervo. A separação entre solver sem dependência e camada de visão pesada é decisão de fronteira, não acidente de linguagem.",
+        "context": "Pipeline que resolve Sudoku a partir de uma foto: solver em C puro, visão em C++ com OpenCV.",
+        "constraint": "O solver precisa ser testável e portátil; a visão arrasta uma dependência grande.",
+        "decision": "Manter o solver em C sem dependência nenhuma e isolar OpenCV na camada de visão, do outro lado da fronteira.",
+        "impact": "O algoritmo puro roda e é verificável sem instalar visão computacional para nada."
+      },
+      "jarbas": {
+        "proves": "Produto desktop com protocolo local autenticado: token gerado no boot, arquivo de descoberta com permissão restrita, e 401 em tudo que não é health. Segurança de serviço local tratada como serviço exposto.",
+        "context": "Second brain operável sobre qualquer vault markdown com convenção declarada, em motor mais interfaces.",
+        "constraint": "Nada pode ser hardcoded para um vault específico, e um daemon local ainda é superfície de ataque.",
+        "decision": "Contrato schema-first em vez de estrutura fixa, token de sessão obrigatório fora do health, CORS restrito às origens da própria interface e decisões formalizadas em ADR.",
+        "evidence": "Suíte com 145 testes verdes, grafo de wikilinks resolvido em 478 nós e 1631 arestas no vault de validação, e reindex com progresso ao vivo.",
+        "impact": "O motor serve qualquer vault que declare o schema, e a interface conversa com ele por um contrato autenticado."
+      },
+      "quinto_selo": {
+        "proves": "Verificação automatizada de jogo multiplayer em headless, com asserções contadas no log — não \"abri e não quebrou\". Netcode validado antes de julgar o feel.",
+        "context": "Roguelite coop online para dois jogadores em Godot 4, com GDScript tipado.",
+        "constraint": "A máquina tem 8 GB de RAM, e comportamento de rede não se prova abrindo o jogo e olhando.",
+        "decision": "Renderer de compatibilidade pela restrição de memória, host simulando os dois corpos com o cliente interpolando, e suíte headless em duas etapas — unidade e integração com host e bot.",
+        "evidence": "42 asserções cobradas no log dos processos; dois defeitos saíram da primeira janela jogada e foram corrigidos.",
+        "impact": "A fatia de netcode e a de morte em dois corpos fecharam com verificação reproduzível, não com impressão."
+      },
+      "financeos": {
+        "proves": "Dívida estrutural medida, não estimada: o próprio grafo do código aponta baixa coesão em dois pontos e 274 nós fracamente conectados. Autocrítica técnica com número é rara em portfólio.",
+        "context": "Monorepo de gestão financeira pessoal, com Prisma sobre banco relacional e Redis para cache.",
+        "constraint": "Monorepo próprio cresce sem revisor externo, e coesão ruim só aparece quando alguém mede.",
+        "decision": "Indexar o próprio código num grafo e ler o resultado, em vez de confiar na sensação de organização.",
+        "evidence": "Cerca de 780 nós mapeados, com baixa coesão localizada no store de workspace e no serviço de Prisma, mais separação de compose entre desenvolvimento e produção.",
+        "impact": "A dívida virou lista com endereço, que é o que permite atacar por prioridade em vez de reescrever tudo."
+      },
+      "zoologic": {
+        "proves": "Um dos raros conjuntos de testes autorais do acervo, e o mais alinhado ao meu posicionamento de QA: testa controller e model com caso de erro, não só caminho feliz. É também o único PHP do portfólio.",
+        "context": "Gestão de zoológico em dois sub-projetos: API em PHP 8 com SOLID e frontend em Next.js.",
+        "constraint": "Teste que só cobre caminho feliz não prova nada sobre como o sistema falha.",
+        "decision": "Escrever teste de controller e de model incluindo caso de erro, com PHPUnit, e aplicar SOLID e roteamento em camadas fora do conforto de Node.",
+        "impact": "A suíte cobre falha, não só sucesso, o que é a diferença entre teste e demonstração."
+      },
+      "repo_explorer_angular": {
+        "proves": "Teste prático de Angular sênior entregue com decisão justificada acima de volume de features: race condition eliminada por construção e teste escolhido por risco, não por cobertura.",
+        "context": "Explorador de repositórios consumindo a API pública do GitHub, escopo de 3 a 4 horas, com avaliação explícita de decisões acima de features.",
+        "constraint": "Busca por digitação gera requisição obsoleta, e a API pública impõe rate limit sem token.",
+        "decision": "Signals para estado síncrono e derivado, RxJS para fluxo assíncrono, e debounce mais distinctUntilChanged mais switchMap para cancelar requisição obsoleta; rate limit tratado como estado de erro de primeira classe na UI.",
+        "evidence": "Teste-âncora no pipeline de busca com tempo falso, cobrindo debounce, cancelamento e erro; OnPush em todo componente de apresentação; cache em memória por termo e contagem regressiva lendo o header de reset; CI com lint, teste e build.",
+        "impact": "CI verde na entrega, e a defesa oral do teste aconteceu com o README escrito para sustentá-la."
+      },
+      "instagram_analyzer": {
+        "proves": "Ler o export local em vez de raspar a plataforma é decisão de design que evita bloqueio e dado de terceiro. Análise de dados entregue em interface, não em notebook.",
+        "context": "App desktop em Python que processa o export JSON do Instagram e mostra quem não segue de volta, com KPIs e busca em tempo real.",
+        "constraint": "Raspar a plataforma quebra por bloqueio e alcança dado de outras pessoas sem necessidade.",
+        "decision": "Consumir só o export que o próprio usuário baixa, e entregar o resultado como aplicação com interface.",
+        "impact": "Funciona sem depender de API instável e sem tocar em dado que não é do usuário."
+      },
+      "pokedex": {
+        "proves": "Cache persistente local em app mobile de consulta — a estratégia que os projetos de marketplace não precisaram resolver, isolada aqui num front sem backend próprio.",
+        "context": "App mobile de exploração em Expo, sem backend customizado.",
+        "constraint": "Consulta repetida sobre dado que muda pouco não deveria depender de rede a cada abertura.",
+        "decision": "Persistir localmente em SQLite em vez de refazer requisição, e animar com biblioteca nativa de gesto e movimento.",
+        "impact": "O app abre e responde sem rede, e a decisão de cache fica reaproveitável fora deste projeto."
+      },
+      "javafx_pokemon": {
+        "proves": "Java desktop com separação MVC e build por Maven — o contrapeso à maioria web do portfólio, dentro de uma trilha de exercícios que atravessa plataformas diferentes com o mesmo domínio.",
+        "context": "Aplicação desktop em JavaFX com Maven, como exercício de arquitetura em Java.",
+        "decision": "Manter separação MVC e gerência de dependência por Maven, em vez de arquivo único de exercício.",
+        "impact": "O exercício ficou comparável aos outros da mesma trilha, que rodam em mobile e em web com o mesmo domínio."
+      },
+      "calc_financeira": {
+        "proves": "Regra financeira, UI em componentes, histórico persistido e gráfico embutido no mesmo desktop — com evolução interna registrada, de implementação monolítica para organização MVC.",
+        "context": "Desktop de divisão de renda com dashboard, comparativo, histórico e gráficos.",
+        "constraint": "A primeira versão era monolítica, e crescer em cima dela ficaria caro.",
+        "decision": "Reorganizar em MVC modular preservando a implementação anterior, em vez de apagar o ponto de partida.",
+        "impact": "A evolução fica demonstrável nos dois estados, o que é mais útil que só o resultado final."
+      },
+      "aquila_e_evelyn": {
+        "proves": "Front sem framework quando o problema não pede framework. E uma separação clara entre memória privada e case público: o original ficou preservado em branch, a versão publicada perdeu todo dado do evento.",
+        "context": "Convite digital de casamento publicado como showcase, com a versão privada preservada em branch de arquivo.",
+        "constraint": "O material original carrega dado de convidado e de evento, que não pode ir para um repositório público.",
+        "decision": "Publicar uma edição sanitizada e manter o original numa branch separada, em vez de escolher entre perder a prova ou expor o dado.",
+        "impact": "O trabalho visual continua demonstrável sem que nenhum dado do evento fique público."
+      },
+      "presente_para_daniela": {
+        "proves": "Acessibilidade tratada onde quase ninguém trata: um site de animação intensa que honra prefers-reduced-motion mostra que o cuidado é hábito, não checklist de trabalho.",
+        "context": "Experiência narrativa com animação intensa, publicada em edição sanitizada e original preservado em branch histórica.",
+        "constraint": "Animação forte causa desconforto real em quem pediu menos movimento no sistema.",
+        "decision": "Respeitar prefers-reduced-motion mesmo sendo um projeto cujo valor está na animação, e sanitizar o conteúdo íntimo antes de publicar.",
+        "impact": "É o único projeto do acervo com direção de arte e narrativa como requisito, e ainda assim acessível."
+      },
+      "dnd_augury_guide": {
+        "proves": "Escolha consciente de não usar framework onde o conteúdo é estático — sem build step, sem dependência para manter. Decisão de custo de manutenção, não de gosto.",
+        "context": "Guia interativo de D&D em site estático, com raças, classes, ficha de personagem e galeria.",
+        "constraint": "Conteúdo estático não justifica build step nem árvore de dependência para manter depois.",
+        "decision": "Entregar sem framework e sem build, com Bootstrap, na mesma linha das landings de cliente do mesmo período.",
+        "impact": "O site continua servível anos depois sem reinstalar nada."
       }
     },
     "featured": {
@@ -456,6 +715,13 @@
       "badge": "Ilustração",
       "note": "Ilustração conceitual — não é captura do sistema",
       "alt": "ilustração conceitual, não captura do sistema"
+    },
+    "filter": {
+      "title": "Filtrar por tecnologia",
+      "all": "Todas",
+      "byTech": "Filtrar por tecnologia",
+      "summary": "{{count}} de {{total}} projetos usam {{technology}}.",
+      "empty": "Nenhum projeto desta categoria usa a tecnologia selecionada."
     }
   },
   "project": {
@@ -484,5 +750,10 @@
   },
   "navigation": {
     "scrollDown": "Rolar para baixo"
+  },
+  "contact": {
+    "copyEmail": "Copiar e-mail",
+    "emailCopied": "E-mail copiado.",
+    "copyFailed": "Não foi possível copiar. Selecione o endereço e copie manualmente."
   }
 }

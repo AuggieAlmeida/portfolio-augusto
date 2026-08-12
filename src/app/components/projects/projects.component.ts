@@ -16,6 +16,10 @@ import { PortfolioCommandService } from '../../core/commands/portfolio-command.s
 import { ProjectCatalogService, ProjectItem } from '../../core/projects/project-catalog.service';
 import { ScrollLockService } from '../../core/services/scroll-lock.service';
 
+/** Quantas tecnologias a barra de filtro mostra, das mais frequentes para as
+ *  menos. Com todas, a barra vira outro inventário antes dos projetos. */
+const TECHNOLOGY_FILTERS = 12;
+
 @Component({
   selector: 'app-projects',
   standalone: true,
@@ -29,20 +33,21 @@ import { ScrollLockService } from '../../core/services/scroll-lock.service';
         class="project-card-inner group h-full overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-lg transition-all duration-300 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-neutral-700 dark:bg-primary-800"
       >
         <div class="relative overflow-hidden">
-          <picture *ngIf="project.cover; else coverFallback">
-            <source type="image/avif" [srcset]="project.cover.avif" [attr.sizes]="cardSizes" />
-            <source type="image/webp" [srcset]="project.cover.webp" [attr.sizes]="cardSizes" />
-            <img
-              [src]="project.cover.src"
-              [alt]="imageAlt(project)"
-              [width]="project.cover.width"
-              [height]="project.cover.height"
-              class="project-image h-48 w-full object-cover transition-transform duration-500 md:h-56"
-              loading="lazy"
-              decoding="async"
-            />
-          </picture>
-          <ng-template #coverFallback>
+          @if (project.cover) {
+            <picture>
+              <source type="image/avif" [srcset]="project.cover.avif" [attr.sizes]="cardSizes" />
+              <source type="image/webp" [srcset]="project.cover.webp" [attr.sizes]="cardSizes" />
+              <img
+                [src]="project.cover.src"
+                [alt]="imageAlt(project)"
+                [width]="project.cover.width"
+                [height]="project.cover.height"
+                class="project-image h-48 w-full object-cover transition-transform duration-500 md:h-56"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+          } @else {
             <div
               class="project-image bg-gradient-primary flex h-48 w-full items-center justify-center transition-transform duration-500 md:h-56"
               aria-hidden="true"
@@ -51,7 +56,7 @@ import { ScrollLockService } from '../../core/services/scroll-lock.service';
                 {{ initials(project) }}
               </span>
             </div>
-          </ng-template>
+          }
 
           <div
             class="project-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300"
@@ -80,53 +85,57 @@ import { ScrollLockService } from '../../core/services/scroll-lock.service';
 
           <!-- Sem esta marca, arte conceitual na capa passa por captura do
                sistema do cliente. Ver o campo illustrated no catálogo. -->
-          <div
-            *ngIf="project.illustrated && project.cover"
-            class="absolute right-3 top-3 rounded-full bg-black/60 px-2 py-1 text-[11px] font-medium text-white/90 backdrop-blur-sm"
-          >
-            {{ 'projects.illustrated.badge' | translate }}
-          </div>
+          @if (project.illustrated && project.cover) {
+            <div
+              class="absolute right-3 top-3 rounded-full bg-black/60 px-2 py-1 text-[11px] font-medium text-white/90 backdrop-blur-sm"
+            >
+              {{ 'projects.illustrated.badge' | translate }}
+            </div>
+          }
 
           <div
             class="project-buttons absolute bottom-3 right-3 translate-y-2 transform opacity-0 transition-all duration-300"
           >
             <div class="flex gap-2">
-              <button
-                *ngIf="project.demoUrl"
-                data-card-control
-                class="flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-neutral-800 transition-all duration-200 hover:scale-110 hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500"
-                (click)="openUrl(project.demoUrl!)"
-                [title]="'projects.viewDemo' | translate"
-                [attr.aria-label]="
-                  ('projects.viewDemo' | translate) + ': ' + (project.titleKey | translate)
-                "
-              >
-                <i aria-hidden="true" class="fas fa-external-link-alt text-xs"></i>
-              </button>
-              <button
-                *ngIf="project.githubUrl"
-                data-card-control
-                class="flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-neutral-800 transition-all duration-200 hover:scale-110 hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500"
-                (click)="openUrl(project.githubUrl!)"
-                [title]="'projects.viewCode' | translate"
-                [attr.aria-label]="
-                  ('projects.viewCode' | translate) + ': ' + (project.titleKey | translate)
-                "
-              >
-                <i aria-hidden="true" class="fab fa-github text-xs"></i>
-              </button>
-              <button
-                *ngIf="project.paperUrl"
-                data-card-control
-                class="flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-neutral-800 transition-all duration-200 hover:scale-110 hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500"
-                (click)="openUrl(project.paperUrl!)"
-                [title]="'projects.viewPaper' | translate"
-                [attr.aria-label]="
-                  ('projects.viewPaper' | translate) + ': ' + (project.titleKey | translate)
-                "
-              >
-                <i aria-hidden="true" class="fas fa-graduation-cap text-xs"></i>
-              </button>
+              @if (project.demoUrl) {
+                <button
+                  data-card-control
+                  class="flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-neutral-800 transition-all duration-200 hover:scale-110 hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  (click)="openUrl(project.demoUrl!)"
+                  [title]="'projects.viewDemo' | translate"
+                  [attr.aria-label]="
+                    ('projects.viewDemo' | translate) + ': ' + (project.titleKey | translate)
+                  "
+                >
+                  <i aria-hidden="true" class="fas fa-external-link-alt text-xs"></i>
+                </button>
+              }
+              @if (project.githubUrl) {
+                <button
+                  data-card-control
+                  class="flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-neutral-800 transition-all duration-200 hover:scale-110 hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  (click)="openUrl(project.githubUrl!)"
+                  [title]="'projects.viewCode' | translate"
+                  [attr.aria-label]="
+                    ('projects.viewCode' | translate) + ': ' + (project.titleKey | translate)
+                  "
+                >
+                  <i aria-hidden="true" class="fab fa-github text-xs"></i>
+                </button>
+              }
+              @if (project.paperUrl) {
+                <button
+                  data-card-control
+                  class="flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-neutral-800 transition-all duration-200 hover:scale-110 hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  (click)="openUrl(project.paperUrl!)"
+                  [title]="'projects.viewPaper' | translate"
+                  [attr.aria-label]="
+                    ('projects.viewPaper' | translate) + ': ' + (project.titleKey | translate)
+                  "
+                >
+                  <i aria-hidden="true" class="fas fa-graduation-cap text-xs"></i>
+                </button>
+              }
             </div>
           </div>
         </div>
@@ -155,19 +164,31 @@ import { ScrollLockService } from '../../core/services/scroll-lock.service';
           <p class="line-clamp-3 mb-4 text-sm text-neutral-600 dark:text-neutral-300 md:text-base">
             {{ project.descriptionKey | translate }}
           </p>
+          <!-- O chip sempre pareceu clicável e não era. Agora filtra o
+               inventário; a marca data-card-control impede que o mesmo clique
+               abra o modal do cartão por baixo. -->
           <div class="flex flex-wrap gap-2">
-            <span
-              *ngFor="let tech of project.visibleTechnologies"
-              class="rounded-md bg-neutral-100 px-2 py-1 text-xs font-medium text-neutral-700 transition-colors duration-200 hover:bg-primary-100 hover:text-primary-800 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-900/30 dark:hover:text-primary-400"
-            >
-              {{ tech }}
-            </span>
-            <span
-              *ngIf="project.hiddenTechnologies"
-              class="rounded-md bg-neutral-200 px-2 py-1 text-xs font-medium text-neutral-600 dark:bg-neutral-600 dark:text-neutral-400"
-            >
-              +{{ project.hiddenTechnologies }}
-            </span>
+            @for (tech of project.visibleTechnologies; track tech) {
+              <button
+                type="button"
+                data-card-control
+                data-tech-chip
+                class="rounded-md bg-neutral-100 px-2 py-1 text-xs font-medium text-neutral-700 transition-colors duration-200 hover:bg-primary-100 hover:text-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-900/30 dark:hover:text-primary-400"
+                [class.tech-chip-active]="activeTechnology === tech"
+                (click)="filterByTechnology(tech)"
+                [attr.aria-pressed]="activeTechnology === tech"
+                [attr.aria-label]="('projects.filter.byTech' | translate) + ': ' + tech"
+              >
+                {{ tech }}
+              </button>
+            }
+            @if (project.hiddenTechnologies) {
+              <span
+                class="rounded-md bg-neutral-200 px-2 py-1 text-xs font-medium text-neutral-600 dark:bg-neutral-600 dark:text-neutral-400"
+              >
+                +{{ project.hiddenTechnologies }}
+              </span>
+            }
           </div>
         </div>
       </div>
@@ -207,15 +228,13 @@ import { ScrollLockService } from '../../core/services/scroll-lock.service';
           <!-- Cases em destaque: a primeira leitura precisa de poucas provas
                fortes, não do inventário inteiro. -->
           <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-            <div
-              *ngFor="let project of featuredProjects; trackBy: trackByProject"
-              class="project-card cursor-pointer"
-              [attr.data-project-card]="project.id"
-            >
-              <ng-container
-                *ngTemplateOutlet="projectCard; context: { $implicit: project }"
-              ></ng-container>
-            </div>
+            @for (project of featuredProjects; track project.id) {
+              <div class="project-card cursor-pointer" [attr.data-project-card]="project.id">
+                <ng-container
+                  *ngTemplateOutlet="projectCard; context: { $implicit: project }"
+                ></ng-container>
+              </div>
+            }
           </div>
 
           <!-- Ver todos -->
@@ -241,426 +260,539 @@ import { ScrollLockService } from '../../core/services/scroll-lock.service';
             </button>
           </div>
 
-          <div id="projects-inventory" *ngIf="showAllProjects" class="mt-10 md:mt-14">
-            <!-- Commercial Projects Section -->
-            <div class="mb-12 md:mb-16">
-              <div class="mb-6 flex items-center justify-between md:mb-8">
+          @if (showAllProjects) {
+            <div id="projects-inventory" class="mt-10 md:mt-14">
+              <!-- Filtro por tecnologia. A lista não é o inventário inteiro de
+                 stacks: são as mais frequentes, porque uma barra com tudo vira
+                 outro inventário para ler antes de chegar aos projetos. -->
+              <div
+                class="mb-10 rounded-xl border border-primary-100 bg-white/70 p-4 dark:border-primary-800 dark:bg-primary-900/20"
+                role="group"
+                [attr.aria-label]="'projects.filter.title' | translate"
+              >
                 <h3
-                  class="flex items-center gap-3 text-xl font-semibold text-neutral-800 dark:text-neutral-100 md:text-2xl"
+                  class="mb-3 text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
                 >
-                  <div
-                    class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-500 md:h-10 md:w-10"
-                  >
-                    <i
-                      aria-hidden="true"
-                      class="fas fa-briefcase text-sm text-white md:text-base"
-                    ></i>
-                  </div>
-                  {{ 'projects.commercial.title' | translate }}
+                  {{ 'projects.filter.title' | translate }}
                 </h3>
-                <span class="text-sm text-neutral-500 dark:text-neutral-400 md:text-base">
-                  {{ commercialProjects.length }} {{ 'projects.projectsCount' | translate }}
-                </span>
+                <div class="flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    data-tech-filter="all"
+                    class="rounded-md border border-neutral-200 px-3 py-1.5 text-xs font-medium text-neutral-700 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-primary-900/30"
+                    [class.tech-chip-active]="!activeTechnology"
+                    [attr.aria-pressed]="!activeTechnology"
+                    (click)="clearTechnologyFilter()"
+                  >
+                    {{ 'projects.filter.all' | translate }}
+                  </button>
+                  @for (tech of technologyFilters; track tech) {
+                    <button
+                      type="button"
+                      data-tech-filter
+                      class="rounded-md border border-neutral-200 px-3 py-1.5 text-xs font-medium text-neutral-700 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-primary-900/30"
+                      [class.tech-chip-active]="activeTechnology === tech"
+                      [attr.aria-pressed]="activeTechnology === tech"
+                      (click)="filterByTechnology(tech)"
+                    >
+                      {{ tech }}
+                    </button>
+                  }
+                </div>
+                @if (activeTechnology) {
+                  <p
+                    data-filter-summary
+                    class="mt-3 text-xs text-neutral-600 dark:text-neutral-300"
+                    aria-live="polite"
+                  >
+                    {{ 'projects.filter.summary' | translate: filterParams }}
+                  </p>
+                }
               </div>
 
-              <div class="group relative">
-                <button
-                  *ngIf="canScrollLeft('commercial')"
-                  (click)="scrollCarousel('commercial', 'left')"
-                  [attr.aria-label]="'projects.carousel.previous' | translate"
-                  class="absolute left-0 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/70 text-white transition-all duration-200 hover:scale-110 hover:bg-black/90 focus:outline-none focus:ring-2 focus:ring-white md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100"
-                >
-                  <i aria-hidden="true" class="fas fa-chevron-left"></i>
-                </button>
-
-                <button
-                  *ngIf="canScrollRight('commercial')"
-                  (click)="scrollCarousel('commercial', 'right')"
-                  [attr.aria-label]="'projects.carousel.next' | translate"
-                  class="absolute right-0 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/70 text-white transition-all duration-200 hover:scale-110 hover:bg-black/90 focus:outline-none focus:ring-2 focus:ring-white md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100"
-                >
-                  <i aria-hidden="true" class="fas fa-chevron-right"></i>
-                </button>
-
-                <div
-                  #commercialCarousel
-                  class="scrollbar-hide snap-x snap-mandatory scroll-smooth overflow-x-auto"
-                  (scroll)="onScroll('commercial')"
-                >
-                  <div class="flex w-max min-w-full gap-4 pb-4">
+              <!-- Commercial Projects Section -->
+              <div class="mb-12 md:mb-16">
+                <div class="mb-6 flex items-center justify-between md:mb-8">
+                  <h3
+                    class="flex items-center gap-3 text-xl font-semibold text-neutral-800 dark:text-neutral-100 md:text-2xl"
+                  >
                     <div
-                      *ngFor="let project of commercialProjects; trackBy: trackByProject"
-                      class="project-card shrink-0 cursor-pointer snap-start"
-                      [attr.data-project-card]="project.id"
+                      class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-500 md:h-10 md:w-10"
                     >
-                      <ng-container
-                        *ngTemplateOutlet="projectCard; context: { $implicit: project }"
-                      ></ng-container>
+                      <i
+                        aria-hidden="true"
+                        class="fas fa-briefcase text-sm text-white md:text-base"
+                      ></i>
+                    </div>
+                    {{ 'projects.commercial.title' | translate }}
+                  </h3>
+                  <span class="text-sm text-neutral-500 dark:text-neutral-400 md:text-base">
+                    {{ commercialProjects.length }} {{ 'projects.projectsCount' | translate }}
+                  </span>
+                </div>
+
+                @if (!commercialProjects.length) {
+                  <p data-filter-empty class="text-sm text-neutral-600 dark:text-neutral-300">
+                    {{ 'projects.filter.empty' | translate }}
+                  </p>
+                }
+
+                <div class="group relative" [hidden]="!commercialProjects.length">
+                  @if (canScrollLeft('commercial')) {
+                    <button
+                      (click)="scrollCarousel('commercial', 'left')"
+                      [attr.aria-label]="'projects.carousel.previous' | translate"
+                      class="absolute left-0 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/70 text-white transition-all duration-200 hover:scale-110 hover:bg-black/90 focus:outline-none focus:ring-2 focus:ring-white md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100"
+                    >
+                      <i aria-hidden="true" class="fas fa-chevron-left"></i>
+                    </button>
+                  }
+
+                  @if (canScrollRight('commercial')) {
+                    <button
+                      (click)="scrollCarousel('commercial', 'right')"
+                      [attr.aria-label]="'projects.carousel.next' | translate"
+                      class="absolute right-0 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/70 text-white transition-all duration-200 hover:scale-110 hover:bg-black/90 focus:outline-none focus:ring-2 focus:ring-white md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100"
+                    >
+                      <i aria-hidden="true" class="fas fa-chevron-right"></i>
+                    </button>
+                  }
+
+                  <div
+                    #commercialCarousel
+                    class="scrollbar-hide snap-x snap-mandatory scroll-smooth overflow-x-auto"
+                    (scroll)="onScroll('commercial')"
+                  >
+                    <div class="flex w-max min-w-full gap-4 pb-4">
+                      @for (project of commercialProjects; track project.id) {
+                        <div
+                          class="project-card shrink-0 cursor-pointer snap-start"
+                          [attr.data-project-card]="project.id"
+                        >
+                          <ng-container
+                            *ngTemplateOutlet="projectCard; context: { $implicit: project }"
+                          ></ng-container>
+                        </div>
+                      }
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Study Projects Section -->
+              <div class="mb-8">
+                <div class="mb-6 flex items-center justify-between md:mb-8">
+                  <h3
+                    class="flex items-center gap-3 text-xl font-semibold text-neutral-800 dark:text-neutral-100 md:text-2xl"
+                  >
+                    <div
+                      class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-500 md:h-10 md:w-10"
+                    >
+                      <i
+                        aria-hidden="true"
+                        class="fas fa-graduation-cap text-sm text-white md:text-base"
+                      ></i>
+                    </div>
+                    {{ 'projects.study.title' | translate }}
+                  </h3>
+                  <span class="text-sm text-neutral-500 dark:text-neutral-400 md:text-base">
+                    {{ studyProjects.length }} {{ 'projects.projectsCount' | translate }}
+                  </span>
+                </div>
+
+                @if (!studyProjects.length) {
+                  <p data-filter-empty class="text-sm text-neutral-600 dark:text-neutral-300">
+                    {{ 'projects.filter.empty' | translate }}
+                  </p>
+                }
+
+                <div class="group relative" [hidden]="!studyProjects.length">
+                  @if (canScrollLeft('study')) {
+                    <button
+                      (click)="scrollCarousel('study', 'left')"
+                      [attr.aria-label]="'projects.carousel.previous' | translate"
+                      class="absolute left-0 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/70 text-white transition-all duration-200 hover:scale-110 hover:bg-black/90 focus:outline-none focus:ring-2 focus:ring-white md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100"
+                    >
+                      <i aria-hidden="true" class="fas fa-chevron-left"></i>
+                    </button>
+                  }
+
+                  @if (canScrollRight('study')) {
+                    <button
+                      (click)="scrollCarousel('study', 'right')"
+                      [attr.aria-label]="'projects.carousel.next' | translate"
+                      class="absolute right-0 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/70 text-white transition-all duration-200 hover:scale-110 hover:bg-black/90 focus:outline-none focus:ring-2 focus:ring-white md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100"
+                    >
+                      <i aria-hidden="true" class="fas fa-chevron-right"></i>
+                    </button>
+                  }
+
+                  <div
+                    #studyCarousel
+                    class="scrollbar-hide snap-x snap-mandatory scroll-smooth overflow-x-auto"
+                    (scroll)="onScroll('study')"
+                  >
+                    <div class="flex w-max min-w-full gap-4 py-4">
+                      @for (project of studyProjects; track project.id) {
+                        <div
+                          class="project-card shrink-0 cursor-pointer snap-start"
+                          [attr.data-project-card]="project.id"
+                        >
+                          <ng-container
+                            *ngTemplateOutlet="projectCard; context: { $implicit: project }"
+                          ></ng-container>
+                        </div>
+                      }
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
-            <!-- Study Projects Section -->
-            <div class="mb-8">
-              <div class="mb-6 flex items-center justify-between md:mb-8">
-                <h3
-                  class="flex items-center gap-3 text-xl font-semibold text-neutral-800 dark:text-neutral-100 md:text-2xl"
-                >
-                  <div
-                    class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-500 md:h-10 md:w-10"
-                  >
-                    <i
-                      aria-hidden="true"
-                      class="fas fa-graduation-cap text-sm text-white md:text-base"
-                    ></i>
-                  </div>
-                  {{ 'projects.study.title' | translate }}
-                </h3>
-                <span class="text-sm text-neutral-500 dark:text-neutral-400 md:text-base">
-                  {{ studyProjects.length }} {{ 'projects.projectsCount' | translate }}
-                </span>
-              </div>
-
-              <div class="group relative">
-                <button
-                  *ngIf="canScrollLeft('study')"
-                  (click)="scrollCarousel('study', 'left')"
-                  [attr.aria-label]="'projects.carousel.previous' | translate"
-                  class="absolute left-0 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/70 text-white transition-all duration-200 hover:scale-110 hover:bg-black/90 focus:outline-none focus:ring-2 focus:ring-white md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100"
-                >
-                  <i aria-hidden="true" class="fas fa-chevron-left"></i>
-                </button>
-
-                <button
-                  *ngIf="canScrollRight('study')"
-                  (click)="scrollCarousel('study', 'right')"
-                  [attr.aria-label]="'projects.carousel.next' | translate"
-                  class="absolute right-0 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/70 text-white transition-all duration-200 hover:scale-110 hover:bg-black/90 focus:outline-none focus:ring-2 focus:ring-white md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100"
-                >
-                  <i aria-hidden="true" class="fas fa-chevron-right"></i>
-                </button>
-
-                <div
-                  #studyCarousel
-                  class="scrollbar-hide snap-x snap-mandatory scroll-smooth overflow-x-auto"
-                  (scroll)="onScroll('study')"
-                >
-                  <div class="flex w-max min-w-full gap-4 py-4">
-                    <div
-                      *ngFor="let project of studyProjects; trackBy: trackByProject"
-                      class="project-card shrink-0 cursor-pointer snap-start"
-                      [attr.data-project-card]="project.id"
-                    >
-                      <ng-container
-                        *ngTemplateOutlet="projectCard; context: { $implicit: project }"
-                      ></ng-container>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          }
         </div>
       </div>
     </section>
 
     <!-- Modal de detalhe -->
-    <div
-      *ngIf="selectedProject as project"
-      class="project-modal fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6"
-      role="dialog"
-      aria-modal="true"
-      [attr.aria-label]="project.titleKey | translate"
-    >
-      <!-- Backdrop e um button de verdade: satisfaz teclado e foco sem o
-             div-com-click que as regras de acessibilidade barram. -->
-      <button
-        type="button"
-        tabindex="-1"
-        class="absolute inset-0 h-full w-full cursor-default bg-black/70 backdrop-blur-sm"
-        (click)="closeModal()"
-        [attr.aria-label]="'projects.modal.close' | translate"
-      ></button>
-
+    @if (selectedProject; as project) {
       <div
-        #modalPanel
-        class="project-modal-panel relative flex max-h-[calc(100dvh-1.5rem)] w-full max-w-5xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-primary-800 md:max-h-[90vh]"
+        class="project-modal fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6"
+        role="dialog"
+        aria-modal="true"
+        [attr.aria-label]="project.titleKey | translate"
       >
+        <!-- Backdrop e um button de verdade: satisfaz teclado e foco sem o
+             div-com-click que as regras de acessibilidade barram. -->
         <button
-          #modalClose
           type="button"
-          class="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-primary-400"
+          tabindex="-1"
+          class="absolute inset-0 h-full w-full cursor-default bg-black/70 backdrop-blur-sm"
           (click)="closeModal()"
           [attr.aria-label]="'projects.modal.close' | translate"
+        ></button>
+
+        <div
+          #modalPanel
+          class="project-modal-panel relative flex max-h-[calc(100dvh-1.5rem)] w-full max-w-5xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-primary-800 md:max-h-[90vh]"
         >
-          <i aria-hidden="true" class="fas fa-times"></i>
-        </button>
-
-        <div class="overflow-y-auto">
-          <!-- Galeria -->
-          <div
-            class="project-modal-media relative flex w-full items-center justify-center overflow-hidden bg-neutral-900"
+          <button
+            #modalClose
+            type="button"
+            class="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-primary-400"
+            (click)="closeModal()"
+            [attr.aria-label]="'projects.modal.close' | translate"
           >
-            <picture *ngIf="project.gallery.length; else modalFallback">
-              <source
-                type="image/avif"
-                [srcset]="project.gallery[slideIndex].avif"
-                [attr.sizes]="modalSizes"
-              />
-              <source
-                type="image/webp"
-                [srcset]="project.gallery[slideIndex].webp"
-                [attr.sizes]="modalSizes"
-              />
-              <img
-                [src]="project.gallery[slideIndex].src"
-                [alt]="imageAlt(project) + ' — ' + (slideIndex + 1)"
-                [width]="project.gallery[slideIndex].width"
-                [height]="project.gallery[slideIndex].height"
-                class="block h-auto w-auto max-w-full shrink-0"
-                decoding="async"
-              />
-            </picture>
-            <ng-template #modalFallback>
-              <span
-                class="font-heading text-6xl font-bold tracking-widest text-white/80"
-                aria-hidden="true"
-              >
-                {{ initials(project) }}
-              </span>
-            </ng-template>
+            <i aria-hidden="true" class="fas fa-times"></i>
+          </button>
 
+          <div class="overflow-y-auto">
+            <!-- Galeria -->
             <div
-              *ngIf="project.illustrated && project.gallery.length"
-              class="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1 text-xs font-medium text-white/90 backdrop-blur-sm"
+              class="project-modal-media relative flex w-full items-center justify-center overflow-hidden bg-neutral-900"
             >
-              {{ 'projects.illustrated.note' | translate }}
-            </div>
-
-            <ng-container *ngIf="project.gallery.length > 1">
-              <button
-                type="button"
-                class="absolute left-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-primary-400"
-                (click)="prevSlide(project)"
-                [attr.aria-label]="'projects.modal.previous' | translate"
-              >
-                <i aria-hidden="true" class="fas fa-chevron-left"></i>
-              </button>
-              <button
-                type="button"
-                class="absolute right-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-primary-400"
-                (click)="nextSlide(project)"
-                [attr.aria-label]="'projects.modal.next' | translate"
-              >
-                <i aria-hidden="true" class="fas fa-chevron-right"></i>
-              </button>
-              <div class="absolute bottom-3 flex gap-2">
-                <button
-                  *ngFor="let slide of project.gallery; let i = index"
-                  type="button"
-                  class="h-2.5 w-2.5 rounded-full bg-white transition-opacity focus:outline-none focus:ring-2 focus:ring-primary-400"
-                  [class.opacity-100]="i === slideIndex"
-                  [class.opacity-40]="i !== slideIndex"
-                  (click)="goToSlide(i)"
-                  [attr.aria-label]="('projects.modal.goToImage' | translate) + ' ' + (i + 1)"
-                  [attr.aria-current]="i === slideIndex"
-                ></button>
-              </div>
-            </ng-container>
-          </div>
-
-          <!-- Detalhe -->
-          <div class="p-5 md:p-8">
-            <div class="mb-3 flex flex-wrap items-center gap-3">
-              <span
-                class="flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium text-white"
-                [class.bg-primary-500]="project.category === 'commercial'"
-                [class.bg-secondary-500]="project.category === 'study'"
-              >
-                <i
+              @if (project.gallery.length) {
+                <picture>
+                  <source
+                    type="image/avif"
+                    [srcset]="project.gallery[slideIndex].avif"
+                    [attr.sizes]="modalSizes"
+                  />
+                  <source
+                    type="image/webp"
+                    [srcset]="project.gallery[slideIndex].webp"
+                    [attr.sizes]="modalSizes"
+                  />
+                  <img
+                    [src]="project.gallery[slideIndex].src"
+                    [alt]="imageAlt(project) + ' — ' + (slideIndex + 1)"
+                    [width]="project.gallery[slideIndex].width"
+                    [height]="project.gallery[slideIndex].height"
+                    data-modal-image
+                    class="block h-auto w-auto max-h-[55vh] max-w-full shrink-0 object-contain sm:max-h-[65vh]"
+                    decoding="async"
+                  />
+                </picture>
+              } @else {
+                <span
+                  class="font-heading text-6xl font-bold tracking-widest text-white/80"
                   aria-hidden="true"
-                  class="fas text-xs"
-                  [class.fa-dollar-sign]="project.category === 'commercial'"
-                  [class.fa-graduation-cap]="project.category === 'study'"
-                ></i>
-                {{
-                  (project.category === 'commercial'
-                    ? 'projects.commercial.badge'
-                    : 'projects.study.badge'
-                  ) | translate
-                }}
-              </span>
-              <span
-                *ngIf="project.gallery.length > 1"
-                class="text-xs text-neutral-500 dark:text-neutral-400"
-              >
-                {{ slideIndex + 1 }} / {{ project.gallery.length }}
-              </span>
+                >
+                  {{ initials(project) }}
+                </span>
+              }
+
+              @if (project.illustrated && project.gallery.length) {
+                <div
+                  class="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1 text-xs font-medium text-white/90 backdrop-blur-sm"
+                >
+                  {{ 'projects.illustrated.note' | translate }}
+                </div>
+              }
+
+              @if (project.gallery.length > 1) {
+                <button
+                  type="button"
+                  class="absolute left-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-primary-400"
+                  (click)="prevSlide(project)"
+                  [attr.aria-label]="'projects.modal.previous' | translate"
+                >
+                  <i aria-hidden="true" class="fas fa-chevron-left"></i>
+                </button>
+                <button
+                  type="button"
+                  class="absolute right-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-primary-400"
+                  (click)="nextSlide(project)"
+                  [attr.aria-label]="'projects.modal.next' | translate"
+                >
+                  <i aria-hidden="true" class="fas fa-chevron-right"></i>
+                </button>
+                <div class="absolute bottom-3 flex gap-2">
+                  @for (slide of project.gallery; track $index) {
+                    <button
+                      type="button"
+                      class="h-2.5 w-2.5 rounded-full bg-white transition-opacity focus:outline-none focus:ring-2 focus:ring-primary-400"
+                      [class.opacity-100]="$index === slideIndex"
+                      [class.opacity-40]="$index !== slideIndex"
+                      (click)="goToSlide($index)"
+                      [attr.aria-label]="
+                        ('projects.modal.goToImage' | translate) + ' ' + ($index + 1)
+                      "
+                      [attr.aria-current]="$index === slideIndex"
+                    ></button>
+                  }
+                </div>
+              }
             </div>
 
-            <h3
-              class="mb-4 font-heading text-2xl font-bold text-neutral-900 dark:text-neutral-100 md:text-3xl"
-            >
-              {{ project.titleKey | translate }}
-            </h3>
+            <!-- Detalhe -->
+            <div class="p-5 md:p-8">
+              <div class="mb-3 flex flex-wrap items-center gap-3">
+                <span
+                  class="flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium text-white"
+                  [class.bg-primary-500]="project.category === 'commercial'"
+                  [class.bg-secondary-500]="project.category === 'study'"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fas text-xs"
+                    [class.fa-dollar-sign]="project.category === 'commercial'"
+                    [class.fa-graduation-cap]="project.category === 'study'"
+                  ></i>
+                  {{
+                    (project.category === 'commercial'
+                      ? 'projects.commercial.badge'
+                      : 'projects.study.badge'
+                    ) | translate
+                  }}
+                </span>
+                @if (project.gallery.length > 1) {
+                  <span class="text-xs text-neutral-500 dark:text-neutral-400">
+                    {{ slideIndex + 1 }} / {{ project.gallery.length }}
+                  </span>
+                }
+              </div>
 
-            <p class="mb-6 leading-relaxed text-neutral-600 dark:text-neutral-300">
-              {{ project.descriptionKey | translate }}
-            </p>
+              <h3
+                class="mb-4 font-heading text-2xl font-bold text-neutral-900 dark:text-neutral-100 md:text-3xl"
+              >
+                {{ project.titleKey | translate }}
+              </h3>
 
-            <button
-              *ngIf="project.decision"
-              type="button"
-              data-decision-toggle
-              class="mb-6 inline-flex items-center gap-2 rounded-lg border border-primary-300 px-3 py-2 text-sm font-medium text-primary-700 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-primary-600 dark:text-primary-200 dark:hover:bg-primary-900/30"
-              (click)="toggleDecisionDetails()"
-              [attr.aria-expanded]="decisionExpanded"
-              aria-controls="decision-details"
-            >
-              <i aria-hidden="true" class="fas fa-diagram-project"></i>
-              {{ 'projects.modal.decision.action' | translate }}
-            </button>
+              <p class="mb-6 leading-relaxed text-neutral-600 dark:text-neutral-300">
+                {{ project.descriptionKey | translate }}
+              </p>
 
-            <section
-              *ngIf="project.decision && decisionExpanded"
-              id="decision-details"
-              class="mb-6 rounded-xl border border-primary-100 bg-primary-50/60 p-4 dark:border-primary-700 dark:bg-primary-900/20"
-              [attr.aria-label]="'projects.modal.decision.title' | translate"
-            >
-              <h4 class="mb-4 font-semibold text-neutral-900 dark:text-neutral-100">
-                {{ 'projects.modal.decision.title' | translate }}
-              </h4>
-              <dl class="space-y-4 text-sm leading-relaxed">
-                <div>
-                  <dt class="font-medium text-primary-700 dark:text-primary-300">
-                    {{ 'projects.modal.decision.context' | translate }}
-                  </dt>
-                  <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
-                    {{ project.decision.contextKey | translate }}
-                  </dd>
-                </div>
-                <div>
-                  <dt class="font-medium text-primary-700 dark:text-primary-300">
-                    {{ 'projects.modal.decision.constraint' | translate }}
-                  </dt>
-                  <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
-                    {{ project.decision.constraintKey | translate }}
-                  </dd>
-                </div>
-                <div>
-                  <dt class="font-medium text-primary-700 dark:text-primary-300">
-                    {{ 'projects.modal.decision.decision' | translate }}
-                  </dt>
-                  <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
-                    {{ project.decision.decisionKey | translate }}
-                  </dd>
-                  <dd
-                    class="mt-2 flex flex-wrap gap-1.5"
-                    [attr.aria-label]="'projects.modal.stack' | translate"
+              <!-- Fica fora do toggle de propósito: é a frase que responde "o que
+                 esse trabalho prova", e o recrutador lê isso antes de decidir se
+                 abre o detalhe. -->
+              @if (project.decision; as decision) {
+                <p
+                  data-decision-proves
+                  class="mb-6 flex gap-3 rounded-xl border-l-4 border-primary-400 bg-primary-50/70 p-4 text-sm leading-relaxed text-neutral-700 dark:border-primary-500 dark:bg-primary-900/20 dark:text-neutral-200"
+                >
+                  <i aria-hidden="true" class="fas fa-lightbulb mt-0.5 text-primary-500"></i>
+                  <span>{{ decision.provesKey | translate }}</span>
+                </p>
+
+                @if (hasDecisionDetails(project)) {
+                  <button
+                    type="button"
+                    data-decision-toggle
+                    class="mb-6 inline-flex items-center gap-2 rounded-lg border border-primary-300 px-3 py-2 text-sm font-medium text-primary-700 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-primary-600 dark:text-primary-200 dark:hover:bg-primary-900/30"
+                    (click)="toggleDecisionDetails()"
+                    [attr.aria-expanded]="decisionExpanded"
+                    aria-controls="decision-details"
                   >
-                    <span
-                      *ngFor="let tech of project.technologies"
-                      class="rounded bg-white px-2 py-1 text-xs font-medium text-neutral-700 shadow-sm dark:bg-primary-800 dark:text-neutral-200"
+                    <i aria-hidden="true" class="fas fa-diagram-project"></i>
+                    {{ 'projects.modal.decision.action' | translate }}
+                  </button>
+                }
+
+                @if (hasDecisionDetails(project) && decisionExpanded) {
+                  <section
+                    id="decision-details"
+                    class="mb-6 rounded-xl border border-primary-100 bg-primary-50/60 p-4 dark:border-primary-700 dark:bg-primary-900/20"
+                    [attr.aria-label]="'projects.modal.decision.title' | translate"
+                  >
+                    <h4 class="mb-4 font-semibold text-neutral-900 dark:text-neutral-100">
+                      {{ 'projects.modal.decision.title' | translate }}
+                    </h4>
+                    <dl class="space-y-4 text-sm leading-relaxed">
+                      @if (decision.contextKey) {
+                        <div>
+                          <dt class="font-medium text-primary-700 dark:text-primary-300">
+                            {{ 'projects.modal.decision.context' | translate }}
+                          </dt>
+                          <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
+                            {{ decision.contextKey | translate }}
+                          </dd>
+                        </div>
+                      }
+                      @if (decision.constraintKey) {
+                        <div>
+                          <dt class="font-medium text-primary-700 dark:text-primary-300">
+                            {{ 'projects.modal.decision.constraint' | translate }}
+                          </dt>
+                          <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
+                            {{ decision.constraintKey | translate }}
+                          </dd>
+                        </div>
+                      }
+                      @if (decision.decisionKey) {
+                        <div>
+                          <dt class="font-medium text-primary-700 dark:text-primary-300">
+                            {{ 'projects.modal.decision.decision' | translate }}
+                          </dt>
+                          <!-- A stack não se repete aqui: o modal já tem a seção
+                         Stack logo abaixo, e duplicar os mesmos chips dentro do
+                         case só empurra a evidência e o impacto para baixo. -->
+                          <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
+                            {{ decision.decisionKey | translate }}
+                          </dd>
+                        </div>
+                      }
+                      @if (decision.evidenceKey) {
+                        <div>
+                          <dt class="font-medium text-primary-700 dark:text-primary-300">
+                            {{ 'projects.modal.decision.evidence' | translate }}
+                          </dt>
+                          <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
+                            {{ decision.evidenceKey | translate }}
+                          </dd>
+                        </div>
+                      }
+                      @if (decision.impactKey) {
+                        <div>
+                          <dt class="font-medium text-primary-700 dark:text-primary-300">
+                            {{ 'projects.modal.decision.impact' | translate }}
+                          </dt>
+                          <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
+                            {{ decision.impactKey | translate }}
+                          </dd>
+                        </div>
+                      }
+                    </dl>
+
+                    <!-- Numero sem medicao anexada e dito como tal. A alternativa
+                   honesta seria nao publicar; publicar sem a marca, nao. -->
+                    @if (decision.selfReported) {
+                      <p
+                        data-decision-self-reported
+                        class="mt-4 flex gap-2 border-t border-primary-200 pt-3 text-xs text-neutral-500 dark:border-primary-700 dark:text-neutral-400"
+                      >
+                        <i aria-hidden="true" class="fas fa-circle-info mt-0.5"></i>
+                        <span>{{ 'projects.modal.decision.selfReported' | translate }}</span>
+                      </p>
+                    }
+                  </section>
+                }
+              }
+
+              <div class="mb-6" data-modal-stack>
+                <h4
+                  class="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
+                >
+                  {{ 'projects.modal.stack' | translate }}
+                </h4>
+                <!-- Filtrar daqui fecha o modal: manter aberto sobre um
+                   inventário que acabou de mudar esconderia o próprio efeito. -->
+                <div class="flex flex-wrap gap-2">
+                  @for (tech of project.technologies; track tech) {
+                    <button
+                      type="button"
+                      data-tech-chip
+                      class="rounded-md bg-neutral-100 px-2 py-1 text-xs font-medium text-neutral-700 transition-colors hover:bg-primary-100 hover:text-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-900/30 dark:hover:text-primary-400"
+                      (click)="filterFromModal(tech)"
+                      [attr.aria-label]="('projects.filter.byTech' | translate) + ': ' + tech"
                     >
                       {{ tech }}
+                    </button>
+                  }
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <h4
+                  class="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
+                >
+                  {{ 'projects.modal.tags' | translate }}
+                </h4>
+                <div class="flex flex-wrap gap-2">
+                  @for (tagKey of project.tagsKeys; track tagKey) {
+                    <span
+                      class="rounded-full bg-primary-50 px-3 py-1 text-xs font-medium text-primary-700 dark:bg-primary-900/40 dark:text-primary-300"
+                    >
+                      {{ tagKey | translate }}
                     </span>
-                  </dd>
+                  }
                 </div>
-                <div>
-                  <dt class="font-medium text-primary-700 dark:text-primary-300">
-                    {{ 'projects.modal.decision.evidence' | translate }}
-                  </dt>
-                  <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
-                    {{ project.decision.evidenceKey | translate }}
-                  </dd>
-                </div>
-                <div>
-                  <dt class="font-medium text-primary-700 dark:text-primary-300">
-                    {{ 'projects.modal.decision.impact' | translate }}
-                  </dt>
-                  <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
-                    {{ project.decision.impactKey | translate }}
-                  </dd>
-                </div>
-              </dl>
-            </section>
-
-            <div class="mb-6">
-              <h4
-                class="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
-              >
-                {{ 'projects.modal.stack' | translate }}
-              </h4>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  *ngFor="let tech of project.technologies"
-                  class="rounded-md bg-neutral-100 px-2 py-1 text-xs font-medium text-neutral-700 dark:bg-neutral-700 dark:text-neutral-300"
-                >
-                  {{ tech }}
-                </span>
               </div>
-            </div>
 
-            <div class="mb-6">
-              <h4
-                class="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
-              >
-                {{ 'projects.modal.tags' | translate }}
-              </h4>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  *ngFor="let tagKey of project.tagsKeys"
-                  class="rounded-full bg-primary-50 px-3 py-1 text-xs font-medium text-primary-700 dark:bg-primary-900/40 dark:text-primary-300"
-                >
-                  {{ tagKey | translate }}
-                </span>
+              <div class="flex flex-wrap gap-3">
+                @if (project.demoUrl) {
+                  <button
+                    type="button"
+                    data-modal-action="redirect"
+                    class="flex items-center gap-2 rounded-lg bg-primary-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-400"
+                    (click)="openUrl(project.demoUrl!)"
+                  >
+                    <i aria-hidden="true" class="fas fa-external-link-alt text-xs"></i>
+                    {{ 'projects.redirect' | translate }}
+                  </button>
+                }
+                @if (project.githubUrl) {
+                  <button
+                    type="button"
+                    data-modal-action="github"
+                    class="flex items-center gap-2 rounded-lg border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-400 dark:border-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-700"
+                    (click)="openUrl(project.githubUrl!)"
+                  >
+                    <i aria-hidden="true" class="fab fa-github text-xs"></i>
+                    {{ 'projects.viewCode' | translate }}
+                  </button>
+                }
+                @if (project.paperUrl) {
+                  <button
+                    type="button"
+                    data-modal-action="paper"
+                    class="flex items-center gap-2 rounded-lg border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-400 dark:border-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-700"
+                    (click)="openUrl(project.paperUrl!)"
+                  >
+                    <i aria-hidden="true" class="fas fa-graduation-cap text-xs"></i>
+                    {{ 'projects.viewPaper' | translate }}
+                  </button>
+                }
+                @if (!project.demoUrl && !project.githubUrl && !project.paperUrl) {
+                  <span class="text-sm italic text-neutral-500 dark:text-neutral-400">
+                    {{ 'projects.modal.noLinks' | translate }}
+                  </span>
+                }
               </div>
-            </div>
-
-            <div class="flex flex-wrap gap-3">
-              <button
-                *ngIf="project.demoUrl"
-                type="button"
-                data-modal-action="redirect"
-                class="flex items-center gap-2 rounded-lg bg-primary-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-400"
-                (click)="openUrl(project.demoUrl!)"
-              >
-                <i aria-hidden="true" class="fas fa-external-link-alt text-xs"></i>
-                {{ 'projects.redirect' | translate }}
-              </button>
-              <button
-                *ngIf="project.githubUrl"
-                type="button"
-                data-modal-action="github"
-                class="flex items-center gap-2 rounded-lg border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-400 dark:border-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-700"
-                (click)="openUrl(project.githubUrl!)"
-              >
-                <i aria-hidden="true" class="fab fa-github text-xs"></i>
-                {{ 'projects.viewCode' | translate }}
-              </button>
-              <button
-                *ngIf="project.paperUrl"
-                type="button"
-                data-modal-action="paper"
-                class="flex items-center gap-2 rounded-lg border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-400 dark:border-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-700"
-                (click)="openUrl(project.paperUrl!)"
-              >
-                <i aria-hidden="true" class="fas fa-graduation-cap text-xs"></i>
-                {{ 'projects.viewPaper' | translate }}
-              </button>
-              <span
-                *ngIf="!project.demoUrl && !project.githubUrl && !project.paperUrl"
-                class="text-sm italic text-neutral-500 dark:text-neutral-400"
-              >
-                {{ 'projects.modal.noLinks' | translate }}
-              </span>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    }
   `,
   styles: [
     `
@@ -728,6 +860,19 @@ import { ScrollLockService } from '../../core/services/scroll-lock.service';
         box-shadow: 0 0 0 2px rgb(99 102 241);
       }
 
+      /* Chip ativo do filtro. A cor sozinha não conta: o estado também vive em
+         aria-pressed, e a borda muda junto com o fundo. */
+      .tech-chip-active {
+        background: rgb(99 102 241);
+        border-color: rgb(79 70 229);
+        color: rgb(255 255 255);
+      }
+
+      .tech-chip-active:hover {
+        background: rgb(79 70 229);
+        color: rgb(255 255 255);
+      }
+
       /* Modal */
       @keyframes modalIn {
         from {
@@ -782,6 +927,11 @@ export class ProjectsComponent {
   public featuredProjects: ProjectItem[] = this.catalog.featured;
   public readonly totalParams = { count: this.catalog.all.length };
 
+  /** Tecnologia selecionada no filtro do inventário; `null` é "todas". */
+  public activeTechnology: string | null = null;
+  public readonly technologyFilters = this.catalog.topTechnologies(TECHNOLOGY_FILTERS);
+  public filterParams = { technology: '', count: 0, total: this.catalog.all.length };
+
   // `sizes` casa com a largura real do cartão em cada breakpoint; sem isso o
   // navegador assume 100vw e baixa a maior derivada em qualquer tela.
   public readonly cardSizes = '(max-width: 767px) 280px, (max-width: 1279px) 384px, 400px';
@@ -802,18 +952,15 @@ export class ProjectsComponent {
     this.commands.openProject$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((project) => {
       // Comando de terminal ou quick open pode apontar para card que só existe
       // no inventário; abrir o modal sem revelar a lista deixaria o retorno de
-      // foco apontando para um elemento que não está na página.
+      // foco apontando para um elemento que não está na página. Um filtro ativo
+      // faria o mesmo estrago, então ele também sai.
       this.showAllProjects = true;
+      this.clearTechnologyFilter();
       this.openProjectModal(project);
     });
     this.translate.onLangChange
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(() => this.initialsCache.clear());
-  }
-
-  // TrackBy function for performance
-  trackByProject(index: number, project: ProjectItem): string {
-    return project.id;
   }
 
   toggleAllProjects(): void {
@@ -822,7 +969,60 @@ export class ProjectsComponent {
     if (!this.showAllProjects) return;
     // As setas dependem de medida real; sem esperar o render, ambos os
     // carrosséis nasceriam achando que não há para onde rolar.
+    this.remeasureCarousels();
+  }
+
+  /**
+   * Clicar no chip que já está ativo desliga o filtro — é o comportamento que
+   * um toggle com `aria-pressed` promete.
+   */
+  filterByTechnology(technology: string): void {
+    this.activeTechnology = this.activeTechnology === technology ? null : technology;
+    this.applyTechnologyFilter();
+    // Filtrar a partir de um cartão em destaque só faz sentido se o resultado
+    // aparecer; o inventário é onde ele mora.
+    this.showAllProjects = true;
+    this.cdr.markForCheck();
+    this.remeasureCarousels();
+  }
+
+  clearTechnologyFilter(): void {
+    if (!this.activeTechnology) return;
+    this.activeTechnology = null;
+    this.applyTechnologyFilter();
+    this.cdr.markForCheck();
+    this.remeasureCarousels();
+  }
+
+  filterFromModal(technology: string): void {
+    this.closeModal();
+    this.filterByTechnology(technology);
+  }
+
+  private applyTechnologyFilter(): void {
+    const technology = this.activeTechnology?.toLowerCase();
+    const matches = (project: ProjectItem): boolean =>
+      !technology || project.technologies.some((tech) => tech.toLowerCase() === technology);
+
+    this.commercialProjects = this.catalog.commercial.filter(matches);
+    this.studyProjects = this.catalog.study.filter(matches);
+    this.filterParams = {
+      technology: this.activeTechnology ?? '',
+      count: this.commercialProjects.length + this.studyProjects.length,
+      total: this.catalog.all.length
+    };
+  }
+
+  /**
+   * Depois de trocar a lista, o scroll antigo continua onde estava e as setas
+   * respondem sobre uma largura que não existe mais. Voltar ao início e remedir
+   * é o que mantém os dois honestos.
+   */
+  private remeasureCarousels(): void {
     setTimeout(() => {
+      for (const carousel of [this.commercialCarousel, this.studyCarousel]) {
+        if (carousel) carousel.nativeElement.scrollLeft = 0;
+      }
       this.onScroll('commercial');
       this.onScroll('study');
     });
@@ -873,6 +1073,23 @@ export class ProjectsComponent {
 
     this.scrollStates[category] = { canScrollLeft, canScrollRight };
     this.cdr.markForCheck();
+  }
+
+  /**
+   * O botão de detalhe só existe quando há detalhe. Projeto pequeno entra com a
+   * frase de prova e mais nada, e um toggle que abre um bloco vazio é pior que
+   * a ausência do toggle.
+   */
+  hasDecisionDetails(project: ProjectItem): boolean {
+    const decision = project.decision;
+    if (!decision) return false;
+    return Boolean(
+      decision.contextKey ||
+      decision.constraintKey ||
+      decision.decisionKey ||
+      decision.evidenceKey ||
+      decision.impactKey
+    );
   }
 
   /**

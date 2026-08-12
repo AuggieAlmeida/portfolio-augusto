@@ -3,12 +3,21 @@ import { TranslateService } from '@ngx-translate/core';
 import { ReplaySubject, Subject } from 'rxjs';
 
 import { LocaleService } from '../i18n/locale.service';
-import { isLocale } from '../i18n/locales';
+import { isLocale, Locale } from '../i18n/locales';
 import { ProjectCatalogService, ProjectItem } from '../projects/project-catalog.service';
 import { NavService } from '../services/nav.service';
 import { ThemeService } from '../services/theme.service';
 
 export type CommandEffect = 'clear' | 'close' | 'reboot';
+
+/**
+ * Os mesmos dois arquivos que o CTA do herói serve. Ficam sob `/assets/` porque
+ * o rewrite da Vercel devolve `index.html` em qualquer outro caminho.
+ */
+const CV_FILES: Record<Locale, string> = {
+  pt: 'assets/cv/Augusto-Almeida-CV-pt-BR.pdf',
+  en: 'assets/cv/Augusto-Almeida-CV-en.pdf'
+};
 
 export interface CommandResult {
   lines: string[];
@@ -34,6 +43,7 @@ export class PortfolioCommandService {
     'projects — vai para Projetos',
     'open <slug> — abre o projeto correspondente',
     'search <termo> — busca nos projetos',
+    'cv [pt|en] — baixa o currículo; sem argumento, usa o idioma atual',
     'theme dark|light — altera o tema',
     'lang pt|en — altera o idioma',
     'clear — limpa o histórico',
@@ -86,6 +96,8 @@ export class PortfolioCommandService {
         return this.openProject(argument);
       case 'search':
         return this.searchProjects(argument);
+      case 'cv':
+        return this.downloadCv(argument);
       case 'theme':
         return this.setTheme(argument);
       case 'lang':
@@ -113,7 +125,10 @@ export class PortfolioCommandService {
       ['theme dark', 'Theme dark', 'Ativa o tema escuro'],
       ['theme light', 'Theme light', 'Ativa o tema claro'],
       ['lang pt', 'Lang pt', 'Muda para português'],
-      ['lang en', 'Lang en', 'Muda para inglês']
+      ['lang en', 'Lang en', 'Muda para inglês'],
+      ['cv', 'CV', 'Baixa o currículo no idioma atual'],
+      ['cv pt', 'CV pt-BR', 'Baixa o currículo em português'],
+      ['cv en', 'CV en', 'Baixa o currículo em inglês']
     ].map(([command, label, description]) => ({
       input: command,
       label,
@@ -165,6 +180,31 @@ export class PortfolioCommandService {
         (project) => `${project.id} — ${this.translate.instant(project.titleKey)}`
       )
     };
+  }
+
+  /**
+   * Sem argumento, baixa o currículo do idioma em uso — quem está lendo em
+   * inglês não quer o PDF em português. `cv pt` e `cv en` forçam a escolha, do
+   * mesmo jeito que os dois links do herói.
+   */
+  private downloadCv(argument: string): CommandResult {
+    const requested = argument.trim().toLowerCase();
+    if (requested && !isLocale(requested)) return { lines: ['Use cv, cv pt ou cv en.'] };
+
+    const locale = isLocale(requested) ? requested : this.locale.current;
+    const href = CV_FILES[locale];
+
+    // `download` no anchor em vez de window.open: o PDF chega como arquivo em
+    // vez de abrir uma aba com o visualizador do navegador.
+    const link = document.createElement('a');
+    link.href = href;
+    link.download = href.slice(href.lastIndexOf('/') + 1);
+    link.rel = 'noopener';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    return { lines: [`Baixando o currículo em ${locale === 'pt' ? 'português' : 'inglês'}.`] };
   }
 
   private setTheme(value: string): CommandResult {
