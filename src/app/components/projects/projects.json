@@ -140,7 +140,14 @@
       "descriptionKey": "projects.items.portal_remuneracao_frota.description",
       "category": "commercial",
       "tagsKeys": ["projects.tags.management", "projects.tags.platform", "projects.tags.dashboard"],
-      "technologies": ["Lumen", "PHP", "React", "TypeScript", "MySQL", "BigQuery", "Power BI"]
+      "technologies": ["Lumen", "PHP", "React", "TypeScript", "MySQL", "BigQuery", "Power BI"],
+      "decision": {
+        "contextKey": "projects.decisions.payroll.context",
+        "constraintKey": "projects.decisions.payroll.constraint",
+        "decisionKey": "projects.decisions.payroll.decision",
+        "evidenceKey": "projects.decisions.payroll.evidence",
+        "impactKey": "projects.decisions.payroll.impact"
+      }
     },
     {
       "id": "servidor-llm-local",
@@ -216,7 +223,7 @@
       "category": "study",
       "tagsKeys": ["projects.tags.platform", "projects.tags.pwa", "projects.tags.management"],
       "technologies": ["Next.js", "Supabase", "PostGIS", "Leaflet"],
-      "image": "./assets/images/projects/barbearia-app.png"
+      "image": "./assets/images/projects/barbearia-app.jpg"
     },
     {
       "id": "pasta-la-vista",
@@ -250,7 +257,7 @@
       "category": "study",
       "tagsKeys": ["projects.tags.desktop", "projects.tags.management", "projects.tags.academic"],
       "technologies": ["Python", "pytest", "Alembic", "Docker"],
-      "image": "./assets/images/projects/kitbuilder.png",
+      "image": "./assets/images/projects/kitbuilder.jpg",
       "paperUrl": "https://ric.cps.sp.gov.br/handle/123456789/46429",
       "githubUrl": "https://github.com/KitManeger-Fatec/KitBuilder-tkinter"
     },
@@ -345,7 +352,7 @@
       "category": "study",
       "tagsKeys": ["projects.tags.mobile", "projects.tags.game"],
       "technologies": ["Expo", "React Native", "SQLite", "Reanimated"],
-      "image": "./assets/images/projects/pokedex.png",
+      "image": "./assets/images/projects/pokedex.jpg",
       "githubUrl": "https://github.com/AuggieAlmeida/Pokedex"
     },
     {

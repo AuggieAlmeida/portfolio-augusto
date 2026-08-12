@@ -62,6 +62,56 @@ describe('ProjectsComponent', () => {
     expect(document.activeElement).toBe(button);
   }));
 
+  it('makes every background region inert while the project modal is open', () => {
+    const header = document.createElement('app-header');
+    const commandCenter = document.createElement('app-command-center');
+    const statusBar = document.createElement('app-status-bar');
+    const main = document.createElement('main');
+    const hero = document.createElement('app-hero');
+    document.body.append(header, commandCenter, statusBar, main);
+    main.append(hero, fixture.nativeElement);
+
+    component.openProjectModal(component.commercialProjects[0]);
+    fixture.detectChanges();
+
+    expect(header.hasAttribute('inert')).toBeTrue();
+    expect(hero.hasAttribute('inert')).toBeTrue();
+    expect(fixture.nativeElement.querySelector('section')?.hasAttribute('inert')).toBeTrue();
+
+    component.closeModal();
+
+    expect(header.hasAttribute('inert')).toBeFalse();
+    expect(hero.hasAttribute('inert')).toBeFalse();
+    expect(fixture.nativeElement.querySelector('section')?.hasAttribute('inert')).toBeFalse();
+    header.remove();
+    commandCenter.remove();
+    statusBar.remove();
+    main.remove();
+  });
+
+  it('scrolls carousels by the measured card width instead of a desktop constant', () => {
+    const carousel = document.createElement('div');
+    const rail = document.createElement('div');
+    const card = document.createElement('article');
+    card.dataset['projectCard'] = 'example';
+    rail.style.display = 'flex';
+    rail.style.gap = '16px';
+    rail.append(card);
+    carousel.append(rail);
+    document.body.append(carousel);
+    spyOn(card, 'getBoundingClientRect').and.returnValue({ width: 280 } as DOMRect);
+    const scrollTo = spyOn(carousel, 'scrollTo');
+    component.commercialCarousel = { nativeElement: carousel };
+
+    component.scrollCarousel('commercial', 'right');
+
+    expect(scrollTo).toHaveBeenCalled();
+    const options = scrollTo.calls.mostRecent().args[0] as ScrollToOptions;
+    expect(options.left).toBe(296);
+    expect(typeof options.behavior).toBe('string');
+    carousel.remove();
+  });
+
   it('renders Redirect as primary and GitHub as secondary when both links exist', () => {
     const project = [...component.commercialProjects, ...component.studyProjects].find(
       (item) => item.demoUrl && item.githubUrl
@@ -92,6 +142,25 @@ describe('ProjectsComponent', () => {
 
     const host: HTMLElement = fixture.nativeElement;
     expect(host.querySelectorAll('[data-modal-action]').length).toBe(0);
+  });
+
+  it('shows the decision case only when the catalog has verified decision data', () => {
+    const project = component.commercialProjects.find((item) => item.decision);
+    expect(project).toBeDefined();
+
+    component.openProjectModal(project!);
+    fixture.detectChanges();
+    const host: HTMLElement = fixture.nativeElement;
+
+    expect(host.querySelector('[data-decision-toggle]')).not.toBeNull();
+    expect(host.querySelector('#decision-details')).toBeNull();
+
+    component.toggleDecisionDetails();
+    fixture.detectChanges();
+
+    expect(host.querySelector('#decision-details')?.textContent).toContain(
+      'projects.decisions.payroll.context'
+    );
   });
 
   it('opens external links in a separate tab without an opener reference', () => {

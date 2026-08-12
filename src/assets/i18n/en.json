@@ -356,8 +356,32 @@
       "goToImage": "Go to image",
       "stack": "Stack",
       "tags": "Tags",
-      "noLinks": "No public link — private code or project without a deployment."
+      "noLinks": "No public link — private code or project without a deployment.",
+      "decision": {
+        "action": "Examine the decision",
+        "title": "Decision case",
+        "context": "Context",
+        "constraint": "Constraint",
+        "decision": "Decision",
+        "evidence": "Evidence",
+        "impact": "Impact"
+      }
+    },
+    "decisions": {
+      "payroll": {
+        "context": "The monthly closing screen fired 354 queries per load, including full scans over 293 thousand rows.",
+        "constraint": "Ten of the eleven domain tables had no index, while the response had to remain byte-identical.",
+        "decision": "Create seven indexes derived from the measured predicates and map the remaining N+1.",
+        "evidence": "The response was compared byte-for-byte after the change; the remaining N+1 was identified in 316 of the 354 queries.",
+        "impact": "Screen time dropped from 4,271 ms to 354 ms."
+      }
     }
+  },
+  "statusBar": {
+    "label": "Portfolio status",
+    "section": "Section",
+    "terminal": "Terminal",
+    "contact": "Contact"
   },
   "project": {
     "viewDemo": "View Demo",

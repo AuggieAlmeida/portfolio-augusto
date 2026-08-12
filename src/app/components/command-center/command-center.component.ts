@@ -16,8 +16,11 @@ import {
   CommandSuggestion,
   PortfolioCommandService
 } from '../../core/commands/portfolio-command.service';
+import { ScrollLockService } from '../../core/services/scroll-lock.service';
 
-type Surface = 'terminal' | 'quick-open' | null;
+type Surface = 'terminal' | 'quick-open' | 'boot' | null;
+
+const BOOT_DURATION_MS = 1400;
 
 @Component({
   selector: 'app-command-center',
@@ -25,23 +28,19 @@ type Surface = 'terminal' | 'quick-open' | null;
   imports: [CommonModule, TranslateModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <button
-      type="button"
-      class="fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom))] right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-primary-600 text-white shadow-lg shadow-primary-950/25 transition-transform hover:scale-105 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 dark:focus:ring-offset-primary-950"
-      aria-label="Abrir terminal"
-      (click)="openTerminal()"
-    >
-      <i aria-hidden="true" class="fas fa-terminal"></i>
-    </button>
+    <p class="sr-only" aria-live="polite">{{ bootMessage }}</p>
 
     <div
       *ngIf="surface"
       class="fixed inset-0 z-[60] flex items-end bg-black/60 p-3 backdrop-blur-sm md:items-center md:justify-center md:p-6"
       role="dialog"
       aria-modal="true"
-      [attr.aria-label]="surface === 'terminal' ? 'Terminal' : 'Quick open'"
+      [attr.aria-label]="
+        surface === 'terminal' ? 'Terminal' : surface === 'boot' ? 'Boot opcional' : 'Quick open'
+      "
     >
       <button
+        *ngIf="surface !== 'boot'"
         type="button"
         class="absolute inset-0 h-full w-full cursor-default"
         aria-label="Fechar"
@@ -49,7 +48,40 @@ type Surface = 'terminal' | 'quick-open' | null;
       ></button>
 
       <section
-        class="relative flex max-h-[85vh] w-full flex-col overflow-hidden rounded-2xl border border-primary-200 bg-white shadow-2xl dark:border-primary-800 dark:bg-primary-950 md:max-w-2xl"
+        *ngIf="surface === 'boot'"
+        class="relative w-full max-w-md overflow-hidden rounded-2xl border border-primary-300 bg-primary-950 p-6 text-center text-primary-50 shadow-2xl dark:border-primary-600"
+        aria-labelledby="boot-title"
+        aria-describedby="boot-description"
+      >
+        <p class="text-xs font-semibold uppercase tracking-[0.32em] text-primary-300">
+          AUGGIE / PORTFOLIO
+        </p>
+        <h2 id="boot-title" class="mt-5 text-2xl font-semibold">Reiniciando experiência</h2>
+        <p id="boot-description" class="mt-2 text-sm text-primary-200">Preparando o portfólio.</p>
+        <div
+          class="mt-6 h-1 overflow-hidden rounded-full bg-primary-800"
+          role="progressbar"
+          aria-label="Progresso do boot"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          [attr.aria-valuenow]="bootProgress"
+        >
+          <span class="boot-progress block h-full origin-left bg-primary-300"></span>
+        </div>
+        <button
+          #skipBootButton
+          type="button"
+          class="mt-6 rounded-lg px-3 py-2 text-sm font-medium text-primary-100 underline decoration-primary-400 underline-offset-4 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-primary-950"
+          (click)="skipBoot()"
+        >
+          Pular animação
+        </button>
+      </section>
+
+      <section
+        *ngIf="surface !== 'boot'"
+        #surfacePanel
+        class="relative flex max-h-[calc(100dvh-1.5rem)] w-full flex-col overflow-hidden rounded-2xl border border-primary-200 bg-white shadow-2xl dark:border-primary-800 dark:bg-primary-950 md:max-h-[85vh] md:max-w-2xl"
         [class.font-mono]="surface === 'terminal'"
       >
         <header
@@ -169,27 +201,59 @@ type Surface = 'terminal' | 'quick-open' | null;
       :host-context(.dark) .command-suggestion-active {
         background: rgb(49 46 129);
       }
+
+      .boot-progress {
+        animation: boot-progress ${BOOT_DURATION_MS}ms ease-out forwards;
+      }
+
+      @keyframes boot-progress {
+        from {
+          transform: scaleX(0);
+        }
+
+        to {
+          transform: scaleX(1);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .boot-progress {
+          animation: none;
+          transform: scaleX(1);
+        }
+      }
     `
   ]
 })
 export class CommandCenterComponent {
   @ViewChild('commandInput') commandInput?: ElementRef<HTMLInputElement>;
+  @ViewChild('skipBootButton') skipBootButton?: ElementRef<HTMLButtonElement>;
+  @ViewChild('surfacePanel') surfacePanel?: ElementRef<HTMLElement>;
 
   surface: Surface = null;
   input = '';
   activeSuggestion = 0;
   suggestions: CommandSuggestion[] = [];
   history: { input: string; lines: string[] }[] = [];
+  bootMessage = '';
+  bootProgress = 0;
   private readonly commands = inject(PortfolioCommandService);
   private readonly cdr = inject(ChangeDetectorRef);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly scrollLock = inject(ScrollLockService);
   private lastFocusedElement: HTMLElement | null = null;
+  private bootTimer?: ReturnType<typeof setTimeout>;
 
   readonly helpLines = this.commands.helpLines;
 
   constructor() {
     this.commands.openSurface$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((surface) => {
       this.open(surface);
+    });
+    this.destroyRef.onDestroy(() => {
+      this.clearBootTimer();
+      this.setBackgroundInert(false);
+      this.scrollLock.unlock('command-center');
     });
   }
 
@@ -204,15 +268,19 @@ export class CommandCenterComponent {
     this.input = '';
     this.activeSuggestion = 0;
     this.refreshSuggestions();
-    document.body.style.overflow = 'hidden';
+    this.scrollLock.lock('command-center');
     this.cdr.markForCheck();
     setTimeout(() => this.commandInput?.nativeElement.focus());
   }
 
   close(): void {
     if (!this.surface) return;
+    if (this.surface === 'boot') {
+      this.skipBoot();
+      return;
+    }
     this.surface = null;
-    document.body.style.overflow = '';
+    this.scrollLock.unlock('command-center');
     this.cdr.markForCheck();
     setTimeout(() => {
       if (this.lastFocusedElement?.isConnected) this.lastFocusedElement.focus();
@@ -240,6 +308,10 @@ export class CommandCenterComponent {
   private executeTerminalInput(): void {
     const command = this.input;
     const result = this.commands.execute(command);
+    if (result.effect === 'reboot') {
+      this.startBoot();
+      return;
+    }
     if (result.effect === 'close') {
       this.close();
       return;
@@ -248,6 +320,11 @@ export class CommandCenterComponent {
     else if (command) this.history = [...this.history, { input: command, lines: result.lines }];
     this.input = '';
     if (command.trim().toLowerCase().startsWith('open ')) this.close();
+  }
+
+  skipBoot(): void {
+    if (this.surface !== 'boot') return;
+    this.finishBoot('Boot concluído.');
   }
 
   choose(suggestion: CommandSuggestion): void {
@@ -294,11 +371,77 @@ export class CommandCenterComponent {
     } else if (this.surface && event.key === 'Escape') {
       event.preventDefault();
       this.close();
+    } else if (this.surface && event.key === 'Tab') {
+      this.trapFocus(event, this.surfacePanel?.nativeElement);
     }
   }
 
   private refreshSuggestions(): void {
     this.suggestions = this.commands.suggestions(this.input);
+  }
+
+  private startBoot(): void {
+    this.clearBootTimer();
+    this.surface = 'boot';
+    this.input = '';
+    this.bootProgress = 0;
+    this.bootMessage = 'Boot opcional iniciado.';
+    this.setBackgroundInert(true);
+    this.cdr.markForCheck();
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      this.finishBoot('Animações reduzidas: boot concluído imediatamente.');
+      return;
+    }
+
+    setTimeout(() => this.skipBootButton?.nativeElement.focus());
+    this.bootTimer = setTimeout(() => this.finishBoot('Boot concluído.'), BOOT_DURATION_MS);
+  }
+
+  private finishBoot(message: string): void {
+    this.clearBootTimer();
+    this.surface = null;
+    this.bootProgress = 100;
+    this.bootMessage = message;
+    this.setBackgroundInert(false);
+    this.scrollLock.unlock('command-center');
+    this.cdr.markForCheck();
+    setTimeout(() => {
+      if (this.lastFocusedElement?.isConnected) this.lastFocusedElement.focus();
+      this.lastFocusedElement = null;
+    });
+  }
+
+  private clearBootTimer(): void {
+    if (this.bootTimer) clearTimeout(this.bootTimer);
+    this.bootTimer = undefined;
+  }
+
+  private setBackgroundInert(inert: boolean): void {
+    document.querySelectorAll('app-header, main').forEach((element) => {
+      if (inert) element.setAttribute('inert', '');
+      else element.removeAttribute('inert');
+    });
+  }
+
+  private trapFocus(event: KeyboardEvent, container?: HTMLElement): void {
+    if (!container) return;
+    const focusable = Array.from(
+      container.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), input:not([disabled]), select:not([disabled]), a[href]'
+      )
+    ).filter((element) => element.offsetParent !== null);
+    if (!focusable.length) return;
+
+    const first = focusable[0];
+    const last = focusable.at(-1)!;
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
   }
 
   private isTypingTarget(target: EventTarget | null): boolean {

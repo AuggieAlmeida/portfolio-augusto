@@ -17,7 +17,8 @@ export class NavService {
     const el = document.getElementById(sectionId);
     if (el) {
       const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top, behavior: reducedMotion ? 'auto' : 'smooth' });
       this.setActive(sectionId);
     }
   }

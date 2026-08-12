@@ -43,6 +43,10 @@ describe('PortfolioCommandService', () => {
     expect(theme.setTheme).toHaveBeenCalledWith('dark');
   });
 
+  it('starts the optional boot only when reboot is explicitly requested', () => {
+    expect(service.execute('reboot')).toEqual({ lines: [], effect: 'reboot' });
+  });
+
   it('offers section commands and matching catalog projects in quick open', () => {
     const suggestions = service.suggestions('ca');
 

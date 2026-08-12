@@ -410,8 +410,32 @@
       "goToImage": "Ir para a imagem",
       "stack": "Stack",
       "tags": "Tags",
-      "noLinks": "Sem link público — código privado ou projeto sem deploy."
+      "noLinks": "Sem link público — código privado ou projeto sem deploy.",
+      "decision": {
+        "action": "Examinar a decisão",
+        "title": "Case de decisão",
+        "context": "Contexto",
+        "constraint": "Restrição",
+        "decision": "Decisão",
+        "evidence": "Evidência",
+        "impact": "Impacto"
+      }
+    },
+    "decisions": {
+      "payroll": {
+        "context": "A tela de fechamento mensal disparava 354 queries por carregamento, incluindo varreduras completas sobre 293 mil linhas.",
+        "constraint": "Dez das onze tabelas do domínio não tinham índice; a resposta precisava permanecer byte a byte idêntica.",
+        "decision": "Criar sete índices derivados dos predicados medidos e mapear o N+1 remanescente.",
+        "evidence": "A resposta foi comparada byte a byte após a mudança; o N+1 ficou identificado em 316 das 354 queries.",
+        "impact": "O tempo da tela caiu de 4.271 ms para 354 ms."
+      }
     }
+  },
+  "statusBar": {
+    "label": "Status do portfólio",
+    "section": "Seção",
+    "terminal": "Terminal",
+    "contact": "Contato"
   },
   "project": {
     "viewDemo": "Ver Demo",

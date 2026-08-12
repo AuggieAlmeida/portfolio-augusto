@@ -3,6 +3,14 @@ import { TranslateService } from '@ngx-translate/core';
 
 import projectsData from '../../components/projects/projects.json';
 
+export interface ProjectDecision {
+  contextKey: string;
+  constraintKey: string;
+  decisionKey: string;
+  evidenceKey: string;
+  impactKey: string;
+}
+
 export interface ProjectItem {
   id: string;
   titleKey: string;
@@ -15,6 +23,7 @@ export interface ProjectItem {
   demoUrl?: string;
   githubUrl?: string;
   paperUrl?: string;
+  decision?: ProjectDecision;
 }
 
 interface ProjectsData {

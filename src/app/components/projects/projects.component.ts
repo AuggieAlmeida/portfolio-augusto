@@ -14,6 +14,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import { PortfolioCommandService } from '../../core/commands/portfolio-command.service';
 import { ProjectCatalogService, ProjectItem } from '../../core/projects/project-catalog.service';
+import { ScrollLockService } from '../../core/services/scroll-lock.service';
 
 @Component({
   selector: 'app-projects',
@@ -88,7 +89,7 @@ import { ProjectCatalogService, ProjectItem } from '../../core/projects/project-
                 (keyup.space)="scrollCarousel('commercial', 'left')"
                 [attr.aria-label]="'Previous projects'"
                 tabindex="0"
-                class="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/70 hover:bg-black/90 text-white rounded-full flex items-center justify-center transition-all duration-200 opacity-0 group-hover:opacity-100 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white focus:opacity-100"
+                class="absolute left-0 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/70 text-white transition-all duration-200 hover:scale-110 hover:bg-black/90 focus:outline-none focus:ring-2 focus:ring-white md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100"
               >
                 <i aria-hidden="true" class="fas fa-chevron-left"></i>
               </button>
@@ -100,7 +101,7 @@ import { ProjectCatalogService, ProjectItem } from '../../core/projects/project-
                 (keyup.space)="scrollCarousel('commercial', 'right')"
                 [attr.aria-label]="'Next projects'"
                 tabindex="0"
-                class="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/70 hover:bg-black/90 text-white rounded-full flex items-center justify-center transition-all duration-200 opacity-0 group-hover:opacity-100 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white focus:opacity-100"
+                class="absolute right-0 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/70 text-white transition-all duration-200 hover:scale-110 hover:bg-black/90 focus:outline-none focus:ring-2 focus:ring-white md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100"
               >
                 <i aria-hidden="true" class="fas fa-chevron-right"></i>
               </button>
@@ -108,20 +109,17 @@ import { ProjectCatalogService, ProjectItem } from '../../core/projects/project-
               <!-- Carousel Container -->
               <div
                 #commercialCarousel
-                class="overflow-x-auto scrollbar-hide scroll-smooth"
+                class="scrollbar-hide scroll-smooth overflow-x-auto snap-x snap-mandatory"
                 (scroll)="onScroll('commercial')"
               >
-                <div
-                  class="flex gap-4 pb-4"
-                  [style.width.px]="getCarouselWidth(commercialProjects.length)"
-                >
+                <div class="flex min-w-full w-max gap-4 pb-4">
                   <div
                     *ngFor="
                       let project of commercialProjects;
                       trackBy: trackByProject;
                       let i = index
                     "
-                    class="project-card flex-shrink-0 w-80 cursor-pointer md:w-96"
+                    class="project-card w-80 shrink-0 snap-start cursor-pointer md:w-96"
                     [style.animation-delay]="getStaggerDelay(i)"
                     [attr.data-project-card]="project.id"
                   >
@@ -283,7 +281,7 @@ import { ProjectCatalogService, ProjectItem } from '../../core/projects/project-
                 (keyup.space)="scrollCarousel('study', 'left')"
                 [attr.aria-label]="'Previous projects'"
                 tabindex="0"
-                class="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/70 hover:bg-black/90 text-white rounded-full flex items-center justify-center transition-all duration-200 opacity-0 group-hover:opacity-100 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white focus:opacity-100"
+                class="absolute left-0 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/70 text-white transition-all duration-200 hover:scale-110 hover:bg-black/90 focus:outline-none focus:ring-2 focus:ring-white md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100"
               >
                 <i aria-hidden="true" class="fas fa-chevron-left"></i>
               </button>
@@ -295,7 +293,7 @@ import { ProjectCatalogService, ProjectItem } from '../../core/projects/project-
                 (keyup.space)="scrollCarousel('study', 'right')"
                 [attr.aria-label]="'Next projects'"
                 tabindex="0"
-                class="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/70 hover:bg-black/90 text-white rounded-full flex items-center justify-center transition-all duration-200 opacity-0 group-hover:opacity-100 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white focus:opacity-100"
+                class="absolute right-0 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/70 text-white transition-all duration-200 hover:scale-110 hover:bg-black/90 focus:outline-none focus:ring-2 focus:ring-white md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100"
               >
                 <i aria-hidden="true" class="fas fa-chevron-right"></i>
               </button>
@@ -303,16 +301,13 @@ import { ProjectCatalogService, ProjectItem } from '../../core/projects/project-
               <!-- Carousel Container -->
               <div
                 #studyCarousel
-                class="overflow-x-auto scrollbar-hide scroll-smooth"
+                class="scrollbar-hide scroll-smooth overflow-x-auto snap-x snap-mandatory"
                 (scroll)="onScroll('study')"
               >
-                <div
-                  class="flex gap-4 py-4"
-                  [style.width.px]="getCarouselWidth(studyProjects.length)"
-                >
+                <div class="flex min-w-full w-max gap-4 py-4">
                   <div
                     *ngFor="let project of studyProjects; trackBy: trackByProject; let i = index"
-                    class="project-card flex-shrink-0 w-80 cursor-pointer md:w-96"
+                    class="project-card w-80 shrink-0 snap-start cursor-pointer md:w-96"
                     [style.animation-delay]="getStaggerDelay(i)"
                     [attr.data-project-card]="project.id"
                   >
@@ -444,203 +439,279 @@ import { ProjectCatalogService, ProjectItem } from '../../core/projects/project-
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Modal de detalhe -->
-      <div
-        *ngIf="selectedProject as project"
-        class="project-modal fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6"
-        role="dialog"
-        aria-modal="true"
-        [attr.aria-label]="project.titleKey | translate"
-      >
-        <!-- Backdrop e um button de verdade: satisfaz teclado e foco sem o
+    <!-- Modal de detalhe -->
+    <div
+      *ngIf="selectedProject as project"
+      class="project-modal fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6"
+      role="dialog"
+      aria-modal="true"
+      [attr.aria-label]="project.titleKey | translate"
+    >
+      <!-- Backdrop e um button de verdade: satisfaz teclado e foco sem o
              div-com-click que as regras de acessibilidade barram. -->
+      <button
+        type="button"
+        tabindex="-1"
+        class="absolute inset-0 h-full w-full cursor-default bg-black/70 backdrop-blur-sm"
+        (click)="closeModal()"
+        [attr.aria-label]="'projects.modal.close' | translate"
+      ></button>
+
+      <div
+        #modalPanel
+        class="project-modal-panel relative flex max-h-[calc(100dvh-1.5rem)] w-full max-w-5xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-primary-800 md:max-h-[90vh]"
+      >
         <button
+          #modalClose
           type="button"
-          class="absolute inset-0 h-full w-full cursor-default bg-black/70 backdrop-blur-sm"
+          class="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-primary-400"
           (click)="closeModal()"
           [attr.aria-label]="'projects.modal.close' | translate"
-        ></button>
-
-        <div
-          class="project-modal-panel relative flex max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-primary-800"
         >
-          <button
-            #modalClose
-            type="button"
-            class="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-primary-400"
-            (click)="closeModal()"
-            [attr.aria-label]="'projects.modal.close' | translate"
+          <i aria-hidden="true" class="fas fa-times"></i>
+        </button>
+
+        <div class="overflow-y-auto">
+          <!-- Galeria -->
+          <div
+            class="project-modal-media relative flex w-full items-center justify-center overflow-hidden bg-neutral-900"
           >
-            <i aria-hidden="true" class="fas fa-times"></i>
-          </button>
+            <img
+              *ngIf="slides(project).length; else modalFallback"
+              [src]="slides(project)[slideIndex]"
+              [alt]="(project.titleKey | translate) + ' — ' + (slideIndex + 1)"
+              class="block h-auto w-auto max-w-full shrink-0"
+            />
+            <ng-template #modalFallback>
+              <span
+                class="font-heading text-6xl font-bold tracking-widest text-white/80"
+                aria-hidden="true"
+              >
+                {{ initials(project) }}
+              </span>
+            </ng-template>
 
-          <div class="overflow-y-auto">
-            <!-- Galeria -->
-            <div
-              class="project-modal-media relative flex w-full items-center justify-center overflow-hidden bg-neutral-900"
-            >
-              <img
-                *ngIf="slides(project).length; else modalFallback"
-                [src]="slides(project)[slideIndex]"
-                [alt]="(project.titleKey | translate) + ' — ' + (slideIndex + 1)"
-                class="block h-auto w-auto max-w-full shrink-0"
-              />
-              <ng-template #modalFallback>
-                <span
-                  class="font-heading text-6xl font-bold tracking-widest text-white/80"
+            <ng-container *ngIf="slides(project).length > 1">
+              <button
+                type="button"
+                class="absolute left-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-primary-400"
+                (click)="prevSlide(project)"
+                [attr.aria-label]="'projects.modal.previous' | translate"
+              >
+                <i aria-hidden="true" class="fas fa-chevron-left"></i>
+              </button>
+              <button
+                type="button"
+                class="absolute right-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-primary-400"
+                (click)="nextSlide(project)"
+                [attr.aria-label]="'projects.modal.next' | translate"
+              >
+                <i aria-hidden="true" class="fas fa-chevron-right"></i>
+              </button>
+              <div class="absolute bottom-3 flex gap-2">
+                <button
+                  *ngFor="let slide of slides(project); let i = index"
+                  type="button"
+                  class="h-2.5 w-2.5 rounded-full bg-white transition-opacity focus:outline-none focus:ring-2 focus:ring-primary-400"
+                  [class.opacity-100]="i === slideIndex"
+                  [class.opacity-40]="i !== slideIndex"
+                  (click)="goToSlide(i)"
+                  [attr.aria-label]="('projects.modal.goToImage' | translate) + ' ' + (i + 1)"
+                  [attr.aria-current]="i === slideIndex"
+                ></button>
+              </div>
+            </ng-container>
+          </div>
+
+          <!-- Detalhe -->
+          <div class="p-5 md:p-8">
+            <div class="mb-3 flex flex-wrap items-center gap-3">
+              <span
+                class="flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium text-white"
+                [class.bg-primary-500]="project.category === 'commercial'"
+                [class.bg-secondary-500]="project.category === 'study'"
+              >
+                <i
                   aria-hidden="true"
-                >
-                  {{ initials(project) }}
-                </span>
-              </ng-template>
-
-              <ng-container *ngIf="slides(project).length > 1">
-                <button
-                  type="button"
-                  class="absolute left-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-primary-400"
-                  (click)="prevSlide(project)"
-                  [attr.aria-label]="'projects.modal.previous' | translate"
-                >
-                  <i aria-hidden="true" class="fas fa-chevron-left"></i>
-                </button>
-                <button
-                  type="button"
-                  class="absolute right-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-primary-400"
-                  (click)="nextSlide(project)"
-                  [attr.aria-label]="'projects.modal.next' | translate"
-                >
-                  <i aria-hidden="true" class="fas fa-chevron-right"></i>
-                </button>
-                <div class="absolute bottom-3 flex gap-2">
-                  <button
-                    *ngFor="let slide of slides(project); let i = index"
-                    type="button"
-                    class="h-2.5 w-2.5 rounded-full bg-white transition-opacity focus:outline-none focus:ring-2 focus:ring-primary-400"
-                    [class.opacity-100]="i === slideIndex"
-                    [class.opacity-40]="i !== slideIndex"
-                    (click)="goToSlide(i)"
-                    [attr.aria-label]="('projects.modal.goToImage' | translate) + ' ' + (i + 1)"
-                    [attr.aria-current]="i === slideIndex"
-                  ></button>
-                </div>
-              </ng-container>
+                  class="text-xs fas"
+                  [class.fa-dollar-sign]="project.category === 'commercial'"
+                  [class.fa-graduation-cap]="project.category === 'study'"
+                ></i>
+                {{
+                  (project.category === 'commercial'
+                    ? 'projects.commercial.badge'
+                    : 'projects.study.badge'
+                  ) | translate
+                }}
+              </span>
+              <span
+                *ngIf="slides(project).length > 1"
+                class="text-xs text-neutral-500 dark:text-neutral-400"
+              >
+                {{ slideIndex + 1 }} / {{ slides(project).length }}
+              </span>
             </div>
 
-            <!-- Detalhe -->
-            <div class="p-5 md:p-8">
-              <div class="mb-3 flex flex-wrap items-center gap-3">
-                <span
-                  class="flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium text-white"
-                  [class.bg-primary-500]="project.category === 'commercial'"
-                  [class.bg-secondary-500]="project.category === 'study'"
-                >
-                  <i
-                    aria-hidden="true"
-                    class="text-xs fas"
-                    [class.fa-dollar-sign]="project.category === 'commercial'"
-                    [class.fa-graduation-cap]="project.category === 'study'"
-                  ></i>
-                  {{
-                    (project.category === 'commercial'
-                      ? 'projects.commercial.badge'
-                      : 'projects.study.badge'
-                    ) | translate
-                  }}
-                </span>
-                <span
-                  *ngIf="slides(project).length > 1"
-                  class="text-xs text-neutral-500 dark:text-neutral-400"
-                >
-                  {{ slideIndex + 1 }} / {{ slides(project).length }}
-                </span>
-              </div>
+            <h3
+              class="mb-4 font-heading text-2xl font-bold text-neutral-900 dark:text-neutral-100 md:text-3xl"
+            >
+              {{ project.titleKey | translate }}
+            </h3>
 
-              <h3
-                class="mb-4 font-heading text-2xl font-bold text-neutral-900 dark:text-neutral-100 md:text-3xl"
+            <p class="mb-6 leading-relaxed text-neutral-600 dark:text-neutral-300">
+              {{ project.descriptionKey | translate }}
+            </p>
+
+            <button
+              *ngIf="project.decision"
+              type="button"
+              data-decision-toggle
+              class="mb-6 inline-flex items-center gap-2 rounded-lg border border-primary-300 px-3 py-2 text-sm font-medium text-primary-700 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-primary-600 dark:text-primary-200 dark:hover:bg-primary-900/30"
+              (click)="toggleDecisionDetails()"
+              [attr.aria-expanded]="decisionExpanded"
+              aria-controls="decision-details"
+            >
+              <i aria-hidden="true" class="fas fa-diagram-project"></i>
+              {{ 'projects.modal.decision.action' | translate }}
+            </button>
+
+            <section
+              *ngIf="project.decision && decisionExpanded"
+              id="decision-details"
+              class="mb-6 rounded-xl border border-primary-100 bg-primary-50/60 p-4 dark:border-primary-700 dark:bg-primary-900/20"
+              [attr.aria-label]="'projects.modal.decision.title' | translate"
+            >
+              <h4 class="mb-4 font-semibold text-neutral-900 dark:text-neutral-100">
+                {{ 'projects.modal.decision.title' | translate }}
+              </h4>
+              <dl class="space-y-4 text-sm leading-relaxed">
+                <div>
+                  <dt class="font-medium text-primary-700 dark:text-primary-300">
+                    {{ 'projects.modal.decision.context' | translate }}
+                  </dt>
+                  <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
+                    {{ project.decision.contextKey | translate }}
+                  </dd>
+                </div>
+                <div>
+                  <dt class="font-medium text-primary-700 dark:text-primary-300">
+                    {{ 'projects.modal.decision.constraint' | translate }}
+                  </dt>
+                  <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
+                    {{ project.decision.constraintKey | translate }}
+                  </dd>
+                </div>
+                <div>
+                  <dt class="font-medium text-primary-700 dark:text-primary-300">
+                    {{ 'projects.modal.decision.decision' | translate }}
+                  </dt>
+                  <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
+                    {{ project.decision.decisionKey | translate }}
+                  </dd>
+                  <dd class="mt-2 flex flex-wrap gap-1.5" aria-label="Stack na decisão">
+                    <span
+                      *ngFor="let tech of project.technologies"
+                      class="rounded bg-white px-2 py-1 text-xs font-medium text-neutral-700 shadow-sm dark:bg-primary-800 dark:text-neutral-200"
+                    >
+                      {{ tech }}
+                    </span>
+                  </dd>
+                </div>
+                <div>
+                  <dt class="font-medium text-primary-700 dark:text-primary-300">
+                    {{ 'projects.modal.decision.evidence' | translate }}
+                  </dt>
+                  <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
+                    {{ project.decision.evidenceKey | translate }}
+                  </dd>
+                </div>
+                <div>
+                  <dt class="font-medium text-primary-700 dark:text-primary-300">
+                    {{ 'projects.modal.decision.impact' | translate }}
+                  </dt>
+                  <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
+                    {{ project.decision.impactKey | translate }}
+                  </dd>
+                </div>
+              </dl>
+            </section>
+
+            <div class="mb-6">
+              <h4
+                class="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
               >
-                {{ project.titleKey | translate }}
-              </h3>
-
-              <p class="mb-6 leading-relaxed text-neutral-600 dark:text-neutral-300">
-                {{ project.descriptionKey | translate }}
-              </p>
-
-              <div class="mb-6">
-                <h4
-                  class="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
-                >
-                  {{ 'projects.modal.stack' | translate }}
-                </h4>
-                <div class="flex flex-wrap gap-2">
-                  <span
-                    *ngFor="let tech of project.technologies"
-                    class="rounded-md bg-neutral-100 px-2 py-1 text-xs font-medium text-neutral-700 dark:bg-neutral-700 dark:text-neutral-300"
-                  >
-                    {{ tech }}
-                  </span>
-                </div>
-              </div>
-
-              <div class="mb-6">
-                <h4
-                  class="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
-                >
-                  {{ 'projects.modal.tags' | translate }}
-                </h4>
-                <div class="flex flex-wrap gap-2">
-                  <span
-                    *ngFor="let tagKey of project.tagsKeys"
-                    class="rounded-full bg-primary-50 px-3 py-1 text-xs font-medium text-primary-700 dark:bg-primary-900/40 dark:text-primary-300"
-                  >
-                    {{ tagKey | translate }}
-                  </span>
-                </div>
-              </div>
-
-              <div class="flex flex-wrap gap-3">
-                <button
-                  *ngIf="project.demoUrl"
-                  type="button"
-                  data-modal-action="redirect"
-                  class="flex items-center gap-2 rounded-lg bg-primary-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-400"
-                  (click)="openUrl(project.demoUrl!)"
-                >
-                  <i aria-hidden="true" class="fas fa-external-link-alt text-xs"></i>
-                  {{ 'projects.redirect' | translate }}
-                </button>
-                <button
-                  *ngIf="project.githubUrl"
-                  type="button"
-                  data-modal-action="github"
-                  class="flex items-center gap-2 rounded-lg border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-400 dark:border-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-700"
-                  (click)="openUrl(project.githubUrl!)"
-                >
-                  <i aria-hidden="true" class="fab fa-github text-xs"></i>
-                  {{ 'projects.viewCode' | translate }}
-                </button>
-                <button
-                  *ngIf="project.paperUrl"
-                  type="button"
-                  data-modal-action="paper"
-                  class="flex items-center gap-2 rounded-lg border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-400 dark:border-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-700"
-                  (click)="openUrl(project.paperUrl!)"
-                >
-                  <i aria-hidden="true" class="fas fa-graduation-cap text-xs"></i>
-                  {{ 'projects.viewPaper' | translate }}
-                </button>
+                {{ 'projects.modal.stack' | translate }}
+              </h4>
+              <div class="flex flex-wrap gap-2">
                 <span
-                  *ngIf="!project.demoUrl && !project.githubUrl && !project.paperUrl"
-                  class="text-sm italic text-neutral-500 dark:text-neutral-400"
+                  *ngFor="let tech of project.technologies"
+                  class="rounded-md bg-neutral-100 px-2 py-1 text-xs font-medium text-neutral-700 dark:bg-neutral-700 dark:text-neutral-300"
                 >
-                  {{ 'projects.modal.noLinks' | translate }}
+                  {{ tech }}
                 </span>
               </div>
+            </div>
+
+            <div class="mb-6">
+              <h4
+                class="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
+              >
+                {{ 'projects.modal.tags' | translate }}
+              </h4>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  *ngFor="let tagKey of project.tagsKeys"
+                  class="rounded-full bg-primary-50 px-3 py-1 text-xs font-medium text-primary-700 dark:bg-primary-900/40 dark:text-primary-300"
+                >
+                  {{ tagKey | translate }}
+                </span>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-3">
+              <button
+                *ngIf="project.demoUrl"
+                type="button"
+                data-modal-action="redirect"
+                class="flex items-center gap-2 rounded-lg bg-primary-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-400"
+                (click)="openUrl(project.demoUrl!)"
+              >
+                <i aria-hidden="true" class="fas fa-external-link-alt text-xs"></i>
+                {{ 'projects.redirect' | translate }}
+              </button>
+              <button
+                *ngIf="project.githubUrl"
+                type="button"
+                data-modal-action="github"
+                class="flex items-center gap-2 rounded-lg border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-400 dark:border-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-700"
+                (click)="openUrl(project.githubUrl!)"
+              >
+                <i aria-hidden="true" class="fab fa-github text-xs"></i>
+                {{ 'projects.viewCode' | translate }}
+              </button>
+              <button
+                *ngIf="project.paperUrl"
+                type="button"
+                data-modal-action="paper"
+                class="flex items-center gap-2 rounded-lg border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-400 dark:border-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-700"
+                (click)="openUrl(project.paperUrl!)"
+              >
+                <i aria-hidden="true" class="fas fa-graduation-cap text-xs"></i>
+                {{ 'projects.viewPaper' | translate }}
+              </button>
+              <span
+                *ngIf="!project.demoUrl && !project.githubUrl && !project.paperUrl"
+                class="text-sm italic text-neutral-500 dark:text-neutral-400"
+              >
+                {{ 'projects.modal.noLinks' | translate }}
+              </span>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   `,
   styles: [
     `
@@ -821,16 +892,20 @@ export class ProjectsComponent {
   @ViewChild('commercialCarousel') commercialCarousel!: ElementRef<HTMLDivElement>;
   @ViewChild('studyCarousel') studyCarousel!: ElementRef<HTMLDivElement>;
   @ViewChild('modalClose') modalClose?: ElementRef<HTMLButtonElement>;
+  @ViewChild('modalPanel') modalPanel?: ElementRef<HTMLElement>;
 
   public selectedProject: ProjectItem | null = null;
   public slideIndex = 0;
+  public decisionExpanded = false;
   private lastFocusedElement: HTMLElement | null = null;
 
   private cdr = inject(ChangeDetectorRef);
   private commands = inject(PortfolioCommandService);
   private destroyRef = inject(DestroyRef);
+  private host = inject(ElementRef<HTMLElement>);
   private catalog = inject(ProjectCatalogService);
   private translate = inject(TranslateService);
+  private scrollLock = inject(ScrollLockService);
 
   public commercialProjects: ProjectItem[] = this.catalog.commercial;
   public studyProjects: ProjectItem[] = this.catalog.study;
@@ -842,6 +917,7 @@ export class ProjectsComponent {
   };
 
   constructor() {
+    this.destroyRef.onDestroy(() => this.scrollLock.unlock('project-modal'));
     this.commands.openProject$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((project) => {
       this.openProjectModal(project);
     });
@@ -857,14 +933,22 @@ export class ProjectsComponent {
     const carousel = category === 'commercial' ? this.commercialCarousel : this.studyCarousel;
     if (!carousel) return;
 
-    const scrollAmount = 400; // Adjust based on card width
+    const firstCard = carousel.nativeElement.querySelector<HTMLElement>('[data-project-card]');
+    const cardWidth =
+      firstCard?.getBoundingClientRect().width ?? carousel.nativeElement.clientWidth;
+    const railStyles = getComputedStyle(carousel.nativeElement.firstElementChild as HTMLElement);
+    const gap =
+      [railStyles.columnGap, railStyles.gap]
+        .map((value) => Number.parseFloat(value))
+        .find(Number.isFinite) ?? 0;
+    const scrollAmount = cardWidth + gap;
     const currentScroll = carousel.nativeElement.scrollLeft;
     const targetScroll =
       direction === 'left' ? currentScroll - scrollAmount : currentScroll + scrollAmount;
 
     carousel.nativeElement.scrollTo({
       left: targetScroll,
-      behavior: 'smooth'
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
     });
   }
 
@@ -889,13 +973,6 @@ export class ProjectsComponent {
 
     this.scrollStates[category] = { canScrollLeft, canScrollRight };
     this.cdr.markForCheck();
-  }
-
-  // Calculate carousel width based on number of items
-  getCarouselWidth(itemCount: number): number {
-    const cardWidth = 400; // Base card width
-    const gap = 16; // Gap between cards
-    return cardWidth * itemCount + gap * (itemCount - 1);
   }
 
   // Iniciais do titulo traduzido, para o card sem screenshot.
@@ -948,8 +1025,10 @@ export class ProjectsComponent {
       document.activeElement instanceof HTMLElement ? document.activeElement : null;
     this.selectedProject = project;
     this.slideIndex = 0;
+    this.decisionExpanded = false;
     // Sem isso a pagina atras do modal rola junto no scroll do overlay.
-    document.body.style.overflow = 'hidden';
+    this.scrollLock.lock('project-modal');
+    this.setBackgroundInert(true);
     this.cdr.markForCheck();
     // Foco no botao de fechar para o teclado nao continuar preso no card.
     setTimeout(() => this.modalClose?.nativeElement.focus());
@@ -957,7 +1036,9 @@ export class ProjectsComponent {
 
   closeModal(): void {
     this.selectedProject = null;
-    document.body.style.overflow = '';
+    this.decisionExpanded = false;
+    this.scrollLock.unlock('project-modal');
+    this.setBackgroundInert(false);
     this.cdr.markForCheck();
     setTimeout(() => {
       if (this.lastFocusedElement?.isConnected) this.lastFocusedElement.focus();
@@ -986,12 +1067,20 @@ export class ProjectsComponent {
     this.cdr.markForCheck();
   }
 
+  toggleDecisionDetails(): void {
+    this.decisionExpanded = !this.decisionExpanded;
+    this.cdr.markForCheck();
+  }
+
   @HostListener('document:keydown', ['$event'])
   onKeydown(event: KeyboardEvent): void {
     const project = this.selectedProject;
     if (!project) return;
 
-    if (event.key === 'Escape') {
+    if (event.key === 'Tab') {
+      this.trapFocus(event);
+    } else if (event.key === 'Escape') {
+      event.preventDefault();
       this.closeModal();
     } else if (event.key === 'ArrowRight') {
       this.nextSlide(project);
@@ -1008,5 +1097,38 @@ export class ProjectsComponent {
   // Utility method to get translated tags (if needed)
   getTranslatedTags(tagsKeys: string[]): string[] {
     return tagsKeys.map((key) => this.translate.instant(key));
+  }
+
+  private trapFocus(event: KeyboardEvent): void {
+    const panel = this.modalPanel?.nativeElement;
+    if (!panel) return;
+    const focusable = Array.from(
+      panel.querySelectorAll<HTMLElement>('button:not([disabled]), a[href]')
+    ).filter((element) => element.offsetParent !== null);
+    if (!focusable.length) return;
+
+    const first = focusable[0];
+    const last = focusable.at(-1)!;
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
+  private setBackgroundInert(inert: boolean): void {
+    const background = [
+      ...document.querySelectorAll(
+        'app-header, app-command-center, app-status-bar, main > :not(app-projects)'
+      ),
+      this.host.nativeElement.querySelector('section')
+    ].filter((element): element is HTMLElement => element instanceof HTMLElement);
+
+    background.forEach((element) => {
+      if (inert) element.setAttribute('inert', '');
+      else element.removeAttribute('inert');
+    });
   }
 }

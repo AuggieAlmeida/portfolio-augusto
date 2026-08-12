@@ -8,7 +8,7 @@ import { ProjectCatalogService, ProjectItem } from '../projects/project-catalog.
 import { NavService } from '../services/nav.service';
 import { ThemeService } from '../services/theme.service';
 
-export type CommandEffect = 'clear' | 'close';
+export type CommandEffect = 'clear' | 'close' | 'reboot';
 
 export interface CommandResult {
   lines: string[];
@@ -93,7 +93,7 @@ export class PortfolioCommandService {
       case 'exit':
         return { lines: [], effect: 'close' };
       case 'reboot':
-        return { lines: ['Boot é opcional e será acionado por este comando na próxima fatia.'] };
+        return { lines: [], effect: 'reboot' };
       default:
         return { lines: [`Comando não reconhecido: ${command}. Use help.`] };
     }
