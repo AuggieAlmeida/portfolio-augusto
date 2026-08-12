@@ -4,14 +4,14 @@ Levantado em 2026-08-11 cruzando `src/app/components/projects/projects.json` com
 repositórios do GitHub (`gh`, conta `AuggieAlmeida` + orgs `Keanus-In-Reevesverse`,
 `JavaPadoca`, `KitManeger-Fatec`, `TJG-Tech`) e com as folhas de projeto do vault.
 
-Estado atual, **34 cards**: 15 com imagem, 13 com demo, 9 com repositório, 1 com publicação.
+Estado atual, **37 cards**: 15 com imagem, 13 com demo, 9 com repositório, 1 com publicação.
 
-O gargalo agora é imagem. Só existe um jeito de fechar os 19 que faltam: rodar cada projeto
-localmente e capturar a tela.
+O gargalo agora é imagem. Dos 22 que faltam, 17 só fecham rodando o projeto localmente e
+capturando a tela; os outros cinco ficam sem imagem por decisão, não por falta.
 
 ---
 
-## 1. Imagens faltando — 19 dos 34 cards
+## 1. Imagens faltando — 22 dos 37 cards
 
 Precisam rodar localmente, um a um:
 
@@ -23,7 +23,9 @@ Sem interface própria para capturar — o card pode ficar no fallback de inicia
 
 `pronto` · `tecnurg` · `barbearia-app` · `buscajogos`
 
-`portalaz` — você vai fornecer, com os dados sensíveis da empresa escondidos.
+Sem imagem **por decisão**, e não por falta — case sob confidencialidade, publicado só como
+texto: `portal-agente-ia` · `suite-financeira-b2b` · `portal-remuneracao-frota` ·
+`servidor-llm-local`.
 
 O fallback de iniciais cobre todos sem quebrar o layout, então nada aqui bloqueia deploy.
 
@@ -41,14 +43,14 @@ Ambas entram na galeria assim que você confirmar.
 
 ## 2. Repositório existe mas é privado — decisão sua
 
-| Card         | Repositório privado                            | Nota                                               |
-| ------------ | ---------------------------------------------- | -------------------------------------------------- |
-| `taskforge`  | `AuggieAlmeida/TaskForge`                      | projeto próprio, publicável se quiser              |
-| `jarbas`     | `AuggieAlmeida/Jarbas`                         | idem                                               |
-| `pokedex`    | `AuggieAlmeida/PokeAPI`                        | idem                                               |
-| `stechclub`  | `AuggieAlmeida/Stech`                          | código de empresa — não publicar sem aval da Stech |
-| `portalaz`   | `AuggieAlmeida/portalAZ`                       | código de cliente — não publicar                   |
-| `asurapadel` | `TJG-Tech/AsuraPadelWeb` + `AsuraPadelManager` | org de cliente — não publicar                      |
+| Card               | Repositório privado                            | Nota                                               |
+| ------------------ | ---------------------------------------------- | -------------------------------------------------- |
+| `taskforge`        | `AuggieAlmeida/TaskForge`                      | projeto próprio, publicável se quiser              |
+| `jarbas`           | `AuggieAlmeida/Jarbas`                         | idem                                               |
+| `pokedex`          | `AuggieAlmeida/PokeAPI`                        | idem                                               |
+| `stechclub`        | `AuggieAlmeida/Stech`                          | código de empresa — não publicar sem aval da Stech |
+| `portal-agente-ia` | `AuggieAlmeida/portalAZ`                       | código de cliente — não publicar                   |
+| `asurapadel`       | `TJG-Tech/AsuraPadelWeb` + `AsuraPadelManager` | org de cliente — não publicar                      |
 
 ## 3. Sem repositório localizado no GitHub
 
@@ -115,7 +117,7 @@ gh run rerun --failed -R AuggieAlmeida/aquila-e-evelyn
   publicada no RIC, o projeto correspondente ganha `paperUrl`.
 - `asurapadel` — a descrição afirma queda de 800 ms para 220 ms. A folha do vault registra
   o número como auto-relatado, **sem medição anexada**. Ou anexa a medição, ou o número sai.
-- Hero ainda diz "20 Projetos Concluídos" com 34 cards na página.
+- Hero ainda diz "20 Projetos Concluídos" com 37 cards na página.
 
 ## 7. Repositórios públicos que não estão no portfólio
 
@@ -140,10 +142,16 @@ Descartados como exercício, não portfólio: `C_Studies`, `JS-Scripts`, `Java-O
 Removidos em 2026-08-11 a seu pedido: `brechoapp` (GFC-Brech--ERP), `portfolio-suite`
 (portfolio-v2) e `jornada5d`. Outros ainda vão sair.
 
-Nunca entraram, e não entram sem decisão explícita sua:
+Entraram em 2026-08-12 como case anonimizado, sem nome de cliente, repositório, URL ou
+captura: `vertc-lastros` (Suíte financeira B2B), `grupoaz-portal` (Portal de remuneração e
+frota) e `servidor-stech-llm` (Servidor de LLM local). O card do agente de IA foi renomeado
+de `portalaz` para `portal-agente-ia` pelo mesmo motivo: os dois sistemas são do mesmo
+cliente, e o nome antigo o identificava.
 
-- `srim` — a folha carrega a tag `confidencial`.
-- `vertc-lastros` — suíte de cliente, anonimizada como "suíte financeira B2B" até no LinkedIn.
+Não entram sem decisão explícita sua:
+
+- `srim` — a folha carrega a tag `confidencial`, está `ativo` e a fonte é roadmap, ficha
+  técnica e **cotação**: material de proposta em negociação, não case entregue.
 - `valentine-love-landing` — presente pessoal; está no ar em `valentine-love-landing.vercel.app`.
-- `dev-grupo-az.web.app` — ambiente de desenvolvimento do cliente do PortalAZ, registrado na
+- `dev-grupo-az.web.app` — ambiente de desenvolvimento do cliente dos dois portais, registrado na
   folha do projeto. Não é demo pública e não deve virar link no site.

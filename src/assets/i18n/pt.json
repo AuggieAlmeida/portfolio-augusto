@@ -298,9 +298,9 @@
         "title": "AsuraPadel",
         "description": "Gestão de quadra de padel em duas aplicações: frontend Angular e API em C# publicada no Azure. O caso técnico é de performance — quando a API saiu para o servidor de teste, a resposta degradou, e a correção combinou cache, redesenho de endpoints, paginação em lotes, redução de payload e ajustes no cliente. Tempo médio relatado caiu de 800 ms para 220 ms."
       },
-      "portalaz": {
-        "title": "PortalAZ",
-        "description": "Portal para operar e auditar um atendimento com IA no WhatsApp. O produto não é o agente: é a interface que deixa pessoa não técnica testar, acompanhar e corrigir. Trouxe versionamento de prompt com rollback e um webhook separado para isolar o tráfego do sandbox do tráfego real — controle de qualidade aplicado a sistema não determinístico."
+      "portal_agente_ia": {
+        "title": "Portal de operação de agente de IA",
+        "description": "Portal para operar e auditar um atendimento com IA no WhatsApp. O produto não é o agente: é a interface que deixa pessoa não técnica testar, acompanhar e corrigir. Trouxe versionamento de prompt com rollback e um webhook separado para isolar o tráfego do sandbox do tráfego real — controle de qualidade aplicado a sistema não determinístico. Cliente sob confidencialidade: sem nome, repositório ou captura de tela."
       },
       "bubble_box_lavanderia": {
         "title": "Bubble Box",

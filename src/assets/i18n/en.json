@@ -244,9 +244,9 @@
         "title": "AsuraPadel",
         "description": "Padel court management across two applications: an Angular frontend and a C# API deployed on Azure. The interesting part is performance — response times degraded once the API moved to a test server, and the fix combined caching, endpoint redesign, batched pagination, payload reduction and client-side work. Reported average response time went from 800 ms to 220 ms."
       },
-      "portalaz": {
-        "title": "PortalAZ",
-        "description": "A portal for operating and auditing an AI-driven WhatsApp support flow. The product is not the agent: it is the interface that lets a non-technical person test, monitor and correct it. It introduced prompt versioning with rollback and a separate webhook isolating sandbox traffic from live traffic — quality control applied to a non-deterministic system."
+      "portal_agente_ia": {
+        "title": "AI agent operations portal",
+        "description": "Portal for running and auditing an AI-driven WhatsApp support channel. The product is not the agent: it is the interface that lets a non-technical person test, follow and correct it. It brought prompt versioning with rollback and a separate webhook isolating sandbox traffic from real traffic — quality control applied to a non-deterministic system. Client under confidentiality: no name, repository or screenshot."
       },
       "bubble_box_lavanderia": {
         "title": "Bubble Box",

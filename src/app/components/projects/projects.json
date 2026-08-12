@@ -119,9 +119,9 @@
       "image": "./assets/images/projects/asurapadel.jpg"
     },
     {
-      "id": "portalaz",
-      "titleKey": "projects.items.portalaz.title",
-      "descriptionKey": "projects.items.portalaz.description",
+      "id": "portal-agente-ia",
+      "titleKey": "projects.items.portal_agente_ia.title",
+      "descriptionKey": "projects.items.portal_agente_ia.description",
       "category": "commercial",
       "tagsKeys": ["projects.tags.ai", "projects.tags.platform", "projects.tags.automation"],
       "technologies": ["React", "TypeScript", "Supabase", "n8n", "AWS EC2", "Zod"]
