@@ -141,14 +141,9 @@ interface ProjectsData {
                       trackBy: trackByProject;
                       let i = index
                     "
-                    class="project-card flex-shrink-0 w-80 md:w-96"
+                    class="project-card flex-shrink-0 w-80 cursor-pointer md:w-96"
                     [style.animation-delay]="getStaggerDelay(i)"
-                    (click)="openProjectModal(project)"
-                    (keyup.enter)="openProjectModal(project)"
-                    (keyup.space)="openProjectModal(project)"
-                    [attr.aria-label]="'Open project: ' + (project.titleKey | translate)"
-                    tabindex="0"
-                    role="button"
+                    [attr.data-project-card]="project.id"
                   >
                     <div
                       class="project-card-inner bg-white dark:bg-primary-800 rounded-xl shadow-lg overflow-hidden border border-neutral-200 dark:border-neutral-700 transition-all duration-300 hover:shadow-2xl hover:scale-105 cursor-pointer h-full group focus:outline-none focus:ring-2 focus:ring-primary-500"
@@ -229,11 +224,27 @@ interface ProjectsData {
                         </div>
                       </div>
                       <div class="p-4 md:p-6">
-                        <h4
-                          class="project-title text-lg md:text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-2 transition-colors duration-200"
-                        >
-                          {{ project.titleKey | translate }}
-                        </h4>
+                        <div class="mb-2 flex items-start justify-between gap-3">
+                          <h4
+                            class="project-title text-lg md:text-xl font-semibold text-neutral-900 dark:text-neutral-100 transition-colors duration-200"
+                          >
+                            {{ project.titleKey | translate }}
+                          </h4>
+                          <button
+                            type="button"
+                            data-card-control
+                            class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-primary-200 bg-primary-50 text-primary-700 transition-colors hover:bg-primary-100 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-primary-700 dark:bg-primary-900/30 dark:text-primary-300 dark:hover:bg-primary-900/50"
+                            (click)="openProjectModal(project)"
+                            [title]="'projects.viewDetails' | translate"
+                            [attr.aria-label]="
+                              ('projects.viewDetails' | translate) +
+                              ': ' +
+                              (project.titleKey | translate)
+                            "
+                          >
+                            <i aria-hidden="true" class="fas fa-eye text-sm"></i>
+                          </button>
+                        </div>
                         <p
                           class="text-sm md:text-base text-neutral-600 dark:text-neutral-300 mb-4 line-clamp-3"
                         >
@@ -321,14 +332,9 @@ interface ProjectsData {
                 >
                   <div
                     *ngFor="let project of studyProjects; trackBy: trackByProject; let i = index"
-                    class="project-card flex-shrink-0 w-80 md:w-96"
+                    class="project-card flex-shrink-0 w-80 cursor-pointer md:w-96"
                     [style.animation-delay]="getStaggerDelay(i)"
-                    (click)="openProjectModal(project)"
-                    (keyup.enter)="openProjectModal(project)"
-                    (keyup.space)="openProjectModal(project)"
-                    [attr.aria-label]="'Open project: ' + (project.titleKey | translate)"
-                    tabindex="0"
-                    role="button"
+                    [attr.data-project-card]="project.id"
                   >
                     <div
                       class="project-card-inner bg-white dark:bg-primary-800 rounded-xl shadow-lg overflow-hidden border border-neutral-200 dark:border-neutral-700 transition-all duration-300 hover:shadow-2xl hover:scale-105 cursor-pointer h-full group focus:outline-none focus:ring-2 focus:ring-primary-500"
@@ -409,11 +415,27 @@ interface ProjectsData {
                         </div>
                       </div>
                       <div class="p-4 md:p-6">
-                        <h4
-                          class="project-title text-lg md:text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-2 transition-colors duration-200"
-                        >
-                          {{ project.titleKey | translate }}
-                        </h4>
+                        <div class="mb-2 flex items-start justify-between gap-3">
+                          <h4
+                            class="project-title text-lg md:text-xl font-semibold text-neutral-900 dark:text-neutral-100 transition-colors duration-200"
+                          >
+                            {{ project.titleKey | translate }}
+                          </h4>
+                          <button
+                            type="button"
+                            data-card-control
+                            class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-primary-200 bg-primary-50 text-primary-700 transition-colors hover:bg-primary-100 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-primary-700 dark:bg-primary-900/30 dark:text-primary-300 dark:hover:bg-primary-900/50"
+                            (click)="openProjectModal(project)"
+                            [title]="'projects.viewDetails' | translate"
+                            [attr.aria-label]="
+                              ('projects.viewDetails' | translate) +
+                              ': ' +
+                              (project.titleKey | translate)
+                            "
+                          >
+                            <i aria-hidden="true" class="fas fa-eye text-sm"></i>
+                          </button>
+                        </div>
                         <p
                           class="text-sm md:text-base text-neutral-600 dark:text-neutral-300 mb-4 line-clamp-3"
                         >
@@ -475,12 +497,14 @@ interface ProjectsData {
 
           <div class="overflow-y-auto">
             <!-- Galeria -->
-            <div class="relative flex h-64 items-center justify-center bg-neutral-900 md:h-[24rem]">
+            <div
+              class="project-modal-media relative flex w-full items-center justify-center overflow-hidden bg-neutral-900"
+            >
               <img
                 *ngIf="slides(project).length; else modalFallback"
                 [src]="slides(project)[slideIndex]"
                 [alt]="(project.titleKey | translate) + ' — ' + (slideIndex + 1)"
-                class="h-full w-full object-contain"
+                class="block h-auto w-auto max-w-full shrink-0"
               />
               <ng-template #modalFallback>
                 <span
@@ -817,6 +841,7 @@ export class ProjectsComponent {
 
   public selectedProject: ProjectItem | null = null;
   public slideIndex = 0;
+  private lastFocusedElement: HTMLElement | null = null;
 
   private cdr = inject(ChangeDetectorRef);
   private translate = inject(TranslateService);
@@ -912,7 +937,27 @@ export class ProjectsComponent {
     return project.image ? [project.image] : [];
   }
 
+  /** Mantém o clique no card como atalho de mouse sem transformar um contêiner
+   * em botão e sem aninhar os controles de link dentro dele. */
+  @HostListener('click', ['$event'])
+  onProjectsClick(event: MouseEvent): void {
+    const target = event.target;
+    if (!(target instanceof Element) || target.closest('[data-card-control]')) return;
+
+    const card = target.closest<HTMLElement>('[data-project-card]');
+    const projectId = card?.dataset['projectCard'];
+    if (!projectId) return;
+
+    const project = [...this.commercialProjects, ...this.studyProjects].find(
+      (item) => item.id === projectId
+    );
+    if (project) this.openProjectModal(project);
+  }
+
   openProjectModal(project: ProjectItem): void {
+    if (this.selectedProject) return;
+    this.lastFocusedElement =
+      document.activeElement instanceof HTMLElement ? document.activeElement : null;
     this.selectedProject = project;
     this.slideIndex = 0;
     // Sem isso a pagina atras do modal rola junto no scroll do overlay.
@@ -926,6 +971,10 @@ export class ProjectsComponent {
     this.selectedProject = null;
     document.body.style.overflow = '';
     this.cdr.markForCheck();
+    setTimeout(() => {
+      if (this.lastFocusedElement?.isConnected) this.lastFocusedElement.focus();
+      this.lastFocusedElement = null;
+    });
   }
 
   nextSlide(project: ProjectItem): void {

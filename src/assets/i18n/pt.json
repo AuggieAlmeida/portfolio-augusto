@@ -199,7 +199,7 @@
     "title": "Projetos",
     "description": "Veja alguns dos projetos que trabalhei recentemente:",
     "subtitle": "Uma seleção dos meus trabalhos mais recentes",
-    "clickInfo": "Clique em um projeto para ver mais detalhes ou acessar a demo.",
+    "clickInfo": "Clique em um projeto ou use Ver detalhes para conhecer o case e acessar os links.",
     "commercial": {
       "title": "Projetos Comerciais",
       "badge": "Comercial"
@@ -401,6 +401,7 @@
     "viewDemo": "Ver demo",
     "viewCode": "Ver código",
     "viewPaper": "Ver publicação",
+    "viewDetails": "Ver detalhes",
     "modal": {
       "close": "Fechar",
       "previous": "Imagem anterior",
