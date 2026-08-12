@@ -342,6 +342,10 @@
         "title": "Aquila e Evelyn",
         "description": "Convite digital de casamento transformado em demonstração pública sanitizada: página estática responsiva, identidade visual própria, animações em CSS e interação em JavaScript puro, sem expor dados do evento ou conteúdo pessoal."
       },
+      "presente_para_daniela": {
+        "title": "Presente para Daniela",
+        "description": "Experiência narrativa em Next.js com direção de arte gótica, rolagem horizontal, microinterações e animações em GSAP. A edição pública preserva o design e a engenharia, mas remove fotos, desenhos, datas, músicas e mensagens pessoais."
+      },
       "suite_financeira_b2b": {
         "title": "Suíte financeira B2B",
         "description": "Suíte de operação financeira em três repositórios: backend Django com DRF, JWT e tarefas assíncronas; interface Vue 3 com design system interno; e pipelines PySpark nas camadas silver e gold. Kafka integra os domínios com tópico por assunto, consumers com tratamento de erro e DLQ, e deploy de consumer separado por ambiente. AWS aparece como S3 com presigned URL, SQS e Secrets Manager — não só armazenamento. A remediação de vulnerabilidades colocou pip-audit dentro do job de build do CI. Cliente sob confidencialidade: sem nome, repositório ou captura de tela."

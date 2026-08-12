@@ -116,12 +116,7 @@
       "tagsKeys": ["projects.tags.management", "projects.tags.platform", "projects.tags.sports"],
       "technologies": ["Angular", "C#", "Azure", "SQL Server", "Jest"],
       "demoUrl": "https://green-hill-00d55160f.2.azurestaticapps.net/",
-      "image": "./assets/images/projects/asurapadel.jpg",
-      "images": [
-        "./assets/images/projects/asurapadel.jpg",
-        "./assets/images/projects/asurapadel-web-login.jpg",
-        "./assets/images/projects/asurapadel-mobile-login.png"
-      ]
+      "image": "./assets/images/projects/asurapadel.jpg"
     },
     {
       "id": "portal-agente-ia",
@@ -220,7 +215,8 @@
       "descriptionKey": "projects.items.barbearia_app.description",
       "category": "study",
       "tagsKeys": ["projects.tags.platform", "projects.tags.pwa", "projects.tags.management"],
-      "technologies": ["Next.js", "Supabase", "PostGIS", "Leaflet"]
+      "technologies": ["Next.js", "Supabase", "PostGIS", "Leaflet"],
+      "image": "./assets/images/projects/barbearia-app.png"
     },
     {
       "id": "pasta-la-vista",
@@ -254,6 +250,7 @@
       "category": "study",
       "tagsKeys": ["projects.tags.desktop", "projects.tags.management", "projects.tags.academic"],
       "technologies": ["Python", "pytest", "Alembic", "Docker"],
+      "image": "./assets/images/projects/kitbuilder.png",
       "paperUrl": "https://ric.cps.sp.gov.br/handle/123456789/46429",
       "githubUrl": "https://github.com/KitManeger-Fatec/KitBuilder-tkinter"
     },
@@ -348,6 +345,7 @@
       "category": "study",
       "tagsKeys": ["projects.tags.mobile", "projects.tags.game"],
       "technologies": ["Expo", "React Native", "SQLite", "Reanimated"],
+      "image": "./assets/images/projects/pokedex.png",
       "githubUrl": "https://github.com/AuggieAlmeida/Pokedex"
     },
     {
@@ -357,6 +355,7 @@
       "category": "study",
       "tagsKeys": ["projects.tags.desktop", "projects.tags.academic", "projects.tags.game"],
       "technologies": ["Java", "JavaFX", "Maven", "MVC"],
+      "image": "./assets/images/projects/javafx-pokemon.png",
       "githubUrl": "https://github.com/AuggieAlmeida/JAVAFX-MAVEN-MVC-POKEMONAPP"
     },
     {
@@ -384,6 +383,25 @@
       ],
       "demoUrl": "https://auggiealmeida.github.io/aquila-e-evelyn/",
       "githubUrl": "https://github.com/AuggieAlmeida/aquila-e-evelyn"
+    },
+    {
+      "id": "presente-para-daniela",
+      "titleKey": "projects.items.presente_para_daniela.title",
+      "descriptionKey": "projects.items.presente_para_daniela.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.landing_page", "projects.tags.interactive"],
+      "technologies": ["Next.js", "React", "TypeScript", "GSAP", "Accessibility"],
+      "image": "./assets/images/projects/presente-daniela-hero.png",
+      "images": [
+        "./assets/images/projects/presente-daniela-hero.png",
+        "./assets/images/projects/presente-daniela-chapters.png",
+        "./assets/images/projects/presente-daniela-galeria.png",
+        "./assets/images/projects/presente-daniela-cartas.png",
+        "./assets/images/projects/presente-daniela-privacidade.png",
+        "./assets/images/projects/presente-daniela-mobile.png"
+      ],
+      "demoUrl": "https://cartaparadaniela.vercel.app/",
+      "githubUrl": "https://github.com/AuggieAlmeida/valentine-love-landing"
     }
   ]
 }
