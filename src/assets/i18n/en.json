@@ -7,7 +7,8 @@
     "projects": "Projects",
     "contact": "Contact",
     "language": "Language",
-    "theme": "Theme"
+    "theme": "Theme",
+    "terminal": "Open terminal"
   },
   "hero": {
     "title": "Augusto Almeida",
@@ -26,7 +27,7 @@
     "yearsOfExperience": "Years of Experience",
     "completedProjects": "Completed Projects",
     "languagesDominated": "Languages Dominated",
-    "englishLevel": "English (CEFR)"
+    "measuredSpeedup": "Faster in the measured case"
   },
   "about": {
     "aboutMe": "About Me",
@@ -153,8 +154,8 @@
     "subtitle": "A selection of my most recent works",
     "clickInfo": "Click a project or use View details to explore the case and its links.",
     "commercial": {
-      "title": "Commercial Projects",
-      "badge": "Commercial"
+      "title": "Professional projects",
+      "badge": "Professional"
     },
     "study": {
       "title": "Own Projects",
@@ -383,7 +384,7 @@
       }
     },
     "featured": {
-      "subtitle": "Six cases that back up the line above — with context, decision and evidence."
+      "subtitle": "Five professional deliveries and one personal showcase — with context, decision and evidence."
     },
     "all": {
       "show": "See all {{count}} projects",
@@ -393,11 +394,6 @@
       "previous": "Previous projects",
       "next": "Next projects"
     }
-  },
-  "statusBar": {
-    "label": "Portfolio status",
-    "section": "Section",
-    "terminal": "Terminal"
   },
   "project": {
     "viewDemo": "View Demo",

@@ -993,9 +993,7 @@ export class ProjectsComponent {
 
   private setBackgroundInert(inert: boolean): void {
     const background = [
-      ...document.querySelectorAll(
-        'app-header, app-command-center, app-status-bar, main > :not(app-projects)'
-      ),
+      ...document.querySelectorAll('app-header, app-command-center, main > :not(app-projects)'),
       this.host.nativeElement.querySelector('section')
     ].filter((element): element is HTMLElement => element instanceof HTMLElement);
 

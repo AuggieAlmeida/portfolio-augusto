@@ -55,8 +55,8 @@ describe('HeroComponent', () => {
 
     // O valor final já está no HTML: se o observador não rodar, o visitante lê
     // o número certo em vez de "0+".
-    expect(stats).toEqual(['5+', '33+']);
-    expect(host.textContent).toContain('stats.englishLevel');
+    expect(stats).toEqual(['5+', '35+']);
+    expect(host.textContent).toContain('stats.measuredSpeedup');
     expect(host.textContent).not.toContain('stats.languagesDominated');
   });
 

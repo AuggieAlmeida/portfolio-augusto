@@ -37,7 +37,7 @@ const BOOT_DURATION_MS = 1400;
       type="button"
       data-terminal-launcher
       class="fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom))] right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-primary-600 text-white shadow-lg shadow-primary-950/25 transition-transform hover:scale-105 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 dark:focus:ring-offset-primary-950"
-      [attr.aria-label]="'statusBar.terminal' | translate"
+      [attr.aria-label]="'nav.terminal' | translate"
       (click)="openTerminal()"
     >
       <i aria-hidden="true" class="fas fa-terminal"></i>

@@ -8,7 +8,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { SkillsComponent } from './components/skills/skills.component';
-import { StatusBarComponent } from './components/status-bar/status-bar.component';
 
 @Component({
   selector: 'app-root',
@@ -20,8 +19,7 @@ import { StatusBarComponent } from './components/status-bar/status-bar.component
     CareerRoadmapComponent,
     ProjectsComponent,
     SkillsComponent,
-    FooterComponent,
-    StatusBarComponent
+    FooterComponent
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './app.component.html'

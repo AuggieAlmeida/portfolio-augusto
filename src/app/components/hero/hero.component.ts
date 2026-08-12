@@ -49,8 +49,9 @@ import { NavService } from '../../core/services/nav.service';
         </div>
       </div>
 
-      <!-- Main Content -->
-      <div class="container relative z-10 mx-auto px-6 text-center">
+      <!-- Main Content. O padding de baixo reserva a faixa da seta: sem ele, a
+           seta ancorada no rodapé da seção passava por cima das estatísticas. -->
+      <div class="container relative z-10 mx-auto px-6 pb-24 pt-20 text-center md:pb-28">
         <div class="mx-auto max-w-4xl">
           <!-- Profile Picture -->
           <div class="mb-8 flex justify-center">
@@ -179,8 +180,10 @@ import { NavService } from '../../core/services/nav.service';
             </a>
           </div>
 
-          <!-- Stats. "4 Idiomas Dominados" saiu: espanhol A1 e francês B1 não
-               sustentam "dominados". O que sustenta é o inglês C1. -->
+          <!-- Stats. Nenhum é auto-elogio: os três apontam para algo medido ou
+               contado. O "12x" é o case de decisão do portal de fechamento, que
+               saiu de 4.271 ms para 354 ms e está publicado no modal com
+               contexto, evidência e impacto. -->
           <div class="mx-auto grid max-w-3xl grid-cols-1 gap-8 md:grid-cols-3">
             <div class="group text-center">
               <div
@@ -196,9 +199,9 @@ import { NavService } from '../../core/services/nav.service';
             <div class="group text-center">
               <div
                 class="stat-number mb-2 font-heading text-4xl font-bold text-secondary-600 transition-transform group-hover:scale-110 dark:text-secondary-400"
-                data-target="33"
+                data-target="35"
               >
-                33+
+                35+
               </div>
               <div class="font-sans font-medium text-neutral-600 dark:text-neutral-400">
                 {{ 'stats.completedProjects' | translate }}
@@ -208,10 +211,10 @@ import { NavService } from '../../core/services/nav.service';
               <div
                 class="mb-2 font-heading text-4xl font-bold text-accent-600 transition-transform group-hover:scale-110 dark:text-accent-400"
               >
-                C1
+                12x
               </div>
               <div class="font-sans font-medium text-neutral-600 dark:text-neutral-400">
-                {{ 'stats.englishLevel' | translate }}
+                {{ 'stats.measuredSpeedup' | translate }}
               </div>
             </div>
           </div>

@@ -109,10 +109,9 @@ describe('ProjectsComponent', () => {
   it('makes every background region inert while the project modal is open', () => {
     const header = document.createElement('app-header');
     const commandCenter = document.createElement('app-command-center');
-    const statusBar = document.createElement('app-status-bar');
     const main = document.createElement('main');
     const hero = document.createElement('app-hero');
-    document.body.append(header, commandCenter, statusBar, main);
+    document.body.append(header, commandCenter, main);
     main.append(hero, fixture.nativeElement);
 
     component.openProjectModal(component.commercialProjects[0]);
@@ -129,7 +128,6 @@ describe('ProjectsComponent', () => {
     expect(fixture.nativeElement.querySelector('section')?.hasAttribute('inert')).toBeFalse();
     header.remove();
     commandCenter.remove();
-    statusBar.remove();
     main.remove();
   });
 

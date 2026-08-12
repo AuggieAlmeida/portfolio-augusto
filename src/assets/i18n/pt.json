@@ -7,7 +7,8 @@
     "projects": "Projetos",
     "contact": "Contato",
     "language": "Idioma",
-    "theme": "Tema"
+    "theme": "Tema",
+    "terminal": "Abrir terminal"
   },
   "hero": {
     "title": "Augusto Almeida",
@@ -26,7 +27,7 @@
     "yearsOfExperience": "Anos de Experiência",
     "completedProjects": "Projetos Concluídos",
     "languagesDominated": "Idiomas Dominados",
-    "englishLevel": "Inglês (CEFR)"
+    "measuredSpeedup": "Mais rápido no case medido"
   },
   "about": {
     "aboutMe": "Sobre Mim",
@@ -211,8 +212,8 @@
     "subtitle": "Uma seleção dos meus trabalhos mais recentes",
     "clickInfo": "Clique em um projeto ou use Ver detalhes para conhecer o case e acessar os links.",
     "commercial": {
-      "title": "Projetos Comerciais",
-      "badge": "Comercial"
+      "title": "Projetos profissionais",
+      "badge": "Profissional"
     },
     "study": {
       "title": "Projetos Próprios",
@@ -441,7 +442,7 @@
       }
     },
     "featured": {
-      "subtitle": "Seis cases que sustentam o que está escrito acima — com contexto, decisão e evidência."
+      "subtitle": "Cinco entregas profissionais e um projeto pessoal de vitrine — com contexto, decisão e evidência."
     },
     "all": {
       "show": "Ver todos os {{count}} projetos",
@@ -451,11 +452,6 @@
       "previous": "Projetos anteriores",
       "next": "Próximos projetos"
     }
-  },
-  "statusBar": {
-    "label": "Status do portfólio",
-    "section": "Seção",
-    "terminal": "Terminal"
   },
   "project": {
     "viewDemo": "Ver Demo",

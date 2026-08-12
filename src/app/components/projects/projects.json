@@ -107,7 +107,8 @@
       "category": "commercial",
       "tagsKeys": ["projects.tags.crm", "projects.tags.management", "projects.tags.desktop"],
       "technologies": ["Python", "tkinter", "SQLite", "MVC", "CRM"],
-      "githubUrl": "https://github.com/AuggieAlmeida/MITRA"
+      "githubUrl": "https://github.com/AuggieAlmeida/MITRA",
+      "featured": true
     },
     {
       "id": "asurapadel",
@@ -176,7 +177,8 @@
       "technologies": ["HTML5", "CSS3", "JavaScript", "jQuery", "Bootstrap"],
       "imageKey": "bubble-box",
       "imageKeys": ["bubble-box", "bubble-box-franchise"],
-      "demoUrl": "https://bubblebox.com.br/"
+      "demoUrl": "https://bubblebox.com.br/",
+      "featured": true
     }
   ],
   "study": [
@@ -226,8 +228,7 @@
       "category": "study",
       "tagsKeys": ["projects.tags.platform", "projects.tags.pwa", "projects.tags.management"],
       "technologies": ["Next.js", "Supabase", "PostGIS", "Leaflet"],
-      "imageKey": "barbearia-app",
-      "featured": true
+      "imageKey": "barbearia-app"
     },
     {
       "id": "pasta-la-vista",
@@ -294,8 +295,7 @@
       "category": "study",
       "tagsKeys": ["projects.tags.ai", "projects.tags.desktop", "projects.tags.automation"],
       "technologies": ["TypeScript", "Tauri", "Node.js", "CLI", "LLM"],
-      "imageKey": "jarbas",
-      "featured": true
+      "imageKey": "jarbas"
     },
     {
       "id": "quinto-selo",
