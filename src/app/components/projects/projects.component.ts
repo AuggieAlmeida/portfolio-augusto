@@ -565,19 +565,11 @@ import { ScrollLockService } from '../../core/services/scroll-lock.service';
                     <dt class="font-medium text-primary-700 dark:text-primary-300">
                       {{ 'projects.modal.decision.decision' | translate }}
                     </dt>
+                    <!-- A stack não se repete aqui: o modal já tem a seção
+                         Stack logo abaixo, e duplicar os mesmos chips dentro do
+                         case só empurra a evidência e o impacto para baixo. -->
                     <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
                       {{ decision.decisionKey | translate }}
-                    </dd>
-                    <dd
-                      class="mt-2 flex flex-wrap gap-1.5"
-                      [attr.aria-label]="'projects.modal.stack' | translate"
-                    >
-                      <span
-                        *ngFor="let tech of project.technologies"
-                        class="rounded bg-white px-2 py-1 text-xs font-medium text-neutral-700 shadow-sm dark:bg-primary-800 dark:text-neutral-200"
-                      >
-                        {{ tech }}
-                      </span>
                     </dd>
                   </div>
                   <div *ngIf="decision.evidenceKey">
@@ -611,7 +603,7 @@ import { ScrollLockService } from '../../core/services/scroll-lock.service';
               </section>
             </ng-container>
 
-            <div class="mb-6">
+            <div class="mb-6" data-modal-stack>
               <h4
                 class="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
               >

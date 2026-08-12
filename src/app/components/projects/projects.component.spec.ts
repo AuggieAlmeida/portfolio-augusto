@@ -240,6 +240,22 @@ describe('ProjectsComponent', () => {
     expect(host.querySelector('[data-decision-toggle]')).toBeNull();
   });
 
+  it('lists the stack once, and not again inside the open decision case', () => {
+    const project = component.commercialProjects.find(
+      (item) => item.id === 'portal-remuneracao-frota'
+    )!;
+
+    component.openProjectModal(project);
+    component.toggleDecisionDetails();
+    fixture.detectChanges();
+    const host: HTMLElement = fixture.nativeElement;
+
+    expect(host.querySelectorAll('[data-modal-stack]').length).toBe(1);
+    expect(host.querySelector('#decision-details')?.textContent).not.toContain(
+      project.technologies[0]
+    );
+  });
+
   it('flags a self-reported figure inside the case instead of presenting it as measured', () => {
     const all = [...component.commercialProjects, ...component.studyProjects];
     const selfReported = all.find((item) => item.decision?.selfReported);
