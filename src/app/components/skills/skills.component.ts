@@ -94,7 +94,7 @@ interface LanguageItem {
                       {{ 'skills.filter.all' | translate: inventoryParams }}
                     </button>
 
-                    @for (category of skillCategories; track trackByCategory($index, category)) {
+                    @for (category of skillCategories; track category.key) {
                       <button
                         (click)="setActiveFilter(category.key)"
                         [class]="getFilterButtonClass(category.key)"
@@ -129,7 +129,7 @@ interface LanguageItem {
                     {{ 'skills.filter.all' | translate: inventoryParams }}
                   </button>
 
-                  @for (category of skillCategories; track trackByCategory($index, category)) {
+                  @for (category of skillCategories; track category.key) {
                     <button
                       (click)="setActiveFilter(category.key)"
                       [class]="getFilterButtonClass(category.key)"
@@ -149,7 +149,11 @@ interface LanguageItem {
                 <div
                   class="grid gap-2 md:gap-3 grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 2xl:grid-cols-12"
                 >
-                  @for (skill of filteredSkills; track trackBySkill(i, skill); let i = $index) {
+                  @for (
+                    skill of filteredSkills;
+                    track skill.name + '-' + skill.category;
+                    let i = $index
+                  ) {
                     <div
                       class="skill-item opacity-0 animate-fade-in-up"
                       [style.animation-delay]="getStaggerDelay(i)"
@@ -227,7 +231,7 @@ interface LanguageItem {
                 </h3>
 
                 <div class="grid grid-cols-1 gap-2 md:gap-3">
-                  @for (lang of languages; track trackByLanguage($index, lang)) {
+                  @for (lang of languages; track lang.nameKey) {
                     <div
                       class="flex items-center p-3 rounded-lg bg-white dark:bg-primary-800/60 border border-neutral-200 dark:border-neutral-700 transition-colors hover:border-primary-400"
                     >
@@ -433,19 +437,6 @@ export class SkillsComponent {
 
   getStaggerDelay(index: number): string {
     return `${index * 0.05}s`;
-  }
-
-  // TrackBy functions
-  trackByCategory(index: number, cat: SkillCategory): string {
-    return cat.key;
-  }
-
-  trackBySkill(index: number, item: SkillItem): string {
-    return `${item.name}-${item.category}`;
-  }
-
-  trackByLanguage(index: number, lang: LanguageItem): string {
-    return lang.nameKey;
   }
 
   public slugify(name: string): string {
