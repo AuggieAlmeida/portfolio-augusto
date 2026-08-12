@@ -27,7 +27,7 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "assets",
-                "ignore": ["images/masters/**", "images/masters-hero/**"]
+                "ignore": ["images/masters/**", "images/masters-hero/**", "i18n/**"]
               }
             ],
             "styles": ["src/styles.css", "src/styles/fonts/fonts.css", "src/styles/icons.css"],
