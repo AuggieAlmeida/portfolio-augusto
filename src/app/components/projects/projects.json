@@ -33,7 +33,8 @@
         "projects.tags.landing_page"
       ],
       "technologies": ["HTML5", "CSS3", "JavaScript", "CSS3", "Bootstrap"],
-      "demoUrl": "https://minhamaquinadeleads.com.br/f4eee40f"
+      "demoUrl": "https://minhamaquinadeleads.com.br/f4eee40f",
+      "featured": true
     },
     {
       "id": "braseng-consultoria",
@@ -107,8 +108,7 @@
       "category": "commercial",
       "tagsKeys": ["projects.tags.crm", "projects.tags.management", "projects.tags.desktop"],
       "technologies": ["Python", "tkinter", "SQLite", "MVC", "CRM"],
-      "githubUrl": "https://github.com/AuggieAlmeida/MITRA",
-      "featured": true
+      "githubUrl": "https://github.com/AuggieAlmeida/MITRA"
     },
     {
       "id": "asurapadel",
