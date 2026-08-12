@@ -25,6 +25,22 @@ export interface CommandSuggestion {
 /** Executa ações reais do portfolio; as duas superfícies de comando só as apresentam. */
 @Injectable({ providedIn: 'root' })
 export class PortfolioCommandService {
+  readonly helpLines = [
+    'help — mostra os comandos disponíveis',
+    'about — vai para Sobre',
+    'career — vai para Trajetória',
+    'skills — vai para Habilidades',
+    'contact — vai para Contato',
+    'projects — vai para Projetos',
+    'open <slug> — abre o projeto correspondente',
+    'search <termo> — busca nos projetos',
+    'theme dark|light — altera o tema',
+    'lang pt|en — altera o idioma',
+    'clear — limpa o histórico',
+    'exit — fecha o terminal',
+    'reboot — inicia o boot opcional'
+  ];
+
   private readonly catalog = inject(ProjectCatalogService);
   private readonly locale = inject(LocaleService);
   private readonly nav = inject(NavService);
@@ -54,13 +70,7 @@ export class PortfolioCommandService {
 
     switch (command.toLowerCase()) {
       case 'help':
-        return {
-          lines: [
-            'help · about · career · skills · contact · projects',
-            'open <slug> · search <termo> · theme dark|light · lang pt|en',
-            'clear · exit · reboot'
-          ]
-        };
+        return { lines: this.helpLines };
       case 'about':
       case 'career':
       case 'skills':

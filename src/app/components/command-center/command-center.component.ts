@@ -27,7 +27,7 @@ type Surface = 'terminal' | 'quick-open' | null;
   template: `
     <button
       type="button"
-      class="fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-white shadow-lg shadow-primary-950/25 transition-transform hover:scale-105 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 dark:focus:ring-offset-primary-950"
+      class="fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom))] right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-primary-600 text-white shadow-lg shadow-primary-950/25 transition-transform hover:scale-105 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 dark:focus:ring-offset-primary-950"
       aria-label="Abrir terminal"
       (click)="openTerminal()"
     >
@@ -82,8 +82,8 @@ type Surface = 'terminal' | 'quick-open' | null;
 
         <div *ngIf="surface === 'terminal'" class="min-h-0 flex-1 overflow-y-auto p-4 text-sm">
           <p class="mb-3 text-primary-700 dark:text-primary-300">portfolio&#64;auggie:~$ help</p>
-          <p class="mb-4 whitespace-pre-line text-neutral-600 dark:text-neutral-300">
-            {{ initialMessage }}
+          <p *ngFor="let line of helpLines" class="text-neutral-600 dark:text-neutral-300">
+            {{ line }}
           </p>
           <div *ngFor="let entry of history" class="mb-3">
             <p class="text-primary-700 dark:text-primary-300">
@@ -103,7 +103,7 @@ type Surface = 'terminal' | 'quick-open' | null;
             *ngFor="let suggestion of suggestions; let i = index"
             type="button"
             class="flex w-full items-center justify-between rounded-xl px-3 py-3 text-left transition-colors hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:hover:bg-primary-900/30"
-            [class.bg-primary-50]="i === activeSuggestion"
+            [class.command-suggestion-active]="i === activeSuggestion"
             (click)="choose(suggestion)"
           >
             <span>
@@ -159,7 +159,18 @@ type Surface = 'terminal' | 'quick-open' | null;
         </form>
       </section>
     </div>
-  `
+  `,
+  styles: [
+    `
+      .command-suggestion-active {
+        background: rgb(224 231 255);
+      }
+
+      :host-context(.dark) .command-suggestion-active {
+        background: rgb(49 46 129);
+      }
+    `
+  ]
 })
 export class CommandCenterComponent {
   @ViewChild('commandInput') commandInput?: ElementRef<HTMLInputElement>;
@@ -169,13 +180,12 @@ export class CommandCenterComponent {
   activeSuggestion = 0;
   suggestions: CommandSuggestion[] = [];
   history: { input: string; lines: string[] }[] = [];
-  readonly initialMessage =
-    'help · about · career · skills · contact · projects\nopen <slug> · search <termo> · theme dark|light · lang pt|en\nclear · exit · reboot';
-
   private readonly commands = inject(PortfolioCommandService);
   private readonly cdr = inject(ChangeDetectorRef);
   private readonly destroyRef = inject(DestroyRef);
   private lastFocusedElement: HTMLElement | null = null;
+
+  readonly helpLines = this.commands.helpLines;
 
   constructor() {
     this.commands.openSurface$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((surface) => {
