@@ -1,33 +1,46 @@
-import { Component, ChangeDetectionStrategy, inject, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  HostListener,
+  inject,
+  ViewChild
+} from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { ChangeDetectorRef } from '@angular/core';
 
 import projectsData from './projects.json';
 
 interface ProjectItem {
-    id: string;
-    titleKey: string;
-    descriptionKey: string;
-    image: string;
-    category: 'commercial' | 'study';
-    tagsKeys: string[];
-    technologies: string[];
-    demoUrl?: string;
-    githubUrl?: string;
+  id: string;
+  titleKey: string;
+  descriptionKey: string;
+  image: string;
+  /** Galeria do modal. Ausente, o modal cai para `image`; ausentes as duas, o
+   *  modal mostra o mesmo bloco de iniciais que o card. */
+  images?: string[];
+  category: 'commercial' | 'study';
+  tagsKeys: string[];
+  technologies: string[];
+  demoUrl?: string;
+  githubUrl?: string;
+  /** Publicação acadêmica do projeto — não é demo nem repositório, e rotular
+   *  como um dos dois enganaria quem clica. */
+  paperUrl?: string;
 }
 
 interface ProjectsData {
-    commercial: ProjectItem[];
-    study: ProjectItem[];
+  commercial: ProjectItem[];
+  study: ProjectItem[];
 }
 
 @Component({
-    selector: 'app-projects',
-    standalone: true,
-    imports: [CommonModule, TranslateModule],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: `
+  selector: 'app-projects',
+  standalone: true,
+  imports: [CommonModule, TranslateModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
     <section
       id="projects"
       class="projects py-8 md:py-12 px-3 md:px-8 lg:px-16 bg-gradient-to-br from-secondary-50 via-primary-50 to-accent-50 dark:from-secondary-950 dark:via-primary-950 dark:to-accent-950 relative overflow-hidden"
@@ -37,7 +50,7 @@ interface ProjectsData {
       <div
         class='absolute inset-0 bg-[url(&apos;data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%236366f1" fill-opacity="0.05"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&apos;)] opacity-30'
       ></div>
-      
+
       <!-- Animated background gradient -->
       <div
         class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-secondary-100/20 via-transparent to-primary-100/20 dark:from-secondary-800/20 dark:to-primary-800/20 animate-pulse-slow"
@@ -51,10 +64,12 @@ interface ProjectsData {
               id="projects-title"
               class="section-title text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-800 dark:text-neutral-100 mb-4"
             >
-            <span class="font-display text-secondary-600 dark:text-secondary-400">✦</span>
+              <span class="font-display text-secondary-600 dark:text-secondary-400">✦</span>
               {{ 'projects.title' | translate }}
             </h2>
-            <p class="text-sm md:text-base text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto">
+            <p
+              class="text-sm md:text-base text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto"
+            >
               {{ 'projects.subtitle' | translate }}
             </p>
             <p class="text-xs md:text-sm text-neutral-500 dark:text-neutral-400 mt-2">
@@ -65,14 +80,21 @@ interface ProjectsData {
           <!-- Commercial Projects Section -->
           <div class="mb-12 md:mb-16">
             <div class="flex items-center justify-between mb-6 md:mb-8">
-              <h3 class="text-xl md:text-2xl font-semibold text-neutral-800 dark:text-neutral-100 flex items-center gap-3">
-                <div class="w-8 h-8 md:w-10 md:h-10 bg-green-500 rounded-lg flex items-center justify-center">
-                  <i class="fas fa-briefcase text-white text-sm md:text-base"></i>
+              <h3
+                class="text-xl md:text-2xl font-semibold text-neutral-800 dark:text-neutral-100 flex items-center gap-3"
+              >
+                <div
+                  class="w-8 h-8 md:w-10 md:h-10 bg-primary-500 rounded-lg flex items-center justify-center"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fas fa-briefcase text-white text-sm md:text-base"
+                  ></i>
                 </div>
                 {{ 'projects.commercial.title' | translate }}
               </h3>
               <span class="text-sm md:text-base text-neutral-500 dark:text-neutral-400">
-                {{commercialProjects.length}} {{ 'projects.projectsCount' | translate }}
+                {{ commercialProjects.length }} {{ 'projects.projectsCount' | translate }}
               </span>
             </div>
 
@@ -88,9 +110,9 @@ interface ProjectsData {
                 tabindex="0"
                 class="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/70 hover:bg-black/90 text-white rounded-full flex items-center justify-center transition-all duration-200 opacity-0 group-hover:opacity-100 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white focus:opacity-100"
               >
-                <i class="fas fa-chevron-left"></i>
+                <i aria-hidden="true" class="fas fa-chevron-left"></i>
               </button>
-              
+
               <button
                 *ngIf="canScrollRight('commercial')"
                 (click)="scrollCarousel('commercial', 'right')"
@@ -100,18 +122,25 @@ interface ProjectsData {
                 tabindex="0"
                 class="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/70 hover:bg-black/90 text-white rounded-full flex items-center justify-center transition-all duration-200 opacity-0 group-hover:opacity-100 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white focus:opacity-100"
               >
-                <i class="fas fa-chevron-right"></i>
+                <i aria-hidden="true" class="fas fa-chevron-right"></i>
               </button>
 
               <!-- Carousel Container -->
-              <div 
+              <div
                 #commercialCarousel
                 class="overflow-x-auto scrollbar-hide scroll-smooth"
                 (scroll)="onScroll('commercial')"
               >
-                <div class="flex gap-4 pb-4" [style.width.px]="getCarouselWidth(commercialProjects.length)">
+                <div
+                  class="flex gap-4 pb-4"
+                  [style.width.px]="getCarouselWidth(commercialProjects.length)"
+                >
                   <div
-                    *ngFor="let project of commercialProjects; trackBy: trackByProject; let i = index"
+                    *ngFor="
+                      let project of commercialProjects;
+                      trackBy: trackByProject;
+                      let i = index
+                    "
                     class="project-card flex-shrink-0 w-80 md:w-96"
                     [style.animation-delay]="getStaggerDelay(i)"
                     (click)="openProjectModal(project)"
@@ -121,26 +150,46 @@ interface ProjectsData {
                     tabindex="0"
                     role="button"
                   >
-                    <div class="project-card-inner bg-white dark:bg-primary-800 rounded-xl shadow-lg overflow-hidden border border-neutral-200 dark:border-neutral-700 transition-all duration-300 hover:shadow-2xl hover:scale-105 cursor-pointer h-full group focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <div
+                      class="project-card-inner bg-white dark:bg-primary-800 rounded-xl shadow-lg overflow-hidden border border-neutral-200 dark:border-neutral-700 transition-all duration-300 hover:shadow-2xl hover:scale-105 cursor-pointer h-full group focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    >
                       <div class="relative overflow-hidden">
                         <img
+                          *ngIf="project.image"
                           [src]="project.image"
                           [alt]="project.titleKey | translate"
                           class="project-image w-full h-48 md:h-56 object-cover transition-transform duration-500"
                           loading="lazy"
                         />
-                        <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300"></div>
+                        <div
+                          *ngIf="!project.image"
+                          class="project-image w-full h-48 md:h-56 flex items-center justify-center bg-gradient-primary transition-transform duration-500"
+                          aria-hidden="true"
+                        >
+                          <span
+                            class="font-heading text-5xl font-bold text-white/90 tracking-widest"
+                          >
+                            {{ initials(project) }}
+                          </span>
+                        </div>
+                        <div
+                          class="project-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300"
+                        ></div>
                         <div class="absolute top-3 left-3">
-                          <div class="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1 shadow-lg">
-                            <i class="fas fa-dollar-sign text-xs"></i>
+                          <div
+                            class="bg-primary-500 text-white px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1 shadow-lg"
+                          >
+                            <i aria-hidden="true" class="fas fa-dollar-sign text-xs"></i>
                             {{ 'projects.commercial.badge' | translate }}
                           </div>
                         </div>
-                        <div class="project-buttons absolute bottom-3 right-3 opacity-0 transition-all duration-300 transform translate-y-2">
+                        <div
+                          class="project-buttons absolute bottom-3 right-3 opacity-0 transition-all duration-300 transform translate-y-2"
+                        >
                           <div class="flex gap-2">
                             <button
                               *ngIf="project.demoUrl"
-                              class="w-8 h-8 bg-white/90 hover:bg-white text-neutral-800 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-green-500"
+                              class="w-8 h-8 bg-white/90 hover:bg-white text-neutral-800 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary-500"
                               (click)="$event.stopPropagation(); openUrl(project.demoUrl!)"
                               (keyup.enter)="$event.stopPropagation(); openUrl(project.demoUrl!)"
                               (keyup.space)="$event.stopPropagation(); openUrl(project.demoUrl!)"
@@ -148,11 +197,11 @@ interface ProjectsData {
                               [attr.aria-label]="'View demo for ' + (project.titleKey | translate)"
                               tabindex="0"
                             >
-                              <i class="fas fa-external-link-alt text-xs"></i>
+                              <i aria-hidden="true" class="fas fa-external-link-alt text-xs"></i>
                             </button>
                             <button
                               *ngIf="project.githubUrl"
-                              class="w-8 h-8 bg-white/90 hover:bg-white text-neutral-800 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-green-500"
+                              class="w-8 h-8 bg-white/90 hover:bg-white text-neutral-800 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary-500"
                               (click)="$event.stopPropagation(); openUrl(project.githubUrl!)"
                               (keyup.enter)="$event.stopPropagation(); openUrl(project.githubUrl!)"
                               (keyup.space)="$event.stopPropagation(); openUrl(project.githubUrl!)"
@@ -160,22 +209,40 @@ interface ProjectsData {
                               [attr.aria-label]="'View code for ' + (project.titleKey | translate)"
                               tabindex="0"
                             >
-                              <i class="fab fa-github text-xs"></i>
+                              <i aria-hidden="true" class="fab fa-github text-xs"></i>
+                            </button>
+                            <button
+                              *ngIf="project.paperUrl"
+                              class="w-8 h-8 bg-white/90 hover:bg-white text-neutral-800 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                              (click)="$event.stopPropagation(); openUrl(project.paperUrl!)"
+                              (keyup.enter)="$event.stopPropagation(); openUrl(project.paperUrl!)"
+                              (keyup.space)="$event.stopPropagation(); openUrl(project.paperUrl!)"
+                              [title]="'projects.viewPaper' | translate"
+                              [attr.aria-label]="
+                                'View publication for ' + (project.titleKey | translate)
+                              "
+                              tabindex="0"
+                            >
+                              <i aria-hidden="true" class="fas fa-graduation-cap text-xs"></i>
                             </button>
                           </div>
                         </div>
                       </div>
                       <div class="p-4 md:p-6">
-                        <h4 class="project-title text-lg md:text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-2 transition-colors duration-200">
+                        <h4
+                          class="project-title text-lg md:text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-2 transition-colors duration-200"
+                        >
                           {{ project.titleKey | translate }}
                         </h4>
-                        <p class="text-sm md:text-base text-neutral-600 dark:text-neutral-300 mb-4 line-clamp-3">
+                        <p
+                          class="text-sm md:text-base text-neutral-600 dark:text-neutral-300 mb-4 line-clamp-3"
+                        >
                           {{ project.descriptionKey | translate }}
                         </p>
                         <div class="flex flex-wrap gap-2">
                           <span
                             *ngFor="let tech of project.technologies.slice(0, 4)"
-                            class="px-2 py-1 bg-neutral-100 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 text-xs rounded-md font-medium transition-colors duration-200 hover:bg-green-100 hover:text-green-800 dark:hover:bg-green-900/30 dark:hover:text-green-400"
+                            class="px-2 py-1 bg-neutral-100 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 text-xs rounded-md font-medium transition-colors duration-200 hover:bg-primary-100 hover:text-primary-800 dark:hover:bg-primary-900/30 dark:hover:text-primary-400"
                           >
                             {{ tech }}
                           </span>
@@ -197,14 +264,21 @@ interface ProjectsData {
           <!-- Study Projects Section -->
           <div class="mb-8">
             <div class="flex items-center justify-between mb-6 md:mb-8">
-              <h3 class="text-xl md:text-2xl font-semibold text-neutral-800 dark:text-neutral-100 flex items-center gap-3">
-                <div class="w-8 h-8 md:w-10 md:h-10 bg-green-500 rounded-lg flex items-center justify-center">
-                  <i class="fas fa-graduation-cap text-white text-sm md:text-base"></i>
+              <h3
+                class="text-xl md:text-2xl font-semibold text-neutral-800 dark:text-neutral-100 flex items-center gap-3"
+              >
+                <div
+                  class="w-8 h-8 md:w-10 md:h-10 bg-primary-500 rounded-lg flex items-center justify-center"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="fas fa-graduation-cap text-white text-sm md:text-base"
+                  ></i>
                 </div>
                 {{ 'projects.study.title' | translate }}
               </h3>
               <span class="text-sm md:text-base text-neutral-500 dark:text-neutral-400">
-                {{studyProjects.length}} {{ 'projects.projectsCount' | translate }}
+                {{ studyProjects.length }} {{ 'projects.projectsCount' | translate }}
               </span>
             </div>
 
@@ -220,9 +294,9 @@ interface ProjectsData {
                 tabindex="0"
                 class="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/70 hover:bg-black/90 text-white rounded-full flex items-center justify-center transition-all duration-200 opacity-0 group-hover:opacity-100 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white focus:opacity-100"
               >
-                <i class="fas fa-chevron-left"></i>
+                <i aria-hidden="true" class="fas fa-chevron-left"></i>
               </button>
-              
+
               <button
                 *ngIf="canScrollRight('study')"
                 (click)="scrollCarousel('study', 'right')"
@@ -232,16 +306,19 @@ interface ProjectsData {
                 tabindex="0"
                 class="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/70 hover:bg-black/90 text-white rounded-full flex items-center justify-center transition-all duration-200 opacity-0 group-hover:opacity-100 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white focus:opacity-100"
               >
-                <i class="fas fa-chevron-right"></i>
+                <i aria-hidden="true" class="fas fa-chevron-right"></i>
               </button>
 
               <!-- Carousel Container -->
-              <div 
+              <div
                 #studyCarousel
                 class="overflow-x-auto scrollbar-hide scroll-smooth"
                 (scroll)="onScroll('study')"
               >
-                <div class="flex gap-4 py-4" [style.width.px]="getCarouselWidth(studyProjects.length)">
+                <div
+                  class="flex gap-4 py-4"
+                  [style.width.px]="getCarouselWidth(studyProjects.length)"
+                >
                   <div
                     *ngFor="let project of studyProjects; trackBy: trackByProject; let i = index"
                     class="project-card flex-shrink-0 w-80 md:w-96"
@@ -253,26 +330,46 @@ interface ProjectsData {
                     tabindex="0"
                     role="button"
                   >
-                    <div class="project-card-inner bg-white dark:bg-primary-800 rounded-xl shadow-lg overflow-hidden border border-neutral-200 dark:border-neutral-700 transition-all duration-300 hover:shadow-2xl hover:scale-105 cursor-pointer h-full group focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <div
+                      class="project-card-inner bg-white dark:bg-primary-800 rounded-xl shadow-lg overflow-hidden border border-neutral-200 dark:border-neutral-700 transition-all duration-300 hover:shadow-2xl hover:scale-105 cursor-pointer h-full group focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    >
                       <div class="relative overflow-hidden">
                         <img
+                          *ngIf="project.image"
                           [src]="project.image"
                           [alt]="project.titleKey | translate"
                           class="project-image w-full h-48 md:h-56 object-cover transition-transform duration-500"
                           loading="lazy"
                         />
-                        <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300"></div>
+                        <div
+                          *ngIf="!project.image"
+                          class="project-image w-full h-48 md:h-56 flex items-center justify-center bg-gradient-primary transition-transform duration-500"
+                          aria-hidden="true"
+                        >
+                          <span
+                            class="font-heading text-5xl font-bold text-white/90 tracking-widest"
+                          >
+                            {{ initials(project) }}
+                          </span>
+                        </div>
+                        <div
+                          class="project-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300"
+                        ></div>
                         <div class="absolute top-3 left-3">
-                          <div class="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1 shadow-lg">
-                            <i class="fas fa-book text-xs"></i>
+                          <div
+                            class="bg-primary-500 text-white px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1 shadow-lg"
+                          >
+                            <i aria-hidden="true" class="fas fa-book text-xs"></i>
                             {{ 'projects.study.badge' | translate }}
                           </div>
                         </div>
-                        <div class="project-buttons absolute bottom-3 right-3 opacity-0 transition-all duration-300 transform translate-y-2">
+                        <div
+                          class="project-buttons absolute bottom-3 right-3 opacity-0 transition-all duration-300 transform translate-y-2"
+                        >
                           <div class="flex gap-2">
                             <button
                               *ngIf="project.demoUrl"
-                              class="w-8 h-8 bg-white/90 hover:bg-white text-neutral-800 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                              class="w-8 h-8 bg-white/90 hover:bg-white text-neutral-800 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary-500"
                               (click)="$event.stopPropagation(); openUrl(project.demoUrl!)"
                               (keyup.enter)="$event.stopPropagation(); openUrl(project.demoUrl!)"
                               (keyup.space)="$event.stopPropagation(); openUrl(project.demoUrl!)"
@@ -280,11 +377,11 @@ interface ProjectsData {
                               [attr.aria-label]="'View demo for ' + (project.titleKey | translate)"
                               tabindex="0"
                             >
-                              <i class="fas fa-external-link-alt text-xs"></i>
+                              <i aria-hidden="true" class="fas fa-external-link-alt text-xs"></i>
                             </button>
                             <button
                               *ngIf="project.githubUrl"
-                              class="w-8 h-8 bg-white/90 hover:bg-white text-neutral-800 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                              class="w-8 h-8 bg-white/90 hover:bg-white text-neutral-800 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary-500"
                               (click)="$event.stopPropagation(); openUrl(project.githubUrl!)"
                               (keyup.enter)="$event.stopPropagation(); openUrl(project.githubUrl!)"
                               (keyup.space)="$event.stopPropagation(); openUrl(project.githubUrl!)"
@@ -292,16 +389,34 @@ interface ProjectsData {
                               [attr.aria-label]="'View code for ' + (project.titleKey | translate)"
                               tabindex="0"
                             >
-                              <i class="fab fa-github text-xs"></i>
+                              <i aria-hidden="true" class="fab fa-github text-xs"></i>
+                            </button>
+                            <button
+                              *ngIf="project.paperUrl"
+                              class="w-8 h-8 bg-white/90 hover:bg-white text-neutral-800 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                              (click)="$event.stopPropagation(); openUrl(project.paperUrl!)"
+                              (keyup.enter)="$event.stopPropagation(); openUrl(project.paperUrl!)"
+                              (keyup.space)="$event.stopPropagation(); openUrl(project.paperUrl!)"
+                              [title]="'projects.viewPaper' | translate"
+                              [attr.aria-label]="
+                                'View publication for ' + (project.titleKey | translate)
+                              "
+                              tabindex="0"
+                            >
+                              <i aria-hidden="true" class="fas fa-graduation-cap text-xs"></i>
                             </button>
                           </div>
                         </div>
                       </div>
                       <div class="p-4 md:p-6">
-                        <h4 class="project-title text-lg md:text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-2 transition-colors duration-200">
+                        <h4
+                          class="project-title text-lg md:text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-2 transition-colors duration-200"
+                        >
                           {{ project.titleKey | translate }}
                         </h4>
-                        <p class="text-sm md:text-base text-neutral-600 dark:text-neutral-300 mb-4 line-clamp-3">
+                        <p
+                          class="text-sm md:text-base text-neutral-600 dark:text-neutral-300 mb-4 line-clamp-3"
+                        >
                           {{ project.descriptionKey | translate }}
                         </p>
                         <div class="flex flex-wrap gap-2">
@@ -327,10 +442,201 @@ interface ProjectsData {
           </div>
         </div>
       </div>
+
+      <!-- Modal de detalhe -->
+      <div
+        *ngIf="selectedProject as project"
+        class="project-modal fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6"
+        role="dialog"
+        aria-modal="true"
+        [attr.aria-label]="project.titleKey | translate"
+      >
+        <!-- Backdrop e um button de verdade: satisfaz teclado e foco sem o
+             div-com-click que as regras de acessibilidade barram. -->
+        <button
+          type="button"
+          class="absolute inset-0 h-full w-full cursor-default bg-black/70 backdrop-blur-sm"
+          (click)="closeModal()"
+          [attr.aria-label]="'projects.modal.close' | translate"
+        ></button>
+
+        <div
+          class="project-modal-panel relative flex max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-primary-800"
+        >
+          <button
+            #modalClose
+            type="button"
+            class="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-primary-400"
+            (click)="closeModal()"
+            [attr.aria-label]="'projects.modal.close' | translate"
+          >
+            <i aria-hidden="true" class="fas fa-times"></i>
+          </button>
+
+          <div class="overflow-y-auto">
+            <!-- Galeria -->
+            <div class="relative flex h-64 items-center justify-center bg-neutral-900 md:h-[24rem]">
+              <img
+                *ngIf="slides(project).length; else modalFallback"
+                [src]="slides(project)[slideIndex]"
+                [alt]="(project.titleKey | translate) + ' — ' + (slideIndex + 1)"
+                class="h-full w-full object-contain"
+              />
+              <ng-template #modalFallback>
+                <span
+                  class="font-heading text-6xl font-bold tracking-widest text-white/80"
+                  aria-hidden="true"
+                >
+                  {{ initials(project) }}
+                </span>
+              </ng-template>
+
+              <ng-container *ngIf="slides(project).length > 1">
+                <button
+                  type="button"
+                  class="absolute left-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-primary-400"
+                  (click)="prevSlide(project)"
+                  [attr.aria-label]="'projects.modal.previous' | translate"
+                >
+                  <i aria-hidden="true" class="fas fa-chevron-left"></i>
+                </button>
+                <button
+                  type="button"
+                  class="absolute right-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-primary-400"
+                  (click)="nextSlide(project)"
+                  [attr.aria-label]="'projects.modal.next' | translate"
+                >
+                  <i aria-hidden="true" class="fas fa-chevron-right"></i>
+                </button>
+                <div class="absolute bottom-3 flex gap-2">
+                  <button
+                    *ngFor="let slide of slides(project); let i = index"
+                    type="button"
+                    class="h-2.5 w-2.5 rounded-full bg-white transition-opacity focus:outline-none focus:ring-2 focus:ring-primary-400"
+                    [class.opacity-100]="i === slideIndex"
+                    [class.opacity-40]="i !== slideIndex"
+                    (click)="goToSlide(i)"
+                    [attr.aria-label]="('projects.modal.goToImage' | translate) + ' ' + (i + 1)"
+                    [attr.aria-current]="i === slideIndex"
+                  ></button>
+                </div>
+              </ng-container>
+            </div>
+
+            <!-- Detalhe -->
+            <div class="p-5 md:p-8">
+              <div class="mb-3 flex flex-wrap items-center gap-3">
+                <span
+                  class="flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium text-white"
+                  [class.bg-primary-500]="project.category === 'commercial'"
+                  [class.bg-secondary-500]="project.category === 'study'"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="text-xs fas"
+                    [class.fa-dollar-sign]="project.category === 'commercial'"
+                    [class.fa-graduation-cap]="project.category === 'study'"
+                  ></i>
+                  {{
+                    (project.category === 'commercial'
+                      ? 'projects.commercial.badge'
+                      : 'projects.study.badge'
+                    ) | translate
+                  }}
+                </span>
+                <span
+                  *ngIf="slides(project).length > 1"
+                  class="text-xs text-neutral-500 dark:text-neutral-400"
+                >
+                  {{ slideIndex + 1 }} / {{ slides(project).length }}
+                </span>
+              </div>
+
+              <h3
+                class="mb-4 font-heading text-2xl font-bold text-neutral-900 dark:text-neutral-100 md:text-3xl"
+              >
+                {{ project.titleKey | translate }}
+              </h3>
+
+              <p class="mb-6 leading-relaxed text-neutral-600 dark:text-neutral-300">
+                {{ project.descriptionKey | translate }}
+              </p>
+
+              <div class="mb-6">
+                <h4
+                  class="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
+                >
+                  {{ 'projects.modal.stack' | translate }}
+                </h4>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    *ngFor="let tech of project.technologies"
+                    class="rounded-md bg-neutral-100 px-2 py-1 text-xs font-medium text-neutral-700 dark:bg-neutral-700 dark:text-neutral-300"
+                  >
+                    {{ tech }}
+                  </span>
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <h4
+                  class="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
+                >
+                  {{ 'projects.modal.tags' | translate }}
+                </h4>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    *ngFor="let tagKey of project.tagsKeys"
+                    class="rounded-full bg-primary-50 px-3 py-1 text-xs font-medium text-primary-700 dark:bg-primary-900/40 dark:text-primary-300"
+                  >
+                    {{ tagKey | translate }}
+                  </span>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-3">
+                <button
+                  *ngIf="project.demoUrl"
+                  type="button"
+                  class="flex items-center gap-2 rounded-lg bg-primary-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-400"
+                  (click)="openUrl(project.demoUrl!)"
+                >
+                  <i aria-hidden="true" class="fas fa-external-link-alt text-xs"></i>
+                  {{ 'projects.viewDemo' | translate }}
+                </button>
+                <button
+                  *ngIf="project.githubUrl"
+                  type="button"
+                  class="flex items-center gap-2 rounded-lg border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-400 dark:border-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-700"
+                  (click)="openUrl(project.githubUrl!)"
+                >
+                  <i aria-hidden="true" class="fab fa-github text-xs"></i>
+                  {{ 'projects.viewCode' | translate }}
+                </button>
+                <button
+                  *ngIf="project.paperUrl"
+                  type="button"
+                  class="flex items-center gap-2 rounded-lg border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-400 dark:border-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-700"
+                  (click)="openUrl(project.paperUrl!)"
+                >
+                  <i aria-hidden="true" class="fas fa-graduation-cap text-xs"></i>
+                  {{ 'projects.viewPaper' | translate }}
+                </button>
+                <span
+                  *ngIf="!project.demoUrl && !project.githubUrl && !project.paperUrl"
+                  class="text-sm italic text-neutral-500 dark:text-neutral-400"
+                >
+                  {{ 'projects.modal.noLinks' | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   `,
-    styles: [
-        `
+  styles: [
+    `
       @keyframes fadeInUp {
         from {
           opacity: 0;
@@ -425,11 +731,21 @@ interface ProjectsData {
       }
 
       /* Stagger animation delay */
-      .project-card:nth-child(1) { animation-delay: 0s; }
-      .project-card:nth-child(2) { animation-delay: 0.1s; }
-      .project-card:nth-child(3) { animation-delay: 0.2s; }
-      .project-card:nth-child(4) { animation-delay: 0.3s; }
-      .project-card:nth-child(5) { animation-delay: 0.4s; }
+      .project-card:nth-child(1) {
+        animation-delay: 0s;
+      }
+      .project-card:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      .project-card:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+      .project-card:nth-child(4) {
+        animation-delay: 0.3s;
+      }
+      .project-card:nth-child(5) {
+        animation-delay: 0.4s;
+      }
 
       /* Navigation arrows positioning */
       .group:hover button {
@@ -438,7 +754,8 @@ interface ProjectsData {
 
       /* Pulse animation for background gradient */
       @keyframes pulse-slow {
-        0%, 100% {
+        0%,
+        100% {
           opacity: 0.3;
         }
         50% {
@@ -462,105 +779,197 @@ interface ProjectsData {
           width: 400px;
         }
       }
-    `,
-    ],
+
+      /* Modal */
+      @keyframes modalIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .project-modal-panel {
+        animation: modalIn 0.2s ease-out;
+      }
+
+      /* O :hover global de button acima aplicaria scale(1.1) tambem nos
+         controles do modal, que sao ancorados por posicao absoluta. */
+      .project-modal button:hover {
+        transform: none;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .project-modal-panel {
+          animation: none;
+        }
+      }
+    `
+  ]
 })
 export class ProjectsComponent {
-    @ViewChild('commercialCarousel') commercialCarousel!: ElementRef<HTMLDivElement>;
-    @ViewChild('studyCarousel') studyCarousel!: ElementRef<HTMLDivElement>;
+  @ViewChild('commercialCarousel') commercialCarousel!: ElementRef<HTMLDivElement>;
+  @ViewChild('studyCarousel') studyCarousel!: ElementRef<HTMLDivElement>;
+  @ViewChild('modalClose') modalClose?: ElementRef<HTMLButtonElement>;
 
-    private cdr = inject(ChangeDetectorRef);
-    private translate = inject(TranslateService);
+  public selectedProject: ProjectItem | null = null;
+  public slideIndex = 0;
 
-    public commercialProjects: ProjectItem[] = (projectsData as ProjectsData).commercial || [];
-    public studyProjects: ProjectItem[] = (projectsData as ProjectsData).study || [];
+  private cdr = inject(ChangeDetectorRef);
+  private translate = inject(TranslateService);
 
-    // Scroll state tracking
-    public scrollStates = {
-        commercial: { canScrollLeft: false, canScrollRight: true },
-        study: { canScrollLeft: false, canScrollRight: true }
-    };
+  public commercialProjects: ProjectItem[] = (projectsData as ProjectsData).commercial || [];
+  public studyProjects: ProjectItem[] = (projectsData as ProjectsData).study || [];
 
-    constructor() {
-        // Component initialization
+  // Scroll state tracking
+  public scrollStates = {
+    commercial: { canScrollLeft: false, canScrollRight: true },
+    study: { canScrollLeft: false, canScrollRight: true }
+  };
+
+  constructor() {
+    // Component initialization
+  }
+
+  // TrackBy function for performance
+  trackByProject(index: number, project: ProjectItem): string {
+    return project.id;
+  }
+
+  // Scroll carousel left or right
+  scrollCarousel(category: 'commercial' | 'study', direction: 'left' | 'right'): void {
+    const carousel = category === 'commercial' ? this.commercialCarousel : this.studyCarousel;
+    if (!carousel) return;
+
+    const scrollAmount = 400; // Adjust based on card width
+    const currentScroll = carousel.nativeElement.scrollLeft;
+    const targetScroll =
+      direction === 'left' ? currentScroll - scrollAmount : currentScroll + scrollAmount;
+
+    carousel.nativeElement.scrollTo({
+      left: targetScroll,
+      behavior: 'smooth'
+    });
+  }
+
+  // Check if can scroll left
+  canScrollLeft(category: 'commercial' | 'study'): boolean {
+    return this.scrollStates[category].canScrollLeft;
+  }
+
+  // Check if can scroll right
+  canScrollRight(category: 'commercial' | 'study'): boolean {
+    return this.scrollStates[category].canScrollRight;
+  }
+
+  // Handle scroll event to update navigation buttons
+  onScroll(category: 'commercial' | 'study'): void {
+    const carousel = category === 'commercial' ? this.commercialCarousel : this.studyCarousel;
+    if (!carousel) return;
+
+    const element = carousel.nativeElement;
+    const canScrollLeft = element.scrollLeft > 0;
+    const canScrollRight = element.scrollLeft < element.scrollWidth - element.clientWidth - 10;
+
+    this.scrollStates[category] = { canScrollLeft, canScrollRight };
+    this.cdr.markForCheck();
+  }
+
+  // Calculate carousel width based on number of items
+  getCarouselWidth(itemCount: number): number {
+    const cardWidth = 400; // Base card width
+    const gap = 16; // Gap between cards
+    return cardWidth * itemCount + gap * (itemCount - 1);
+  }
+
+  // Iniciais do titulo traduzido, para o card sem screenshot.
+  initials(project: ProjectItem): string {
+    const words = this.translate
+      .instant(project.titleKey)
+      .split(/[\s+/]+/)
+      .filter((word: string) => /[a-zA-Z0-9]/.test(word));
+
+    // Titulo de uma palavra so renderiza duas letras; duas ou mais, uma de cada.
+    return words.length === 1
+      ? words[0].slice(0, 2).toUpperCase()
+      : words
+          .slice(0, 2)
+          .map((word: string) => word[0].toUpperCase())
+          .join('');
+  }
+
+  // Get stagger delay for animations
+  getStaggerDelay(index: number): string {
+    return `${index * 0.1}s`;
+  }
+
+  // Galeria do modal: `images` quando existe, senao a capa do card, senao nada.
+  slides(project: ProjectItem): string[] {
+    if (project.images?.length) return project.images;
+    return project.image ? [project.image] : [];
+  }
+
+  openProjectModal(project: ProjectItem): void {
+    this.selectedProject = project;
+    this.slideIndex = 0;
+    // Sem isso a pagina atras do modal rola junto no scroll do overlay.
+    document.body.style.overflow = 'hidden';
+    this.cdr.markForCheck();
+    // Foco no botao de fechar para o teclado nao continuar preso no card.
+    setTimeout(() => this.modalClose?.nativeElement.focus());
+  }
+
+  closeModal(): void {
+    this.selectedProject = null;
+    document.body.style.overflow = '';
+    this.cdr.markForCheck();
+  }
+
+  nextSlide(project: ProjectItem): void {
+    const total = this.slides(project).length;
+    if (total > 1) {
+      this.slideIndex = (this.slideIndex + 1) % total;
+      this.cdr.markForCheck();
     }
+  }
 
-    // TrackBy function for performance
-    trackByProject(index: number, project: ProjectItem): string {
-        return project.id;
+  prevSlide(project: ProjectItem): void {
+    const total = this.slides(project).length;
+    if (total > 1) {
+      this.slideIndex = (this.slideIndex - 1 + total) % total;
+      this.cdr.markForCheck();
     }
+  }
 
-    // Scroll carousel left or right
-    scrollCarousel(category: 'commercial' | 'study', direction: 'left' | 'right'): void {
-        const carousel = category === 'commercial' ? this.commercialCarousel : this.studyCarousel;
-        if (!carousel) return;
+  goToSlide(index: number): void {
+    this.slideIndex = index;
+    this.cdr.markForCheck();
+  }
 
-        const scrollAmount = 400; // Adjust based on card width
-        const currentScroll = carousel.nativeElement.scrollLeft;
-        const targetScroll = direction === 'left'
-            ? currentScroll - scrollAmount
-            : currentScroll + scrollAmount;
+  @HostListener('document:keydown', ['$event'])
+  onKeydown(event: KeyboardEvent): void {
+    const project = this.selectedProject;
+    if (!project) return;
 
-        carousel.nativeElement.scrollTo({
-            left: targetScroll,
-            behavior: 'smooth'
-        });
+    if (event.key === 'Escape') {
+      this.closeModal();
+    } else if (event.key === 'ArrowRight') {
+      this.nextSlide(project);
+    } else if (event.key === 'ArrowLeft') {
+      this.prevSlide(project);
     }
+  }
 
-    // Check if can scroll left
-    canScrollLeft(category: 'commercial' | 'study'): boolean {
-        return this.scrollStates[category].canScrollLeft;
-    }
+  // Open URL in new tab
+  openUrl(url: string): void {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }
 
-    // Check if can scroll right
-    canScrollRight(category: 'commercial' | 'study'): boolean {
-        return this.scrollStates[category].canScrollRight;
-    }
-
-    // Handle scroll event to update navigation buttons
-    onScroll(category: 'commercial' | 'study'): void {
-        const carousel = category === 'commercial' ? this.commercialCarousel : this.studyCarousel;
-        if (!carousel) return;
-
-        const element = carousel.nativeElement;
-        const canScrollLeft = element.scrollLeft > 0;
-        const canScrollRight = element.scrollLeft < (element.scrollWidth - element.clientWidth - 10);
-
-        this.scrollStates[category] = { canScrollLeft, canScrollRight };
-        this.cdr.markForCheck();
-    }
-
-    // Calculate carousel width based on number of items
-    getCarouselWidth(itemCount: number): number {
-        const cardWidth = 400; // Base card width
-        const gap = 16; // Gap between cards
-        return (cardWidth * itemCount) + (gap * (itemCount - 1));
-    }
-
-    // Get stagger delay for animations
-    getStaggerDelay(index: number): string {
-        return `${index * 0.1}s`;
-    }
-
-    // Open project modal/details
-    openProjectModal(project: ProjectItem): void {
-        console.log('Opening project:', this.translate.instant(project.titleKey));
-
-        // Example: Open external URL if available
-        if (project.demoUrl) {
-            this.openUrl(project.demoUrl);
-        } else if (project.githubUrl) {
-            this.openUrl(project.githubUrl);
-        }
-    }
-
-    // Open URL in new tab
-    openUrl(url: string): void {
-        window.open(url, '_blank', 'noopener,noreferrer');
-    }
-
-    // Utility method to get translated tags (if needed)
-    getTranslatedTags(tagsKeys: string[]): string[] {
-        return tagsKeys.map(key => this.translate.instant(key));
-    }
+  // Utility method to get translated tags (if needed)
+  getTranslatedTags(tagsKeys: string[]): string[] {
+    return tagsKeys.map((key) => this.translate.instant(key));
+  }
 }

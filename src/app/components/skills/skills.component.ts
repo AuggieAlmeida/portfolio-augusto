@@ -1,8 +1,7 @@
 // skills.component.ts
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { ChangeDetectorRef } from '@angular/core';
 
 import skillsData from './skills.json';
 
@@ -29,6 +28,7 @@ interface SkillCategory {
 interface LanguageItem {
   nameKey: string;
   level: 'native' | 'advanced' | 'intermediate' | 'basic';
+  cefr?: string;
 }
 
 @Component({
@@ -58,13 +58,17 @@ interface LanguageItem {
             {{ 'skills.title' | translate }}
           </h2>
 
-          <p class="text-sm md:text-base text-neutral-600 dark:text-neutral-300 mb-6 md:mb-8 text-center md:text-left">
+          <p
+            class="text-sm md:text-base text-neutral-600 dark:text-neutral-300 mb-6 md:mb-8 text-center md:text-left"
+          >
             {{ 'skills.intro' | translate }}
           </p>
 
           <div class="flex flex-col lg:grid lg:grid-cols-4 gap-4 md:gap-6">
             <!-- Skills Section -->
-            <div class="order-2 lg:order-1 lg:col-span-3 bg-primary-200 dark:bg-primary-200/30 p-4 md:p-6 rounded-xl">
+            <div
+              class="order-2 lg:order-1 lg:col-span-3 bg-primary-200 dark:bg-primary-200/30 p-4 md:p-6 rounded-xl"
+            >
               <!-- Filter Buttons -->
               <div class="mb-4 md:mb-6">
                 <!-- Mobile: Horizontal scroll -->
@@ -78,14 +82,18 @@ interface LanguageItem {
                       <i class="fas fa-globe mr-2" aria-hidden="true"></i>
                       {{ 'skills.filter.all' | translate }}
                     </button>
-                    
+
                     <button
                       *ngFor="let category of skillCategories; trackBy: trackByCategory"
                       (click)="setActiveFilter(category.key)"
                       [class]="getFilterButtonClass(category.key)"
                       class="px-4 py-3 rounded-lg font-medium transition-all duration-200 text-sm whitespace-nowrap flex-shrink-0"
                     >
-                      <i *ngIf="category.icon" [ngClass]="category.icon + ' mr-2'" aria-hidden="true"></i>
+                      <i
+                        *ngIf="category.icon"
+                        [ngClass]="category.icon + ' mr-2'"
+                        aria-hidden="true"
+                      ></i>
                       {{ ('skills.categories.' + category.key | translate) || category.label }}
                     </button>
                   </div>
@@ -101,14 +109,18 @@ interface LanguageItem {
                     <i class="fas fa-globe mr-2" aria-hidden="true"></i>
                     {{ 'skills.filter.all' | translate }}
                   </button>
-                  
+
                   <button
                     *ngFor="let category of skillCategories; trackBy: trackByCategory"
                     (click)="setActiveFilter(category.key)"
                     [class]="getFilterButtonClass(category.key)"
                     class="px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm"
                   >
-                    <i *ngIf="category.icon" [ngClass]="category.icon + ' mr-2'" aria-hidden="true"></i>
+                    <i
+                      *ngIf="category.icon"
+                      [ngClass]="category.icon + ' mr-2'"
+                      aria-hidden="true"
+                    ></i>
                     {{ ('skills.categories.' + category.key | translate) || category.label }}
                   </button>
                 </div>
@@ -116,7 +128,9 @@ interface LanguageItem {
 
               <!-- Skills Grid -->
               <div class="">
-                <div class="grid gap-2 md:gap-3 grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 2xl:grid-cols-12">
+                <div
+                  class="grid gap-2 md:gap-3 grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 2xl:grid-cols-12"
+                >
                   <div
                     *ngFor="let skill of filteredSkills; trackBy: trackBySkill; let i = index"
                     class="skill-item opacity-0 animate-fade-in-up"
@@ -126,9 +140,7 @@ interface LanguageItem {
                       class="skill-card h-full w-full group p-3 md:p-4 rounded-lg bg-white dark:bg-primary-800/60 border border-neutral-200 dark:border-neutral-700 flex flex-col items-center justify-center gap-2 md:gap-3 text-center transition-all duration-200 hover:-translate-y-1 hover:scale-105 hover:shadow-lg hover:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 min-h-[90px] md:min-h-[100px]"
                       [attr.aria-label]="skill.name"
                       [attr.aria-describedby]="
-                        skill.descriptionKey
-                          ? 'desc-' + slugify(skill.name)
-                          : null
+                        skill.descriptionKey ? 'desc-' + slugify(skill.name) : null
                       "
                     >
                       <div
@@ -143,7 +155,10 @@ interface LanguageItem {
                           *ngIf="!skill.icon"
                           class="w-6 h-6 md:w-8 md:h-8 bg-neutral-600 rounded flex items-center justify-center"
                         >
-                          <i class="fas fa-question text-xs md:text-sm text-white"></i>
+                          <i
+                            aria-hidden="true"
+                            class="fas fa-question text-xs md:text-sm text-white"
+                          ></i>
                         </div>
                       </div>
 
@@ -172,17 +187,21 @@ interface LanguageItem {
                   *ngIf="filteredSkills.length === 0"
                   class="text-center py-8 text-neutral-500 dark:text-neutral-400"
                 >
-                  <i class="fas fa-search text-2xl md:text-3xl mb-4"></i>
+                  <i aria-hidden="true" class="fas fa-search text-2xl md:text-3xl mb-4"></i>
                   <p class="text-sm md:text-base">{{ 'skills.no_results' | translate }}</p>
                 </div>
               </div>
             </div>
 
             <!-- Languages and Soft Skills Section -->
-            <div class="order-1 lg:order-2 flex flex-col bg-primary-200 dark:bg-primary-200/30 p-4 md:p-6 rounded-xl">
+            <div
+              class="order-1 lg:order-2 flex flex-col bg-primary-200 dark:bg-primary-200/30 p-4 md:p-6 rounded-xl"
+            >
               <!-- Languages Section -->
               <div class="flex flex-col">
-                <h3 class="text-lg md:text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-3 md:mb-4 text-center">
+                <h3
+                  class="text-lg md:text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-3 md:mb-4 text-center"
+                >
                   {{ 'skills.languages.title' | translate }}
                 </h3>
 
@@ -191,28 +210,37 @@ interface LanguageItem {
                     *ngFor="let lang of languages; trackBy: trackByLanguage"
                     class="flex items-center p-3 rounded-lg bg-white dark:bg-primary-800/60 border border-neutral-200 dark:border-neutral-700 transition-colors hover:border-primary-400"
                   >
-                    <span class="font-medium text-sm md:text-base text-neutral-900 dark:text-neutral-100 flex-1">
+                    <span
+                      class="font-medium text-sm md:text-base text-neutral-900 dark:text-neutral-100 flex-1"
+                    >
                       {{ lang.nameKey | translate }}
                     </span>
                     <span
                       class="text-xs md:text-sm px-2 md:px-3 py-1 rounded-md font-medium min-w-[85px] md:min-w-[115px] text-center"
                       [class]="getLevelBadgeClass(lang.level)"
                     >
-                      {{ 'skills.languages.level_' + lang.level | translate }}
+                      {{ 'skills.languages.level_' + lang.level | translate
+                      }}<span *ngIf="lang.cefr" class="opacity-70"> · {{ lang.cefr }}</span>
                     </span>
                   </div>
                 </div>
               </div>
 
               <!-- Additional Content: Soft Skills -->
-              <div class="mt-6 md:mt-8 pt-4 md:pt-6 border-t border-neutral-300 dark:border-neutral-600">
-                <h3 class="text-lg md:text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-3 md:mb-4 text-center">
+              <div
+                class="mt-6 md:mt-8 pt-4 md:pt-6 border-t border-neutral-300 dark:border-neutral-600"
+              >
+                <h3
+                  class="text-lg md:text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-3 md:mb-4 text-center"
+                >
                   {{ 'skills.soft_skills.title' | translate }}
                 </h3>
 
                 <div class="grid grid-cols-1 gap-2">
                   <div
-                    *ngFor="let skill of ['teamwork', 'communication', 'problem_solving', 'adaptability']"
+                    *ngFor="
+                      let skill of ['teamwork', 'communication', 'problem_solving', 'adaptability']
+                    "
                     class="text-center p-2 md:p-3 rounded-lg bg-white dark:bg-primary-800/60 border border-neutral-200 dark:border-neutral-700"
                   >
                     <span class="text-xs md:text-sm text-neutral-900 dark:text-neutral-100">
@@ -239,7 +267,7 @@ interface LanguageItem {
           transform: translateY(0);
         }
       }
-      
+
       .animate-fade-in-up {
         animation: fadeInUp 0.4s ease forwards;
       }
@@ -286,13 +314,13 @@ interface LanguageItem {
         .skill-card {
           touch-action: manipulation;
         }
-        
+
         button {
           touch-action: manipulation;
         }
       }
-    `,
-  ],
+    `
+  ]
 })
 export class SkillsComponent {
   private cdr = inject(ChangeDetectorRef);
@@ -313,7 +341,7 @@ export class SkillsComponent {
   private initializeSkills(): void {
     // Flatten all skills and add category info
     this.allSkills = this.skillCategories.reduce((acc: SkillItem[], category) => {
-      const skillsWithCategory = category.items.map(item => ({
+      const skillsWithCategory = category.items.map((item) => ({
         ...item,
         category: category.key
       }));
@@ -329,14 +357,15 @@ export class SkillsComponent {
     if (filter === 'all') {
       this.filteredSkills = [...this.allSkills];
     } else {
-      this.filteredSkills = this.allSkills.filter(skill => skill.category === filter);
+      this.filteredSkills = this.allSkills.filter((skill) => skill.category === filter);
     }
 
     this.cdr.markForCheck();
   }
 
   getFilterButtonClass(filter: string): string {
-    const baseClasses = 'px-4 py-2 md:py-2 rounded-lg font-medium transition-all duration-200 text-sm';
+    const baseClasses =
+      'px-4 py-2 md:py-2 rounded-lg font-medium transition-all duration-200 text-sm';
 
     if (this.activeFilter === filter) {
       return `${baseClasses} bg-primary-600 text-white shadow-md transform scale-105`;
@@ -350,7 +379,7 @@ export class SkillsComponent {
 
     switch (level) {
       case 'native':
-        return `${baseClasses} bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400`;
+        return `${baseClasses} bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-400`;
       case 'advanced':
         return `${baseClasses} bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400`;
       case 'intermediate':

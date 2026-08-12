@@ -4,7 +4,10 @@
     "about": "Sobre",
     "carrer": "Carreira",
     "skills": "Habilidades",
-    "projects": "Projetos"
+    "projects": "Projetos",
+    "contact": "Contato",
+    "language": "Idioma",
+    "theme": "Tema"
   },
   "hero": {
     "title": "Augusto Almeida",
@@ -21,11 +24,11 @@
   },
   "about": {
     "aboutMe": "Sobre Mim",
-    "greeting": "Olá, eu sou Augusto Almeida — um apaixonado por tecnologia que transforma linhas de código em soluções que realmente fazem diferença. Minha missão? Construir sistemas que unem inovação, performance e impacto real.",
+    "greeting": "Sou desenvolvedor fullstack com viés forte de qualidade e dados. Comecei lendo dado em um time de inteligência de mercado, aprendi como produção quebra trabalhando em suporte, e desde 2022 construo software do banco à interface. O fio que liga as três fases é o mesmo: entender o problema antes de escolher a ferramenta.",
     "professionalOverview": "Visão Profissional",
-    "professionalDescription": "Atuo como Desenvolvedor e Engenheiro de Testes, com experiências que vão de startups a grandes corporações. Já construí interfaces responsivas que encantam usuários, desenvolvi APIs robustas que conectam ecossistemas inteiros e automatizei testes que garantem qualidade de ponta a ponta. Minha trajetória combina visão analítica, atenção aos detalhes e criatividade para resolver problemas complexos.",
+    "professionalDescription": "Hoje sou fullstack na Stech, em produtos internos e de clientes, com TypeScript, React, NestJS e Prisma sobre MySQL, tudo containerizado. Antes: Java e Spring Boot na Persys, o vínculo mais longo da minha carreira; frontend de conversão na Make; e engenharia de testes na Outlier, avaliando modelos de linguagem em voz, visão e texto. Por pouco mais de um ano também dei aula de Excel, Power BI e IA generativa no Cebrac — ensinar é o que obriga a entender de verdade.",
     "coreExpertise": "Especialidades Principais",
-    "expertiseDescription": "Sou especialista em desenvolvimento fullstack (Java, Spring Boot, Node.js, Angular, Next.js), integração de APIs (REST, GraphQL, WebSockets, gRPC) e arquiteturas modernas (Clean, Hexagonal e Microservices). Além disso, domino práticas de DevOps e QA, utilizando Docker, CI/CD e automação de testes com Pytest, Jest e Cypress para entregar software confiável e escalável.",
+    "expertiseDescription": "O que eu levo para um time é critério, não lista de stack. Auditar e corrigir vulnerabilidade em suíte financeira antes de virar incidente. Transformar regra de negócio em parâmetro rastreável, em vez de deixá-la chumbada no código. Tratar Core Web Vitals como requisito e não como enfeite — foi com essa régua que saíram mais de cem landing pages. E automatizar onde reduz risco: o TaskForge, que orquestra agentes em paralelo, cortou entre 70% e 90% do custo de LLM da engenharia. Quando o assunto é complexo, explicar faz parte da entrega.",
     "contactInfo": "Vamos nos conectar?",
     "email": "E-mail"
   },
@@ -61,7 +64,7 @@
       "problem_solving": "Resolução de problemas",
       "adaptability": "Adaptabilidade"
     },
-   "descriptions": {
+    "descriptions": {
       "html5": "Estrutura HTML semântica e boas práticas de acessibilidade.",
       "css3": "Layouts responsivos usando CSS moderno e utilitários do Tailwind.",
       "tailwind": "Framework CSS utility-first para desenvolvimento rápido e responsivo.",
@@ -112,7 +115,24 @@
       "splunk": "Análise de logs com Splunk.",
       "windows": "Sistema operacional Windows para desenvolvimento desktop e servidor.",
       "linux": "Sistemas Linux para desenvolvimento e infraestrutura.",
-      "macos": "Sistema operacional macOS para desenvolvimento multiplataforma."
+      "macos": "Sistema operacional macOS para desenvolvimento multiplataforma.",
+      "database": "Modelagem relacional e otimização de consultas (Postgres/MySQL).",
+      "nextjs": "Framework React para produção, com renderização no servidor e roteamento por arquivos.",
+      "vue": "Framework progressivo para interfaces reativas.",
+      "reactnative": "Aplicações móveis nativas com base de código compartilhada.",
+      "nestjs": "Framework Node.js modular, com injeção de dependência e estrutura opinativa.",
+      "prisma": "ORM tipado com schema declarativo e migrations versionadas.",
+      "go": "Linguagem compilada para serviços concorrentes e de alta vazão.",
+      "django": "Framework Python full-stack com ORM e admin integrados.",
+      "redis": "Armazenamento em memória para cache, sessão e fila.",
+      "supabase": "Backend gerenciado sobre Postgres, com auth, storage e edge functions.",
+      "kafka": "Plataforma de streaming de eventos para integração assíncrona.",
+      "zod": "Validação de schema em TypeScript, aplicada na borda do sistema.",
+      "vercel": "Hospedagem e deploy contínuo de aplicações web.",
+      "turborepo": "Build system para monorepo, com cache de tarefas.",
+      "vitest": "Runner de testes rápido para projetos em TypeScript.",
+      "monorepo": "Vários pacotes num repositório só, com dependências explícitas entre eles.",
+      "n8n": "Automação de fluxos e integração entre serviços por webhook."
     }
   },
   "languages": {
@@ -128,18 +148,17 @@
     "positions": {
       "intern_itau": "Estagiário - Consignado e Pós-venda",
       "intern_sintel": "Estagiário - Suporte N1 e Monitoramento",
-      "fullstack_freelancer": "Desenvolvedor Fullstack",
       "frontend_developer": "Desenvolvedor Frontend",
       "test_engineer": "Engenheiro de Testes",
-      "it_professor": "Professor de Tecnologia da Informação"
+      "it_professor": "Professor de Tecnologia da Informação",
+      "fullstack_developer": "Desenvolvedor Fullstack"
     },
     "companies": {
-      "freelancer": "Autônomo",
       "cebrac": "Cebrac Cursos"
     },
     "workskills": {
       "bi": "Business Intelligence",
-      "powerbi":"PowerBI",
+      "powerbi": "PowerBI",
       "data_analysis": "Análise de Dados",
       "excel": "Excel Avançado",
       "sql_basics": "SQL Básico",
@@ -166,7 +185,14 @@
       "llm": "Modelos de Linguagem",
       "data_storytelling": "Storytelling de Dados",
       "workshop_facilitation": "Facilitação de Workshops",
-      "task_automation": "Automação de Tarefas"
+      "task_automation": "Automação de Tarefas",
+      "java": "Java",
+      "springboot": "Spring Boot",
+      "sql": "SQL",
+      "docker": "Docker",
+      "react": "React",
+      "nestjs": "NestJS",
+      "prisma": "Prisma"
     }
   },
   "projects": {
@@ -179,8 +205,8 @@
       "badge": "Comercial"
     },
     "study": {
-      "title": "Projetos de Estudo",
-      "badge": "Estudo"
+      "title": "Projetos Próprios",
+      "badge": "Próprio"
     },
     "projectsCount": "projetos",
     "items": {
@@ -200,13 +226,9 @@
         "title": "Bumbum de Anjo",
         "description": "Landing page para produto de cuidado infantil, destacando benefícios do spray anti-assaduras e com call-to-action para conversão de vendas."
       },
-      "decided_mind": {
-        "title": "Decided Mind",
-        "description": "Página de conversão para imersão presencial de desenvolvimento pessoal, focada em ajudar pessoas a saírem da zona de conforto e encontrar propósito."
-      },
       "fehe_chocolate": {
-      "title": "FEHE Chocolate",
-      "description": "Landing page para chocolate premium zero açúcar, destacando a qualidade e benefícios do produto para conversão de vendas."
+        "title": "FEHE Chocolate",
+        "description": "Landing page para chocolate premium zero açúcar, destacando a qualidade e benefícios do produto para conversão de vendas."
       },
       "clinica_viotto": {
         "title": "Clínica Viotto",
@@ -227,6 +249,114 @@
       "dnd_guide": {
         "title": "Guia de Augury para D&D 5e",
         "description": "Um guia interativo para o feitiço de Augury em Dungeons & Dragons 5ª Edição, explicando seu uso, interpretação e aplicações estratégicas no jogo."
+      },
+      "taskforge": {
+        "title": "TaskForge",
+        "description": "Orquestrador de agentes em paralelo. Traduz uma demanda em grafo de tarefas, isola cada uma em sua worktree e executa em ondas, com revisão e merge humanos no fim. Reduziu entre 70% e 90% do custo de LLM da engenharia."
+      },
+      "stechclub": {
+        "title": "StechClub",
+        "description": "Portal educacional da Stech, em SPA React com SSO da empresa e API NestJS sobre Prisma. Vídeo e thumbnail ficam em S3 e são servidos por link assinado gerado na API, sem expor a key do bucket. O funil de candidatura usa quiz de aderência com nota mínima e resposta diferente para quem passa e para quem não passa."
+      },
+      "omegahub": {
+        "title": "OmegaHub",
+        "description": "Plataforma para gamers em monorepo TypeScript. Frontend Next.js e backend NestJS, com login social, pagamentos, filas BullMQ e persistência dividida entre PostgreSQL, MongoDB e Redis."
+      },
+      "pronto": {
+        "title": "Pronto",
+        "description": "Marketplace de serviços urgentes com pareamento por geolocalização. PWA e app mobile sobre uma API NestJS, com PostGIS para busca por proximidade e filas pg-boss para o que não pode bloquear a requisição."
+      },
+      "tecnurg": {
+        "title": "Tecnurg",
+        "description": "Arquitetura de marketplace de dois lados para serviços urgentes: corrida por aceite, Clean Architecture em Go, eventos em Kafka, app do técnico offline-first e observabilidade distribuída. LGPD tratada desde a modelagem."
+      },
+      "barbearia_app": {
+        "title": "Barbearia App",
+        "description": "PWA de descoberta e agendamento para barbearias, com mapa, agenda em tempo real e papéis distintos para dono e cliente. A trava contra reserva concorrente é constraint no banco, não checagem na aplicação."
+      },
+      "pasta_la_vista": {
+        "title": "Pasta la Vista",
+        "description": "App de delivery com cardápio, carrinho, pedidos e pagamento. Clean Architecture no backend, com persistência dividida entre PostgreSQL, MongoDB e Redis conforme o tipo de dado."
+      },
+      "buscajogos": {
+        "title": "BuscaJogos+",
+        "description": "TCC: comparador de preços de jogos digitais, com wishlist e alerta de promoção. Banco, API em Go e frontend separados em containers, partindo de pesquisa de problema com usuários reais."
+      },
+      "kitbuilder": {
+        "title": "KitBuilder / S.A.G.A.",
+        "description": "Controle de estoque de peças eletrônicas em arquitetura por camadas, com repositórios, migrations versionadas, importação de planilha e suíte de testes. Entrega de conclusão do curso de Desenvolvimento de Software Multiplataforma na Fatec Mauá, publicada no repositório institucional do Centro Paula Souza."
+      },
+      "youtcatcher": {
+        "title": "YoutCatcher",
+        "description": "Downloader desktop de vídeo com interface gráfica, histórico persistente e MVC estrito. Cobertura de testes acima de 80% e logs estruturados, num projeto que poderia ter sido um script."
+      },
+      "sudoku_solver": {
+        "title": "Sudoku Solver",
+        "description": "Resolve um Sudoku a partir de foto: pré-processamento de imagem, detecção do grid, OCR dos dígitos, solver por backtracking em C e devolução da solução sobreposta à foto original."
+      },
+      "asurapadel": {
+        "title": "AsuraPadel",
+        "description": "Gestão de quadra de padel em duas aplicações: frontend Angular e API em C# publicada no Azure. O caso técnico é de performance — quando a API saiu para o servidor de teste, a resposta degradou, e a correção combinou cache, redesenho de endpoints, paginação em lotes, redução de payload e ajustes no cliente. Tempo médio relatado caiu de 800 ms para 220 ms."
+      },
+      "portal_agente_ia": {
+        "title": "Portal de operação de agente de IA",
+        "description": "Portal para operar e auditar um atendimento com IA no WhatsApp. O produto não é o agente: é a interface que deixa pessoa não técnica testar, acompanhar e corrigir. Trouxe versionamento de prompt com rollback e um webhook separado para isolar o tráfego do sandbox do tráfego real — controle de qualidade aplicado a sistema não determinístico. Cliente sob confidencialidade: sem nome, repositório ou captura de tela."
+      },
+      "bubble_box_lavanderia": {
+        "title": "Bubble Box",
+        "description": "Landing de rede de lavanderias self-service em modelo de franquia, com modelos de loja, busca de unidades e captação de lead como objetivo declarado. Core Web Vitals entrou como critério de aceite, não como refino posterior."
+      },
+      "jarbas": {
+        "title": "Jarbas",
+        "description": "Assistente de segundo cérebro sobre um vault em Markdown, com CLI e interface desktop. O núcleo é um action gate: toda escrita do agente passa por um portão que valida o plano antes de tocar arquivo, para automação não corromper a base que ela deveria cuidar."
+      },
+      "quinto_selo": {
+        "title": "Quinto Selo",
+        "description": "Roguelite cooperativo online em 2D, feito em Godot 4 com tema dos quatro cavaleiros. O trabalho difícil não é o combate: é o netcode e a regra de morte com dois corpos, ambos fechados com verificação headless antes de virar jogável."
+      },
+      "financeos": {
+        "title": "FinanceOS",
+        "description": "Gestão financeira pessoal em monorepo Turborepo, com Prisma na persistência, Redis no que precisa ser rápido e stores separadas por workspace."
+      },
+      "zoologic": {
+        "title": "Zoologic",
+        "description": "Gestão de zoológico em dois sub-projetos: API em PHP 8 escrita com SOLID e suíte PHPUnit de verdade, e frontend em Next.js. O ponto do projeto era provar que PHP moderno aceita arquitetura e teste sério."
+      },
+      "repo_explorer_angular": {
+        "title": "Repo Explorer",
+        "description": "Explorador de repositórios do GitHub em Angular com signals, entregue como teste prático para vaga sênior. CI verde na entrega."
+      },
+      "instagram_analyzer": {
+        "title": "Instagram Analyzer",
+        "description": "App desktop que lê o export JSON do Instagram e mostra quem não segue de volta, com indicadores e busca em tempo real. Tudo local: o arquivo nunca sai da máquina."
+      },
+      "pokedex": {
+        "title": "Pokédex",
+        "description": "App mobile de exploração com persistência local em SQLite e animações em Reanimated, para funcionar sem rede depois da primeira carga."
+      },
+      "javafx_pokemon": {
+        "title": "JavaFX Pokémon",
+        "description": "Aplicação desktop em JavaFX com Maven e separação MVC — exercício de arquitetura em Java, feito para praticar camada e não só tela."
+      },
+      "calc_financeira": {
+        "title": "Calculadora Financeira",
+        "description": "Calculadora de matemática financeira em Python puro, sem dependência externa — juros, amortização e séries com a lógica concentrada em um arquivo."
+      },
+      "aquila_e_evelyn": {
+        "title": "Áquila e Evelyn",
+        "description": "Convite digital de casamento em página estática responsiva, com animações em CSS e conteúdo carregado de JSON para o casal editar sem tocar em código."
+      },
+      "suite_financeira_b2b": {
+        "title": "Suíte financeira B2B",
+        "description": "Suíte de operação financeira em três repositórios: backend Django com DRF, JWT e tarefas assíncronas; interface Vue 3 com design system interno; e pipelines PySpark nas camadas silver e gold. Kafka integra os domínios com tópico por assunto, consumers com tratamento de erro e DLQ, e deploy de consumer separado por ambiente. AWS aparece como S3 com presigned URL, SQS e Secrets Manager — não só armazenamento. A remediação de vulnerabilidades colocou pip-audit dentro do job de build do CI. Cliente sob confidencialidade: sem nome, repositório ou captura de tela."
+      },
+      "portal_remuneracao_frota": {
+        "title": "Portal de remuneração e frota",
+        "description": "Portal interno de fechamento mensal de remuneração, KM de frota, cadastros e relatórios, em Lumen e React com TypeScript. O caso é de medição: a tela de fechamento disparava 354 queries por carregamento e dez das onze tabelas do domínio não tinham índice nenhum, com 293 mil linhas em varredura completa. Sete índices derivados dos predicados medidos levaram a tela de 4.271 ms para 354 ms, com resposta byte a byte idêntica; o N+1 restante ficou mapeado em 316 das 354 queries. Rendeu também correção de higiene de deploy: configuração apontada para localhost mantida fora do commit e .env de backup que o gitignore não cobria. Cliente sob confidencialidade: sem nome, repositório ou captura de tela."
+      },
+      "servidor_llm_local": {
+        "title": "Servidor de LLM local",
+        "description": "Servidor interno convertido em host de modelos locais e armazenamento de arquivos. Ubuntu 24.04 bare metal, Docker com NVIDIA Container Toolkit e a GPU reconhecida dentro do container; Ollama servindo um modelo 8B pela API local. Acesso remoto por Tailscale em vez de porta aberta na internet, e compartilhamento Samba autenticado, sem guest share. O dimensionamento foi declarado junto com a entrega: o perfil de hardware serve RAG e modelos quantizados de 7B/8B, não inferência pesada multiusuário."
       }
     },
     "tags": {
@@ -242,7 +372,43 @@
       "consulting": "Consultoria",
       "corporate": "Corporativo",
       "crm": "CRM",
-      "desktop": "Desktop"
+      "desktop": "Desktop",
+      "business": "Negócios",
+      "dental": "Odontologia",
+      "digital_agency": "Agência digital",
+      "ecommerce": "E-commerce",
+      "education": "Educação",
+      "food": "Alimentação",
+      "health": "Saúde",
+      "landing_page": "Landing page",
+      "music": "Música",
+      "personal_development": "Desenvolvimento pessoal",
+      "ai": "IA",
+      "game": "Games",
+      "monorepo": "Monorepo",
+      "marketplace": "Marketplace",
+      "mobile": "Mobile",
+      "pwa": "PWA",
+      "academic": "Acadêmico",
+      "computer_vision": "Visão computacional",
+      "fintech": "Fintech",
+      "devtools": "Ferramentas de dev",
+      "template": "Template",
+      "sports": "Esporte",
+      "data": "Dados",
+      "infra": "Infraestrutura"
+    },
+    "viewDemo": "Ver demo",
+    "viewCode": "Ver código",
+    "viewPaper": "Ver publicação",
+    "modal": {
+      "close": "Fechar",
+      "previous": "Imagem anterior",
+      "next": "Próxima imagem",
+      "goToImage": "Ir para a imagem",
+      "stack": "Stack",
+      "tags": "Tags",
+      "noLinks": "Sem link público — código privado ou projeto sem deploy."
     }
   },
   "project": {
@@ -267,5 +433,8 @@
       "linkedin_user": "AugustobAlmeida"
     },
     "copyright": "© 2025 Augusto Almeida. Todos os direitos reservados."
+  },
+  "navigation": {
+    "scrollDown": "Rolar para baixo"
   }
 }

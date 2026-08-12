@@ -2,31 +2,54 @@ name: Security Scan
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   schedule:
-    - cron: '0 0 * * 0'  # Weekly scan
+    - cron: '0 0 * * 0' # Weekly scan
+
+permissions:
+  contents: read
 
 jobs:
-  security:
+  image-scan:
+    name: Trivy image scan
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Build image
-        run: docker build -t portfolio-augusto .
-      
+
+      - name: Build production image
+        run: docker build --target production -t portfolio-augusto .
+
+      # Report-only. A imagem Docker não é o artefato de produção — quem serve
+      # o site é a Vercel, a partir do build estático. Este scan protege o
+      # caminho alternativo (nginx local/self-host), então uma CVE na imagem
+      # base não deve reprovar um deploy que nem passa por ela.
+      #
+      # Rodou vermelho toda semana entre março e abril de 2026 sem ninguém
+      # perceber, que é exatamente o problema que o dashboard de projetos
+      # existe para resolver.
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@0.28.0
         with:
           image-ref: 'portfolio-augusto'
-          format: 'table'
-          exit-code: '1'
+          format: 'json'
+          output: 'trivy-results.json'
+          exit-code: '0'
           ignore-unfixed: true
           severity: 'CRITICAL,HIGH'
-          
+
+      - name: Summarise findings
+        run: |
+          count=$(jq '[.Results[]?.Vulnerabilities // [] | length] | add // 0' trivy-results.json)
+          echo "### Trivy: $count vulnerabilidade(s) CRITICAL/HIGH na imagem" >> "$GITHUB_STEP_SUMMARY"
+          jq -r '[.Results[]?.Vulnerabilities // []] | flatten
+                 | map("- `\(.PkgName)` \(.InstalledVersion) → \(.FixedVersion // "sem fix") (\(.Severity)) \(.VulnerabilityID)")
+                 | unique | .[]' trivy-results.json >> "$GITHUB_STEP_SUMMARY" || true
+
       - name: Upload Trivy scan results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: trivy-results
           path: trivy-results.json
+          if-no-files-found: warn

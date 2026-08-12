@@ -1,22 +1,19 @@
 # Variáveis
 NPM ?= npm
-DOCKER_COMPOSE = docker compose
-FRONTEND_CONTAINER = portfolio
 
 # Cores para output
 GREEN = \033[0;32m
 NC = \033[0m
-RED = \033[0;31m
-YELLOW = \033[1;33m
 
 .DEFAULT_GOAL := help
 
 .PHONY: help start build watch test test-ci test-coverage lint lint-fix format \
-        docker-build docker-run compose compose-build audit analyze compress \
-        prepare backup backup-scheduled tailwind-build tailwind-watch
+        i18n-check docker-dev docker-prod docker-stop-dev docker-stop-prod \
+        docker-logs-dev docker-logs-prod audit analyze prepare dev quality
 
-help:
-	@cat makefile.txt
+help: ## Lista os comandos disponíveis
+	@grep -hE '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
+		| awk 'BEGIN {FS = ":.*?## "}; {printf "  $(GREEN)%-18s$(NC) %s\n", $$1, $$2}'
 
 # Desenvolvimento
 start: ## Inicia servidor de desenvolvimento
@@ -32,89 +29,58 @@ watch: ## Build em modo watch
 	$(NPM) run watch
 
 # Testes e qualidade
-test: ## Executa testes unitários
-	@echo "$(GREEN)Executando testes...$(NC)"
+test: ## Executa testes unitários (watch)
 	$(NPM) test
 
 test-ci: ## Testes em CI (headless)
-	@echo "$(GREEN)Executando testes em CI...$(NC)"
 	$(NPM) run test:ci
 
 test-coverage: ## Gera relatório de cobertura
-	@echo "$(GREEN)Gerando relatório de cobertura...$(NC)"
 	$(NPM) run test:coverage
 
 lint: ## Executa linting
-	@echo "$(GREEN)Executando linting...$(NC)"
 	$(NPM) run lint
 
 lint-fix: ## Corrige problemas de linting
-	@echo "$(GREEN)Corrigindo problemas de linting...$(NC)"
 	$(NPM) run lint:fix
 
 format: ## Formata código com Prettier
-	@echo "$(GREEN)Formatando código...$(NC)"
 	$(NPM) run format
 
+i18n-check: ## Valida paridade de chaves entre os locales
+	$(NPM) run i18n:check
+
 # Docker
-docker-build: ## Build da imagem Docker
-	@echo "$(GREEN)Construindo imagem Docker...$(NC)"
-	$(NPM) run docker:build
+docker-dev: ## Sobe o ambiente de desenvolvimento em container
+	$(NPM) run docker:dev
 
-docker-run: ## Executa container Docker
-	@echo "$(GREEN)Executando container Docker...$(NC)"
-	$(NPM) run docker:run
+docker-prod: ## Sobe o ambiente de produção em container (nginx)
+	$(NPM) run docker:prod
 
-compose: ## Sobe via Docker Compose
-	@echo "$(GREEN)Iniciando Docker Compose...$(NC)"
-	$(NPM) run docker:compose
+docker-stop-dev: ## Derruba o ambiente de desenvolvimento
+	$(NPM) run docker:stop:dev
 
-compose-build: ## Sobe via Docker Compose (build)
-	@echo "$(GREEN)Iniciando Docker Compose com build...$(NC)"
-	$(NPM) run docker:compose:build
+docker-stop-prod: ## Derruba o ambiente de produção
+	$(NPM) run docker:stop:prod
+
+docker-logs-dev: ## Logs do ambiente de desenvolvimento
+	$(NPM) run docker:logs:dev
+
+docker-logs-prod: ## Logs do ambiente de produção
+	$(NPM) run docker:logs:prod
 
 # Segurança e análise
-audit: ## Auditoria de vulnerabilidades
-	@echo "$(GREEN)Executando auditoria de segurança...$(NC)"
+audit: ## Auditoria das dependências de runtime (falha em critical)
 	$(NPM) run security:audit
 
-analyze: ## Analisa bundles
-	@echo "$(GREEN)Analisando bundles...$(NC)"
+analyze: ## Analisa o tamanho dos bundles
 	$(NPM) run analyze
-
-compress: ## Gera arquivos gzip
-	@echo "$(GREEN)Gerando arquivos gzip...$(NC)"
-	$(NPM) run compress
 
 # Outros
 prepare: ## Instala hooks do Husky
-	@echo "$(GREEN)Instalando hooks do Husky...$(NC)"
 	$(NPM) run prepare
 
-backup: ## Executa script de backup
-	@echo "$(GREEN)Executando backup...$(NC)"
-	$(NPM) run backup
-
-backup-scheduled: ## Executa backup agendado
-	@echo "$(GREEN)Executando backup agendado...$(NC)"
-	$(NPM) run backup:scheduled
-
-# Tailwind
-tailwind-build: ## Gera CSS minificado do Tailwind
-	@echo "$(GREEN)Gerando CSS do Tailwind...$(NC)"
-	$(NPM) run tailwind:build
-
-tailwind-watch: ## Observa alterações do Tailwind
-	@echo "$(GREEN)Observando alterações do Tailwind...$(NC)"
-	$(NPM) run tailwind:watch
-
-# Comandos compostos
 dev: start ## Ambiente de desenvolvimento completo
-	@echo "$(GREEN)Ambiente de desenvolvimento iniciado$(NC)"
-	@echo "Acesse: http://localhost:4200"
 
-quality: lint format test ## Executa verificação de qualidade completa
+quality: lint format i18n-check test-ci ## Verificação de qualidade completa
 	@echo "$(GREEN)Verificação de qualidade concluída$(NC)"
-
-docker: docker-build docker-run ## Build e execução Docker completa
-	@echo "$(GREEN)Container Docker executando$(NC)"

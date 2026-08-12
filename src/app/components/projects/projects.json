@@ -1,16 +1,22 @@
 {
   "commercial": [
     {
+      "id": "stechclub",
+      "titleKey": "projects.items.stechclub.title",
+      "descriptionKey": "projects.items.stechclub.description",
+      "category": "commercial",
+      "tagsKeys": ["projects.tags.platform", "projects.tags.education"],
+      "technologies": ["React", "Vite", "NestJS", "Prisma", "MySQL", "AWS S3"],
+      "demoUrl": "https://club.stechsolucoes.com/",
+      "image": "./assets/images/projects/stechclub.jpg"
+    },
+    {
       "id": "optec-solutions",
       "titleKey": "projects.items.optec_solutions.title",
       "descriptionKey": "projects.items.optec_solutions.description",
       "image": "./assets/images/projects/optec-solutions.png",
       "category": "commercial",
-      "tagsKeys": [
-        "projects.tags.platform",
-        "projects.tags.management",
-        "projects.tags.dashboard"
-      ],
+      "tagsKeys": ["projects.tags.platform", "projects.tags.management", "projects.tags.dashboard"],
       "technologies": ["WordPress", "PHP", "Apache", "MySQL", "HTML5", "CSS3", "JavaScript"],
       "demoUrl": "https://optecit.com.br"
     },
@@ -25,7 +31,7 @@
         "projects.tags.digital_agency",
         "projects.tags.landing_page"
       ],
-      "technologies": ["HTML5", "CSS3", "JavaScript",  "CSS3", "Bootstrap"],
+      "technologies": ["HTML5", "CSS3", "JavaScript", "CSS3", "Bootstrap"],
       "demoUrl": "https://minhamaquinadeleads.com.br/f4eee40f"
     },
     {
@@ -48,27 +54,9 @@
       "descriptionKey": "projects.items.bumbum_de_anjo.description",
       "image": "./assets/images/projects/bumbum-de-anjo.png",
       "category": "commercial",
-      "tagsKeys": [
-        "projects.tags.ecommerce",
-        "projects.tags.health",
-        "projects.tags.landing_page"
-      ],
-      "technologies":  ["HTML", "PHP", "JavaScript", "CSS3", "Bootstrap"],
+      "tagsKeys": ["projects.tags.ecommerce", "projects.tags.health", "projects.tags.landing_page"],
+      "technologies": ["HTML", "PHP", "JavaScript", "CSS3", "Bootstrap"],
       "demoUrl": "https://minhamaquinadeleads.com.br/af8211e7"
-    },
-    {
-      "id": "decided-mind",
-      "titleKey": "projects.items.decided_mind.title",
-      "descriptionKey": "projects.items.decided_mind.description",
-      "image": "./assets/images/projects/decided-mind.png",
-      "category": "commercial",
-      "tagsKeys": [
-        "projects.tags.consulting",
-        "projects.tags.personal_development",
-        "projects.tags.landing_page"
-      ],
-      "technologies":  ["HTML", "PHP", "JavaScript", "CSS3", "Bootstrap"],
-      "demoUrl": "https://brasengconsultoria.com.br/decidedmind/"
     },
     {
       "id": "fehe-chocolate",
@@ -76,11 +64,7 @@
       "descriptionKey": "projects.items.fehe_chocolate.description",
       "image": "./assets/images/projects/fehe-chocolate.png",
       "category": "commercial",
-      "tagsKeys": [
-        "projects.tags.ecommerce",
-        "projects.tags.food",
-        "projects.tags.landing_page"
-      ],
+      "tagsKeys": ["projects.tags.ecommerce", "projects.tags.food", "projects.tags.landing_page"],
       "technologies": ["Shopify", "Liquid", "JavaScript", "CSS3", "Google Analytics"],
       "demoUrl": "https://minhamaquinadeleads.com.br/20c67a70"
     },
@@ -90,11 +74,7 @@
       "descriptionKey": "projects.items.clinica_viotto.description",
       "image": "./assets/images/projects/clinica-viotto.png",
       "category": "commercial",
-      "tagsKeys": [
-        "projects.tags.health",
-        "projects.tags.dental",
-        "projects.tags.landing_page"
-      ],
+      "tagsKeys": ["projects.tags.health", "projects.tags.dental", "projects.tags.landing_page"],
       "technologies": ["WordPress", "PHP", "JavaScript", "CSS3", "Contact Form 7"],
       "demoUrl": "https://minhamaquinadeleads.com.br/0c2bda46"
     },
@@ -104,11 +84,7 @@
       "descriptionKey": "projects.items.souza_lima_vestibular.description",
       "image": "./assets/images/projects/souzalima-vestibular.png",
       "category": "commercial",
-      "tagsKeys": [
-        "projects.tags.education",
-        "projects.tags.music",
-        "projects.tags.landing_page"
-      ],
+      "tagsKeys": ["projects.tags.education", "projects.tags.music", "projects.tags.landing_page"],
       "technologies": ["WordPress", "PHP", "JavaScript", "CSS3", "Contact Form 7"],
       "demoUrl": "https://faculdadesouzalima.com.br/"
     },
@@ -118,11 +94,7 @@
       "descriptionKey": "projects.items.souza_lima_cursos.description",
       "image": "./assets/images/projects/souzalima-cursos.png",
       "category": "commercial",
-      "tagsKeys": [
-        "projects.tags.education",
-        "projects.tags.music",
-        "projects.tags.landing_page"
-      ],
+      "tagsKeys": ["projects.tags.education", "projects.tags.music", "projects.tags.landing_page"],
       "technologies": ["WordPress", "PHP", "JavaScript", "CSS3", "Contact Form 7"],
       "demoUrl": "https://www.souzalima.com.br/"
     },
@@ -132,14 +104,68 @@
       "descriptionKey": "projects.items.mitra_crm.description",
       "image": "./assets/images/projects/mitra-crm.png",
       "category": "commercial",
-      "tagsKeys": [
-        "projects.tags.crm",
-        "projects.tags.management",
-        "projects.tags.desktop"
-      ],
+      "tagsKeys": ["projects.tags.crm", "projects.tags.management", "projects.tags.desktop"],
       "technologies": ["Python", "tkinter", "SQLite", "MVC", "CRM"],
-      "demoUrl": "https://github.com/AuggieAlmeida/MITRA",
       "githubUrl": "https://github.com/AuggieAlmeida/MITRA"
+    },
+    {
+      "id": "asurapadel",
+      "titleKey": "projects.items.asurapadel.title",
+      "descriptionKey": "projects.items.asurapadel.description",
+      "category": "commercial",
+      "tagsKeys": ["projects.tags.management", "projects.tags.platform", "projects.tags.sports"],
+      "technologies": ["Angular", "C#", "Azure", "SQL Server", "Jest"],
+      "demoUrl": "https://green-hill-00d55160f.2.azurestaticapps.net/",
+      "image": "./assets/images/projects/asurapadel.jpg"
+    },
+    {
+      "id": "portal-agente-ia",
+      "titleKey": "projects.items.portal_agente_ia.title",
+      "descriptionKey": "projects.items.portal_agente_ia.description",
+      "category": "commercial",
+      "tagsKeys": ["projects.tags.ai", "projects.tags.platform", "projects.tags.automation"],
+      "technologies": ["React", "TypeScript", "Supabase", "n8n", "AWS EC2", "Zod"]
+    },
+    {
+      "id": "suite-financeira-b2b",
+      "titleKey": "projects.items.suite_financeira_b2b.title",
+      "descriptionKey": "projects.items.suite_financeira_b2b.description",
+      "category": "commercial",
+      "tagsKeys": ["projects.tags.fintech", "projects.tags.data", "projects.tags.platform"],
+      "technologies": ["Django", "Vue 3", "PySpark", "Kafka", "PostgreSQL", "AWS", "Kubernetes"]
+    },
+    {
+      "id": "portal-remuneracao-frota",
+      "titleKey": "projects.items.portal_remuneracao_frota.title",
+      "descriptionKey": "projects.items.portal_remuneracao_frota.description",
+      "category": "commercial",
+      "tagsKeys": ["projects.tags.management", "projects.tags.platform", "projects.tags.dashboard"],
+      "technologies": ["Lumen", "PHP", "React", "TypeScript", "MySQL", "BigQuery", "Power BI"]
+    },
+    {
+      "id": "servidor-llm-local",
+      "titleKey": "projects.items.servidor_llm_local.title",
+      "descriptionKey": "projects.items.servidor_llm_local.description",
+      "category": "commercial",
+      "tagsKeys": ["projects.tags.ai", "projects.tags.infra", "projects.tags.automation"],
+      "technologies": [
+        "Ubuntu",
+        "Docker",
+        "NVIDIA Container Toolkit",
+        "Ollama",
+        "Tailscale",
+        "Samba"
+      ]
+    },
+    {
+      "id": "bubble-box-lavanderia",
+      "titleKey": "projects.items.bubble_box_lavanderia.title",
+      "descriptionKey": "projects.items.bubble_box_lavanderia.description",
+      "category": "commercial",
+      "tagsKeys": ["projects.tags.landing_page", "projects.tags.leads", "projects.tags.business"],
+      "technologies": ["HTML5", "CSS3", "JavaScript", "jQuery", "Bootstrap"],
+      "image": "./assets/images/projects/bubble-box.jpg",
+      "demoUrl": "https://bubblebox.com.br/"
     }
   ],
   "study": [
@@ -149,14 +175,191 @@
       "descriptionKey": "projects.items.dnd_guide.description",
       "image": "./assets/images/projects/dnd-guide.png",
       "category": "study",
-      "tagsKeys": [
-        "projects.tags.rpg",
-        "projects.tags.guide",
-        "projects.tags.interactive"
-      ],
+      "tagsKeys": ["projects.tags.rpg", "projects.tags.guide", "projects.tags.interactive"],
       "technologies": ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
-      "demoUrl": "https://auggiealmeida.github.io/DnD-Guide/",
-      "githubUrl": "https://github.com/auggiealmeida/DnD-Guide"
+      "demoUrl": "https://dn-d-guide.vercel.app",
+      "githubUrl": "https://github.com/AuggieAlmeida/DnD-Guide"
+    },
+    {
+      "id": "taskforge",
+      "titleKey": "projects.items.taskforge.title",
+      "descriptionKey": "projects.items.taskforge.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.ai", "projects.tags.automation", "projects.tags.platform"],
+      "technologies": ["TypeScript", "Zod", "Git worktrees", "Node.js", "CLI"]
+    },
+    {
+      "id": "omegahub",
+      "titleKey": "projects.items.omegahub.title",
+      "descriptionKey": "projects.items.omegahub.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.platform", "projects.tags.game", "projects.tags.monorepo"],
+      "technologies": ["Next.js", "NestJS", "Turborepo", "PostgreSQL", "Redis", "Stripe"]
+    },
+    {
+      "id": "pronto",
+      "titleKey": "projects.items.pronto.title",
+      "descriptionKey": "projects.items.pronto.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.marketplace", "projects.tags.mobile", "projects.tags.pwa"],
+      "technologies": ["NestJS", "Next.js", "Expo", "PostGIS", "pg-boss"]
+    },
+    {
+      "id": "tecnurg",
+      "titleKey": "projects.items.tecnurg.title",
+      "descriptionKey": "projects.items.tecnurg.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.marketplace", "projects.tags.mobile"],
+      "technologies": ["Go", "Kafka", "PostGIS", "React Native", "OpenTelemetry"]
+    },
+    {
+      "id": "barbearia-app",
+      "titleKey": "projects.items.barbearia_app.title",
+      "descriptionKey": "projects.items.barbearia_app.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.platform", "projects.tags.pwa", "projects.tags.management"],
+      "technologies": ["Next.js", "Supabase", "PostGIS", "Leaflet"]
+    },
+    {
+      "id": "pasta-la-vista",
+      "titleKey": "projects.items.pasta_la_vista.title",
+      "descriptionKey": "projects.items.pasta_la_vista.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.mobile", "projects.tags.food", "projects.tags.ecommerce"],
+      "technologies": ["React Native", "Expo", "Express", "TypeScript", "Stripe"],
+      "image": "./assets/images/projects/pasta-la-vista-web.jpg",
+      "demoUrl": "https://pasta-la-vista-mobile--8b9d3o7ps5.expo.app/",
+      "images": [
+        "./assets/images/projects/pasta-la-vista-web.jpg",
+        "./assets/images/projects/pasta-la-vista-cardapio.jpg",
+        "./assets/images/projects/pasta-la-vista-pagamento.jpg",
+        "./assets/images/projects/pasta-la-vista-pedido.jpg"
+      ],
+      "githubUrl": "https://github.com/AuggieAlmeida/Pasta-la-Vista"
+    },
+    {
+      "id": "buscajogos",
+      "titleKey": "projects.items.buscajogos.title",
+      "descriptionKey": "projects.items.buscajogos.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.academic", "projects.tags.platform", "projects.tags.automation"],
+      "technologies": ["Go", "C#", "Vue", "MySQL", "Docker"]
+    },
+    {
+      "id": "kitbuilder",
+      "titleKey": "projects.items.kitbuilder.title",
+      "descriptionKey": "projects.items.kitbuilder.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.desktop", "projects.tags.management", "projects.tags.academic"],
+      "technologies": ["Python", "pytest", "Alembic", "Docker"],
+      "paperUrl": "https://ric.cps.sp.gov.br/handle/123456789/46429",
+      "githubUrl": "https://github.com/KitManeger-Fatec/KitBuilder-tkinter"
+    },
+    {
+      "id": "youtcatcher",
+      "titleKey": "projects.items.youtcatcher.title",
+      "descriptionKey": "projects.items.youtcatcher.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.desktop", "projects.tags.automation"],
+      "technologies": ["Python", "CustomTkinter", "yt-dlp", "pytest"],
+      "githubUrl": "https://github.com/AuggieAlmeida/YoutCatcher"
+    },
+    {
+      "id": "sudoku-solver",
+      "titleKey": "projects.items.sudoku_solver.title",
+      "descriptionKey": "projects.items.sudoku_solver.description",
+      "category": "study",
+      "tagsKeys": [
+        "projects.tags.academic",
+        "projects.tags.computer_vision",
+        "projects.tags.automation"
+      ],
+      "technologies": ["C", "C++", "OpenCV"]
+    },
+    {
+      "id": "jarbas",
+      "titleKey": "projects.items.jarbas.title",
+      "descriptionKey": "projects.items.jarbas.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.ai", "projects.tags.desktop", "projects.tags.automation"],
+      "technologies": ["TypeScript", "Tauri", "Node.js", "CLI", "LLM"]
+    },
+    {
+      "id": "quinto-selo",
+      "titleKey": "projects.items.quinto_selo.title",
+      "descriptionKey": "projects.items.quinto_selo.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.game", "projects.tags.platform"],
+      "technologies": ["Godot 4", "GDScript", "Blender", "Netcode"]
+    },
+    {
+      "id": "financeos",
+      "titleKey": "projects.items.financeos.title",
+      "descriptionKey": "projects.items.financeos.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.fintech", "projects.tags.monorepo", "projects.tags.dashboard"],
+      "technologies": ["TypeScript", "Turborepo", "Prisma", "Redis"]
+    },
+    {
+      "id": "zoologic",
+      "titleKey": "projects.items.zoologic.title",
+      "descriptionKey": "projects.items.zoologic.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.platform", "projects.tags.management", "projects.tags.academic"],
+      "technologies": ["PHP 8", "Next.js", "MySQL", "PHPUnit"],
+      "image": "./assets/images/projects/zoologic.jpg",
+      "githubUrl": "https://github.com/AuggieAlmeida/zoologic-api"
+    },
+    {
+      "id": "repo-explorer-angular",
+      "titleKey": "projects.items.repo_explorer_angular.title",
+      "descriptionKey": "projects.items.repo_explorer_angular.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.devtools", "projects.tags.platform"],
+      "technologies": ["Angular", "TypeScript", "Signals", "GitHub API"],
+      "githubUrl": "https://github.com/AuggieAlmeida/repo-explorer"
+    },
+    {
+      "id": "instagram-analyzer",
+      "titleKey": "projects.items.instagram_analyzer.title",
+      "descriptionKey": "projects.items.instagram_analyzer.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.desktop", "projects.tags.automation", "projects.tags.dashboard"],
+      "technologies": ["Python", "CustomTkinter", "MVC"]
+    },
+    {
+      "id": "pokedex",
+      "titleKey": "projects.items.pokedex.title",
+      "descriptionKey": "projects.items.pokedex.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.mobile", "projects.tags.game"],
+      "technologies": ["Expo", "React Native", "SQLite", "Reanimated"]
+    },
+    {
+      "id": "javafx-pokemon",
+      "titleKey": "projects.items.javafx_pokemon.title",
+      "descriptionKey": "projects.items.javafx_pokemon.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.desktop", "projects.tags.academic", "projects.tags.game"],
+      "technologies": ["Java", "JavaFX", "Maven", "MVC"],
+      "githubUrl": "https://github.com/AuggieAlmeida/JAVAFX-MAVEN-MVC-POKEMONAPP"
+    },
+    {
+      "id": "calc-financeira",
+      "titleKey": "projects.items.calc_financeira.title",
+      "descriptionKey": "projects.items.calc_financeira.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.fintech", "projects.tags.automation", "projects.tags.academic"],
+      "technologies": ["Python"]
+    },
+    {
+      "id": "aquila-e-evelyn",
+      "titleKey": "projects.items.aquila_e_evelyn.title",
+      "descriptionKey": "projects.items.aquila_e_evelyn.description",
+      "category": "study",
+      "tagsKeys": ["projects.tags.landing_page", "projects.tags.interactive"],
+      "technologies": ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
+      "githubUrl": "https://github.com/AuggieAlmeida/aquila-e-evelyn"
     }
   ]
 }

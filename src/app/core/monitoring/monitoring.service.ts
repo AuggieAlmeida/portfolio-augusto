@@ -1,65 +1,37 @@
-import { Injectable, signal, inject } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
-import { onFCP, onLCP, onCLS } from 'web-vitals';
+import { inject, Injectable, signal } from '@angular/core';
+import { Metric, onCLS, onFCP, onINP, onLCP, onTTFB } from 'web-vitals';
 
-declare global {
-  interface Window {
-    gtag: (...args: unknown[]) => void;
-  }
-}
+import { LoggingService } from '../logging/logging.service';
 
+export type VitalName = 'cls' | 'fcp' | 'inp' | 'lcp' | 'ttfb';
+
+export type WebVitals = Record<VitalName, number | null>;
+
+const EMPTY_VITALS: WebVitals = { cls: null, fcp: null, inp: null, lcp: null, ttfb: null };
+
+/**
+ * Collects Core Web Vitals locally. There is no analytics backend wired up:
+ * the numbers surface through `vitals` and the debug log, which is what a
+ * single-page portfolio actually needs. Adding a vendor here would mean
+ * shipping a tracker to visitors for data nobody reads.
+ */
 @Injectable({ providedIn: 'root' })
 export class MonitoringService {
-  private router = inject(Router);
-  private performanceMetrics = signal<{
-    fcp: number;
-    lcp: number;
-    cls: number;
-  }>({ fcp: 0, lcp: 0, cls: 0 });
+  private readonly logger = inject(LoggingService);
+  private readonly metrics = signal<WebVitals>(EMPTY_VITALS);
 
-  constructor() {
-    this.initializeAnalytics();
-    this.measureWebVitals();
+  readonly vitals = this.metrics.asReadonly();
+
+  start(): void {
+    onCLS((metric) => this.record('cls', metric));
+    onFCP((metric) => this.record('fcp', metric));
+    onINP((metric) => this.record('inp', metric));
+    onLCP((metric) => this.record('lcp', metric));
+    onTTFB((metric) => this.record('ttfb', metric));
   }
 
-  private initializeAnalytics(): void {
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
-      this.sendPageView();
-    });
-  }
-
-  private measureWebVitals(): void {
-    onFCP(metric => {
-      this.performanceMetrics.update(current => ({
-        ...current,
-        fcp: metric.value
-      }));
-    });
-
-    onLCP(metric => {
-      this.performanceMetrics.update(current => ({
-        ...current,
-        lcp: metric.value
-      }));
-    });
-
-    onCLS(metric => {
-      this.performanceMetrics.update(current => ({
-        ...current,
-        cls: metric.value
-      }));
-    });
-  }
-
-  private sendPageView(): void {
-    if (typeof window.gtag !== 'undefined') {
-      window.gtag('event', 'page_view', {
-        page_title: document.title,
-        page_location: window.location.href
-      });
-    }
+  private record(name: VitalName, metric: Metric): void {
+    this.metrics.update((current) => ({ ...current, [name]: metric.value }));
+    this.logger.debug(`web-vital ${metric.name}`, { value: metric.value, rating: metric.rating });
   }
 }
