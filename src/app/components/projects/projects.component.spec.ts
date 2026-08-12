@@ -187,7 +187,9 @@ describe('ProjectsComponent', () => {
   });
 
   it('shows the decision case only when the catalog has verified decision data', () => {
-    const project = component.commercialProjects.find((item) => item.decision);
+    const project = component.commercialProjects.find(
+      (item) => item.id === 'portal-remuneracao-frota'
+    );
     expect(project).toBeDefined();
 
     component.openProjectModal(project!);
@@ -203,6 +205,61 @@ describe('ProjectsComponent', () => {
     expect(host.querySelector('#decision-details')?.textContent).toContain(
       'projects.decisions.payroll.context'
     );
+  });
+
+  it('gives every project a case, and shows the proof line without a click', () => {
+    const all = [...component.commercialProjects, ...component.studyProjects];
+    const withoutCase = all.filter((item) => !item.decision?.provesKey).map((item) => item.id);
+
+    expect(withoutCase).toEqual([]);
+
+    component.openProjectModal(all[0]);
+    fixture.detectChanges();
+    const host: HTMLElement = fixture.nativeElement;
+
+    expect(host.querySelector('[data-decision-proves]')?.textContent).toContain(
+      all[0].decision!.provesKey
+    );
+    // A prova aparece antes do toggle; o detalhe é que fica fechado.
+    expect(host.querySelector('#decision-details')).toBeNull();
+  });
+
+  it('hides the details toggle when the case has nothing but the proof line', () => {
+    const provesOnly = {
+      ...component.studyProjects[0],
+      decision: { provesKey: 'projects.decisions.example.proves' }
+    };
+
+    expect(component.hasDecisionDetails(provesOnly)).toBeFalse();
+
+    component.openProjectModal(provesOnly);
+    fixture.detectChanges();
+    const host: HTMLElement = fixture.nativeElement;
+
+    expect(host.querySelector('[data-decision-proves]')).not.toBeNull();
+    expect(host.querySelector('[data-decision-toggle]')).toBeNull();
+  });
+
+  it('flags a self-reported figure inside the case instead of presenting it as measured', () => {
+    const all = [...component.commercialProjects, ...component.studyProjects];
+    const selfReported = all.find((item) => item.decision?.selfReported);
+    const measured = all.find((item) => item.decision?.impactKey && !item.decision.selfReported);
+    expect(selfReported).toBeDefined();
+    expect(measured).toBeDefined();
+
+    component.openProjectModal(selfReported!);
+    component.toggleDecisionDetails();
+    fixture.detectChanges();
+    const host: HTMLElement = fixture.nativeElement;
+
+    expect(host.querySelector('[data-decision-self-reported]')).not.toBeNull();
+
+    component.closeModal();
+    component.openProjectModal(measured!);
+    component.toggleDecisionDetails();
+    fixture.detectChanges();
+
+    expect(host.querySelector('[data-decision-self-reported]')).toBeNull();
   });
 
   it('marks illustrated covers as illustration, in the badge and in the alt text', () => {

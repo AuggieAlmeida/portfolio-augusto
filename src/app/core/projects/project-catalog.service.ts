@@ -4,12 +4,24 @@ import { TranslateService } from '@ngx-translate/core';
 import projectsData from '../../components/projects/projects.json';
 import { resolveImage, ResponsiveImage } from '../images/responsive-image';
 
+/**
+ * O case de decisão de um projeto. Só `provesKey` é obrigatório, e é o único que
+ * aparece sem clique: é a frase que responde "o que esse trabalho prova", que é
+ * o que o recrutador lê antes de decidir se abre o resto.
+ *
+ * Os cinco campos do detalhe são opcionais de propósito. A folha do vault de um
+ * projeto pequeno não tem restrição nem evidência medida, e inventar as duas para
+ * preencher a estrutura seria claim sem lastro.
+ */
 export interface ProjectDecision {
-  contextKey: string;
-  constraintKey: string;
-  decisionKey: string;
-  evidenceKey: string;
-  impactKey: string;
+  provesKey: string;
+  contextKey?: string;
+  constraintKey?: string;
+  decisionKey?: string;
+  evidenceKey?: string;
+  impactKey?: string;
+  /** Número relatado pelo Augusto, sem medição anexada. A UI diz isso na cara. */
+  selfReported?: boolean;
 }
 
 export type { ResponsiveImage };

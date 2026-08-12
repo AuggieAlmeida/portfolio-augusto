@@ -510,82 +510,106 @@ import { ScrollLockService } from '../../core/services/scroll-lock.service';
               {{ project.descriptionKey | translate }}
             </p>
 
-            <button
-              *ngIf="project.decision"
-              type="button"
-              data-decision-toggle
-              class="mb-6 inline-flex items-center gap-2 rounded-lg border border-primary-300 px-3 py-2 text-sm font-medium text-primary-700 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-primary-600 dark:text-primary-200 dark:hover:bg-primary-900/30"
-              (click)="toggleDecisionDetails()"
-              [attr.aria-expanded]="decisionExpanded"
-              aria-controls="decision-details"
-            >
-              <i aria-hidden="true" class="fas fa-diagram-project"></i>
-              {{ 'projects.modal.decision.action' | translate }}
-            </button>
+            <!-- Fica fora do toggle de propósito: é a frase que responde "o que
+                 esse trabalho prova", e o recrutador lê isso antes de decidir se
+                 abre o detalhe. -->
+            <ng-container *ngIf="project.decision as decision">
+              <p
+                data-decision-proves
+                class="mb-6 flex gap-3 rounded-xl border-l-4 border-primary-400 bg-primary-50/70 p-4 text-sm leading-relaxed text-neutral-700 dark:border-primary-500 dark:bg-primary-900/20 dark:text-neutral-200"
+              >
+                <i aria-hidden="true" class="fas fa-lightbulb mt-0.5 text-primary-500"></i>
+                <span>{{ decision.provesKey | translate }}</span>
+              </p>
 
-            <section
-              *ngIf="project.decision && decisionExpanded"
-              id="decision-details"
-              class="mb-6 rounded-xl border border-primary-100 bg-primary-50/60 p-4 dark:border-primary-700 dark:bg-primary-900/20"
-              [attr.aria-label]="'projects.modal.decision.title' | translate"
-            >
-              <h4 class="mb-4 font-semibold text-neutral-900 dark:text-neutral-100">
-                {{ 'projects.modal.decision.title' | translate }}
-              </h4>
-              <dl class="space-y-4 text-sm leading-relaxed">
-                <div>
-                  <dt class="font-medium text-primary-700 dark:text-primary-300">
-                    {{ 'projects.modal.decision.context' | translate }}
-                  </dt>
-                  <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
-                    {{ project.decision.contextKey | translate }}
-                  </dd>
-                </div>
-                <div>
-                  <dt class="font-medium text-primary-700 dark:text-primary-300">
-                    {{ 'projects.modal.decision.constraint' | translate }}
-                  </dt>
-                  <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
-                    {{ project.decision.constraintKey | translate }}
-                  </dd>
-                </div>
-                <div>
-                  <dt class="font-medium text-primary-700 dark:text-primary-300">
-                    {{ 'projects.modal.decision.decision' | translate }}
-                  </dt>
-                  <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
-                    {{ project.decision.decisionKey | translate }}
-                  </dd>
-                  <dd
-                    class="mt-2 flex flex-wrap gap-1.5"
-                    [attr.aria-label]="'projects.modal.stack' | translate"
-                  >
-                    <span
-                      *ngFor="let tech of project.technologies"
-                      class="rounded bg-white px-2 py-1 text-xs font-medium text-neutral-700 shadow-sm dark:bg-primary-800 dark:text-neutral-200"
+              <button
+                *ngIf="hasDecisionDetails(project)"
+                type="button"
+                data-decision-toggle
+                class="mb-6 inline-flex items-center gap-2 rounded-lg border border-primary-300 px-3 py-2 text-sm font-medium text-primary-700 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-primary-600 dark:text-primary-200 dark:hover:bg-primary-900/30"
+                (click)="toggleDecisionDetails()"
+                [attr.aria-expanded]="decisionExpanded"
+                aria-controls="decision-details"
+              >
+                <i aria-hidden="true" class="fas fa-diagram-project"></i>
+                {{ 'projects.modal.decision.action' | translate }}
+              </button>
+
+              <section
+                *ngIf="hasDecisionDetails(project) && decisionExpanded"
+                id="decision-details"
+                class="mb-6 rounded-xl border border-primary-100 bg-primary-50/60 p-4 dark:border-primary-700 dark:bg-primary-900/20"
+                [attr.aria-label]="'projects.modal.decision.title' | translate"
+              >
+                <h4 class="mb-4 font-semibold text-neutral-900 dark:text-neutral-100">
+                  {{ 'projects.modal.decision.title' | translate }}
+                </h4>
+                <dl class="space-y-4 text-sm leading-relaxed">
+                  <div *ngIf="decision.contextKey">
+                    <dt class="font-medium text-primary-700 dark:text-primary-300">
+                      {{ 'projects.modal.decision.context' | translate }}
+                    </dt>
+                    <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
+                      {{ decision.contextKey | translate }}
+                    </dd>
+                  </div>
+                  <div *ngIf="decision.constraintKey">
+                    <dt class="font-medium text-primary-700 dark:text-primary-300">
+                      {{ 'projects.modal.decision.constraint' | translate }}
+                    </dt>
+                    <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
+                      {{ decision.constraintKey | translate }}
+                    </dd>
+                  </div>
+                  <div *ngIf="decision.decisionKey">
+                    <dt class="font-medium text-primary-700 dark:text-primary-300">
+                      {{ 'projects.modal.decision.decision' | translate }}
+                    </dt>
+                    <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
+                      {{ decision.decisionKey | translate }}
+                    </dd>
+                    <dd
+                      class="mt-2 flex flex-wrap gap-1.5"
+                      [attr.aria-label]="'projects.modal.stack' | translate"
                     >
-                      {{ tech }}
-                    </span>
-                  </dd>
-                </div>
-                <div>
-                  <dt class="font-medium text-primary-700 dark:text-primary-300">
-                    {{ 'projects.modal.decision.evidence' | translate }}
-                  </dt>
-                  <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
-                    {{ project.decision.evidenceKey | translate }}
-                  </dd>
-                </div>
-                <div>
-                  <dt class="font-medium text-primary-700 dark:text-primary-300">
-                    {{ 'projects.modal.decision.impact' | translate }}
-                  </dt>
-                  <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
-                    {{ project.decision.impactKey | translate }}
-                  </dd>
-                </div>
-              </dl>
-            </section>
+                      <span
+                        *ngFor="let tech of project.technologies"
+                        class="rounded bg-white px-2 py-1 text-xs font-medium text-neutral-700 shadow-sm dark:bg-primary-800 dark:text-neutral-200"
+                      >
+                        {{ tech }}
+                      </span>
+                    </dd>
+                  </div>
+                  <div *ngIf="decision.evidenceKey">
+                    <dt class="font-medium text-primary-700 dark:text-primary-300">
+                      {{ 'projects.modal.decision.evidence' | translate }}
+                    </dt>
+                    <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
+                      {{ decision.evidenceKey | translate }}
+                    </dd>
+                  </div>
+                  <div *ngIf="decision.impactKey">
+                    <dt class="font-medium text-primary-700 dark:text-primary-300">
+                      {{ 'projects.modal.decision.impact' | translate }}
+                    </dt>
+                    <dd class="mt-1 text-neutral-700 dark:text-neutral-200">
+                      {{ decision.impactKey | translate }}
+                    </dd>
+                  </div>
+                </dl>
+
+                <!-- Numero sem medicao anexada e dito como tal. A alternativa
+                   honesta seria nao publicar; publicar sem a marca, nao. -->
+                <p
+                  *ngIf="decision.selfReported"
+                  data-decision-self-reported
+                  class="mt-4 flex gap-2 border-t border-primary-200 pt-3 text-xs text-neutral-500 dark:border-primary-700 dark:text-neutral-400"
+                >
+                  <i aria-hidden="true" class="fas fa-circle-info mt-0.5"></i>
+                  <span>{{ 'projects.modal.decision.selfReported' | translate }}</span>
+                </p>
+              </section>
+            </ng-container>
 
             <div class="mb-6">
               <h4
@@ -873,6 +897,23 @@ export class ProjectsComponent {
 
     this.scrollStates[category] = { canScrollLeft, canScrollRight };
     this.cdr.markForCheck();
+  }
+
+  /**
+   * O botão de detalhe só existe quando há detalhe. Projeto pequeno entra com a
+   * frase de prova e mais nada, e um toggle que abre um bloco vazio é pior que
+   * a ausência do toggle.
+   */
+  hasDecisionDetails(project: ProjectItem): boolean {
+    const decision = project.decision;
+    if (!decision) return false;
+    return Boolean(
+      decision.contextKey ||
+      decision.constraintKey ||
+      decision.decisionKey ||
+      decision.evidenceKey ||
+      decision.impactKey
+    );
   }
 
   /**

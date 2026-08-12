@@ -9,7 +9,15 @@
       "technologies": ["React", "Vite", "NestJS", "Prisma", "MySQL", "AWS S3"],
       "demoUrl": "https://club.stechsolucoes.com/",
       "imageKey": "stechclub",
-      "featured": true
+      "featured": true,
+      "decision": {
+        "provesKey": "projects.decisions.stechclub.proves",
+        "contextKey": "projects.decisions.stechclub.context",
+        "constraintKey": "projects.decisions.stechclub.constraint",
+        "decisionKey": "projects.decisions.stechclub.decision",
+        "evidenceKey": "projects.decisions.stechclub.evidence",
+        "impactKey": "projects.decisions.stechclub.impact"
+      }
     },
     {
       "id": "optec-solutions",
@@ -19,7 +27,13 @@
       "category": "commercial",
       "tagsKeys": ["projects.tags.platform", "projects.tags.management", "projects.tags.dashboard"],
       "technologies": ["WordPress", "PHP", "Apache", "MySQL", "HTML5", "CSS3", "JavaScript"],
-      "demoUrl": "https://optecit.com.br"
+      "demoUrl": "https://optecit.com.br",
+      "decision": {
+        "provesKey": "projects.decisions.optec_solutions.proves",
+        "contextKey": "projects.decisions.optec_solutions.context",
+        "decisionKey": "projects.decisions.optec_solutions.decision",
+        "evidenceKey": "projects.decisions.optec_solutions.evidence"
+      }
     },
     {
       "id": "apollo-digital",
@@ -34,7 +48,13 @@
       ],
       "technologies": ["HTML5", "CSS3", "JavaScript", "CSS3", "Bootstrap"],
       "demoUrl": "https://minhamaquinadeleads.com.br/f4eee40f",
-      "featured": true
+      "featured": true,
+      "decision": {
+        "provesKey": "projects.decisions.apollo_digital.proves",
+        "contextKey": "projects.decisions.apollo_digital.context",
+        "decisionKey": "projects.decisions.apollo_digital.decision",
+        "evidenceKey": "projects.decisions.apollo_digital.evidence"
+      }
     },
     {
       "id": "braseng-consultoria",
@@ -48,7 +68,13 @@
         "projects.tags.landing_page"
       ],
       "technologies": ["HTML", "PHP", "JavaScript", "CSS3", "Bootstrap"],
-      "demoUrl": "https://minhamaquinadeleads.com.br/85a9cb35"
+      "demoUrl": "https://minhamaquinadeleads.com.br/85a9cb35",
+      "decision": {
+        "provesKey": "projects.decisions.braseng_consultoria.proves",
+        "contextKey": "projects.decisions.braseng_consultoria.context",
+        "decisionKey": "projects.decisions.braseng_consultoria.decision",
+        "evidenceKey": "projects.decisions.braseng_consultoria.evidence"
+      }
     },
     {
       "id": "bumbum-de-anjo",
@@ -58,7 +84,13 @@
       "category": "commercial",
       "tagsKeys": ["projects.tags.ecommerce", "projects.tags.health", "projects.tags.landing_page"],
       "technologies": ["HTML", "PHP", "JavaScript", "CSS3", "Bootstrap"],
-      "demoUrl": "https://minhamaquinadeleads.com.br/af8211e7"
+      "demoUrl": "https://minhamaquinadeleads.com.br/af8211e7",
+      "decision": {
+        "provesKey": "projects.decisions.bumbum_de_anjo.proves",
+        "contextKey": "projects.decisions.bumbum_de_anjo.context",
+        "decisionKey": "projects.decisions.bumbum_de_anjo.decision",
+        "evidenceKey": "projects.decisions.bumbum_de_anjo.evidence"
+      }
     },
     {
       "id": "fehe-chocolate",
@@ -68,7 +100,13 @@
       "category": "commercial",
       "tagsKeys": ["projects.tags.ecommerce", "projects.tags.food", "projects.tags.landing_page"],
       "technologies": ["Shopify", "Liquid", "JavaScript", "CSS3", "Google Analytics"],
-      "demoUrl": "https://minhamaquinadeleads.com.br/20c67a70"
+      "demoUrl": "https://minhamaquinadeleads.com.br/20c67a70",
+      "decision": {
+        "provesKey": "projects.decisions.fehe_chocolate.proves",
+        "contextKey": "projects.decisions.fehe_chocolate.context",
+        "decisionKey": "projects.decisions.fehe_chocolate.decision",
+        "evidenceKey": "projects.decisions.fehe_chocolate.evidence"
+      }
     },
     {
       "id": "clinica-viotto",
@@ -78,7 +116,13 @@
       "category": "commercial",
       "tagsKeys": ["projects.tags.health", "projects.tags.dental", "projects.tags.landing_page"],
       "technologies": ["WordPress", "PHP", "JavaScript", "CSS3", "Contact Form 7"],
-      "demoUrl": "https://minhamaquinadeleads.com.br/0c2bda46"
+      "demoUrl": "https://minhamaquinadeleads.com.br/0c2bda46",
+      "decision": {
+        "provesKey": "projects.decisions.clinica_viotto.proves",
+        "contextKey": "projects.decisions.clinica_viotto.context",
+        "decisionKey": "projects.decisions.clinica_viotto.decision",
+        "evidenceKey": "projects.decisions.clinica_viotto.evidence"
+      }
     },
     {
       "id": "souza-lima-vestibular",
@@ -88,7 +132,13 @@
       "category": "commercial",
       "tagsKeys": ["projects.tags.education", "projects.tags.music", "projects.tags.landing_page"],
       "technologies": ["WordPress", "PHP", "JavaScript", "CSS3", "Contact Form 7"],
-      "demoUrl": "https://faculdadesouzalima.com.br/"
+      "demoUrl": "https://faculdadesouzalima.com.br/",
+      "decision": {
+        "provesKey": "projects.decisions.souza_lima_vestibular.proves",
+        "contextKey": "projects.decisions.souza_lima_vestibular.context",
+        "decisionKey": "projects.decisions.souza_lima_vestibular.decision",
+        "evidenceKey": "projects.decisions.souza_lima_vestibular.evidence"
+      }
     },
     {
       "id": "souza-lima-cursos-livres",
@@ -98,7 +148,13 @@
       "category": "commercial",
       "tagsKeys": ["projects.tags.education", "projects.tags.music", "projects.tags.landing_page"],
       "technologies": ["WordPress", "PHP", "JavaScript", "CSS3", "Contact Form 7"],
-      "demoUrl": "https://www.souzalima.com.br/"
+      "demoUrl": "https://www.souzalima.com.br/",
+      "decision": {
+        "provesKey": "projects.decisions.souza_lima_cursos_livres.proves",
+        "contextKey": "projects.decisions.souza_lima_cursos_livres.context",
+        "decisionKey": "projects.decisions.souza_lima_cursos_livres.decision",
+        "evidenceKey": "projects.decisions.souza_lima_cursos_livres.evidence"
+      }
     },
     {
       "id": "mitra-crm",
@@ -108,7 +164,16 @@
       "category": "commercial",
       "tagsKeys": ["projects.tags.crm", "projects.tags.management", "projects.tags.desktop"],
       "technologies": ["Python", "tkinter", "SQLite", "MVC", "CRM"],
-      "githubUrl": "https://github.com/AuggieAlmeida/MITRA"
+      "githubUrl": "https://github.com/AuggieAlmeida/MITRA",
+      "decision": {
+        "provesKey": "projects.decisions.mitra_crm.proves",
+        "contextKey": "projects.decisions.mitra_crm.context",
+        "constraintKey": "projects.decisions.mitra_crm.constraint",
+        "decisionKey": "projects.decisions.mitra_crm.decision",
+        "evidenceKey": "projects.decisions.mitra_crm.evidence",
+        "impactKey": "projects.decisions.mitra_crm.impact",
+        "selfReported": true
+      }
     },
     {
       "id": "asurapadel",
@@ -119,7 +184,16 @@
       "technologies": ["Angular", "C#", "Azure", "SQL Server", "Jest"],
       "demoUrl": "https://green-hill-00d55160f.2.azurestaticapps.net/",
       "imageKey": "asurapadel",
-      "featured": true
+      "featured": true,
+      "decision": {
+        "provesKey": "projects.decisions.asurapadel.proves",
+        "contextKey": "projects.decisions.asurapadel.context",
+        "constraintKey": "projects.decisions.asurapadel.constraint",
+        "decisionKey": "projects.decisions.asurapadel.decision",
+        "evidenceKey": "projects.decisions.asurapadel.evidence",
+        "impactKey": "projects.decisions.asurapadel.impact",
+        "selfReported": true
+      }
     },
     {
       "id": "portal-agente-ia",
@@ -129,7 +203,15 @@
       "tagsKeys": ["projects.tags.ai", "projects.tags.platform", "projects.tags.automation"],
       "technologies": ["React", "TypeScript", "Supabase", "n8n", "AWS EC2", "Zod"],
       "imageKey": "portal-agente-ia",
-      "illustrated": true
+      "illustrated": true,
+      "decision": {
+        "provesKey": "projects.decisions.portal_agente_ia.proves",
+        "contextKey": "projects.decisions.portal_agente_ia.context",
+        "constraintKey": "projects.decisions.portal_agente_ia.constraint",
+        "decisionKey": "projects.decisions.portal_agente_ia.decision",
+        "evidenceKey": "projects.decisions.portal_agente_ia.evidence",
+        "impactKey": "projects.decisions.portal_agente_ia.impact"
+      }
     },
     {
       "id": "suite-financeira-b2b",
@@ -139,7 +221,15 @@
       "tagsKeys": ["projects.tags.fintech", "projects.tags.data", "projects.tags.platform"],
       "technologies": ["Django", "Vue 3", "PySpark", "Kafka", "PostgreSQL", "AWS", "Kubernetes"],
       "imageKey": "suite-financeira-b2b",
-      "illustrated": true
+      "illustrated": true,
+      "decision": {
+        "provesKey": "projects.decisions.suite_financeira_b2b.proves",
+        "contextKey": "projects.decisions.suite_financeira_b2b.context",
+        "constraintKey": "projects.decisions.suite_financeira_b2b.constraint",
+        "decisionKey": "projects.decisions.suite_financeira_b2b.decision",
+        "evidenceKey": "projects.decisions.suite_financeira_b2b.evidence",
+        "impactKey": "projects.decisions.suite_financeira_b2b.impact"
+      }
     },
     {
       "id": "portal-remuneracao-frota",
@@ -151,6 +241,7 @@
       "imageKey": "portal-remuneracao-frota",
       "illustrated": true,
       "decision": {
+        "provesKey": "projects.decisions.payroll.proves",
         "contextKey": "projects.decisions.payroll.context",
         "constraintKey": "projects.decisions.payroll.constraint",
         "decisionKey": "projects.decisions.payroll.decision",
@@ -174,7 +265,15 @@
         "Samba"
       ],
       "imageKey": "servidor-llm-local",
-      "illustrated": true
+      "illustrated": true,
+      "decision": {
+        "provesKey": "projects.decisions.servidor_llm_local.proves",
+        "contextKey": "projects.decisions.servidor_llm_local.context",
+        "constraintKey": "projects.decisions.servidor_llm_local.constraint",
+        "decisionKey": "projects.decisions.servidor_llm_local.decision",
+        "evidenceKey": "projects.decisions.servidor_llm_local.evidence",
+        "impactKey": "projects.decisions.servidor_llm_local.impact"
+      }
     },
     {
       "id": "bubble-box-lavanderia",
@@ -185,7 +284,13 @@
       "technologies": ["HTML5", "CSS3", "JavaScript", "jQuery", "Bootstrap"],
       "imageKey": "bubble-box-franchise",
       "demoUrl": "https://bubblebox.com.br/",
-      "featured": true
+      "featured": true,
+      "decision": {
+        "provesKey": "projects.decisions.bubble_box_lavanderia.proves",
+        "contextKey": "projects.decisions.bubble_box_lavanderia.context",
+        "decisionKey": "projects.decisions.bubble_box_lavanderia.decision",
+        "evidenceKey": "projects.decisions.bubble_box_lavanderia.evidence"
+      }
     }
   ],
   "study": [
@@ -198,7 +303,14 @@
       "tagsKeys": ["projects.tags.rpg", "projects.tags.guide", "projects.tags.interactive"],
       "technologies": ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
       "demoUrl": "https://dn-d-guide.vercel.app",
-      "githubUrl": "https://github.com/AuggieAlmeida/DnD-Guide"
+      "githubUrl": "https://github.com/AuggieAlmeida/DnD-Guide",
+      "decision": {
+        "provesKey": "projects.decisions.dnd_augury_guide.proves",
+        "contextKey": "projects.decisions.dnd_augury_guide.context",
+        "constraintKey": "projects.decisions.dnd_augury_guide.constraint",
+        "decisionKey": "projects.decisions.dnd_augury_guide.decision",
+        "impactKey": "projects.decisions.dnd_augury_guide.impact"
+      }
     },
     {
       "id": "taskforge",
@@ -208,7 +320,15 @@
       "tagsKeys": ["projects.tags.ai", "projects.tags.automation", "projects.tags.platform"],
       "technologies": ["TypeScript", "Zod", "Git worktrees", "Node.js", "CLI"],
       "imageKey": "taskforge",
-      "featured": true
+      "featured": true,
+      "decision": {
+        "provesKey": "projects.decisions.taskforge.proves",
+        "contextKey": "projects.decisions.taskforge.context",
+        "constraintKey": "projects.decisions.taskforge.constraint",
+        "decisionKey": "projects.decisions.taskforge.decision",
+        "evidenceKey": "projects.decisions.taskforge.evidence",
+        "impactKey": "projects.decisions.taskforge.impact"
+      }
     },
     {
       "id": "omegahub",
@@ -218,7 +338,15 @@
       "category": "study",
       "tagsKeys": ["projects.tags.platform", "projects.tags.game", "projects.tags.monorepo"],
       "technologies": ["Next.js", "NestJS", "Turborepo", "PostgreSQL", "Redis", "Stripe"],
-      "githubUrl": "https://github.com/AuggieAlmeida/discordia"
+      "githubUrl": "https://github.com/AuggieAlmeida/discordia",
+      "decision": {
+        "provesKey": "projects.decisions.omegahub.proves",
+        "contextKey": "projects.decisions.omegahub.context",
+        "constraintKey": "projects.decisions.omegahub.constraint",
+        "decisionKey": "projects.decisions.omegahub.decision",
+        "evidenceKey": "projects.decisions.omegahub.evidence",
+        "impactKey": "projects.decisions.omegahub.impact"
+      }
     },
     {
       "id": "pronto",
@@ -228,7 +356,14 @@
       "tagsKeys": ["projects.tags.marketplace", "projects.tags.mobile"],
       "technologies": ["NestJS", "Next.js", "Expo", "PostGIS", "Go", "Kafka", "OpenTelemetry"],
       "imageKey": "pronto",
-      "illustrated": true
+      "illustrated": true,
+      "decision": {
+        "provesKey": "projects.decisions.pronto.proves",
+        "contextKey": "projects.decisions.pronto.context",
+        "constraintKey": "projects.decisions.pronto.constraint",
+        "decisionKey": "projects.decisions.pronto.decision",
+        "impactKey": "projects.decisions.pronto.impact"
+      }
     },
     {
       "id": "barbearia-app",
@@ -237,7 +372,14 @@
       "category": "study",
       "tagsKeys": ["projects.tags.platform", "projects.tags.pwa", "projects.tags.management"],
       "technologies": ["Next.js", "Supabase", "PostGIS", "Leaflet"],
-      "imageKey": "barbearia-app"
+      "imageKey": "barbearia-app",
+      "decision": {
+        "provesKey": "projects.decisions.barbearia_app.proves",
+        "contextKey": "projects.decisions.barbearia_app.context",
+        "constraintKey": "projects.decisions.barbearia_app.constraint",
+        "decisionKey": "projects.decisions.barbearia_app.decision",
+        "impactKey": "projects.decisions.barbearia_app.impact"
+      }
     },
     {
       "id": "pasta-la-vista",
@@ -254,7 +396,15 @@
         "pasta-la-vista-pagamento",
         "pasta-la-vista-pedido"
       ],
-      "githubUrl": "https://github.com/AuggieAlmeida/Pasta-la-Vista"
+      "githubUrl": "https://github.com/AuggieAlmeida/Pasta-la-Vista",
+      "decision": {
+        "provesKey": "projects.decisions.pasta_la_vista.proves",
+        "contextKey": "projects.decisions.pasta_la_vista.context",
+        "constraintKey": "projects.decisions.pasta_la_vista.constraint",
+        "decisionKey": "projects.decisions.pasta_la_vista.decision",
+        "evidenceKey": "projects.decisions.pasta_la_vista.evidence",
+        "impactKey": "projects.decisions.pasta_la_vista.impact"
+      }
     },
     {
       "id": "buscajogos",
@@ -264,7 +414,15 @@
       "tagsKeys": ["projects.tags.academic", "projects.tags.platform", "projects.tags.automation"],
       "technologies": ["Go", "C#", "Vue", "MySQL", "Docker"],
       "imageKey": "buscajogos",
-      "illustrated": true
+      "illustrated": true,
+      "decision": {
+        "provesKey": "projects.decisions.buscajogos.proves",
+        "contextKey": "projects.decisions.buscajogos.context",
+        "constraintKey": "projects.decisions.buscajogos.constraint",
+        "decisionKey": "projects.decisions.buscajogos.decision",
+        "evidenceKey": "projects.decisions.buscajogos.evidence",
+        "impactKey": "projects.decisions.buscajogos.impact"
+      }
     },
     {
       "id": "kitbuilder",
@@ -275,7 +433,14 @@
       "technologies": ["Python", "pytest", "Alembic", "Docker"],
       "imageKey": "kitbuilder",
       "paperUrl": "https://ric.cps.sp.gov.br/handle/123456789/46429",
-      "githubUrl": "https://github.com/KitManeger-Fatec/KitBuilder-tkinter"
+      "githubUrl": "https://github.com/KitManeger-Fatec/KitBuilder-tkinter",
+      "decision": {
+        "provesKey": "projects.decisions.kitbuilder.proves",
+        "contextKey": "projects.decisions.kitbuilder.context",
+        "constraintKey": "projects.decisions.kitbuilder.constraint",
+        "decisionKey": "projects.decisions.kitbuilder.decision",
+        "impactKey": "projects.decisions.kitbuilder.impact"
+      }
     },
     {
       "id": "youtcatcher",
@@ -285,7 +450,15 @@
       "tagsKeys": ["projects.tags.desktop", "projects.tags.automation"],
       "technologies": ["Python", "CustomTkinter", "yt-dlp", "pytest"],
       "githubUrl": "https://github.com/AuggieAlmeida/YoutCatcher",
-      "imageKey": "youtcatcher"
+      "imageKey": "youtcatcher",
+      "decision": {
+        "provesKey": "projects.decisions.youtcatcher.proves",
+        "contextKey": "projects.decisions.youtcatcher.context",
+        "constraintKey": "projects.decisions.youtcatcher.constraint",
+        "decisionKey": "projects.decisions.youtcatcher.decision",
+        "evidenceKey": "projects.decisions.youtcatcher.evidence",
+        "impactKey": "projects.decisions.youtcatcher.impact"
+      }
     },
     {
       "id": "sudoku-solver",
@@ -299,7 +472,14 @@
       ],
       "technologies": ["C", "C++", "OpenCV"],
       "imageKey": "sudoku-solver",
-      "illustrated": true
+      "illustrated": true,
+      "decision": {
+        "provesKey": "projects.decisions.sudoku_solver.proves",
+        "contextKey": "projects.decisions.sudoku_solver.context",
+        "constraintKey": "projects.decisions.sudoku_solver.constraint",
+        "decisionKey": "projects.decisions.sudoku_solver.decision",
+        "impactKey": "projects.decisions.sudoku_solver.impact"
+      }
     },
     {
       "id": "jarbas",
@@ -308,7 +488,15 @@
       "category": "study",
       "tagsKeys": ["projects.tags.ai", "projects.tags.desktop", "projects.tags.automation"],
       "technologies": ["TypeScript", "Tauri", "Node.js", "CLI", "LLM"],
-      "imageKey": "jarbas"
+      "imageKey": "jarbas",
+      "decision": {
+        "provesKey": "projects.decisions.jarbas.proves",
+        "contextKey": "projects.decisions.jarbas.context",
+        "constraintKey": "projects.decisions.jarbas.constraint",
+        "decisionKey": "projects.decisions.jarbas.decision",
+        "evidenceKey": "projects.decisions.jarbas.evidence",
+        "impactKey": "projects.decisions.jarbas.impact"
+      }
     },
     {
       "id": "quinto-selo",
@@ -317,7 +505,15 @@
       "category": "study",
       "tagsKeys": ["projects.tags.game", "projects.tags.platform"],
       "technologies": ["Godot 4", "GDScript", "Blender", "Netcode"],
-      "imageKey": "quinto-selo"
+      "imageKey": "quinto-selo",
+      "decision": {
+        "provesKey": "projects.decisions.quinto_selo.proves",
+        "contextKey": "projects.decisions.quinto_selo.context",
+        "constraintKey": "projects.decisions.quinto_selo.constraint",
+        "decisionKey": "projects.decisions.quinto_selo.decision",
+        "evidenceKey": "projects.decisions.quinto_selo.evidence",
+        "impactKey": "projects.decisions.quinto_selo.impact"
+      }
     },
     {
       "id": "financeos",
@@ -326,7 +522,15 @@
       "category": "study",
       "tagsKeys": ["projects.tags.fintech", "projects.tags.monorepo", "projects.tags.dashboard"],
       "technologies": ["TypeScript", "Turborepo", "Prisma", "Redis"],
-      "imageKey": "financeos"
+      "imageKey": "financeos",
+      "decision": {
+        "provesKey": "projects.decisions.financeos.proves",
+        "contextKey": "projects.decisions.financeos.context",
+        "constraintKey": "projects.decisions.financeos.constraint",
+        "decisionKey": "projects.decisions.financeos.decision",
+        "evidenceKey": "projects.decisions.financeos.evidence",
+        "impactKey": "projects.decisions.financeos.impact"
+      }
     },
     {
       "id": "zoologic",
@@ -337,7 +541,14 @@
       "technologies": ["PHP 8", "Next.js", "MySQL", "PHPUnit"],
       "imageKey": "zoologic",
       "imageKeys": ["zoologic", "zoologic-animals", "zoologic-register", "zoologic-monitoring"],
-      "githubUrl": "https://github.com/AuggieAlmeida/zoologic-api"
+      "githubUrl": "https://github.com/AuggieAlmeida/zoologic-api",
+      "decision": {
+        "provesKey": "projects.decisions.zoologic.proves",
+        "contextKey": "projects.decisions.zoologic.context",
+        "constraintKey": "projects.decisions.zoologic.constraint",
+        "decisionKey": "projects.decisions.zoologic.decision",
+        "impactKey": "projects.decisions.zoologic.impact"
+      }
     },
     {
       "id": "repo-explorer-angular",
@@ -347,7 +558,15 @@
       "tagsKeys": ["projects.tags.devtools", "projects.tags.platform"],
       "technologies": ["Angular", "TypeScript", "Signals", "GitHub API"],
       "imageKey": "repo-explorer-angular",
-      "githubUrl": "https://github.com/AuggieAlmeida/repo-explorer"
+      "githubUrl": "https://github.com/AuggieAlmeida/repo-explorer",
+      "decision": {
+        "provesKey": "projects.decisions.repo_explorer_angular.proves",
+        "contextKey": "projects.decisions.repo_explorer_angular.context",
+        "constraintKey": "projects.decisions.repo_explorer_angular.constraint",
+        "decisionKey": "projects.decisions.repo_explorer_angular.decision",
+        "evidenceKey": "projects.decisions.repo_explorer_angular.evidence",
+        "impactKey": "projects.decisions.repo_explorer_angular.impact"
+      }
     },
     {
       "id": "instagram-analyzer",
@@ -356,7 +575,14 @@
       "category": "study",
       "tagsKeys": ["projects.tags.desktop", "projects.tags.automation", "projects.tags.dashboard"],
       "technologies": ["Python", "CustomTkinter", "MVC"],
-      "imageKey": "instagram-analyzer"
+      "imageKey": "instagram-analyzer",
+      "decision": {
+        "provesKey": "projects.decisions.instagram_analyzer.proves",
+        "contextKey": "projects.decisions.instagram_analyzer.context",
+        "constraintKey": "projects.decisions.instagram_analyzer.constraint",
+        "decisionKey": "projects.decisions.instagram_analyzer.decision",
+        "impactKey": "projects.decisions.instagram_analyzer.impact"
+      }
     },
     {
       "id": "pokedex",
@@ -366,7 +592,14 @@
       "tagsKeys": ["projects.tags.mobile", "projects.tags.game"],
       "technologies": ["Expo", "React Native", "SQLite", "Reanimated"],
       "imageKey": "pokedex",
-      "githubUrl": "https://github.com/AuggieAlmeida/Pokedex"
+      "githubUrl": "https://github.com/AuggieAlmeida/Pokedex",
+      "decision": {
+        "provesKey": "projects.decisions.pokedex.proves",
+        "contextKey": "projects.decisions.pokedex.context",
+        "constraintKey": "projects.decisions.pokedex.constraint",
+        "decisionKey": "projects.decisions.pokedex.decision",
+        "impactKey": "projects.decisions.pokedex.impact"
+      }
     },
     {
       "id": "javafx-pokemon",
@@ -376,7 +609,13 @@
       "tagsKeys": ["projects.tags.desktop", "projects.tags.academic", "projects.tags.game"],
       "technologies": ["Java", "JavaFX", "Maven", "MVC"],
       "imageKey": "javafx-pokemon",
-      "githubUrl": "https://github.com/AuggieAlmeida/JAVAFX-MAVEN-MVC-POKEMONAPP"
+      "githubUrl": "https://github.com/AuggieAlmeida/JAVAFX-MAVEN-MVC-POKEMONAPP",
+      "decision": {
+        "provesKey": "projects.decisions.javafx_pokemon.proves",
+        "contextKey": "projects.decisions.javafx_pokemon.context",
+        "decisionKey": "projects.decisions.javafx_pokemon.decision",
+        "impactKey": "projects.decisions.javafx_pokemon.impact"
+      }
     },
     {
       "id": "calc-financeira",
@@ -385,7 +624,14 @@
       "category": "study",
       "tagsKeys": ["projects.tags.fintech", "projects.tags.automation", "projects.tags.academic"],
       "technologies": ["Python"],
-      "imageKey": "calc-financeira"
+      "imageKey": "calc-financeira",
+      "decision": {
+        "provesKey": "projects.decisions.calc_financeira.proves",
+        "contextKey": "projects.decisions.calc_financeira.context",
+        "constraintKey": "projects.decisions.calc_financeira.constraint",
+        "decisionKey": "projects.decisions.calc_financeira.decision",
+        "impactKey": "projects.decisions.calc_financeira.impact"
+      }
     },
     {
       "id": "aquila-e-evelyn",
@@ -402,7 +648,14 @@
         "aquila-e-evelyn-mobile"
       ],
       "demoUrl": "https://auggiealmeida.github.io/aquila-e-evelyn/",
-      "githubUrl": "https://github.com/AuggieAlmeida/aquila-e-evelyn"
+      "githubUrl": "https://github.com/AuggieAlmeida/aquila-e-evelyn",
+      "decision": {
+        "provesKey": "projects.decisions.aquila_e_evelyn.proves",
+        "contextKey": "projects.decisions.aquila_e_evelyn.context",
+        "constraintKey": "projects.decisions.aquila_e_evelyn.constraint",
+        "decisionKey": "projects.decisions.aquila_e_evelyn.decision",
+        "impactKey": "projects.decisions.aquila_e_evelyn.impact"
+      }
     },
     {
       "id": "presente-para-daniela",
@@ -421,7 +674,14 @@
         "presente-daniela-mobile"
       ],
       "demoUrl": "https://cartaparadaniela.vercel.app/",
-      "githubUrl": "https://github.com/AuggieAlmeida/valentine-love-landing"
+      "githubUrl": "https://github.com/AuggieAlmeida/valentine-love-landing",
+      "decision": {
+        "provesKey": "projects.decisions.presente_para_daniela.proves",
+        "contextKey": "projects.decisions.presente_para_daniela.context",
+        "constraintKey": "projects.decisions.presente_para_daniela.constraint",
+        "decisionKey": "projects.decisions.presente_para_daniela.decision",
+        "impactKey": "projects.decisions.presente_para_daniela.impact"
+      }
     }
   ]
 }
