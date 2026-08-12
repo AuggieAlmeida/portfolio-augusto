@@ -22,13 +22,17 @@ import { TranslateModule } from '@ngx-translate/core';
       ></div>
 
       <div class="relative z-10 container mx-auto">
-        <h2
-          id="about-title"
-          class="section-title text-4xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-100 mb-10"
-        >
-          <span class="font-display text-primary-600 dark:text-primary-400">✦</span>
-          {{ 'about.aboutMe' | translate }}
-        </h2>
+        <!-- Mesmo cabecalho centralizado das secoes de projetos e trajetoria;
+             aqui o h2 estava solto e encostava na esquerda. -->
+        <div class="text-center mb-8 md:mb-12">
+          <h2
+            id="about-title"
+            class="section-title text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-800 dark:text-neutral-100 mb-4"
+          >
+            <span class="font-display text-primary-600 dark:text-primary-400">✦</span>
+            {{ 'about.aboutMe' | translate }}
+          </h2>
+        </div>
 
         <div class="about-content">
           <!-- O rosto vive no hero, com foto real. Repetir retrato aqui só

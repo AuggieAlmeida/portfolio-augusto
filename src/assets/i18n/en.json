@@ -216,10 +216,6 @@
         "title": "Tecnurg",
         "description": "Two-sided marketplace architecture for urgent services: race-to-accept, Clean Architecture in Go, Kafka events, offline-first technician app and distributed tracing. Data protection handled from the modelling stage."
       },
-      "brechoapp": {
-        "title": "Brechó App",
-        "description": "Peer-to-peer thrift marketplace for mobile, with card and instant-transfer payments, queue-based stock sync and PII masking applied from the first data model."
-      },
       "barbearia_app": {
         "title": "Barbershop App",
         "description": "Discovery and booking PWA for barbershops, with map, live schedule and separate owner and customer roles. Double-booking is prevented by a database constraint rather than an application check."
@@ -243,10 +239,6 @@
       "sudoku_solver": {
         "title": "Sudoku Solver",
         "description": "Solves a Sudoku from a photo: image pre-processing, grid detection, digit OCR, a backtracking solver in C and the answer overlaid back onto the original picture."
-      },
-      "portfolio_suite": {
-        "title": "Portfolio Suite",
-        "description": "The successor to this site: a monorepo with its own API acting as CMS, an admin panel and two frontend experiences consuming a single content schema."
       },
       "asurapadel": {
         "title": "AsuraPadel",
@@ -291,10 +283,6 @@
       "javafx_pokemon": {
         "title": "JavaFX Pokémon",
         "description": "JavaFX desktop application with Maven and MVC separation — a Java architecture exercise, built to practise layering rather than just screens."
-      },
-      "jornada5d": {
-        "title": "Jornada 5D",
-        "description": "React Native template with multi-environment Firebase: local emulators, product flavors and Clean Architecture ready to go, so a new project does not repeat the same setup week."
       },
       "calc_financeira": {
         "title": "Financial Calculator",
@@ -344,7 +332,16 @@
     },
     "viewDemo": "View demo",
     "viewCode": "View code",
-    "viewPaper": "View publication"
+    "viewPaper": "View publication",
+    "modal": {
+      "close": "Close",
+      "previous": "Previous image",
+      "next": "Next image",
+      "goToImage": "Go to image",
+      "stack": "Stack",
+      "tags": "Tags",
+      "noLinks": "No public link — private code or project without a deployment."
+    }
   },
   "project": {
     "viewDemo": "View Demo",

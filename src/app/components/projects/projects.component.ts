@@ -4,6 +4,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  HostListener,
   inject,
   ViewChild
 } from '@angular/core';
@@ -16,6 +17,9 @@ interface ProjectItem {
   titleKey: string;
   descriptionKey: string;
   image: string;
+  /** Galeria do modal. Ausente, o modal cai para `image`; ausentes as duas, o
+   *  modal mostra o mesmo bloco de iniciais que o card. */
+  images?: string[];
   category: 'commercial' | 'study';
   tagsKeys: string[];
   technologies: string[];
@@ -438,6 +442,197 @@ interface ProjectsData {
           </div>
         </div>
       </div>
+
+      <!-- Modal de detalhe -->
+      <div
+        *ngIf="selectedProject as project"
+        class="project-modal fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6"
+        role="dialog"
+        aria-modal="true"
+        [attr.aria-label]="project.titleKey | translate"
+      >
+        <!-- Backdrop e um button de verdade: satisfaz teclado e foco sem o
+             div-com-click que as regras de acessibilidade barram. -->
+        <button
+          type="button"
+          class="absolute inset-0 h-full w-full cursor-default bg-black/70 backdrop-blur-sm"
+          (click)="closeModal()"
+          [attr.aria-label]="'projects.modal.close' | translate"
+        ></button>
+
+        <div
+          class="project-modal-panel relative flex max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-primary-800"
+        >
+          <button
+            #modalClose
+            type="button"
+            class="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-primary-400"
+            (click)="closeModal()"
+            [attr.aria-label]="'projects.modal.close' | translate"
+          >
+            <i aria-hidden="true" class="fas fa-times"></i>
+          </button>
+
+          <div class="overflow-y-auto">
+            <!-- Galeria -->
+            <div class="relative flex h-64 items-center justify-center bg-neutral-900 md:h-[24rem]">
+              <img
+                *ngIf="slides(project).length; else modalFallback"
+                [src]="slides(project)[slideIndex]"
+                [alt]="(project.titleKey | translate) + ' — ' + (slideIndex + 1)"
+                class="h-full w-full object-contain"
+              />
+              <ng-template #modalFallback>
+                <span
+                  class="font-heading text-6xl font-bold tracking-widest text-white/80"
+                  aria-hidden="true"
+                >
+                  {{ initials(project) }}
+                </span>
+              </ng-template>
+
+              <ng-container *ngIf="slides(project).length > 1">
+                <button
+                  type="button"
+                  class="absolute left-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-primary-400"
+                  (click)="prevSlide(project)"
+                  [attr.aria-label]="'projects.modal.previous' | translate"
+                >
+                  <i aria-hidden="true" class="fas fa-chevron-left"></i>
+                </button>
+                <button
+                  type="button"
+                  class="absolute right-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70 focus:outline-none focus:ring-2 focus:ring-primary-400"
+                  (click)="nextSlide(project)"
+                  [attr.aria-label]="'projects.modal.next' | translate"
+                >
+                  <i aria-hidden="true" class="fas fa-chevron-right"></i>
+                </button>
+                <div class="absolute bottom-3 flex gap-2">
+                  <button
+                    *ngFor="let slide of slides(project); let i = index"
+                    type="button"
+                    class="h-2.5 w-2.5 rounded-full bg-white transition-opacity focus:outline-none focus:ring-2 focus:ring-primary-400"
+                    [class.opacity-100]="i === slideIndex"
+                    [class.opacity-40]="i !== slideIndex"
+                    (click)="goToSlide(i)"
+                    [attr.aria-label]="('projects.modal.goToImage' | translate) + ' ' + (i + 1)"
+                    [attr.aria-current]="i === slideIndex"
+                  ></button>
+                </div>
+              </ng-container>
+            </div>
+
+            <!-- Detalhe -->
+            <div class="p-5 md:p-8">
+              <div class="mb-3 flex flex-wrap items-center gap-3">
+                <span
+                  class="flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium text-white"
+                  [class.bg-primary-500]="project.category === 'commercial'"
+                  [class.bg-secondary-500]="project.category === 'study'"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="text-xs fas"
+                    [class.fa-dollar-sign]="project.category === 'commercial'"
+                    [class.fa-graduation-cap]="project.category === 'study'"
+                  ></i>
+                  {{
+                    (project.category === 'commercial'
+                      ? 'projects.commercial.badge'
+                      : 'projects.study.badge'
+                    ) | translate
+                  }}
+                </span>
+                <span
+                  *ngIf="slides(project).length > 1"
+                  class="text-xs text-neutral-500 dark:text-neutral-400"
+                >
+                  {{ slideIndex + 1 }} / {{ slides(project).length }}
+                </span>
+              </div>
+
+              <h3
+                class="mb-4 font-heading text-2xl font-bold text-neutral-900 dark:text-neutral-100 md:text-3xl"
+              >
+                {{ project.titleKey | translate }}
+              </h3>
+
+              <p class="mb-6 leading-relaxed text-neutral-600 dark:text-neutral-300">
+                {{ project.descriptionKey | translate }}
+              </p>
+
+              <div class="mb-6">
+                <h4
+                  class="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
+                >
+                  {{ 'projects.modal.stack' | translate }}
+                </h4>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    *ngFor="let tech of project.technologies"
+                    class="rounded-md bg-neutral-100 px-2 py-1 text-xs font-medium text-neutral-700 dark:bg-neutral-700 dark:text-neutral-300"
+                  >
+                    {{ tech }}
+                  </span>
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <h4
+                  class="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400"
+                >
+                  {{ 'projects.modal.tags' | translate }}
+                </h4>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    *ngFor="let tagKey of project.tagsKeys"
+                    class="rounded-full bg-primary-50 px-3 py-1 text-xs font-medium text-primary-700 dark:bg-primary-900/40 dark:text-primary-300"
+                  >
+                    {{ tagKey | translate }}
+                  </span>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-3">
+                <button
+                  *ngIf="project.demoUrl"
+                  type="button"
+                  class="flex items-center gap-2 rounded-lg bg-primary-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-400"
+                  (click)="openUrl(project.demoUrl!)"
+                >
+                  <i aria-hidden="true" class="fas fa-external-link-alt text-xs"></i>
+                  {{ 'projects.viewDemo' | translate }}
+                </button>
+                <button
+                  *ngIf="project.githubUrl"
+                  type="button"
+                  class="flex items-center gap-2 rounded-lg border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-400 dark:border-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-700"
+                  (click)="openUrl(project.githubUrl!)"
+                >
+                  <i aria-hidden="true" class="fab fa-github text-xs"></i>
+                  {{ 'projects.viewCode' | translate }}
+                </button>
+                <button
+                  *ngIf="project.paperUrl"
+                  type="button"
+                  class="flex items-center gap-2 rounded-lg border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary-400 dark:border-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-700"
+                  (click)="openUrl(project.paperUrl!)"
+                >
+                  <i aria-hidden="true" class="fas fa-graduation-cap text-xs"></i>
+                  {{ 'projects.viewPaper' | translate }}
+                </button>
+                <span
+                  *ngIf="!project.demoUrl && !project.githubUrl && !project.paperUrl"
+                  class="text-sm italic text-neutral-500 dark:text-neutral-400"
+                >
+                  {{ 'projects.modal.noLinks' | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   `,
   styles: [
@@ -584,12 +779,44 @@ interface ProjectsData {
           width: 400px;
         }
       }
+
+      /* Modal */
+      @keyframes modalIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .project-modal-panel {
+        animation: modalIn 0.2s ease-out;
+      }
+
+      /* O :hover global de button acima aplicaria scale(1.1) tambem nos
+         controles do modal, que sao ancorados por posicao absoluta. */
+      .project-modal button:hover {
+        transform: none;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .project-modal-panel {
+          animation: none;
+        }
+      }
     `
   ]
 })
 export class ProjectsComponent {
   @ViewChild('commercialCarousel') commercialCarousel!: ElementRef<HTMLDivElement>;
   @ViewChild('studyCarousel') studyCarousel!: ElementRef<HTMLDivElement>;
+  @ViewChild('modalClose') modalClose?: ElementRef<HTMLButtonElement>;
+
+  public selectedProject: ProjectItem | null = null;
+  public slideIndex = 0;
 
   private cdr = inject(ChangeDetectorRef);
   private translate = inject(TranslateService);
@@ -679,14 +906,60 @@ export class ProjectsComponent {
     return `${index * 0.1}s`;
   }
 
-  // Open project modal/details
+  // Galeria do modal: `images` quando existe, senao a capa do card, senao nada.
+  slides(project: ProjectItem): string[] {
+    if (project.images?.length) return project.images;
+    return project.image ? [project.image] : [];
+  }
+
   openProjectModal(project: ProjectItem): void {
-    if (project.demoUrl) {
-      this.openUrl(project.demoUrl);
-    } else if (project.githubUrl) {
-      this.openUrl(project.githubUrl);
-    } else if (project.paperUrl) {
-      this.openUrl(project.paperUrl);
+    this.selectedProject = project;
+    this.slideIndex = 0;
+    // Sem isso a pagina atras do modal rola junto no scroll do overlay.
+    document.body.style.overflow = 'hidden';
+    this.cdr.markForCheck();
+    // Foco no botao de fechar para o teclado nao continuar preso no card.
+    setTimeout(() => this.modalClose?.nativeElement.focus());
+  }
+
+  closeModal(): void {
+    this.selectedProject = null;
+    document.body.style.overflow = '';
+    this.cdr.markForCheck();
+  }
+
+  nextSlide(project: ProjectItem): void {
+    const total = this.slides(project).length;
+    if (total > 1) {
+      this.slideIndex = (this.slideIndex + 1) % total;
+      this.cdr.markForCheck();
+    }
+  }
+
+  prevSlide(project: ProjectItem): void {
+    const total = this.slides(project).length;
+    if (total > 1) {
+      this.slideIndex = (this.slideIndex - 1 + total) % total;
+      this.cdr.markForCheck();
+    }
+  }
+
+  goToSlide(index: number): void {
+    this.slideIndex = index;
+    this.cdr.markForCheck();
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  onKeydown(event: KeyboardEvent): void {
+    const project = this.selectedProject;
+    if (!project) return;
+
+    if (event.key === 'Escape') {
+      this.closeModal();
+    } else if (event.key === 'ArrowRight') {
+      this.nextSlide(project);
+    } else if (event.key === 'ArrowLeft') {
+      this.prevSlide(project);
     }
   }
 

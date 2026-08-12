@@ -7,7 +7,8 @@
       "category": "commercial",
       "tagsKeys": ["projects.tags.platform", "projects.tags.education"],
       "technologies": ["React", "Vite", "NestJS", "Prisma", "MySQL", "AWS S3"],
-      "demoUrl": "https://club.stechsolucoes.com/"
+      "demoUrl": "https://club.stechsolucoes.com/",
+      "image": "./assets/images/projects/stechclub.jpg"
     },
     {
       "id": "optec-solutions",
@@ -105,7 +106,6 @@
       "category": "commercial",
       "tagsKeys": ["projects.tags.crm", "projects.tags.management", "projects.tags.desktop"],
       "technologies": ["Python", "tkinter", "SQLite", "MVC", "CRM"],
-      "demoUrl": "https://github.com/AuggieAlmeida/MITRA",
       "githubUrl": "https://github.com/AuggieAlmeida/MITRA"
     },
     {
@@ -132,7 +132,9 @@
       "descriptionKey": "projects.items.bubble_box_lavanderia.description",
       "category": "commercial",
       "tagsKeys": ["projects.tags.landing_page", "projects.tags.leads", "projects.tags.business"],
-      "technologies": ["HTML5", "CSS3", "JavaScript", "jQuery", "Bootstrap"]
+      "technologies": ["HTML5", "CSS3", "JavaScript", "jQuery", "Bootstrap"],
+      "image": "./assets/images/projects/bubble-box.jpg",
+      "demoUrl": "https://bubblebox.com.br/"
     }
   ],
   "study": [
@@ -144,8 +146,8 @@
       "category": "study",
       "tagsKeys": ["projects.tags.rpg", "projects.tags.guide", "projects.tags.interactive"],
       "technologies": ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
-      "demoUrl": "https://auggiealmeida.github.io/DnD-Guide/",
-      "githubUrl": "https://github.com/auggiealmeida/DnD-Guide"
+      "demoUrl": "https://dn-d-guide.vercel.app",
+      "githubUrl": "https://github.com/AuggieAlmeida/DnD-Guide"
     },
     {
       "id": "taskforge",
@@ -180,14 +182,6 @@
       "technologies": ["Go", "Kafka", "PostGIS", "React Native", "OpenTelemetry"]
     },
     {
-      "id": "brechoapp",
-      "titleKey": "projects.items.brechoapp.title",
-      "descriptionKey": "projects.items.brechoapp.description",
-      "category": "study",
-      "tagsKeys": ["projects.tags.marketplace", "projects.tags.mobile", "projects.tags.ecommerce"],
-      "technologies": ["React Native", "Go", "PostgreSQL", "Redis", "Mercado Pago"]
-    },
-    {
       "id": "barbearia-app",
       "titleKey": "projects.items.barbearia_app.title",
       "descriptionKey": "projects.items.barbearia_app.description",
@@ -202,8 +196,15 @@
       "category": "study",
       "tagsKeys": ["projects.tags.mobile", "projects.tags.food", "projects.tags.ecommerce"],
       "technologies": ["React Native", "Expo", "Express", "TypeScript", "Stripe"],
-      "image": "./assets/images/projects/pasta-la-vista.jpg",
-      "demoUrl": "https://pasta-la-vista-mobile--8b9d3o7ps5.expo.app/"
+      "image": "./assets/images/projects/pasta-la-vista-web.jpg",
+      "demoUrl": "https://pasta-la-vista-mobile--8b9d3o7ps5.expo.app/",
+      "images": [
+        "./assets/images/projects/pasta-la-vista-web.jpg",
+        "./assets/images/projects/pasta-la-vista-cardapio.jpg",
+        "./assets/images/projects/pasta-la-vista-pagamento.jpg",
+        "./assets/images/projects/pasta-la-vista-pedido.jpg"
+      ],
+      "githubUrl": "https://github.com/AuggieAlmeida/Pasta-la-Vista"
     },
     {
       "id": "buscajogos",
@@ -220,7 +221,8 @@
       "category": "study",
       "tagsKeys": ["projects.tags.desktop", "projects.tags.management", "projects.tags.academic"],
       "technologies": ["Python", "pytest", "Alembic", "Docker"],
-      "paperUrl": "https://ric.cps.sp.gov.br/handle/123456789/46429"
+      "paperUrl": "https://ric.cps.sp.gov.br/handle/123456789/46429",
+      "githubUrl": "https://github.com/KitManeger-Fatec/KitBuilder-tkinter"
     },
     {
       "id": "youtcatcher",
@@ -228,7 +230,8 @@
       "descriptionKey": "projects.items.youtcatcher.description",
       "category": "study",
       "tagsKeys": ["projects.tags.desktop", "projects.tags.automation"],
-      "technologies": ["Python", "CustomTkinter", "yt-dlp", "pytest"]
+      "technologies": ["Python", "CustomTkinter", "yt-dlp", "pytest"],
+      "githubUrl": "https://github.com/AuggieAlmeida/YoutCatcher"
     },
     {
       "id": "sudoku-solver",
@@ -241,14 +244,6 @@
         "projects.tags.automation"
       ],
       "technologies": ["C", "C++", "OpenCV"]
-    },
-    {
-      "id": "portfolio-suite",
-      "titleKey": "projects.items.portfolio_suite.title",
-      "descriptionKey": "projects.items.portfolio_suite.description",
-      "category": "study",
-      "tagsKeys": ["projects.tags.platform", "projects.tags.monorepo"],
-      "technologies": ["Next.js", "Prisma", "PostgreSQL", "Turborepo", "Zod"]
     },
     {
       "id": "jarbas",
@@ -281,7 +276,8 @@
       "category": "study",
       "tagsKeys": ["projects.tags.platform", "projects.tags.management", "projects.tags.academic"],
       "technologies": ["PHP 8", "Next.js", "MySQL", "PHPUnit"],
-      "image": "./assets/images/projects/zoologic.jpg"
+      "image": "./assets/images/projects/zoologic.jpg",
+      "githubUrl": "https://github.com/AuggieAlmeida/zoologic-api"
     },
     {
       "id": "repo-explorer-angular",
@@ -289,7 +285,8 @@
       "descriptionKey": "projects.items.repo_explorer_angular.description",
       "category": "study",
       "tagsKeys": ["projects.tags.devtools", "projects.tags.platform"],
-      "technologies": ["Angular", "TypeScript", "Signals", "GitHub API"]
+      "technologies": ["Angular", "TypeScript", "Signals", "GitHub API"],
+      "githubUrl": "https://github.com/AuggieAlmeida/repo-explorer"
     },
     {
       "id": "instagram-analyzer",
@@ -313,15 +310,8 @@
       "descriptionKey": "projects.items.javafx_pokemon.description",
       "category": "study",
       "tagsKeys": ["projects.tags.desktop", "projects.tags.academic", "projects.tags.game"],
-      "technologies": ["Java", "JavaFX", "Maven", "MVC"]
-    },
-    {
-      "id": "jornada5d",
-      "titleKey": "projects.items.jornada5d.title",
-      "descriptionKey": "projects.items.jornada5d.description",
-      "category": "study",
-      "tagsKeys": ["projects.tags.mobile", "projects.tags.template", "projects.tags.devtools"],
-      "technologies": ["React Native", "Firebase", "Clean Architecture"]
+      "technologies": ["Java", "JavaFX", "Maven", "MVC"],
+      "githubUrl": "https://github.com/AuggieAlmeida/JAVAFX-MAVEN-MVC-POKEMONAPP"
     },
     {
       "id": "calc-financeira",
@@ -337,7 +327,8 @@
       "descriptionKey": "projects.items.aquila_e_evelyn.description",
       "category": "study",
       "tagsKeys": ["projects.tags.landing_page", "projects.tags.interactive"],
-      "technologies": ["HTML5", "CSS3", "JavaScript", "GitHub Pages"]
+      "technologies": ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
+      "githubUrl": "https://github.com/AuggieAlmeida/aquila-e-evelyn"
     }
   ]
 }
