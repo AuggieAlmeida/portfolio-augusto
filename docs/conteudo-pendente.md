@@ -1,104 +1,123 @@
 # Conteúdo pendente dos cards de projeto
 
-Levantado em 2026-08-11 cruzando `src/app/components/projects/projects.json` (37 cards)
-com os repositórios do GitHub (`gh`, conta `AuggieAlmeida` + orgs `Keanus-In-Reevesverse`,
+Levantado em 2026-08-11 cruzando `src/app/components/projects/projects.json` com os
+repositórios do GitHub (`gh`, conta `AuggieAlmeida` + orgs `Keanus-In-Reevesverse`,
 `JavaPadoca`, `KitManeger-Fatec`, `TJG-Tech`) e com as folhas de projeto do vault.
 
-Estado atual: **13 cards com imagem, 13 com demo, 1 com publicação, 0 com link de repositório.**
+Estado atual, **34 cards**: 15 com imagem, 13 com demo, 9 com repositório, 1 com publicação.
 
-O campo `githubUrl` existe no componente e está renderizado, mas nenhum card usa. É o
-buraco mais barato de fechar: dez repositórios já são públicos.
+O gargalo agora é imagem. Só existe um jeito de fechar os 19 que faltam: rodar cada projeto
+localmente e capturar a tela.
 
 ---
 
-## 1. Repositório público pronto — só ligar `githubUrl`
+## 1. Imagens faltando — 19 dos 34 cards
 
-Verificado por `gh repo list`: todos são `PUBLIC` hoje.
+Precisam rodar localmente, um a um:
 
-| Card                    | Repositório                                     | Observação                                                                    |
-| ----------------------- | ----------------------------------------------- | ----------------------------------------------------------------------------- |
-| `dnd-augury-guide`      | `AuggieAlmeida/DnD-Guide`                       | —                                                                             |
-| `pasta-la-vista`        | `AuggieAlmeida/Pasta-la-Vista`                  | —                                                                             |
-| `kitbuilder`            | `KitManeger-Fatec/KitBuilder-tkinter`           | existe espelho em `AuggieAlmeida/KitBuilder-tkinter`; escolher um             |
-| `youtcatcher`           | `AuggieAlmeida/YoutCatcher`                     | —                                                                             |
-| `repo-explorer-angular` | `AuggieAlmeida/repo-explorer`                   | único link já registrado no vault                                             |
-| `javafx-pokemon`        | `AuggieAlmeida/JAVAFX-MAVEN-MVC-POKEMONAPP`     | —                                                                             |
-| `aquila-e-evelyn`       | `AuggieAlmeida/aquila-e-evelyn`                 | —                                                                             |
-| `zoologic`              | `AuggieAlmeida/zoologic-api` + `zoologic-front` | são **dois** repositórios e o card aceita um só                               |
-| `omegahub`              | `AuggieAlmeida/discordia`                       | **confirmar** — monorepo Turborepo/TS, bate com o "ex-Discordia" da folha     |
-| `buscajogos`            | `Keanus-In-Reevesverse/GamePricesFinder`        | **confirmar** — C#, 2022; a folha diz que o material do repositório se perdeu |
+`taskforge` · `omegahub` · `financeos` · `jarbas` · `quinto-selo` · `repo-explorer-angular` ·
+`instagram-analyzer` · `pokedex` · `youtcatcher` · `javafx-pokemon` · `sudoku-solver` ·
+`kitbuilder` · `calc-financeira` · `aquila-e-evelyn`
+
+Sem interface própria para capturar — o card pode ficar no fallback de iniciais para sempre:
+
+`pronto` · `tecnurg` · `barbearia-app` · `buscajogos`
+
+`portalaz` — você vai fornecer, com os dados sensíveis da empresa escondidos.
+
+O fallback de iniciais cobre todos sem quebrar o layout, então nada aqui bloqueia deploy.
+
+### Segundas imagens pendentes de decisão sua
+
+O modal aceita galeria (campo `images`). Duas capturas já existem em `raw/` e **não** foram
+publicadas porque expõem mais do que o card precisa:
+
+- **AsuraPadel, tela de dashboard** — mostra o card do usuário administrador com nome e
+  e-mail no rodapé da sidebar. Publicada hoje só a tela de login.
+- **StechClub, área logada** — mostra a home do aluno com nome dos instrutores e miniaturas
+  de gravação com o rosto de colegas. Publicada hoje só a home pública.
+
+Ambas entram na galeria assim que você confirmar.
 
 ## 2. Repositório existe mas é privado — decisão sua
 
-Tornar público, ou o card fica sem link.
-
-| Card              | Repositório privado                            | Nota                                               |
-| ----------------- | ---------------------------------------------- | -------------------------------------------------- |
-| `taskforge`       | `AuggieAlmeida/TaskForge`                      | projeto próprio, publicável se quiser              |
-| `jarbas`          | `AuggieAlmeida/Jarbas`                         | idem                                               |
-| `pokedex`         | `AuggieAlmeida/PokeAPI`                        | idem                                               |
-| `brechoapp`       | `AuggieAlmeida/GFC-Brech--ERP`                 | idem                                               |
-| `portfolio-suite` | `AuggieAlmeida/portfolio-v2`                   | idem                                               |
-| `stechclub`       | `AuggieAlmeida/Stech`                          | código de empresa — não publicar sem aval da Stech |
-| `portalaz`        | `AuggieAlmeida/portalAZ`                       | código de cliente — não publicar                   |
-| `asurapadel`      | `TJG-Tech/AsuraPadelWeb` + `AsuraPadelManager` | org de cliente — não publicar                      |
+| Card         | Repositório privado                            | Nota                                               |
+| ------------ | ---------------------------------------------- | -------------------------------------------------- |
+| `taskforge`  | `AuggieAlmeida/TaskForge`                      | projeto próprio, publicável se quiser              |
+| `jarbas`     | `AuggieAlmeida/Jarbas`                         | idem                                               |
+| `pokedex`    | `AuggieAlmeida/PokeAPI`                        | idem                                               |
+| `stechclub`  | `AuggieAlmeida/Stech`                          | código de empresa — não publicar sem aval da Stech |
+| `portalaz`   | `AuggieAlmeida/portalAZ`                       | código de cliente — não publicar                   |
+| `asurapadel` | `TJG-Tech/AsuraPadelWeb` + `AsuraPadelManager` | org de cliente — não publicar                      |
 
 ## 3. Sem repositório localizado no GitHub
 
-Nenhum repo bate com estes cards. Ou nunca subiram, ou vivem só em disco.
-
 `pronto` · `tecnurg` · `barbearia-app` · `sudoku-solver` · `financeos` ·
-`instagram-analyzer` · `jornada5d` · `calc-financeira` · `bubble-box-lavanderia`
+`instagram-analyzer` · `calc-financeira` · `bubble-box-lavanderia`
 
-`quinto-selo` existe local em `~/Documents/Projetos/quinto-selo` e não tem repositório remoto.
+`quinto-selo` existe local em `~/Documents/Projetos/quinto-selo` e não tem remoto.
 
-`pronto`, `tecnurg`, `barbearia-app` e `brechoapp` são, pelas folhas, escopo arquitetural —
-pode não haver código para linkar, e nesse caso o card precisa deixar isso claro no texto
-em vez de aparentar produto entregue.
+`pronto`, `tecnurg` e `barbearia-app` são, pelas folhas, escopo arquitetural — pode não
+haver código para linkar, e nesse caso o texto do card precisa deixar isso claro em vez de
+aparentar produto entregue.
 
-## 4. Imagens faltando — 24 dos 37 cards
+## 4. Confirmações pendentes de mapeamento
 
-Têm imagem hoje: as nove landings/sites comerciais, `mitra-crm`, `asurapadel`,
-`dnd-augury-guide`, `pasta-la-vista`, `zoologic`.
+Dois cards ficaram sem `githubUrl` porque o casamento com o repositório não é certo:
 
-Faltam, em ordem de facilidade:
+- `omegahub` → `AuggieAlmeida/discordia`. Monorepo Turborepo/TypeScript, bate com o
+  "ex-Discordia" registrado na folha. Falta seu ok.
+- `buscajogos` → `Keanus-In-Reevesverse/GamePricesFinder`. C#, 2022. A folha diz que o
+  material do repositório se perdeu, então o casamento é por inferência.
 
-- **Print direto, produto no ar:** `stechclub` (club.stechsolucoes.com).
-- **Você vai fornecer:** `portalaz` (com dados sensíveis da empresa escondidos).
-- **Precisa rodar local para capturar:** `taskforge`, `omegahub`, `financeos`, `jarbas`,
-  `quinto-selo`, `repo-explorer-angular`, `instagram-analyzer`, `pokedex`, `youtcatcher`,
-  `javafx-pokemon`, `sudoku-solver`, `kitbuilder`, `calc-financeira`, `aquila-e-evelyn`.
-- **Sem interface própria para capturar:** `pronto`, `tecnurg`, `barbearia-app`,
-  `brechoapp`, `buscajogos`, `jornada5d`, `bubble-box-lavanderia`, `portfolio-suite`.
+## 5. Demos
 
-Fallback de iniciais cobre os 24 sem quebrar o layout, então nada aqui é urgente.
+Resolvido nesta rodada:
 
-Só existe um lote de prints em `raw/` — a pasta `pastalavista+asura+zoologic`, já consumida.
+- `dnd-augury-guide` passou a apontar para `dn-d-guide.vercel.app`.
+- `mitra-crm` saiu de `demoUrl` para `githubUrl` — o link sempre foi o repositório.
+- `bubble-box-lavanderia` ganhou `bubblebox.com.br`.
+- `zoologic` fica sem demo: não há deploy vivo. A homepage `zoo-front-theta.vercel.app`
+  está cadastrada no repositório errado (`GFC-Brech--ERP`) e responde 404.
 
-## 5. Demos a resolver
+Aberto:
 
-- `aquila-e-evelyn` — GitHub Pages está **configurado** (`auggiealmeida.github.io/aquila-e-evelyn/`)
-  mas responde **404**. Falta o deploy. É a demo mais barata de recuperar.
-- `dnd-augury-guide` — existem dois deploys vivos do mesmo projeto,
-  `auggiealmeida.github.io/DnD-Guide/` (em uso) e `dn-d-guide.vercel.app` (também 200).
-  Escolher um e desligar o outro, ou o card fica ambíguo.
-- `zoologic` — o repositório `GFC-Brech--ERP` tem `zoo-front-theta.vercel.app` cadastrado
-  como homepage, e essa URL responde **404**. Homepage no repositório errado e deploy morto.
-- `mitra-crm` — usa o GitHub como `demoUrl`. Deveria ser `githubUrl`, e o card ficaria
-  sem demo (que é a verdade).
+- `aquila-e-evelyn` — ver abaixo.
+
+### Diagnóstico do aquila-e-evelyn
+
+O CNAME **não** é a causa. Já foi removido: a API do Pages reporta `cname: null` e não há
+arquivo `CNAME` no repositório. A URL também não redireciona para o ddns — responde um 404
+próprio do GitHub.
+
+A causa real é o build de 11/08 23:53 UTC, que falhou dentro do `actions/deploy-pages@v5`:
+
+```
+##[error]Creating Pages deployment failed
+##[error]HttpError: self-signed certificate; if the root CA is installed locally,
+try running Node.js with --use-system-ca
+```
+
+Erro de infraestrutura do GitHub na chamada de API, não do projeto. O build anterior, cinco
+minutos antes, tinha subido normalmente. O efeito colateral é que o Pages ficou travado em
+`status: building`, e é isso que devolve 404.
+
+Correção: reexecutar o workflow.
+
+```bash
+gh run rerun --failed -R AuggieAlmeida/aquila-e-evelyn
+```
 
 ## 6. Referências e prova
 
-- `kitbuilder` — feito: RIC do Centro Paula Souza, em campo `paperUrl`.
-- `Keanus-In-Reevesverse/monografia` é um repositório privado de monografia. Se essa
-  monografia também estiver publicada no RIC, o projeto correspondente ganha `paperUrl`.
+- `kitbuilder` — feito: RIC do Centro Paula Souza, em `paperUrl`.
+- `Keanus-In-Reevesverse/monografia` é repositório privado de monografia. Se estiver
+  publicada no RIC, o projeto correspondente ganha `paperUrl`.
 - `asurapadel` — a descrição afirma queda de 800 ms para 220 ms. A folha do vault registra
   o número como auto-relatado, **sem medição anexada**. Ou anexa a medição, ou o número sai.
-- Hero ainda diz "20 Projetos Concluídos" com 37 cards na página.
+- Hero ainda diz "20 Projetos Concluídos" com 34 cards na página.
 
 ## 7. Repositórios públicos que não estão no portfólio
-
-Candidatos reais:
 
 | Repositório                                | Sinal                                     |
 | ------------------------------------------ | ----------------------------------------- |
@@ -116,12 +135,15 @@ Descartados como exercício, não portfólio: `C_Studies`, `JS-Scripts`, `Java-O
 `API_CICD_1509`, `AppContatos-Auth`, `CriptografiaPython`, `Kotlin_Firebase_App`,
 `TopdownShooterC-Sharp`.
 
-## 8. Fora do portfólio de propósito
+## 8. Fora da listagem
 
-Não entram sem sua decisão explícita:
+Removidos em 2026-08-11 a seu pedido: `brechoapp` (GFC-Brech--ERP), `portfolio-suite`
+(portfolio-v2) e `jornada5d`. Outros ainda vão sair.
+
+Nunca entraram, e não entram sem decisão explícita sua:
 
 - `srim` — a folha carrega a tag `confidencial`.
 - `vertc-lastros` — suíte de cliente, anonimizada como "suíte financeira B2B" até no LinkedIn.
 - `valentine-love-landing` — presente pessoal; está no ar em `valentine-love-landing.vercel.app`.
-- `dev-grupo-az.web.app` — ambiente de desenvolvimento do cliente do PortalAZ, registrado
-  na folha do projeto. Não é demo pública e não deve virar link no site.
+- `dev-grupo-az.web.app` — ambiente de desenvolvimento do cliente do PortalAZ, registrado na
+  folha do projeto. Não é demo pública e não deve virar link no site.
