@@ -132,6 +132,42 @@ import { NavService } from '../../core/services/nav.service';
             </button>
           </div>
 
+          <!-- Baixar CV: ação terciária, com escolha explícita de idioma. Dois
+               links nativos em vez de menu — o teclado já sabe operar links, e
+               nenhum estado precisa ser inventado para isso. -->
+          <div
+            class="mb-16 flex flex-wrap items-center justify-center gap-3 text-sm"
+            role="group"
+            [attr.aria-label]="'CTA.downloadCv' | translate"
+          >
+            <span class="font-medium text-neutral-600 dark:text-neutral-300">
+              <i aria-hidden="true" class="fas fa-file-alt mr-2"></i>
+              {{ 'CTA.downloadCv' | translate }}
+            </span>
+            <a
+              data-cv="pt-BR"
+              href="assets/cv/Augusto-Almeida-CV-pt-BR.pdf"
+              hreflang="pt-BR"
+              type="application/pdf"
+              download
+              class="rounded-lg border border-primary-300 px-4 py-2 font-medium text-primary-700 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-primary-600 dark:text-primary-200 dark:hover:bg-primary-900/30"
+              [attr.aria-label]="'CTA.downloadCvPt' | translate"
+            >
+              PT-BR
+            </a>
+            <a
+              data-cv="en"
+              href="assets/cv/Augusto-Almeida-CV-en.pdf"
+              hreflang="en"
+              type="application/pdf"
+              download
+              class="rounded-lg border border-primary-300 px-4 py-2 font-medium text-primary-700 transition-colors hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-primary-600 dark:text-primary-200 dark:hover:bg-primary-900/30"
+              [attr.aria-label]="'CTA.downloadCvEn' | translate"
+            >
+              EN
+            </a>
+          </div>
+
           <!-- Stats. "4 Idiomas Dominados" saiu: espanhol A1 e francês B1 não
                sustentam "dominados". O que sustenta é o inglês C1. -->
           <div class="mx-auto grid max-w-3xl grid-cols-1 gap-8 md:grid-cols-3">

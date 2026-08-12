@@ -18,7 +18,10 @@
   "CTA": {
     "viewProjects": "View Projects",
     "contactMe": "Contact Me",
-    "viewFeatured": "See featured cases"
+    "viewFeatured": "See featured cases",
+    "downloadCv": "Download CV",
+    "downloadCvPt": "Download résumé in Portuguese, one-page PDF",
+    "downloadCvEn": "Download résumé in English, one-page PDF"
   },
   "stats": {
     "yearsOfExperience": "Years of Experience",

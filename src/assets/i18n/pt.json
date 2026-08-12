@@ -18,7 +18,10 @@
   "CTA": {
     "viewProjects": "Ver Projetos",
     "contactMe": "Entrar em Contato",
-    "viewFeatured": "Ver cases em destaque"
+    "viewFeatured": "Ver cases em destaque",
+    "downloadCv": "Baixar CV",
+    "downloadCvPt": "Baixar currículo em português, PDF de uma página",
+    "downloadCvEn": "Baixar currículo em inglês, PDF de uma página"
   },
   "stats": {
     "yearsOfExperience": "Anos de Experiência",

@@ -1,0 +1,60 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
+
+import { HeroComponent } from './hero.component';
+
+describe('HeroComponent', () => {
+  let fixture: ComponentFixture<HeroComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [HeroComponent, TranslateModule.forRoot()]
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(HeroComponent);
+    fixture.detectChanges();
+  });
+
+  it('states the positioning as static text instead of a typing effect', () => {
+    const host: HTMLElement = fixture.nativeElement;
+
+    expect(host.querySelector('.typewriter')).toBeNull();
+    expect(host.textContent).toContain('hero.positioning');
+  });
+
+  it('serves the portrait through responsive derivatives', () => {
+    const host: HTMLElement = fixture.nativeElement;
+    const picture = host.querySelector('picture');
+
+    expect(picture?.querySelector('source[type="image/avif"]')?.getAttribute('srcset')).toContain(
+      '.avif '
+    );
+    expect(picture?.querySelector('img')?.getAttribute('width')).toBe('192');
+  });
+
+  it('renders the final stat values before the counter runs', () => {
+    const host: HTMLElement = fixture.nativeElement;
+    const stats = Array.from(host.querySelectorAll('.stat-number')).map((element) =>
+      element.textContent?.trim()
+    );
+
+    // O valor final já está no HTML: se o observador não rodar, o visitante lê
+    // o número certo em vez de "0+".
+    expect(stats).toEqual(['5+', '33+']);
+    expect(host.textContent).toContain('stats.englishLevel');
+    expect(host.textContent).not.toContain('stats.languagesDominated');
+  });
+
+  it('offers the CV in both languages as downloadable one-page PDFs', () => {
+    const host: HTMLElement = fixture.nativeElement;
+    const pt = host.querySelector<HTMLAnchorElement>('[data-cv="pt-BR"]');
+    const en = host.querySelector<HTMLAnchorElement>('[data-cv="en"]');
+
+    expect(pt?.getAttribute('href')).toBe('assets/cv/Augusto-Almeida-CV-pt-BR.pdf');
+    expect(en?.getAttribute('href')).toBe('assets/cv/Augusto-Almeida-CV-en.pdf');
+    expect(pt?.hasAttribute('download')).toBeTrue();
+    expect(en?.hasAttribute('download')).toBeTrue();
+    expect(pt?.getAttribute('hreflang')).toBe('pt-BR');
+    expect(en?.getAttribute('hreflang')).toBe('en');
+  });
+});
