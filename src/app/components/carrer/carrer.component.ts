@@ -66,13 +66,17 @@ interface RoadmapYear {
             ></div>
 
             <div class="space-y-12">
-              @for (item of visibleRoadmap; track trackByYear(i, item); let i = $index) {
+              @for (item of visibleRoadmap; track item.year; let i = $index) {
+                <!-- Um atributo class só. Eram dois, e o Angular fica com o
+                     último: roadmap-item, opacity-0 e animate-fade-in-up eram
+                     descartados em silêncio, então a timeline de desktop nunca
+                     fazia o fade-in escalonado que a de mobile faz, e o
+                     animation-delay ao lado não atrasava coisa nenhuma. -->
                 <div
-                  class="roadmap-item opacity-0 animate-fade-in-up"
+                  class="roadmap-item opacity-0 animate-fade-in-up flex items-center"
                   [style.animation-delay]="getStaggerDelay(i)"
                   [class.flex-row-reverse]="i % 2 === 0"
                   [class.flex-row]="i % 2 !== 0"
-                  class="flex items-center"
                 >
                   <!-- Content Card -->
                   <div
@@ -192,7 +196,7 @@ interface RoadmapYear {
             ></div>
 
             <div class="space-y-8">
-              @for (item of visibleRoadmap; track trackByYear(i, item); let i = $index) {
+              @for (item of visibleRoadmap; track item.year; let i = $index) {
                 <div
                   class="roadmap-item opacity-0 animate-fade-in-up flex items-start pl-14"
                   [style.animation-delay]="getStaggerDelay(i)"
@@ -553,10 +557,6 @@ export class CareerRoadmapComponent {
   }
 
   // Template helper methods
-  trackByYear(index: number, item: RoadmapYear): string {
-    return item.year;
-  }
-
   getStaggerDelay(index: number): string {
     return `${index * 0.2}s`;
   }
