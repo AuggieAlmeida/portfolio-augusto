@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { AboutComponent } from './components/about/about.component';
 import { CareerRoadmapComponent } from './components/carrer/carrer.component';
+import { CommandCenterComponent } from './components/command-center/command-center.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HeroComponent } from './components/hero/hero.component';
@@ -12,6 +13,7 @@ import { SkillsComponent } from './components/skills/skills.component';
   selector: 'app-root',
   imports: [
     HeaderComponent,
+    CommandCenterComponent,
     HeroComponent,
     AboutComponent,
     CareerRoadmapComponent,

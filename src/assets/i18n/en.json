@@ -7,28 +7,35 @@
     "projects": "Projects",
     "contact": "Contact",
     "language": "Language",
-    "theme": "Theme"
+    "theme": "Theme",
+    "terminal": "Open terminal"
   },
   "hero": {
     "title": "Augusto Almeida",
-    "subtitle": "Fullstack Developer | QA & Data Enthusiast"
+    "subtitle": "Fullstack Developer | QA & Data Enthusiast",
+    "positioning": "Fullstack developer with a quality bias: I ship product end to end and treat measurement, testing and accessibility as requirements."
   },
   "CTA": {
     "viewProjects": "View Projects",
-    "contactMe": "Contact Me"
+    "contactMe": "Contact Me",
+    "viewFeatured": "See featured cases",
+    "downloadCv": "Download CV",
+    "downloadCvPt": "Download résumé in Portuguese, one-page PDF",
+    "downloadCvEn": "Download résumé in English, one-page PDF"
   },
   "stats": {
     "yearsOfExperience": "Years of Experience",
     "completedProjects": "Completed Projects",
-    "languagesDominated": "Languages Dominated"
+    "languagesDominated": "Languages Dominated",
+    "measuredSpeedup": "Faster in the measured case"
   },
   "about": {
     "aboutMe": "About Me",
-    "greeting": "I am a fullstack developer with a strong bias toward quality and data. I started out reading data on a market intelligence team, learned how production breaks while working in support, and since 2022 I have been building software from the database to the interface. The same thread runs through all three phases: understand the problem before picking the tool.",
+    "greeting": "I am a fullstack developer with a strong bias toward quality and data. I started out reading data, learned how production breaks while working in support, and since 2022 I have been building software from the database to the interface — understanding the problem before picking the tool.",
     "professionalOverview": "Professional Overview",
-    "professionalDescription": "Today I work fullstack at Stech, on internal and client products, with TypeScript, React, NestJS and Prisma over MySQL, all containerised. Before that: Java and Spring Boot at Persys, the longest tenure of my career; conversion-focused frontend at Make; and test engineering at Outlier, evaluating language models across voice, vision and text. For just over a year I also taught Excel, Power BI and generative AI at Cebrac — teaching is what forces you to actually understand something.",
+    "professionalDescription": "Today I work fullstack at Stech, with TypeScript, React, NestJS and Prisma over MySQL. Before that: Java and Spring Boot at Persys, conversion-focused frontend at Make and test engineering at Outlier, evaluating models across voice, vision and text. I also taught Excel, Power BI and generative AI at Cebrac.",
     "coreExpertise": "Core Expertise",
-    "expertiseDescription": "What I bring to a team is judgement, not a stack list. Auditing and fixing vulnerabilities in a financial suite before they become an incident. Turning business rules into traceable parameters instead of leaving them hardcoded. Treating Core Web Vitals as a requirement rather than decoration — that is the bar behind more than a hundred landing pages. And automating where it reduces risk: TaskForge, which orchestrates agents in parallel, cut 70% to 90% of the engineering LLM bill. When a subject is complex, explaining it is part of the delivery.",
+    "expertiseDescription": "What I bring to a team is judgement, not a stack list: fixing vulnerabilities before they become incidents, turning business rules into traceable parameters and treating Core Web Vitals as a requirement — the bar behind more than a hundred landing pages. TaskForge cut 70% to 90% of the engineering LLM bill.",
     "contactInfo": "Let's connect?",
     "email": "Email"
   },
@@ -36,7 +43,8 @@
     "title": "Skills",
     "intro": "Here are some of my main skills and technologies I work with:",
     "filter": {
-      "all": "All"
+      "all": "Inventory ({{count}})",
+      "core": "Core"
     },
     "no_results": "No technologies found for this filter.",
     "categories": {
@@ -56,13 +64,6 @@
       "level_advanced": "Advanced",
       "level_intermediate": "Intermediate",
       "level_basic": "Basic"
-    },
-    "soft_skills": {
-      "title": "Soft Skills",
-      "teamwork": "Teamwork",
-      "communication": "Communication",
-      "problem_solving": "Problem Solving",
-      "adaptability": "Adaptability"
     },
     "descriptions": {
       "html5": "Semantic HTML structure and accessibility best practices.",
@@ -133,6 +134,12 @@
       "vitest": "Fast test runner for TypeScript projects.",
       "monorepo": "Several packages in one repository, with explicit dependencies between them.",
       "n8n": "Workflow automation and service integration over webhooks."
+    },
+    "practice": {
+      "title": "How I work",
+      "teaching": "I teach what I use: I taught Excel, Power BI and generative AI at Cebrac for over a year.",
+      "measure": "I measure before optimising: the payroll portal case starts from 354 queries counted on the closing screen.",
+      "performance": "I treat Core Web Vitals as an acceptance criterion, not decoration — it was the bar for over a hundred landing pages."
     }
   },
   "languages": {
@@ -145,10 +152,10 @@
     "title": "Projects",
     "description": "See some of the projects I've worked on recently:",
     "subtitle": "A selection of my most recent works",
-    "clickInfo": "Click on a project to see more details or access the demo.",
+    "clickInfo": "Click a project or use View details to explore the case and its links.",
     "commercial": {
-      "title": "Commercial Projects",
-      "badge": "Commercial"
+      "title": "Professional projects",
+      "badge": "Professional"
     },
     "study": {
       "title": "Own Projects",
@@ -205,7 +212,7 @@
         "description": "Stech's education portal: a React SPA behind company SSO, with a NestJS API over Prisma. Video and thumbnails live in S3 and are served through signed links generated by the API, never exposing the bucket key. The application funnel uses a fit quiz with a minimum score and distinct replies for passing and failing candidates."
       },
       "omegahub": {
-        "title": "OmegaHub",
+        "title": "Discordia server",
         "description": "Gaming platform in a TypeScript monorepo. Next.js frontend and NestJS backend, with social login, payments, BullMQ queues and storage split across PostgreSQL, MongoDB and Redis."
       },
       "pronto": {
@@ -347,6 +354,8 @@
     "viewDemo": "View demo",
     "viewCode": "View code",
     "viewPaper": "View publication",
+    "redirect": "Redirect",
+    "viewDetails": "View details",
     "modal": {
       "close": "Close",
       "previous": "Previous image",
@@ -354,7 +363,41 @@
       "goToImage": "Go to image",
       "stack": "Stack",
       "tags": "Tags",
-      "noLinks": "No public link — private code or project without a deployment."
+      "noLinks": "No public link — private code or project without a deployment.",
+      "decision": {
+        "action": "Examine the decision",
+        "title": "Decision case",
+        "context": "Context",
+        "constraint": "Constraint",
+        "decision": "Decision",
+        "evidence": "Evidence",
+        "impact": "Impact"
+      }
+    },
+    "decisions": {
+      "payroll": {
+        "context": "The monthly closing screen fired 354 queries per load, including full scans over 293 thousand rows.",
+        "constraint": "Ten of the eleven domain tables had no index, while the response had to remain byte-identical.",
+        "decision": "Create seven indexes derived from the measured predicates and map the remaining N+1.",
+        "evidence": "The response was compared byte-for-byte after the change; the remaining N+1 was identified in 316 of the 354 queries.",
+        "impact": "Screen time dropped from 4,271 ms to 354 ms."
+      }
+    },
+    "featured": {
+      "subtitle": "Five professional deliveries and one personal showcase — with context, decision and evidence."
+    },
+    "all": {
+      "show": "See all {{count}} projects",
+      "hide": "Hide the full inventory"
+    },
+    "carousel": {
+      "previous": "Previous projects",
+      "next": "Next projects"
+    },
+    "illustrated": {
+      "badge": "Illustration",
+      "note": "Conceptual illustration — not a screenshot of the system",
+      "alt": "conceptual illustration, not a screenshot of the system"
     }
   },
   "project": {
@@ -413,6 +456,10 @@
       "react": "React",
       "nestjs": "NestJS",
       "prisma": "Prisma"
+    },
+    "history": {
+      "show": "See earlier history ({{count}} roles)",
+      "hide": "Hide earlier history"
     }
   },
   "footer": {
@@ -430,9 +477,10 @@
     },
     "social": {
       "github_user": "AuggieAlmeida",
-      "linkedin_user": "AugustobAlmeida"
+      "linkedin_user": "AugustobAlmeida",
+      "email": "Send an email to Augusto Almeida"
     },
-    "copyright": "© 2025 Augusto Almeida. All rights reserved."
+    "copyright": "© {{year}} Augusto Almeida. All rights reserved."
   },
   "navigation": {
     "scrollDown": "Scroll down"

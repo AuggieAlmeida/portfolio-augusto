@@ -28,22 +28,26 @@
         {
           "name": "TypeScript",
           "icon": "fas fa-code",
-          "descriptionKey": "skills.descriptions.typescript"
+          "descriptionKey": "skills.descriptions.typescript",
+          "core": true
         },
         {
           "name": "Angular",
           "icon": "fab fa-angular",
-          "descriptionKey": "skills.descriptions.angular"
+          "descriptionKey": "skills.descriptions.angular",
+          "core": true
         },
         {
           "name": "React",
           "icon": "fab fa-react",
-          "descriptionKey": "skills.descriptions.react"
+          "descriptionKey": "skills.descriptions.react",
+          "core": true
         },
         {
           "name": "Next.js",
           "icon": "fas fa-layer-group",
-          "descriptionKey": "skills.descriptions.nextjs"
+          "descriptionKey": "skills.descriptions.nextjs",
+          "core": true
         },
         {
           "name": "Vue",
@@ -65,7 +69,8 @@
         {
           "name": "Node.js",
           "icon": "fab fa-node-js",
-          "descriptionKey": "skills.descriptions.nodejs"
+          "descriptionKey": "skills.descriptions.nodejs",
+          "core": true
         },
         {
           "name": "Express",
@@ -75,22 +80,26 @@
         {
           "name": "Java",
           "icon": "fab fa-java",
-          "descriptionKey": "skills.descriptions.java"
+          "descriptionKey": "skills.descriptions.java",
+          "core": true
         },
         {
           "name": "Spring Boot",
           "icon": "fas fa-leaf",
-          "descriptionKey": "skills.descriptions.springboot"
+          "descriptionKey": "skills.descriptions.springboot",
+          "core": true
         },
         {
           "name": "NestJS",
           "icon": "fas fa-server",
-          "descriptionKey": "skills.descriptions.nestjs"
+          "descriptionKey": "skills.descriptions.nestjs",
+          "core": true
         },
         {
           "name": "Prisma",
           "icon": "fas fa-database",
-          "descriptionKey": "skills.descriptions.prisma"
+          "descriptionKey": "skills.descriptions.prisma",
+          "core": true
         },
         {
           "name": "Go",
@@ -117,7 +126,8 @@
         {
           "name": "PostgreSQL",
           "icon": "fas fa-database",
-          "descriptionKey": "skills.descriptions.postgresql"
+          "descriptionKey": "skills.descriptions.postgresql",
+          "core": true
         },
         {
           "name": "SQLite",
@@ -201,7 +211,8 @@
         {
           "name": "Docker",
           "icon": "fab fa-docker",
-          "descriptionKey": "skills.descriptions.docker"
+          "descriptionKey": "skills.descriptions.docker",
+          "core": true
         },
         {
           "name": "Git",
@@ -211,7 +222,8 @@
         {
           "name": "GitHub Actions",
           "icon": "fab fa-github",
-          "descriptionKey": "skills.descriptions.github_actions"
+          "descriptionKey": "skills.descriptions.github_actions",
+          "core": true
         },
         {
           "name": "AWS / Cloud",
@@ -258,7 +270,8 @@
         {
           "name": "Cypress",
           "icon": "fas fa-check-circle",
-          "descriptionKey": "skills.descriptions.cypress"
+          "descriptionKey": "skills.descriptions.cypress",
+          "core": true
         },
         {
           "name": "Selenium",

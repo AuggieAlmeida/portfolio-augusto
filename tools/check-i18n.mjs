@@ -10,6 +10,11 @@ import { join } from 'node:path';
 const I18N_DIR = 'src/assets/i18n';
 const COMPONENTS_DIR = 'src/app/components';
 
+// Nem todo campo `*Key` endereça tradução: `imageKey` aponta para o master no
+// manifesto de imagens. Denylist em vez de allowlist para que um campo de
+// tradução novo entre no gate sem ninguém lembrar de registrá-lo.
+const NON_TRANSLATION_FIELDS = new Set(['imageKey', 'imageKeys']);
+
 const flatten = (obj, prefix = '') =>
   Object.entries(obj).flatMap(([key, value]) => {
     const path = prefix ? `${prefix}.${key}` : key;
@@ -42,7 +47,10 @@ for (const file of files) {
 
   if (file.endsWith('.json')) {
     // Data files address translations through fields named *Key / *Keys.
-    for (const [, value] of source.matchAll(/"\w*Keys?"\s*:\s*("(?:[^"]+)"|\[[^\]]*\])/g)) {
+    for (const [, field, value] of source.matchAll(
+      /"(\w*Keys?)"\s*:\s*("(?:[^"]+)"|\[[^\]]*\])/g
+    )) {
+      if (NON_TRANSLATION_FIELDS.has(field)) continue;
       for (const [, key] of value.matchAll(/"([^"]+)"/g)) referenced.add(key);
     }
     continue;

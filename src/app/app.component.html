@@ -1,10 +1,33 @@
 <app-header></app-header>
+<app-command-center></app-command-center>
 
-<main class="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+<main class="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
   <app-hero></app-hero>
   <app-about></app-about>
-  <app-career></app-career>
-  <app-projects></app-projects>
-  <app-skills></app-skills>
+
+  <!-- Âncora e altura vivem fora do bloco: a navegação do header, o terminal e
+       o quick open rolam para `#career`/`#projects`/`#skills` antes de a seção
+       hidratar, e o placeholder reserva a altura para o scroll não pular. -->
+  <div id="career-anchor" class="anchor" aria-hidden="true"></div>
+  @defer (on viewport; prefetch on idle) {
+    <app-career></app-career>
+  } @placeholder (minimum 100ms) {
+    <div class="section-placeholder" aria-hidden="true"></div>
+  }
+
+  <div id="projects-anchor" class="anchor" aria-hidden="true"></div>
+  @defer (on viewport; prefetch on idle) {
+    <app-projects></app-projects>
+  } @placeholder (minimum 100ms) {
+    <div class="section-placeholder" aria-hidden="true"></div>
+  }
+
+  <div id="skills-anchor" class="anchor" aria-hidden="true"></div>
+  @defer (on viewport; prefetch on idle) {
+    <app-skills></app-skills>
+  } @placeholder (minimum 100ms) {
+    <div class="section-placeholder" aria-hidden="true"></div>
+  }
+
   <app-footer></app-footer>
 </main>

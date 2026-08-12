@@ -7,28 +7,35 @@
     "projects": "Projetos",
     "contact": "Contato",
     "language": "Idioma",
-    "theme": "Tema"
+    "theme": "Tema",
+    "terminal": "Abrir terminal"
   },
   "hero": {
     "title": "Augusto Almeida",
-    "subtitle": "Fullstack Developer | QA & Data Enthusiast"
+    "subtitle": "Fullstack Developer | QA & Data Enthusiast",
+    "positioning": "Desenvolvedor fullstack com viés de qualidade: entrego produto de ponta a ponta e trato medição, teste e acessibilidade como requisito."
   },
   "CTA": {
     "viewProjects": "Ver Projetos",
-    "contactMe": "Entrar em Contato"
+    "contactMe": "Entrar em Contato",
+    "viewFeatured": "Ver cases em destaque",
+    "downloadCv": "Baixar CV",
+    "downloadCvPt": "Baixar currículo em português, PDF de uma página",
+    "downloadCvEn": "Baixar currículo em inglês, PDF de uma página"
   },
   "stats": {
     "yearsOfExperience": "Anos de Experiência",
     "completedProjects": "Projetos Concluídos",
-    "languagesDominated": "Idiomas Dominados"
+    "languagesDominated": "Idiomas Dominados",
+    "measuredSpeedup": "Mais rápido no case medido"
   },
   "about": {
     "aboutMe": "Sobre Mim",
-    "greeting": "Sou desenvolvedor fullstack com viés forte de qualidade e dados. Comecei lendo dado em um time de inteligência de mercado, aprendi como produção quebra trabalhando em suporte, e desde 2022 construo software do banco à interface. O fio que liga as três fases é o mesmo: entender o problema antes de escolher a ferramenta.",
+    "greeting": "Sou desenvolvedor fullstack com viés forte de qualidade e dados. Comecei lendo dado, aprendi como produção quebra trabalhando em suporte e desde 2022 construo software do banco à interface — entendendo o problema antes de escolher a ferramenta.",
     "professionalOverview": "Visão Profissional",
-    "professionalDescription": "Hoje sou fullstack na Stech, em produtos internos e de clientes, com TypeScript, React, NestJS e Prisma sobre MySQL, tudo containerizado. Antes: Java e Spring Boot na Persys, o vínculo mais longo da minha carreira; frontend de conversão na Make; e engenharia de testes na Outlier, avaliando modelos de linguagem em voz, visão e texto. Por pouco mais de um ano também dei aula de Excel, Power BI e IA generativa no Cebrac — ensinar é o que obriga a entender de verdade.",
+    "professionalDescription": "Hoje sou fullstack na Stech, com TypeScript, React, NestJS e Prisma sobre MySQL. Antes: Java e Spring Boot na Persys, frontend de conversão na Make e engenharia de testes na Outlier, avaliando modelos em voz, visão e texto. Também dei aula de Excel, Power BI e IA generativa no Cebrac.",
     "coreExpertise": "Especialidades Principais",
-    "expertiseDescription": "O que eu levo para um time é critério, não lista de stack. Auditar e corrigir vulnerabilidade em suíte financeira antes de virar incidente. Transformar regra de negócio em parâmetro rastreável, em vez de deixá-la chumbada no código. Tratar Core Web Vitals como requisito e não como enfeite — foi com essa régua que saíram mais de cem landing pages. E automatizar onde reduz risco: o TaskForge, que orquestra agentes em paralelo, cortou entre 70% e 90% do custo de LLM da engenharia. Quando o assunto é complexo, explicar faz parte da entrega.",
+    "expertiseDescription": "O que eu levo para um time é critério, não lista de stack: corrigir vulnerabilidade antes de virar incidente, transformar regra de negócio em parâmetro rastreável e tratar Core Web Vitals como requisito — a régua de mais de cem landing pages. O TaskForge cortou entre 70% e 90% do custo de LLM da engenharia.",
     "contactInfo": "Vamos nos conectar?",
     "email": "E-mail"
   },
@@ -36,7 +43,8 @@
     "title": "Habilidades",
     "intro": "Aqui estão algumas das minhas principais habilidades e tecnologias com as quais trabalho:",
     "filter": {
-      "all": "Todas"
+      "all": "Inventário ({{count}})",
+      "core": "Principais"
     },
     "no_results": "Nenhuma tecnologia encontrada para este filtro.",
     "categories": {
@@ -56,13 +64,6 @@
       "level_advanced": "Avançado",
       "level_intermediate": "Intermediário",
       "level_basic": "Básico"
-    },
-    "soft_skills": {
-      "title": "Soft Skills",
-      "teamwork": "Trabalho em equipe",
-      "communication": "Comunicação",
-      "problem_solving": "Resolução de problemas",
-      "adaptability": "Adaptabilidade"
     },
     "descriptions": {
       "html5": "Estrutura HTML semântica e boas práticas de acessibilidade.",
@@ -133,6 +134,12 @@
       "vitest": "Runner de testes rápido para projetos em TypeScript.",
       "monorepo": "Vários pacotes num repositório só, com dependências explícitas entre eles.",
       "n8n": "Automação de fluxos e integração entre serviços por webhook."
+    },
+    "practice": {
+      "title": "Como eu trabalho",
+      "teaching": "Ensino o que uso: dei aula de Excel, Power BI e IA generativa no Cebrac por mais de um ano.",
+      "measure": "Meço antes de otimizar: o case do portal de remuneração parte de 354 queries contadas na tela de fechamento.",
+      "performance": "Trato Core Web Vitals como critério de aceite, não como enfeite — foi a régua de mais de cem landing pages."
     }
   },
   "languages": {
@@ -193,16 +200,20 @@
       "react": "React",
       "nestjs": "NestJS",
       "prisma": "Prisma"
+    },
+    "history": {
+      "show": "Ver histórico anterior ({{count}} experiências)",
+      "hide": "Ocultar histórico anterior"
     }
   },
   "projects": {
     "title": "Projetos",
     "description": "Veja alguns dos projetos que trabalhei recentemente:",
     "subtitle": "Uma seleção dos meus trabalhos mais recentes",
-    "clickInfo": "Clique em um projeto para ver mais detalhes ou acessar a demo.",
+    "clickInfo": "Clique em um projeto ou use Ver detalhes para conhecer o case e acessar os links.",
     "commercial": {
-      "title": "Projetos Comerciais",
-      "badge": "Comercial"
+      "title": "Projetos profissionais",
+      "badge": "Profissional"
     },
     "study": {
       "title": "Projetos Próprios",
@@ -259,7 +270,7 @@
         "description": "Portal educacional da Stech, em SPA React com SSO da empresa e API NestJS sobre Prisma. Vídeo e thumbnail ficam em S3 e são servidos por link assinado gerado na API, sem expor a key do bucket. O funil de candidatura usa quiz de aderência com nota mínima e resposta diferente para quem passa e para quem não passa."
       },
       "omegahub": {
-        "title": "OmegaHub",
+        "title": "Discordia server",
         "description": "Plataforma para gamers em monorepo TypeScript. Frontend Next.js e backend NestJS, com login social, pagamentos, filas BullMQ e persistência dividida entre PostgreSQL, MongoDB e Redis."
       },
       "pronto": {
@@ -401,6 +412,8 @@
     "viewDemo": "Ver demo",
     "viewCode": "Ver código",
     "viewPaper": "Ver publicação",
+    "redirect": "Redirecionar",
+    "viewDetails": "Ver detalhes",
     "modal": {
       "close": "Fechar",
       "previous": "Imagem anterior",
@@ -408,7 +421,41 @@
       "goToImage": "Ir para a imagem",
       "stack": "Stack",
       "tags": "Tags",
-      "noLinks": "Sem link público — código privado ou projeto sem deploy."
+      "noLinks": "Sem link público — código privado ou projeto sem deploy.",
+      "decision": {
+        "action": "Examinar a decisão",
+        "title": "Case de decisão",
+        "context": "Contexto",
+        "constraint": "Restrição",
+        "decision": "Decisão",
+        "evidence": "Evidência",
+        "impact": "Impacto"
+      }
+    },
+    "decisions": {
+      "payroll": {
+        "context": "A tela de fechamento mensal disparava 354 queries por carregamento, incluindo varreduras completas sobre 293 mil linhas.",
+        "constraint": "Dez das onze tabelas do domínio não tinham índice; a resposta precisava permanecer byte a byte idêntica.",
+        "decision": "Criar sete índices derivados dos predicados medidos e mapear o N+1 remanescente.",
+        "evidence": "A resposta foi comparada byte a byte após a mudança; o N+1 ficou identificado em 316 das 354 queries.",
+        "impact": "O tempo da tela caiu de 4.271 ms para 354 ms."
+      }
+    },
+    "featured": {
+      "subtitle": "Cinco entregas profissionais e um projeto pessoal de vitrine — com contexto, decisão e evidência."
+    },
+    "all": {
+      "show": "Ver todos os {{count}} projetos",
+      "hide": "Ocultar o inventário completo"
+    },
+    "carousel": {
+      "previous": "Projetos anteriores",
+      "next": "Próximos projetos"
+    },
+    "illustrated": {
+      "badge": "Ilustração",
+      "note": "Ilustração conceitual — não é captura do sistema",
+      "alt": "ilustração conceitual, não captura do sistema"
     }
   },
   "project": {
@@ -430,9 +477,10 @@
     },
     "social": {
       "github_user": "AuggieAlmeida",
-      "linkedin_user": "AugustobAlmeida"
+      "linkedin_user": "AugustobAlmeida",
+      "email": "Enviar e-mail para Augusto Almeida"
     },
-    "copyright": "© 2025 Augusto Almeida. Todos os direitos reservados."
+    "copyright": "© {{year}} Augusto Almeida. Todos os direitos reservados."
   },
   "navigation": {
     "scrollDown": "Rolar para baixo"

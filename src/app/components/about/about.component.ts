@@ -77,7 +77,9 @@ import { TranslateModule } from '@ngx-translate/core';
               </div>
             </div>
 
-            <!-- Contact Information -->
+            <!-- Os quatro canais ficam aqui. Só o rodapé deixava o contato
+                 escondido demais; o que encolheu foi o texto acima, não a
+                 forma de falar com o Augusto. -->
             <div class="contact-section">
               <h3
                 class="text-xl md:text-2xl font-semibold text-accent-600 dark:text-accent-400 mb-4 flex items-center gap-2"
@@ -85,91 +87,95 @@ import { TranslateModule } from '@ngx-translate/core';
                 <i aria-hidden="true" class="fas fa-envelope"></i>
                 {{ 'about.contactInfo' | translate }}
               </h3>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div
+              <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <li
                   class="contact-item flex items-center gap-3 p-3 rounded-lg bg-primary-50 dark:bg-secondary-900/30 border border-primary-200 dark:border-primary-700"
                 >
-                  <div
-                    class="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center"
+                  <span
+                    class="w-10 h-10 shrink-0 bg-primary-500 rounded-full flex items-center justify-center"
                   >
                     <i aria-hidden="true" class="fas fa-envelope text-white text-sm"></i>
-                  </div>
-                  <div>
-                    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+                  </span>
+                  <span class="min-w-0">
+                    <span class="block text-sm text-neutral-500 dark:text-neutral-400">
                       {{ 'about.email' | translate }}
-                    </p>
+                    </span>
                     <a
                       href="mailto:augusto.almeida2@icloud.com"
-                      class="text-primary-600 dark:text-primary-400 hover:underline font-medium"
+                      class="block truncate text-primary-600 dark:text-primary-400 hover:underline font-medium"
                     >
                       augusto.almeida2&#64;icloud.com
                     </a>
-                  </div>
-                </div>
+                  </span>
+                </li>
 
-                <div
+                <li
                   class="contact-item flex items-center gap-3 p-3 rounded-lg bg-accent-50 dark:bg-secondary-900/30 border border-accent-200 dark:border-accent-700"
                 >
-                  <div
-                    class="w-10 h-10 bg-accent-500 rounded-full flex items-center justify-center"
+                  <span
+                    class="w-10 h-10 shrink-0 bg-accent-500 rounded-full flex items-center justify-center"
                   >
                     <i aria-hidden="true" class="fab fa-linkedin text-white text-sm"></i>
-                  </div>
-                  <div>
-                    <p class="text-sm text-neutral-500 dark:text-neutral-400">LinkedIn</p>
+                  </span>
+                  <span class="min-w-0">
+                    <span class="block text-sm text-neutral-500 dark:text-neutral-400"
+                      >LinkedIn</span
+                    >
                     <a
                       href="https://linkedin.com/in/augustobalmeida"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="text-secondary-600 dark:text-secondary-400 hover:underline font-medium"
+                      class="block truncate text-secondary-600 dark:text-secondary-400 hover:underline font-medium"
                     >
                       /augustobalmeida
                     </a>
-                  </div>
-                </div>
+                  </span>
+                </li>
 
-                <div
+                <li
                   class="contact-item flex items-center gap-3 p-3 rounded-lg bg-accent-50 dark:bg-secondary-900/30 border border-accent-200 dark:border-accent-700"
                 >
-                  <div
-                    class="w-10 h-10 bg-accent-500 rounded-full flex items-center justify-center"
+                  <span
+                    class="w-10 h-10 shrink-0 bg-accent-500 rounded-full flex items-center justify-center"
                   >
                     <i aria-hidden="true" class="fab fa-github text-white text-sm"></i>
-                  </div>
-                  <div>
-                    <p class="text-sm text-neutral-500 dark:text-neutral-400">GitHub</p>
+                  </span>
+                  <span class="min-w-0">
+                    <span class="block text-sm text-neutral-500 dark:text-neutral-400">GitHub</span>
                     <a
-                      href="https://github.com/auggiealmeida"
+                      href="https://github.com/AuggieAlmeida"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="text-accent-600 dark:text-accent-400 hover:underline font-medium"
+                      class="block truncate text-accent-600 dark:text-accent-400 hover:underline font-medium"
                     >
-                      /auggiealmeida
+                      /AuggieAlmeida
                     </a>
-                  </div>
-                </div>
+                  </span>
+                </li>
 
-                <div
+                <li
                   class="contact-item flex items-center gap-3 p-3 rounded-lg bg-primary-50 dark:bg-secondary-900/30 border border-primary-200 dark:border-primary-700"
                 >
-                  <div
-                    class="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center"
+                  <span
+                    class="w-10 h-10 shrink-0 bg-primary-500 rounded-full flex items-center justify-center"
                   >
                     <i aria-hidden="true" class="fab fa-whatsapp text-white text-sm"></i>
-                  </div>
-                  <div>
-                    <p class="text-sm text-neutral-500 dark:text-neutral-400">WhatsApp</p>
+                  </span>
+                  <span class="min-w-0">
+                    <span class="block text-sm text-neutral-500 dark:text-neutral-400"
+                      >WhatsApp</span
+                    >
                     <a
                       href="https://wa.me/5511916047732"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="text-primary-600 dark:text-primary-400 hover:underline font-medium"
+                      class="block truncate text-primary-600 dark:text-primary-400 hover:underline font-medium"
                     >
                       +55 (11) 91604-7732
                     </a>
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -193,7 +199,6 @@ import { TranslateModule } from '@ngx-translate/core';
         animation: pulse-slow 3s ease-in-out infinite;
       }
 
-      /* Contact item hover effects */
       .contact-item {
         transition: all 0.3s ease;
       }
@@ -203,16 +208,9 @@ import { TranslateModule } from '@ngx-translate/core';
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
       }
 
-      /* Language level badges */
-      .language-level {
-        font-size: 0.75rem;
-        font-weight: 600;
-      }
-
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
-        .contact-section .grid {
-          grid-template-columns: 1fr;
+      @media (prefers-reduced-motion: reduce) {
+        .contact-item:hover {
+          transform: none;
         }
       }
 
