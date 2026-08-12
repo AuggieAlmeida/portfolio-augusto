@@ -127,7 +127,9 @@
       "descriptionKey": "projects.items.portal_agente_ia.description",
       "category": "commercial",
       "tagsKeys": ["projects.tags.ai", "projects.tags.platform", "projects.tags.automation"],
-      "technologies": ["React", "TypeScript", "Supabase", "n8n", "AWS EC2", "Zod"]
+      "technologies": ["React", "TypeScript", "Supabase", "n8n", "AWS EC2", "Zod"],
+      "imageKey": "portal-agente-ia",
+      "illustrated": true
     },
     {
       "id": "suite-financeira-b2b",
@@ -135,7 +137,9 @@
       "descriptionKey": "projects.items.suite_financeira_b2b.description",
       "category": "commercial",
       "tagsKeys": ["projects.tags.fintech", "projects.tags.data", "projects.tags.platform"],
-      "technologies": ["Django", "Vue 3", "PySpark", "Kafka", "PostgreSQL", "AWS", "Kubernetes"]
+      "technologies": ["Django", "Vue 3", "PySpark", "Kafka", "PostgreSQL", "AWS", "Kubernetes"],
+      "imageKey": "suite-financeira-b2b",
+      "illustrated": true
     },
     {
       "id": "portal-remuneracao-frota",
@@ -144,6 +148,8 @@
       "category": "commercial",
       "tagsKeys": ["projects.tags.management", "projects.tags.platform", "projects.tags.dashboard"],
       "technologies": ["Lumen", "PHP", "React", "TypeScript", "MySQL", "BigQuery", "Power BI"],
+      "imageKey": "portal-remuneracao-frota",
+      "illustrated": true,
       "decision": {
         "contextKey": "projects.decisions.payroll.context",
         "constraintKey": "projects.decisions.payroll.constraint",
@@ -166,7 +172,9 @@
         "Ollama",
         "Tailscale",
         "Samba"
-      ]
+      ],
+      "imageKey": "servidor-llm-local",
+      "illustrated": true
     },
     {
       "id": "bubble-box-lavanderia",
@@ -175,8 +183,7 @@
       "category": "commercial",
       "tagsKeys": ["projects.tags.landing_page", "projects.tags.leads", "projects.tags.business"],
       "technologies": ["HTML5", "CSS3", "JavaScript", "jQuery", "Bootstrap"],
-      "imageKey": "bubble-box",
-      "imageKeys": ["bubble-box", "bubble-box-franchise"],
+      "imageKey": "bubble-box-franchise",
       "demoUrl": "https://bubblebox.com.br/",
       "featured": true
     }
@@ -219,7 +226,9 @@
       "descriptionKey": "projects.items.pronto.description",
       "category": "study",
       "tagsKeys": ["projects.tags.marketplace", "projects.tags.mobile"],
-      "technologies": ["NestJS", "Next.js", "Expo", "PostGIS", "Go", "Kafka", "OpenTelemetry"]
+      "technologies": ["NestJS", "Next.js", "Expo", "PostGIS", "Go", "Kafka", "OpenTelemetry"],
+      "imageKey": "pronto",
+      "illustrated": true
     },
     {
       "id": "barbearia-app",
@@ -253,7 +262,9 @@
       "descriptionKey": "projects.items.buscajogos.description",
       "category": "study",
       "tagsKeys": ["projects.tags.academic", "projects.tags.platform", "projects.tags.automation"],
-      "technologies": ["Go", "C#", "Vue", "MySQL", "Docker"]
+      "technologies": ["Go", "C#", "Vue", "MySQL", "Docker"],
+      "imageKey": "buscajogos",
+      "illustrated": true
     },
     {
       "id": "kitbuilder",
@@ -286,7 +297,9 @@
         "projects.tags.computer_vision",
         "projects.tags.automation"
       ],
-      "technologies": ["C", "C++", "OpenCV"]
+      "technologies": ["C", "C++", "OpenCV"],
+      "imageKey": "sudoku-solver",
+      "illustrated": true
     },
     {
       "id": "jarbas",

@@ -451,6 +451,11 @@
     "carousel": {
       "previous": "Projetos anteriores",
       "next": "Próximos projetos"
+    },
+    "illustrated": {
+      "badge": "Ilustração",
+      "note": "Ilustração conceitual — não é captura do sistema",
+      "alt": "ilustração conceitual, não captura do sistema"
     }
   },
   "project": {

@@ -24,6 +24,12 @@ interface RawProject {
   tagsKeys: string[];
   technologies: string[];
   featured?: boolean;
+  /**
+   * A imagem é ilustração conceitual, não captura do sistema. Existe para os
+   * cases sob confidencialidade e para os projetos sem interface alcançável:
+   * sem isso, arte gerada na capa passaria por print de tela do cliente.
+   */
+  illustrated?: boolean;
   demoUrl?: string;
   githubUrl?: string;
   paperUrl?: string;

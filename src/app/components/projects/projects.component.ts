@@ -34,7 +34,7 @@ import { ScrollLockService } from '../../core/services/scroll-lock.service';
             <source type="image/webp" [srcset]="project.cover.webp" [attr.sizes]="cardSizes" />
             <img
               [src]="project.cover.src"
-              [alt]="project.titleKey | translate"
+              [alt]="imageAlt(project)"
               [width]="project.cover.width"
               [height]="project.cover.height"
               class="project-image h-48 w-full object-cover transition-transform duration-500 md:h-56"
@@ -76,6 +76,15 @@ import { ScrollLockService } from '../../core/services/scroll-lock.service';
                 ) | translate
               }}
             </div>
+          </div>
+
+          <!-- Sem esta marca, arte conceitual na capa passa por captura do
+               sistema do cliente. Ver o campo illustrated no catálogo. -->
+          <div
+            *ngIf="project.illustrated && project.cover"
+            class="absolute right-3 top-3 rounded-full bg-black/60 px-2 py-1 text-[11px] font-medium text-white/90 backdrop-blur-sm"
+          >
+            {{ 'projects.illustrated.badge' | translate }}
           </div>
 
           <div
@@ -407,7 +416,7 @@ import { ScrollLockService } from '../../core/services/scroll-lock.service';
               />
               <img
                 [src]="project.gallery[slideIndex].src"
-                [alt]="(project.titleKey | translate) + ' — ' + (slideIndex + 1)"
+                [alt]="imageAlt(project) + ' — ' + (slideIndex + 1)"
                 [width]="project.gallery[slideIndex].width"
                 [height]="project.gallery[slideIndex].height"
                 class="block h-auto w-auto max-w-full shrink-0"
@@ -422,6 +431,13 @@ import { ScrollLockService } from '../../core/services/scroll-lock.service';
                 {{ initials(project) }}
               </span>
             </ng-template>
+
+            <div
+              *ngIf="project.illustrated && project.gallery.length"
+              class="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1 text-xs font-medium text-white/90 backdrop-blur-sm"
+            >
+              {{ 'projects.illustrated.note' | translate }}
+            </div>
 
             <ng-container *ngIf="project.gallery.length > 1">
               <button
@@ -857,6 +873,17 @@ export class ProjectsComponent {
 
     this.scrollStates[category] = { canScrollLeft, canScrollRight };
     this.cdr.markForCheck();
+  }
+
+  /**
+   * Alt da capa e dos slides. Quando a imagem é ilustração conceitual, o texto
+   * alternativo precisa dizer isso: o selo visual não alcança leitor de tela, e
+   * anunciar arte gerada como se fosse a tela do sistema é afirmação falsa.
+   */
+  imageAlt(project: ProjectItem): string {
+    const title = this.translate.instant(project.titleKey);
+    if (!project.illustrated) return title;
+    return `${title} — ${this.translate.instant('projects.illustrated.alt')}`;
   }
 
   // Iniciais do titulo traduzido, para o card sem screenshot.

@@ -205,6 +205,32 @@ describe('ProjectsComponent', () => {
     );
   });
 
+  it('marks illustrated covers as illustration, in the badge and in the alt text', () => {
+    const illustrated = component.featuredProjects.find((item) => item.illustrated);
+    expect(illustrated).toBeDefined();
+
+    const host: HTMLElement = fixture.nativeElement;
+    const alts = Array.from(host.querySelectorAll('picture img')).map((img) =>
+      img.getAttribute('alt')
+    );
+
+    expect(alts).toContain(`${illustrated!.titleKey} — projects.illustrated.alt`);
+    expect(host.textContent).toContain('projects.illustrated.badge');
+  });
+
+  it('never labels a real screenshot as an illustration', () => {
+    const captured = component.featuredProjects.find((item) => item.cover && !item.illustrated);
+    expect(captured).toBeDefined();
+    expect(component.imageAlt(captured!)).toBe(captured!.titleKey);
+  });
+
+  it('gives every catalog entry a cover, so no card falls back to initials', () => {
+    const all = [...component.commercialProjects, ...component.studyProjects];
+    const withoutCover = all.filter((item) => !item.cover).map((item) => item.id);
+
+    expect(withoutCover).toEqual([]);
+  });
+
   it('opens external links in a separate tab without an opener reference', () => {
     const open = spyOn(window, 'open');
 
