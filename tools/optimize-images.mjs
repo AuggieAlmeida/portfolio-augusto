@@ -42,9 +42,37 @@ const GROUPS = [
 
 const SOURCE_EXT = new Set(['.png', '.jpg', '.jpeg', '.webp']);
 
+/**
+ * Captura de UI carrega texto pequeno e borda de 1 px: baixar a qualidade
+ * embaça rótulo e vira ruído legível. Ilustração conceitual é gradiente e
+ * volume suave, onde o AVIF corta um terço do peso sem diferença perceptível.
+ * Por isso os dois perfis — e o que decide é o mesmo `illustrated` do catálogo,
+ * para não existir uma segunda lista para manter em sincronia.
+ */
+const PROFILES = {
+  screenshot: { avif: { quality: 55, effort: 9 }, webp: { quality: 78 } },
+  illustration: { avif: { quality: 42, effort: 9 }, webp: { quality: 70 } }
+};
+
+async function illustratedKeys() {
+  const catalog = JSON.parse(
+    await readFile(join(ROOT, 'src/app/components/projects/projects.json'), 'utf8')
+  );
+  const keys = new Set();
+  for (const group of Object.values(catalog)) {
+    for (const project of group) {
+      if (!project.illustrated) continue;
+      for (const key of [project.imageKey, ...(project.imageKeys ?? [])]) {
+        if (key) keys.add(key);
+      }
+    }
+  }
+  return keys;
+}
+
 const srcset = (entries) => entries.map(({ file, width }) => `${file} ${width}w`).join(', ');
 
-async function processGroup(group, manifest) {
+async function processGroup(group, manifest, illustrated) {
   const mastersDir = join(ROOT, group.masters);
   const outDir = join(ROOT, group.out);
   const files = (await readdir(mastersDir)).filter((file) =>
@@ -70,18 +98,19 @@ async function processGroup(group, manifest) {
 
     const avif = [];
     const webp = [];
+    const profile = illustrated.has(name) ? PROFILES.illustration : PROFILES.screenshot;
 
     for (const width of widths) {
       const resized = sharp(buffer).resize({ width, withoutEnlargement: true });
 
       const avifFile = `${name}-${width}.avif`;
-      const avifBuffer = await resized.clone().avif({ quality: 55, effort: 5 }).toBuffer();
+      const avifBuffer = await resized.clone().avif(profile.avif).toBuffer();
       await writeFile(join(outDir, avifFile), avifBuffer);
       avif.push({ file: `${group.publicPath}/${avifFile}`, width });
       outputBytes += avifBuffer.length;
 
       const webpFile = `${name}-${width}.webp`;
-      const webpBuffer = await resized.clone().webp({ quality: 78 }).toBuffer();
+      const webpBuffer = await resized.clone().webp(profile.webp).toBuffer();
       await writeFile(join(outDir, webpFile), webpBuffer);
       webp.push({ file: `${group.publicPath}/${webpFile}`, width });
       outputBytes += webpBuffer.length;
@@ -111,12 +140,13 @@ async function processGroup(group, manifest) {
 
 async function main() {
   const manifest = {};
+  const illustrated = await illustratedKeys();
   let count = 0;
   let masterBytes = 0;
   let outputBytes = 0;
 
   for (const group of GROUPS) {
-    const result = await processGroup(group, manifest);
+    const result = await processGroup(group, manifest, illustrated);
     count += result.count;
     masterBytes += result.masterBytes;
     outputBytes += result.outputBytes;
@@ -126,6 +156,7 @@ async function main() {
 
   const mb = (bytes) => (bytes / 1024 / 1024).toFixed(2);
   console.log(`imagens: ${count} masters (${mb(masterBytes)} MB) → ${mb(outputBytes)} MB servidos`);
+  console.log(`perfil de ilustração aplicado a ${illustrated.size} master(s)`);
 }
 
 main().catch((error) => {
