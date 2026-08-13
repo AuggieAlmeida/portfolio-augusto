@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 
+import projectsData from '../projects/projects.json';
 import { HeroComponent } from './hero.component';
 
 describe('HeroComponent', () => {
@@ -68,10 +69,17 @@ describe('HeroComponent', () => {
     );
     const value = label?.previousElementSibling as HTMLElement | null;
 
-    // Contado, não estimado: o contador anima com sufixo "+", e "14+" mentiria
+    // Contado, não estimado: o contador anima com sufixo "+", e "15+" mentiria
     // sobre um número que o visitante confere clicando nos cards.
-    expect(value?.textContent?.trim()).toBe('14');
+    expect(value?.textContent?.trim()).toBe('15');
     expect(value?.classList.contains('stat-number')).toBeFalse();
+
+    // Prende o número ao catálogo. Sem isto, alguém tira uma demo do JSON e o
+    // herói continua anunciando o total antigo, sem nada quebrar.
+    const withDemo = [...projectsData.commercial, ...projectsData.study].filter(
+      (project) => 'demoUrl' in project
+    );
+    expect(value?.textContent?.trim()).toBe(String(withDemo.length));
   });
 
   it('offers the CV in both languages as downloadable one-page PDFs', () => {
