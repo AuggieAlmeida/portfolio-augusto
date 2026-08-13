@@ -181,9 +181,9 @@ import { NavService } from '../../core/services/nav.service';
 
           <!-- Stats. Nenhum é auto-elogio: os três apontam para algo medido ou
                contado. O terceiro é o único que o visitante confere sozinho —
-               são os cards com demo pública que respondem 2xx, medidos em
-               2026-08-12. Número exato, sem "+": se um domínio cair, o número
-               cai junto, e é assim que ele continua verdadeiro. -->
+               são os cards com demo pública no ar, conferidos em 2026-08-12.
+               Número exato, sem "+": se um domínio cair, o número cai junto, e
+               é assim que ele continua verdadeiro. -->
           <div class="mx-auto grid max-w-3xl grid-cols-1 gap-8 md:grid-cols-3">
             <div class="group text-center">
               <div
@@ -211,7 +211,7 @@ import { NavService } from '../../core/services/nav.service';
               <div
                 class="mb-2 font-heading text-4xl font-bold text-accent-600 transition-transform group-hover:scale-110 dark:text-accent-400"
               >
-                14
+                15
               </div>
               <div class="font-sans font-medium text-neutral-600 dark:text-neutral-400">
                 {{ 'stats.liveProjects' | translate }}
