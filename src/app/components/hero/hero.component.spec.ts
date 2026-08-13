@@ -56,8 +56,22 @@ describe('HeroComponent', () => {
     // O valor final já está no HTML: se o observador não rodar, o visitante lê
     // o número certo em vez de "0+".
     expect(stats).toEqual(['5+', '35+']);
-    expect(host.textContent).toContain('stats.measuredSpeedup');
+    expect(host.textContent).toContain('stats.liveProjects');
     expect(host.textContent).not.toContain('stats.languagesDominated');
+    expect(host.textContent).not.toContain('stats.measuredSpeedup');
+  });
+
+  it('states the live-project count exactly, without the counter suffix', () => {
+    const host: HTMLElement = fixture.nativeElement;
+    const label = Array.from(host.querySelectorAll('div')).find((element) =>
+      element.textContent?.trim().startsWith('stats.liveProjects')
+    );
+    const value = label?.previousElementSibling as HTMLElement | null;
+
+    // Contado, não estimado: o contador anima com sufixo "+", e "14+" mentiria
+    // sobre um número que o visitante confere clicando nos cards.
+    expect(value?.textContent?.trim()).toBe('14');
+    expect(value?.classList.contains('stat-number')).toBeFalse();
   });
 
   it('offers the CV in both languages as downloadable one-page PDFs', () => {

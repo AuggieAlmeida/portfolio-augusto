@@ -100,7 +100,6 @@
       "category": "commercial",
       "tagsKeys": ["projects.tags.ecommerce", "projects.tags.food", "projects.tags.landing_page"],
       "technologies": ["HTML5", "CSS3", "JavaScript", "jQuery", "Bootstrap"],
-      "demoUrl": "https://minhamaquinadeleads.com.br/20c67a70",
       "decision": {
         "provesKey": "projects.decisions.fehe_chocolate.proves",
         "contextKey": "projects.decisions.fehe_chocolate.context",
