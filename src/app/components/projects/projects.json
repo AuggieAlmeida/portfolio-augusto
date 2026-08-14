@@ -682,6 +682,25 @@
         "decisionKey": "projects.decisions.presente_para_daniela.decision",
         "impactKey": "projects.decisions.presente_para_daniela.impact"
       }
+    },
+    {
+      "id": "mtg-site",
+      "titleKey": "projects.items.mtg_site.title",
+      "descriptionKey": "projects.items.mtg_site.description",
+      "imageKey": "mtg-site",
+      "category": "study",
+      "tagsKeys": ["projects.tags.game", "projects.tags.platform", "projects.tags.interactive"],
+      "technologies": ["Next.js", "React", "TypeScript", "Tailwind CSS", "REST API"],
+      "demoUrl": "https://mtgsite.vercel.app/",
+      "githubUrl": "https://github.com/AuggieAlmeida/mtgsite",
+      "decision": {
+        "provesKey": "projects.decisions.mtg_site.proves",
+        "contextKey": "projects.decisions.mtg_site.context",
+        "constraintKey": "projects.decisions.mtg_site.constraint",
+        "decisionKey": "projects.decisions.mtg_site.decision",
+        "evidenceKey": "projects.decisions.mtg_site.evidence",
+        "impactKey": "projects.decisions.mtg_site.impact"
+      }
     }
   ]
 }
