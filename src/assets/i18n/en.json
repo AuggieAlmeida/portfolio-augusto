@@ -299,6 +299,10 @@
         "title": "Gift for Daniela",
         "description": "A narrative Next.js experience with gothic art direction, horizontal scrolling, microinteractions and GSAP animation. The public edition preserves the design and engineering while removing personal photos, drawings, dates, music and messages."
       },
+      "mtg_site": {
+        "title": "MTG Site",
+        "description": "An experience for browsing Magic: The Gathering cards, building browser-saved decks and tracking life during duels, powered by the public Magic API."
+      },
       "suite_financeira_b2b": {
         "title": "B2B financial suite",
         "description": "Financial operations suite across three repositories: a Django backend with DRF, JWT and async tasks; a Vue 3 interface with an in-house design system; and PySpark pipelines feeding silver and gold layers. Kafka wires the domains together with a topic per subject, consumers with error handling and a DLQ, and per-environment consumer deployments. AWS shows up as S3 with presigned URLs, SQS and Secrets Manager — not just storage. Vulnerability remediation put pip-audit inside the CI build job. Client under confidentiality: no name, repository or screenshot."
@@ -633,6 +637,14 @@
         "constraint": "Strong animation causes real discomfort for people who asked the system for less motion.",
         "decision": "Respect prefers-reduced-motion even in a project whose value lives in the animation, and sanitise the intimate content before publishing.",
         "impact": "It is the only project here with art direction and narrative as a requirement, and it is still accessible."
+      },
+      "mtg_site": {
+        "proves": "A complete player flow in one interface: browse cards, build a list and track a match, without reducing the experience to a static catalogue.",
+        "context": "A public web application for Magic: The Gathering fans, with a card catalogue, deck builder and a two-player life counter.",
+        "constraint": "The catalogue comes from a public API, while the deck must remain personal to the user without an account or a custom backend.",
+        "decision": "Split the work into search, deck-building and duel routes; persist decks only in localStorage and handle search, error and stale-response states in the client.",
+        "evidence": "Public card, deck-builder and battle routes are deployed; lint, typecheck and build ran before deployment.",
+        "impact": "A player can move from looking up a card to a local deck list and then to the life counter within the same product."
       },
       "dnd_augury_guide": {
         "proves": "A deliberate choice not to use a framework where the content is static — no build step, no dependency tree to maintain. A maintenance-cost decision, not a taste one.",

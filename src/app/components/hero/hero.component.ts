@@ -211,7 +211,7 @@ import { NavService } from '../../core/services/nav.service';
               <div
                 class="mb-2 font-heading text-4xl font-bold text-accent-600 transition-transform group-hover:scale-110 dark:text-accent-400"
               >
-                15
+                16
               </div>
               <div class="font-sans font-medium text-neutral-600 dark:text-neutral-400">
                 {{ 'stats.liveProjects' | translate }}

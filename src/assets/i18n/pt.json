@@ -357,6 +357,10 @@
         "title": "Presente para Daniela",
         "description": "Experiência narrativa em Next.js com direção de arte gótica, rolagem horizontal, microinterações e animações em GSAP. A edição pública preserva o design e a engenharia, mas remove fotos, desenhos, datas, músicas e mensagens pessoais."
       },
+      "mtg_site": {
+        "title": "MTG Site",
+        "description": "Experiência para consultar cartas de Magic: The Gathering, montar decks salvos no navegador e acompanhar a vida em duelos, com dados da API pública de Magic."
+      },
       "suite_financeira_b2b": {
         "title": "Suíte financeira B2B",
         "description": "Suíte de operação financeira em três repositórios: backend Django com DRF, JWT e tarefas assíncronas; interface Vue 3 com design system interno; e pipelines PySpark nas camadas silver e gold. Kafka integra os domínios com tópico por assunto, consumers com tratamento de erro e DLQ, e deploy de consumer separado por ambiente. AWS aparece como S3 com presigned URL, SQS e Secrets Manager — não só armazenamento. A remediação de vulnerabilidades colocou pip-audit dentro do job de build do CI. Cliente sob confidencialidade: sem nome, repositório ou captura de tela."
@@ -691,6 +695,14 @@
         "constraint": "Animação forte causa desconforto real em quem pediu menos movimento no sistema.",
         "decision": "Respeitar prefers-reduced-motion mesmo sendo um projeto cujo valor está na animação, e sanitizar o conteúdo íntimo antes de publicar.",
         "impact": "É o único projeto do acervo com direção de arte e narrativa como requisito, e ainda assim acessível."
+      },
+      "mtg_site": {
+        "proves": "Um fluxo de jogador completo em uma interface: pesquisar cartas, montar uma lista e acompanhar a partida, sem transformar a experiência em um catálogo estático.",
+        "context": "Aplicação web pública para fãs de Magic: The Gathering, com catálogo de cartas, deck builder e contador de vida para dois jogadores.",
+        "constraint": "O catálogo vem de uma API pública e o deck precisa continuar pessoal ao usuário sem exigir conta ou backend próprio.",
+        "decision": "Separar as tarefas em rotas de busca, montagem e duelo; persistir os decks apenas no localStorage e tratar estados de busca, erro e resposta obsoleta no cliente.",
+        "evidence": "Rotas públicas de cartas, deck builder e batalha publicadas; lint, typecheck e build executados antes do deploy.",
+        "impact": "A pessoa consegue sair da consulta de uma carta para uma lista local e para o contador de vida no mesmo produto."
       },
       "dnd_augury_guide": {
         "proves": "Escolha consciente de não usar framework onde o conteúdo é estático — sem build step, sem dependência para manter. Decisão de custo de manutenção, não de gosto.",

@@ -146,6 +146,13 @@
     "width": 960,
     "height": 539
   },
+  "mtg-site": {
+    "src": "./assets/images/projects/mtg-site-960.jpg",
+    "avif": "./assets/images/projects/mtg-site-480.avif 480w, ./assets/images/projects/mtg-site-960.avif 960w",
+    "webp": "./assets/images/projects/mtg-site-480.webp 480w, ./assets/images/projects/mtg-site-960.webp 960w",
+    "width": 960,
+    "height": 544
+  },
   "omegahub": {
     "src": "./assets/images/projects/omegahub-960.jpg",
     "avif": "./assets/images/projects/omegahub-480.avif 480w, ./assets/images/projects/omegahub-960.avif 960w",

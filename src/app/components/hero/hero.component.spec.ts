@@ -69,9 +69,9 @@ describe('HeroComponent', () => {
     );
     const value = label?.previousElementSibling as HTMLElement | null;
 
-    // Contado, não estimado: o contador anima com sufixo "+", e "15+" mentiria
+    // Contado, não estimado: o contador anima com sufixo "+", e "16+" mentiria
     // sobre um número que o visitante confere clicando nos cards.
-    expect(value?.textContent?.trim()).toBe('15');
+    expect(value?.textContent?.trim()).toBe('16');
     expect(value?.classList.contains('stat-number')).toBeFalse();
 
     // Prende o número ao catálogo. Sem isto, alguém tira uma demo do JSON e o
