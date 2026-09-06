@@ -245,7 +245,7 @@
       },
       "asurapadel": {
         "title": "AsuraPadel",
-        "description": "Padel court management across two applications: an Angular frontend and a C# API deployed on Azure. The interesting part is performance — response times degraded once the API moved to a test server, and the fix combined caching, endpoint redesign, batched pagination, payload reduction and client-side work. Reported average response time went from 800 ms to 220 ms."
+        "description": "Padel management system where I was the primary Angular web developer. The authenticated area contains 8 screens: home, dashboard, ranking, points marketplace, products, seasons, members and plans. The frontend uses standalone components, typed HTTP services and centralized interceptors for API integration."
       },
       "portal_agente_ia": {
         "title": "AI agent operations portal",
@@ -397,12 +397,12 @@
         "impact": "No bucket credential ever reaches the client, and the model absorbed tracks, playlists and class material without a domain rewrite."
       },
       "asurapadel": {
-        "proves": "The most complete performance case in this portfolio: symptom, diagnosis, four lines of attack and a number. It is also recent Angular over a C# backend on Azure.",
-        "context": "Padel court management split into two applications in one repository: an Angular frontend and a C# REST API deployed to Azure App Service.",
-        "constraint": "The bottleneck only surfaced once the API left the local machine for the test server, serving a base of 4,000 to 10,000 clients.",
-        "decision": "Attack on four fronts at once — caching, endpoint redesign, payload reduction and frontend optimisation — and paginate in fragmented batches instead of returning everything in one response.",
-        "evidence": "Pagination became an API contract decision, not a UI one; consumption configured per environment, with dev, test and production pointing at distinct APIs; test coverage reported at 88% with Jest and JUnit.",
-        "impact": "Average response time reported dropping from 800 ms to 220 ms, roughly 72%."
+        "proves": "Primary Angular web developer, with 8 screens in the authenticated area and separation between UI components, integration services and data types.",
+        "context": "Padel management system with the Angular frontend and backend in separate repositories. My main responsibility was Angular web development.",
+        "constraint": "Bring registration, queries and points features together in an API-connected interface, with loading and error handling for operations.",
+        "decision": "Organize the frontend by feature, use standalone components and typed HTTP services, and centralize API integration through interceptors.",
+        "evidence": "8 child routes in the authenticated area; standalone components; services with typed DTOs; authentication and base URL interceptors registered with HttpClient; a member update test checking the PUT method, request body and HTTP response.",
+        "impact": "Implemented frontend scope: 8 screens in the authenticated area, covering home, dashboard, ranking, points marketplace, products, seasons, members and plans."
       },
       "portal_agente_ia": {
         "proves": "Quality control applied to a non-deterministic system. Versioning the prompt with rollback and isolating the test channel from the live one are QA decisions about AI, not conveniences.",
