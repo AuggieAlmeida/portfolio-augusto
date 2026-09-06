@@ -303,7 +303,7 @@
       },
       "asurapadel": {
         "title": "AsuraPadel",
-        "description": "Gestão de quadra de padel em duas aplicações: frontend Angular e API em C# publicada no Azure. O caso técnico é de performance — quando a API saiu para o servidor de teste, a resposta degradou, e a correção combinou cache, redesenho de endpoints, paginação em lotes, redução de payload e ajustes no cliente. Tempo médio relatado caiu de 800 ms para 220 ms."
+        "description": "Sistema de gestão de padel no qual atuei como principal desenvolvedor web em Angular. A área autenticada reúne 8 telas: início, dashboard, ranking, mercado de pontos, produtos, temporadas, associados e planos. Frontend organizado em componentes standalone e serviços HTTP tipados, com interceptors centralizados para integração com a API."
       },
       "portal_agente_ia": {
         "title": "Portal de operação de agente de IA",
@@ -455,12 +455,12 @@
         "impact": "Nenhuma credencial de bucket no cliente, e a modelagem absorveu trilha, playlist e material de aula sem reescrever o domínio."
       },
       "asurapadel": {
-        "proves": "O case de performance mais completo do portfólio: sintoma, diagnóstico, quatro frentes de correção e número. É também Angular recente sobre backend C# em Azure.",
-        "context": "Gestão de quadra de padel em duas aplicações no mesmo repositório: frontend Angular e API REST em C# publicada em Azure App Service.",
-        "constraint": "O gargalo só apareceu quando a API saiu da máquina local para o servidor de teste, atendendo uma base entre 4 e 10 mil clientes.",
-        "decision": "Atacar em quatro frentes ao mesmo tempo — cache, redesenho de endpoints, redução de payload e otimização no frontend — e paginar por lotes fragmentados em vez de devolver tudo numa resposta.",
-        "evidence": "Paginação virou decisão de contrato de API, não de UI; consumo configurado por ambiente, com dev, teste e produção apontando para APIs distintas; cobertura de teste relatada em 88% com Jest e JUnit.",
-        "impact": "Tempo médio de resposta relatado caindo de 800 ms para 220 ms, cerca de 72%."
+        "proves": "Atuação como principal desenvolvedor web em Angular, com 8 telas na área autenticada e separação entre componentes de interface, serviços de integração e tipos de dados.",
+        "context": "Sistema de gestão de padel com frontend Angular e backend em repositórios separados. Minha principal responsabilidade foi o desenvolvimento web em Angular.",
+        "constraint": "Reunir cadastros, consultas e funcionalidades de pontos em uma interface integrada à API, com tratamento de carregamento e falhas nas operações.",
+        "decision": "Organizar o frontend por funcionalidades, usar componentes standalone e serviços HTTP tipados e centralizar a integração com a API em interceptors.",
+        "evidence": "8 rotas filhas na área autenticada; componentes standalone; serviços com DTOs tipados; interceptors de autenticação e URL base registrados no HttpClient; teste de atualização de associados verificando método PUT, corpo e resposta HTTP.",
+        "impact": "Escopo implementado no frontend: 8 telas na área autenticada, cobrindo início, dashboard, ranking, mercado de pontos, produtos, temporadas, associados e planos."
       },
       "portal_agente_ia": {
         "proves": "Controle de qualidade aplicado a sistema não determinístico. Versionar prompt com rollback e isolar o canal de teste do canal real são decisões de QA sobre IA, não features de conveniência.",
