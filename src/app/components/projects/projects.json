@@ -192,7 +192,7 @@
         "decisionKey": "projects.decisions.asurapadel.decision",
         "evidenceKey": "projects.decisions.asurapadel.evidence",
         "impactKey": "projects.decisions.asurapadel.impact",
-        "selfReported": true
+        "selfReported": false
       }
     },
     {
