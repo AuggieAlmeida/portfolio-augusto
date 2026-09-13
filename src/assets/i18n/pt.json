@@ -372,6 +372,10 @@
       "servidor_llm_local": {
         "title": "Servidor de LLM local",
         "description": "Servidor interno convertido em host de modelos locais e armazenamento de arquivos. Ubuntu 24.04 bare metal, Docker com NVIDIA Container Toolkit e a GPU reconhecida dentro do container; Ollama servindo um modelo 8B pela API local. Acesso remoto por Tailscale em vez de porta aberta na internet, e compartilhamento Samba autenticado, sem guest share. O dimensionamento foi declarado junto com a entrega: o perfil de hardware serve RAG e modelos quantizados de 7B/8B, não inferência pesada multiusuário."
+      },
+      "professor_jarbas": {
+        "title": "Diagnóstico Professor Jarbas",
+        "description": "Quiz financeiro com resultado aberto, comparação nacional e plano educacional por perfil. PDF disponível para download e enviado por e-mail ao participante, com mensagem distinta ao responsável."
       }
     },
     "tags": {
@@ -710,6 +714,14 @@
         "constraint": "Conteúdo estático não justifica build step nem árvore de dependência para manter depois.",
         "decision": "Entregar sem framework e sem build, com Bootstrap, na mesma linha das landings de cliente do mesmo período.",
         "impact": "O site continua servível anos depois sem reinstalar nada."
+      },
+      "professor_jarbas": {
+        "proves": "Entrega completa da avaliação ao plano: interface, cálculo no servidor, PDF personalizado e integração de e-mail em domínio próprio.",
+        "context": "Professor Jarbas precisava conhecer o perfil dos participantes e orientar o acompanhamento financeiro com um plano de ação.",
+        "constraint": "Devolver o resultado antes de pedir contato, reduzir perguntas sem utilidade no atendimento e explicar os limites da nota adaptada.",
+        "decision": "Usar 14 perguntas, estimativa conservadora baseada nas tabelas I-SFB e plano por regras. Renda e escolaridade orientam uma sugestão de acompanhamento; o cadastro exige consentimento.",
+        "evidence": "Versão entregue em setembro de 2026 com 148 testes passando, domínio próprio ativo e recebimento dos e-mails confirmado. Turnstile, limite de requisições, recibo assinado e idempotência por destinatário.",
+        "impact": "Participante recebe diagnóstico e PDF por download e e-mail; responsável recebe perfil e plano em uma mensagem própria. Sem métricas de conversão aferidas."
       }
     },
     "featured": {

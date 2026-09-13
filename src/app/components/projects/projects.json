@@ -1,6 +1,24 @@
 {
   "commercial": [
     {
+      "id": "professor-jarbas",
+      "titleKey": "projects.items.professor_jarbas.title",
+      "descriptionKey": "projects.items.professor_jarbas.description",
+      "category": "commercial",
+      "tagsKeys": ["projects.tags.education", "projects.tags.interactive"],
+      "technologies": ["React", "TypeScript", "Cloudflare Pages", "Resend"],
+      "demoUrl": "https://diagnostico.professorjarbas.com.br/",
+      "imageKey": "professor-jarbas",
+      "decision": {
+        "provesKey": "projects.decisions.professor_jarbas.proves",
+        "contextKey": "projects.decisions.professor_jarbas.context",
+        "constraintKey": "projects.decisions.professor_jarbas.constraint",
+        "decisionKey": "projects.decisions.professor_jarbas.decision",
+        "evidenceKey": "projects.decisions.professor_jarbas.evidence",
+        "impactKey": "projects.decisions.professor_jarbas.impact"
+      }
+    },
+    {
       "id": "stechclub",
       "titleKey": "projects.items.stechclub.title",
       "descriptionKey": "projects.items.stechclub.description",

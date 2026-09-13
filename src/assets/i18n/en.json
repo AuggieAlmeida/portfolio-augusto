@@ -314,6 +314,10 @@
       "servidor_llm_local": {
         "title": "Self-hosted LLM server",
         "description": "Internal server turned into a local model host and file store. Ubuntu 24.04 on bare metal, Docker with the NVIDIA Container Toolkit and the GPU visible inside the container; Ollama serving an 8B model over the local API. Remote access through Tailscale rather than an internet-facing port, and authenticated Samba shares with no guest access. Sizing was stated alongside the delivery: this hardware profile serves RAG and quantised 7B/8B models, not heavy multi-user inference."
+      },
+      "professor_jarbas": {
+        "title": "Professor Jarbas Financial Assessment",
+        "description": "Financial quiz with an open result, national comparison and a profile-based educational plan. The PDF is available to download and emailed to the participant, with a separate message for the advisor."
       }
     },
     "tags": {
@@ -652,6 +656,14 @@
         "constraint": "Static content justifies neither a build step nor a dependency tree to maintain afterwards.",
         "decision": "Ship with no framework and no build, using Bootstrap, in the same line as the client landings from the same period.",
         "impact": "The site is still serveable years later without reinstalling anything."
+      },
+      "professor_jarbas": {
+        "proves": "End-to-end delivery from assessment to action plan: interface, server-side scoring, personalized PDF and email integration on a custom domain.",
+        "context": "Professor Jarbas needed to understand participants’ financial profiles and guide follow-up with an action plan.",
+        "constraint": "Show results before requesting contact details, remove questions that do not help the advisor and explain the limits of the adapted score.",
+        "decision": "Use 14 questions, a conservative estimate based on I-SFB tables and a rules-based plan. Income and education inform a suggested mentoring format; registration requires consent.",
+        "evidence": "Delivered in September 2026 with 148 passing tests, an active custom domain and confirmed email receipt. Turnstile, rate limiting, signed receipts and per-recipient idempotency.",
+        "impact": "Participants receive their assessment and PDF by download and email; the advisor receives the profile and plan in a separate message. Conversion metrics have not been measured."
       }
     },
     "featured": {
