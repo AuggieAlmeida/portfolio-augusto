@@ -369,5 +369,12 @@
     "webp": "assets/images/hero/hero-192.webp 192w, assets/images/hero/hero-384.webp 384w",
     "width": 384,
     "height": 384
+  },
+  "professor-jarbas": {
+    "src": "./assets/images/projects/professor-jarbas-960.jpg",
+    "avif": "./assets/images/projects/professor-jarbas-480.avif 480w, ./assets/images/projects/professor-jarbas-960.avif 960w",
+    "webp": "./assets/images/projects/professor-jarbas-480.webp 480w, ./assets/images/projects/professor-jarbas-960.webp 960w",
+    "width": 960,
+    "height": 516
   }
 }
