@@ -5,46 +5,54 @@
     <style>
       @page {
         size: A4;
-        margin: 12mm 13mm;
+        margin: 11mm 14mm;
       }
       * {
         box-sizing: border-box;
       }
       body {
         font:
-          9.6pt/1.26 'Georgia',
-          'Times New Roman',
-          serif;
-        color: #111;
+          9.85pt/1.32 Arial,
+          Helvetica,
+          sans-serif;
+        color: #17202a;
         margin: 0;
+        -webkit-font-smoothing: antialiased;
       }
       h1 {
-        font-size: 16pt;
-        margin: 0 0 2px;
-        letter-spacing: 0.3px;
+        font-size: 18.5pt;
+        line-height: 1.08;
+        margin: 0 0 3px;
+        letter-spacing: 0.1px;
+        color: #0f1720;
       }
       .contato {
-        font-size: 8.4pt;
-        color: #222;
-        margin-bottom: 5px;
+        font-size: 8.55pt;
+        line-height: 1.25;
+        color: #3d4852;
+        margin-bottom: 7px;
       }
       .resumo {
-        margin: 0 0 4px;
+        font-size: 10pt;
+        line-height: 1.34;
+        margin: 0 0 6px;
       }
       h2 {
-        font-size: 9.8pt;
+        font-size: 10.35pt;
+        line-height: 1.18;
         text-transform: uppercase;
-        letter-spacing: 0.6px;
-        margin: 7px 0 3px;
+        letter-spacing: 1px;
+        margin: 7px 0 4px;
         padding: 0;
+        color: #18324a;
       }
       hr {
         border: 0;
-        border-top: 0.6pt solid #bbb;
-        margin: 6px 0 5px;
+        border-top: 0.7pt solid #8ea0af;
+        margin: 7px 0 0;
       }
       .item {
-        margin-bottom: 4px;
+        margin-bottom: 4.5px;
       }
       .linha {
         display: flex;
@@ -53,18 +61,27 @@
       }
       .linha .esq {
         font-weight: bold;
+        color: #111820;
       }
       .linha .dir {
-        color: #333;
+        color: #53616c;
         white-space: nowrap;
-        font-size: 8.8pt;
+        font-size: 9.1pt;
       }
       ul {
+        list-style: none;
         margin: 1px 0 0;
-        padding-left: 14px;
+        padding: 0;
       }
       li {
-        margin: 1px 0;
+        margin: 1.7px 0;
+        padding-left: 13px;
+        text-indent: -13px;
+        break-inside: avoid;
+      }
+      li::before {
+        content: '•  ';
+        color: #46637a;
       }
       strong {
         font-weight: bold;
@@ -142,8 +159,8 @@
 
     <div class="item">
       <div class="linha">
-        <span class="esq">Outlier — Engenharia de testes</span
-        ><span class="dir">Remoto · 2025</span>
+        <span class="esq">Outlier / Scale AI — Engenheiro de testes</span
+        ><span class="dir">Remoto · out/2024 – dez/2025</span>
       </div>
       <ul>
         <li>
