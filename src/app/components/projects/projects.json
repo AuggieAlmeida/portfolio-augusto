@@ -557,6 +557,7 @@
       "category": "study",
       "tagsKeys": ["projects.tags.platform", "projects.tags.management", "projects.tags.academic"],
       "technologies": ["PHP 8", "Next.js", "MySQL", "PHPUnit"],
+      "demoUrl": "https://zoologic-front.vercel.app",
       "imageKey": "zoologic",
       "imageKeys": ["zoologic", "zoologic-animals", "zoologic-register", "zoologic-monitoring"],
       "githubUrl": "https://github.com/AuggieAlmeida/zoologic-api",
