@@ -122,12 +122,12 @@ import { NavService } from '../../core/services/nav.service';
               (click)="navigateToProjects()"
               [attr.aria-label]="'CTA.viewFeatured' | translate"
             >
-              <span class="flex items-end justify-center gap-2">
-                <i aria-hidden="true" class="fas fa-rocket h-5 w-5"></i>
+              <span class="flex items-center justify-center gap-2">
+                <i aria-hidden="true" class="fas fa-rocket"></i>
                 {{ 'CTA.viewFeatured' | translate }}
                 <i
                   aria-hidden="true"
-                  class="fas fa-arrow-right h-5 w-5 transition-transform group-hover:translate-x-1"
+                  class="fas fa-arrow-right transition-transform group-hover:translate-x-1"
                 ></i>
               </span>
             </button>
@@ -136,8 +136,8 @@ import { NavService } from '../../core/services/nav.service';
               (click)="navigateToContact()"
               [attr.aria-label]="'CTA.contactMe' | translate"
             >
-              <span class="flex items-end justify-center gap-2">
-                <i aria-hidden="true" class="fas fa-envelope h-5 w-5"></i>
+              <span class="flex items-center justify-center gap-2">
+                <i aria-hidden="true" class="fas fa-envelope"></i>
                 {{ 'CTA.contactMe' | translate }}
               </span>
             </button>
