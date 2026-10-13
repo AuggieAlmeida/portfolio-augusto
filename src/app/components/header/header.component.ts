@@ -34,15 +34,13 @@ import { ThemeService } from '../../core/services/theme.service';
         <div class="flex items-center justify-between w-full lg:w-auto">
           <!-- Logo -->
           <button
-            aria-label="Logo"
+            [attr.aria-label]="'nav.goHome' | translate"
             class="logo-container dark:invert"
             (click)="scrollTo('hero')"
-            (keyup.enter)="scrollTo('hero')"
-            (keyup.space)="scrollTo('hero')"
           >
             <img
               src="assets/images/Logo.png"
-              alt="logo"
+              alt=""
               class="w-12 object-contain rounded-md cursor-pointer animate-pulse-slow hover:animate-float transition-all duration-300"
               width="48"
               height="48"
@@ -55,7 +53,7 @@ import { ThemeService } from '../../core/services/theme.service';
             #mobileMenuToggle
             class="lg:hidden p-2 rounded-lg text-neutral-700 dark:text-neutral-300 hover:bg-primary-100 dark:hover:bg-primary-800/40 transition-colors"
             (click)="toggleMobileMenu()"
-            aria-label="Abrir menu"
+            [attr.aria-label]="'nav.openMenu' | translate"
             [attr.aria-expanded]="isMobileMenuOpen ? 'true' : 'false'"
           >
             <i
@@ -72,8 +70,6 @@ import { ThemeService } from '../../core/services/theme.service';
               class="nav-item"
               data-section="hero"
               (click)="scrollTo('hero')"
-              (keyup.enter)="scrollTo('hero')"
-              (keyup.space)="scrollTo('hero')"
               [class.active]="activeSection === 'hero'"
             >
               <span
@@ -87,8 +83,6 @@ import { ThemeService } from '../../core/services/theme.service';
               class="nav-item"
               data-section="about"
               (click)="scrollTo('about')"
-              (keyup.enter)="scrollTo('about')"
-              (keyup.space)="scrollTo('about')"
               [class.active]="activeSection === 'about'"
             >
               <span
@@ -102,8 +96,6 @@ import { ThemeService } from '../../core/services/theme.service';
               class="nav-item"
               data-section="career"
               (click)="scrollTo('career')"
-              (keyup.enter)="scrollTo('career')"
-              (keyup.space)="scrollTo('career')"
               [class.active]="activeSection === 'career'"
             >
               <span
@@ -117,8 +109,6 @@ import { ThemeService } from '../../core/services/theme.service';
               class="nav-item"
               data-section="projects"
               (click)="scrollTo('projects')"
-              (keyup.enter)="scrollTo('projects')"
-              (keyup.space)="scrollTo('projects')"
               [class.active]="activeSection === 'projects'"
             >
               <span
@@ -132,8 +122,6 @@ import { ThemeService } from '../../core/services/theme.service';
               class="nav-item"
               data-section="skills"
               (click)="scrollTo('skills')"
-              (keyup.enter)="scrollTo('skills')"
-              (keyup.space)="scrollTo('skills')"
               [class.active]="activeSection === 'skills'"
             >
               <span
@@ -162,10 +150,8 @@ import { ThemeService } from '../../core/services/theme.service';
 
           <button
             (click)="toggleTheme()"
-            (keyup.enter)="toggleTheme()"
-            (keyup.space)="toggleTheme()"
             class="p-1.5 px-2 rounded-lg bg-primary-100 dark:text-neutral-100 dark:bg-primary-800/40 border border-primary-200 dark:border-primary-700 transition-all"
-            aria-label="Toggle theme"
+            [attr.aria-label]="'nav.toggleTheme' | translate"
           >
             <i
               aria-hidden="true"
@@ -182,7 +168,7 @@ import { ThemeService } from '../../core/services/theme.service';
             tabindex="-1"
             class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden"
             (click)="closeMobileMenu()"
-            aria-label="Fechar menu"
+            [attr.aria-label]="'nav.closeMenu' | translate"
           ></button>
 
           <div
@@ -205,9 +191,7 @@ import { ThemeService } from '../../core/services/theme.service';
                   #mobileMenuClose
                   class="p-2 rounded-lg text-neutral-700 dark:text-neutral-300 hover:bg-primary-100 dark:hover:bg-primary-800/40 transition-colors"
                   (click)="closeMobileMenu()"
-                  (keyup.enter)="closeMobileMenu()"
-                  (keyup.space)="closeMobileMenu()"
-                  aria-label="Fechar menu"
+                  [attr.aria-label]="'nav.closeMenu' | translate"
                 >
                   <i aria-hidden="true" class="fas fa-times text-xl"></i>
                 </button>
@@ -220,8 +204,6 @@ import { ThemeService } from '../../core/services/theme.service';
                     <button
                       class="w-full text-left p-3 rounded-lg flex items-center gap-3 text-neutral-700 dark:text-neutral-300 hover:bg-primary-100 dark:hover:bg-primary-800/40 transition-colors"
                       (click)="navigateTo('hero')"
-                      (keyup.enter)="navigateTo('hero')"
-                      (keyup.space)="navigateTo('hero')"
                     >
                       <i aria-hidden="true" class="fas fa-home w-5"></i>
                       {{ 'nav.home' | translate }}
@@ -231,8 +213,6 @@ import { ThemeService } from '../../core/services/theme.service';
                     <button
                       class="w-full text-left p-3 rounded-lg flex items-center gap-3 text-neutral-700 dark:text-neutral-300 hover:bg-primary-100 dark:hover:bg-primary-800/40 transition-colors"
                       (click)="navigateTo('about')"
-                      (keyup.enter)="navigateTo('about')"
-                      (keyup.space)="navigateTo('about')"
                     >
                       <i aria-hidden="true" class="fas fa-user w-5"></i>
                       {{ 'nav.about' | translate }}
@@ -242,8 +222,6 @@ import { ThemeService } from '../../core/services/theme.service';
                     <button
                       class="w-full text-left p-3 rounded-lg flex items-center gap-3 text-neutral-700 dark:text-neutral-300 hover:bg-primary-100 dark:hover:bg-primary-800/40 transition-colors"
                       (click)="navigateTo('career')"
-                      (keyup.enter)="navigateTo('career')"
-                      (keyup.space)="navigateTo('career')"
                     >
                       <i aria-hidden="true" class="fas fa-briefcase w-5"></i>
                       {{ 'nav.carrer' | translate }}
@@ -253,8 +231,6 @@ import { ThemeService } from '../../core/services/theme.service';
                     <button
                       class="w-full text-left p-3 rounded-lg flex items-center gap-3 text-neutral-700 dark:text-neutral-300 hover:bg-primary-100 dark:hover:bg-primary-800/40 transition-colors"
                       (click)="navigateTo('projects')"
-                      (keyup.enter)="navigateTo('projects')"
-                      (keyup.space)="navigateTo('projects')"
                     >
                       <i aria-hidden="true" class="fas fa-folder w-5"></i>
                       {{ 'nav.projects' | translate }}
@@ -264,8 +240,6 @@ import { ThemeService } from '../../core/services/theme.service';
                     <button
                       class="w-full text-left p-3 rounded-lg flex items-center gap-3 text-neutral-700 dark:text-neutral-300 hover:bg-primary-100 dark:hover:bg-primary-800/40 transition-colors"
                       (click)="navigateTo('skills')"
-                      (keyup.enter)="navigateTo('skills')"
-                      (keyup.space)="navigateTo('skills')"
                     >
                       <i aria-hidden="true" class="fas fa-bolt w-5"></i>
                       {{ 'nav.skills' | translate }}
@@ -297,8 +271,6 @@ import { ThemeService } from '../../core/services/theme.service';
                 <button
                   class="w-full p-3 rounded-lg flex items-center justify-between bg-primary-100 dark:text-neutral-100 dark:bg-primary-800/40 border border-primary-200 dark:border-primary-700 transition-all"
                   (click)="toggleTheme()"
-                  (keyup.enter)="toggleTheme()"
-                  (keyup.space)="toggleTheme()"
                 >
                   <span>{{ 'nav.theme' | translate }}</span>
                   <i aria-hidden="true" [class]="isDark ? 'fas fa-sun' : 'fas fa-moon'"></i>
@@ -336,7 +308,6 @@ import { ThemeService } from '../../core/services/theme.service';
         cursor: pointer;
         background: none;
         border: none;
-        outline: none;
       }
       .nav-item:hover {
         transform: translateY(-2px);

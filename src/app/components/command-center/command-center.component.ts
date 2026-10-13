@@ -208,7 +208,7 @@ const BOOT_DURATION_MS = 1400;
                   [placeholder]="
                     surface === 'terminal' ? 'Digite um comando' : 'Buscar projetos e ações'
                   "
-                  class="w-full bg-transparent text-sm text-neutral-900 outline-none placeholder:text-neutral-400 dark:text-neutral-100"
+                  class="w-full bg-transparent text-sm text-neutral-900 placeholder:text-neutral-400 dark:text-neutral-100"
                 />
                 @if (surface === 'quick-open') {
                   <kbd

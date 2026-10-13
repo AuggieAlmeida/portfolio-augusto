@@ -246,7 +246,7 @@ interface LanguageItem {
                       >
                         {{ 'skills.languages.level_' + lang.level | translate }}
                         @if (lang.cefr) {
-                          <span class="opacity-70"> · {{ lang.cefr }}</span>
+                          <span class="font-normal"> · {{ lang.cefr }}</span>
                         }
                       </span>
                     </div>
@@ -415,7 +415,7 @@ export class SkillsComponent {
       return `${baseClasses} bg-primary-600 text-white shadow-md transform scale-105`;
     }
 
-    return `${baseClasses} bg-neutral-100 dark:bg-primary-800/50 text-neutral-700 dark:text-neutral-300 hover:bg-primary-100 dark:hover:bg-primary-700/50 hover:scale-102 active:scale-95`;
+    return `${baseClasses} bg-neutral-100 dark:bg-primary-800/50 text-neutral-700 dark:text-neutral-300 hover:bg-primary-100 dark:hover:bg-primary-700/50 active:scale-95`;
   }
 
   getLevelBadgeClass(level: string): string {
@@ -423,15 +423,15 @@ export class SkillsComponent {
 
     switch (level) {
       case 'native':
-        return `${baseClasses} bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-400`;
+        return `${baseClasses} bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-200`;
       case 'advanced':
-        return `${baseClasses} bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400`;
+        return `${baseClasses} bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-200`;
       case 'intermediate':
-        return `${baseClasses} bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400`;
+        return `${baseClasses} bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-200`;
       case 'basic':
-        return `${baseClasses} bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-400`;
+        return `${baseClasses} bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-200`;
       default:
-        return `${baseClasses} bg-neutral-100 text-neutral-800 dark:bg-neutral-900/30 dark:text-neutral-400`;
+        return `${baseClasses} bg-neutral-100 text-neutral-800 dark:bg-neutral-900/30 dark:text-neutral-200`;
     }
   }
 

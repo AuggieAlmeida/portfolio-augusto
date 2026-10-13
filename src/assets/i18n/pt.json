@@ -8,7 +8,12 @@
     "contact": "Contato",
     "language": "Idioma",
     "theme": "Tema",
-    "terminal": "Abrir terminal"
+    "terminal": "Abrir terminal",
+    "goHome": "Ir para o início",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu",
+    "toggleTheme": "Alternar tema",
+    "skipToContent": "Pular para o conteúdo"
   },
   "hero": {
     "title": "Augusto Almeida",
@@ -768,7 +773,9 @@
     "social": {
       "github_user": "AuggieAlmeida",
       "linkedin_user": "AugustobAlmeida",
-      "email": "Enviar e-mail para Augusto Almeida"
+      "email": "Enviar e-mail para Augusto Almeida",
+      "github": "Perfil no GitHub",
+      "linkedin": "Perfil no LinkedIn"
     },
     "copyright": "© {{year}} Augusto Almeida. Todos os direitos reservados."
   },

@@ -43,7 +43,7 @@ import { NavService } from '../../core/services/nav.service';
             class="animate-float-slow absolute left-1/3 top-1/2 h-24 w-24 rounded-full bg-accent-200/30 blur-lg dark:bg-accent-700/30"
           ></div>
           <div
-            class="animate-float-slower absolute bottom-1/3 left-1/5 h-28 w-28 rounded-full bg-secondary-200/20 blur-lg dark:bg-secondary-700/20"
+            class="animate-float-slower absolute bottom-1/3 h-28 w-28 rounded-full bg-secondary-200/20 blur-lg dark:bg-secondary-700/20"
           ></div>
         </div>
       </div>
@@ -122,12 +122,12 @@ import { NavService } from '../../core/services/nav.service';
               (click)="navigateToProjects()"
               [attr.aria-label]="'CTA.viewFeatured' | translate"
             >
-              <span class="flex items-end justify-center gap-2">
-                <i aria-hidden="true" class="fas fa-rocket h-5 w-5"></i>
+              <span class="flex items-center justify-center gap-2">
+                <i aria-hidden="true" class="fas fa-rocket"></i>
                 {{ 'CTA.viewFeatured' | translate }}
                 <i
                   aria-hidden="true"
-                  class="fas fa-arrow-right h-5 w-5 transition-transform group-hover:translate-x-1"
+                  class="fas fa-arrow-right transition-transform group-hover:translate-x-1"
                 ></i>
               </span>
             </button>
@@ -136,8 +136,8 @@ import { NavService } from '../../core/services/nav.service';
               (click)="navigateToContact()"
               [attr.aria-label]="'CTA.contactMe' | translate"
             >
-              <span class="flex items-end justify-center gap-2">
-                <i aria-hidden="true" class="fas fa-envelope h-5 w-5"></i>
+              <span class="flex items-center justify-center gap-2">
+                <i aria-hidden="true" class="fas fa-envelope"></i>
                 {{ 'CTA.contactMe' | translate }}
               </span>
             </button>

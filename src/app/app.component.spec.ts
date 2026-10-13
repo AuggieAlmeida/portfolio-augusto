@@ -47,13 +47,29 @@ describe('AppComponent', () => {
       .map((element) => element.tagName.toLowerCase())
       .filter((tag) => tag.startsWith('app-'));
 
-    expect(sections).toEqual([
-      'app-hero',
-      'app-about',
-      'app-career',
-      'app-projects',
-      'app-skills',
-      'app-footer'
-    ]);
+    expect(sections).toEqual(['app-hero', 'app-about', 'app-career', 'app-projects', 'app-skills']);
+  });
+
+  it('keeps the footer as its own landmark, outside main', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+
+    const host: HTMLElement = fixture.nativeElement;
+    const main = host.querySelector('main');
+
+    expect(main?.querySelector('app-footer')).toBeNull();
+    expect(main?.nextElementSibling?.tagName.toLowerCase()).toBe('app-footer');
+  });
+
+  it('opens with a skip link that targets the main content', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+
+    const host: HTMLElement = fixture.nativeElement;
+    const skip = host.firstElementChild;
+
+    expect(skip?.tagName.toLowerCase()).toBe('a');
+    expect(skip?.getAttribute('href')).toBe('#main-content');
+    expect(host.querySelector('main')?.id).toBe('main-content');
   });
 });
