@@ -43,7 +43,7 @@ import { NavService } from '../../core/services/nav.service';
             class="animate-float-slow absolute left-1/3 top-1/2 h-24 w-24 rounded-full bg-accent-200/30 blur-lg dark:bg-accent-700/30"
           ></div>
           <div
-            class="animate-float-slower absolute bottom-1/3 left-1/5 h-28 w-28 rounded-full bg-secondary-200/20 blur-lg dark:bg-secondary-700/20"
+            class="animate-float-slower absolute bottom-1/3 h-28 w-28 rounded-full bg-secondary-200/20 blur-lg dark:bg-secondary-700/20"
           ></div>
         </div>
       </div>

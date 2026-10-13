@@ -55,7 +55,7 @@ import { CopyEmailComponent } from '../copy-email/copy-email.component';
               <!-- Professional Overview -->
               <div class="professional-highlight">
                 <h3
-                  class="text-xl md:text-2xl font-semibold text-primary-600 dark:text-primary-400 mb-4 flex items-center gap-2"
+                  class="text-xl md:text-2xl font-semibold text-primary-600 dark:text-primary-300 mb-4 flex items-center gap-2"
                 >
                   <i aria-hidden="true" class="fas fa-briefcase"></i>
                   {{ 'about.professionalOverview' | translate }}
@@ -68,7 +68,7 @@ import { CopyEmailComponent } from '../copy-email/copy-email.component';
               <!-- Core Expertise -->
               <div class="expertise-section">
                 <h3
-                  class="text-xl md:text-2xl font-semibold text-secondary-600 dark:text-secondary-400 mb-4 flex items-center gap-2"
+                  class="text-xl md:text-2xl font-semibold text-secondary-600 dark:text-secondary-300 mb-4 flex items-center gap-2"
                 >
                   <i aria-hidden="true" class="fas fa-code"></i>
                   {{ 'about.coreExpertise' | translate }}
@@ -84,7 +84,7 @@ import { CopyEmailComponent } from '../copy-email/copy-email.component';
                  forma de falar com o Augusto. -->
             <div class="contact-section">
               <h3
-                class="text-xl md:text-2xl font-semibold text-accent-600 dark:text-accent-400 mb-4 flex items-center gap-2"
+                class="text-xl md:text-2xl font-semibold text-accent-700 dark:text-accent-400 mb-4 flex items-center gap-2"
               >
                 <i aria-hidden="true" class="fas fa-envelope"></i>
                 {{ 'about.contactInfo' | translate }}
@@ -99,12 +99,12 @@ import { CopyEmailComponent } from '../copy-email/copy-email.component';
                     <i aria-hidden="true" class="fas fa-envelope text-white text-sm"></i>
                   </span>
                   <span class="min-w-0 flex-1">
-                    <span class="block text-sm text-neutral-500 dark:text-neutral-400">
+                    <span class="block text-sm text-neutral-600 dark:text-neutral-300">
                       {{ 'about.email' | translate }}
                     </span>
                     <a
                       [href]="'mailto:' + email"
-                      class="block truncate text-primary-600 dark:text-primary-400 hover:underline font-medium"
+                      class="block truncate text-primary-600 dark:text-primary-200 hover:underline font-medium"
                     >
                       {{ email }}
                     </a>
@@ -123,14 +123,14 @@ import { CopyEmailComponent } from '../copy-email/copy-email.component';
                     <i aria-hidden="true" class="fab fa-linkedin text-white text-sm"></i>
                   </span>
                   <span class="min-w-0">
-                    <span class="block text-sm text-neutral-500 dark:text-neutral-400"
+                    <span class="block text-sm text-neutral-600 dark:text-neutral-300"
                       >LinkedIn</span
                     >
                     <a
                       href="https://linkedin.com/in/augustobalmeida"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="block truncate text-secondary-600 dark:text-secondary-400 hover:underline font-medium"
+                      class="block truncate text-secondary-600 dark:text-secondary-200 hover:underline font-medium"
                     >
                       /augustobalmeida
                     </a>
@@ -146,12 +146,12 @@ import { CopyEmailComponent } from '../copy-email/copy-email.component';
                     <i aria-hidden="true" class="fab fa-github text-white text-sm"></i>
                   </span>
                   <span class="min-w-0">
-                    <span class="block text-sm text-neutral-500 dark:text-neutral-400">GitHub</span>
+                    <span class="block text-sm text-neutral-600 dark:text-neutral-300">GitHub</span>
                     <a
                       href="https://github.com/AuggieAlmeida"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="block truncate text-accent-600 dark:text-accent-400 hover:underline font-medium"
+                      class="block truncate text-accent-700 dark:text-accent-200 hover:underline font-medium"
                     >
                       /AuggieAlmeida
                     </a>
@@ -167,14 +167,14 @@ import { CopyEmailComponent } from '../copy-email/copy-email.component';
                     <i aria-hidden="true" class="fab fa-whatsapp text-white text-sm"></i>
                   </span>
                   <span class="min-w-0">
-                    <span class="block text-sm text-neutral-500 dark:text-neutral-400"
+                    <span class="block text-sm text-neutral-600 dark:text-neutral-300"
                       >WhatsApp</span
                     >
                     <a
                       href="https://wa.me/5511916047732"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="block truncate text-primary-600 dark:text-primary-400 hover:underline font-medium"
+                      class="block truncate text-primary-600 dark:text-primary-200 hover:underline font-medium"
                     >
                       +55 (11) 91604-7732
                     </a>

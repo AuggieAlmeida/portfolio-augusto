@@ -102,7 +102,7 @@ interface RoadmapYear {
                           class="year-badge px-4 py-2 rounded-full font-bold text-sm"
                           [class]="
                             item.isCurrentYear
-                              ? 'bg-accent-500 text-white shadow-lg'
+                              ? 'bg-accent-700 text-white shadow-lg'
                               : 'bg-secondary-100 dark:bg-secondary-800 text-secondary-700 dark:text-secondary-300'
                           "
                         >
@@ -128,13 +128,13 @@ interface RoadmapYear {
                       <!-- Position Info -->
                       @if (item.position) {
                         <div class="mb-4">
-                          <h4
+                          <h3
                             class="font-semibold text-neutral-900 dark:text-neutral-100 text-lg mb-1"
                           >
                             {{ item.position | translate }}
-                          </h4>
+                          </h3>
                           @if (item.company) {
-                            <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                            <p class="text-sm text-neutral-600 dark:text-neutral-300">
                               {{
                                 item.company.startsWith('roadmap.')
                                   ? (item.company | translate)
@@ -203,7 +203,7 @@ interface RoadmapYear {
                 >
                   <!-- Timeline Dot -->
                   <div
-                    class="timeline-dot w-4 h-4 rounded-full border-3 absolute left-4 transition-all duration-300"
+                    class="timeline-dot w-4 h-4 rounded-full absolute left-4 transition-all duration-300"
                     [class]="
                       item.isCurrentYear
                         ? 'bg-accent-500 border-white dark:border-primary-900 shadow-lg shadow-accent-500/50 animate-pulse'
@@ -227,7 +227,7 @@ interface RoadmapYear {
                           class="year-badge px-3 py-1 rounded-full font-bold text-xs md:text-sm"
                           [class]="
                             item.isCurrentYear
-                              ? 'bg-accent-500 text-white shadow-lg'
+                              ? 'bg-accent-700 text-white shadow-lg'
                               : 'bg-secondary-100 dark:bg-secondary-800 text-secondary-700 dark:text-secondary-300'
                           "
                         >
@@ -253,13 +253,13 @@ interface RoadmapYear {
                       <!-- Position Info -->
                       @if (item.position) {
                         <div class="mb-3">
-                          <h4
+                          <h3
                             class="font-semibold text-neutral-900 dark:text-neutral-100 text-base md:text-lg mb-1"
                           >
                             {{ item.position | translate }}
-                          </h4>
+                          </h3>
                           @if (item.company) {
-                            <p class="text-xs md:text-sm text-neutral-600 dark:text-neutral-400">
+                            <p class="text-xs md:text-sm text-neutral-600 dark:text-neutral-300">
                               {{
                                 item.company.startsWith('roadmap.')
                                   ? (item.company | translate)

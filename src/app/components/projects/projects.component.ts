@@ -65,8 +65,8 @@ const TECHNOLOGY_FILTERS = 12;
           <div class="absolute left-3 top-3">
             <div
               class="flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium text-white shadow-lg"
-              [class.bg-primary-500]="project.category === 'commercial'"
-              [class.bg-secondary-500]="project.category === 'study'"
+              [class.bg-primary-600]="project.category === 'commercial'"
+              [class.bg-secondary-600]="project.category === 'study'"
             >
               <i
                 aria-hidden="true"
@@ -142,11 +142,11 @@ const TECHNOLOGY_FILTERS = 12;
 
         <div class="p-4 md:p-6">
           <div class="mb-2 flex items-start justify-between gap-3">
-            <h4
+            <h3
               class="project-title text-lg font-semibold text-neutral-900 transition-colors duration-200 dark:text-neutral-100 md:text-xl"
             >
               {{ project.titleKey | translate }}
-            </h4>
+            </h3>
             <button
               type="button"
               data-card-control
@@ -184,7 +184,7 @@ const TECHNOLOGY_FILTERS = 12;
             }
             @if (project.hiddenTechnologies) {
               <span
-                class="rounded-md bg-neutral-200 px-2 py-1 text-xs font-medium text-neutral-600 dark:bg-neutral-600 dark:text-neutral-400"
+                class="rounded-md bg-neutral-200 px-2 py-1 text-xs font-medium text-neutral-600 dark:bg-neutral-600 dark:text-neutral-100"
               >
                 +{{ project.hiddenTechnologies }}
               </span>
@@ -569,8 +569,8 @@ const TECHNOLOGY_FILTERS = 12;
               <div class="mb-3 flex flex-wrap items-center gap-3">
                 <span
                   class="flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium text-white"
-                  [class.bg-primary-500]="project.category === 'commercial'"
-                  [class.bg-secondary-500]="project.category === 'study'"
+                  [class.bg-primary-600]="project.category === 'commercial'"
+                  [class.bg-secondary-600]="project.category === 'study'"
                 >
                   <i
                     aria-hidden="true"
@@ -753,7 +753,7 @@ const TECHNOLOGY_FILTERS = 12;
                   <button
                     type="button"
                     data-modal-action="redirect"
-                    class="flex items-center gap-2 rounded-lg bg-primary-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-400"
+                    class="flex items-center gap-2 rounded-lg bg-primary-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-400"
                     (click)="openUrl(project.demoUrl!)"
                   >
                     <i aria-hidden="true" class="fas fa-external-link-alt text-xs"></i>

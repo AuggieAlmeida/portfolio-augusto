@@ -30,7 +30,7 @@ import { CopyEmailComponent } from '../copy-email/copy-email.component';
               [href]="'https://github.com/' + ('footer.social.github_user' | translate)"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="GitHub Profile"
+              [attr.aria-label]="'footer.social.github' | translate"
               class="hover:text-primary-500"
             >
               <i class="fab fa-github text-xl" aria-hidden="true"></i>
@@ -40,7 +40,7 @@ import { CopyEmailComponent } from '../copy-email/copy-email.component';
               [href]="'https://www.linkedin.com/in/' + ('footer.social.linkedin_user' | translate)"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LinkedIn Profile"
+              [attr.aria-label]="'footer.social.linkedin' | translate"
               class="hover:text-primary-500"
             >
               <i class="fab fa-linkedin text-xl" aria-hidden="true"></i>
@@ -113,7 +113,7 @@ import { CopyEmailComponent } from '../copy-email/copy-email.component';
       </div>
 
       <div
-        class="border-t border-neutral-200 dark:border-neutral-800 text-center py-4 text-sm text-neutral-500 dark:text-neutral-400"
+        class="border-t border-neutral-200 dark:border-neutral-800 text-center py-4 text-sm text-neutral-600 dark:text-neutral-400"
       >
         {{ 'footer.copyright' | translate: copyrightParams }}
       </div>

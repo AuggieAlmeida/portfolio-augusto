@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { AboutComponent } from './components/about/about.component';
 import { CareerRoadmapComponent } from './components/carrer/carrer.component';
@@ -12,6 +13,7 @@ import { SkillsComponent } from './components/skills/skills.component';
 @Component({
   selector: 'app-root',
   imports: [
+    TranslateModule,
     HeaderComponent,
     CommandCenterComponent,
     HeroComponent,

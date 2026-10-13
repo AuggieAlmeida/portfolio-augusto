@@ -1,7 +1,19 @@
+<!-- Primeiro elemento focável: quem navega por teclado pula header e terminal
+     direto para o conteúdo. -->
+<a
+  href="#main-content"
+  class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:font-semibold focus:text-primary-800 focus:shadow-lg"
+>
+  {{ 'nav.skipToContent' | translate }}
+</a>
 <app-header></app-header>
 <app-command-center></app-command-center>
 
-<main class="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+<main
+  id="main-content"
+  tabindex="-1"
+  class="min-h-screen focus:outline-none bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100"
+>
   <app-hero></app-hero>
   <app-about></app-about>
 
@@ -28,6 +40,7 @@
   } @placeholder (minimum 100ms) {
     <div class="section-placeholder" aria-hidden="true"></div>
   }
-
-  <app-footer></app-footer>
 </main>
+
+<!-- Fora do <main>: o rodapé é landmark próprio (contentinfo), não conteúdo. -->
+<app-footer></app-footer>

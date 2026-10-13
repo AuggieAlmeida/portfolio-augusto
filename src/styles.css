@@ -9,11 +9,15 @@
 :root {
   --primary-bg: theme('colors.white');
   --primary-text: theme('colors.gray.900');
+  /* Foco é token próprio, não deriva do acento: indigo sobre indigo some. Âmbar
+     fica acima de 3:1 contra as superfícies de cada tema. */
+  --focus-ring: theme('colors.amber.700');
 }
 
 .dark {
   --primary-bg: theme('colors.gray.800');
   --primary-text: theme('colors.white');
+  --focus-ring: theme('colors.amber.400');
 }
 
 .transition-theme {
@@ -36,6 +40,14 @@
     font-family: 'Open Sans', system-ui, sans-serif;
   }
 
+  /* Indicador único para quem navega por teclado. Controles que já desenham
+     anel próprio com `focus:ring-*` continuam com ele: a utility vence esta
+     regra por especificidade. */
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+
   h1 {
     font-family: 'Great Vibes', cursive;
   }
@@ -54,12 +66,16 @@
 }
 
 @layer components {
+  /* Branco sobre primary-500 dava 4.46:1 no escuro; o 600 passa de 6:1 nos
+     dois temas. */
   .btn-primary {
-    @apply px-8 py-4 bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300;
+    @apply px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300;
   }
 
+  /* Contorno, não preenchimento: o herói tem uma ação dominante só, e dois
+     botões sólidos disputavam a primeira leitura. */
   .btn-secondary {
-    @apply px-8 py-4 bg-secondary-600 hover:bg-secondary-700 dark:bg-secondary-500 dark:hover:bg-secondary-600 text-white font-semibold rounded-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300;
+    @apply px-8 py-4 border-2 border-secondary-600 text-secondary-700 hover:bg-secondary-50 dark:border-secondary-300 dark:text-secondary-100 dark:hover:bg-secondary-900/40 font-semibold rounded-lg transform hover:scale-105 transition-all duration-300;
   }
 }
 

@@ -172,7 +172,7 @@ describe('ProjectsComponent', () => {
     const github = host.querySelector<HTMLButtonElement>('[data-modal-action="github"]');
 
     expect(redirect?.textContent).toContain('projects.redirect');
-    expect(redirect?.classList).toContain('bg-primary-500');
+    expect(redirect?.classList).toContain('bg-primary-600');
     expect(github?.textContent).toContain('projects.viewCode');
     expect(github?.classList).toContain('border');
   });
