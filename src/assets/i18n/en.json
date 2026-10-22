@@ -40,7 +40,7 @@
     "professionalOverview": "Professional Overview",
     "professionalDescription": "Today I work fullstack at Stech, with TypeScript, React, NestJS and Prisma over MySQL. Before that: Java and Spring Boot at Persys, conversion-focused frontend at Make and test engineering at Outlier, evaluating models across voice, vision and text. I also taught Excel, Power BI and generative AI at Cebrac.",
     "coreExpertise": "Core Expertise",
-    "expertiseDescription": "What I bring to a team is judgement, not a stack list: fixing vulnerabilities before they become incidents, turning business rules into traceable parameters and treating Core Web Vitals as a requirement — the bar behind more than a hundred landing pages. TaskForge cut 70% to 90% of the engineering LLM bill.",
+    "expertiseDescription": "What I bring to a team is judgement, not a stack list: fixing vulnerabilities before they become incidents, turning business rules into traceable parameters and treating Core Web Vitals as a requirement — the bar behind more than a hundred landing pages. In TaskForge, the planner is read-only and no agent can publish on its own.",
     "contactInfo": "Let's connect?",
     "email": "Email"
   },
@@ -210,7 +210,7 @@
       },
       "taskforge": {
         "title": "TaskForge",
-        "description": "Parallel agent orchestrator. Turns a request into a task graph, isolates each task in its own worktree and runs them in waves, with human review and merge at the end. Cut 70% to 90% of the engineering LLM bill."
+        "description": "Parallel agent orchestrator. Turns a request into a task graph, isolates each task in its own worktree and runs them in waves, with human review and merge at the end. The planner is read-only, and no agent can publish on its own."
       },
       "stechclub": {
         "title": "StechClub",
